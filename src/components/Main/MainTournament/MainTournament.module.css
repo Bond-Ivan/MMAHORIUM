@@ -1,0 +1,200 @@
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.infoBlock {
+    background: linear-gradient(135deg, #13131a 0%, #1f1f2d 100%);
+    border: 1px solid #e8372a;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 0 30px #e8372a33;
+    position: relative;
+    overflow: hidden;
+}
+
+.infoBlock::before {
+    content: 'NEXT';
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: rgba(232, 55, 42, 0.08);
+    letter-spacing: 1.6px;
+}
+
+.timeBlock {
+    background-color: #13131a;
+    border: 1px solid #ffffff14;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.eventLabel {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #e8372a;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background: #e8372a;
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.fighters {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 16px 0;
+}
+
+.eventName {
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: 0.32px;
+    line-height: 1;
+    margin-bottom: 12px;
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+}
+
+.eventWeight {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245, 166, 35, 0.15);
+    color: #f5a623;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    letter-spacing: 0.8px;
+}
+
+.weightIcon {
+    width: 12px;
+    height: 12px;
+}
+
+.firstFighter {
+    flex: 1;
+}
+
+.secondFighter {
+    flex: 1;
+    text-align: right;
+}
+
+.fighterName {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.fighterRaiting {
+    font-size: 14px;
+    color: #8a8a9a;
+    margin-top: 4px;
+}
+
+.badge {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: #e8372a;
+    flex-shrink: 0;
+}
+
+.footer {
+    display: flex;
+    gap: 20px;
+    font-size: 16px;
+    color: #8a8a9a;
+}
+
+.footerElem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footerIcon {
+    width: 14px;
+    height: 14px;
+}
+
+.timeWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: auto;
+}
+
+.timeTitle {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #4a4a5a;
+    margin-bottom: 20px;
+}
+
+.timeBox {
+    background: #1f1f2d;
+    border-radius: 8px;
+    padding: 16px 12px;
+}
+
+.timValue {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 56px;
+    font-weight: 900;
+    color: #e8372a;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.timeText {
+    font-size: 10px;
+    color: #4a4a5a;
+    text-transform: uppercase;
+    letter-spacing: 1.28px;
+}
+
+.timeLocal {
+    color: #8a8a9a;
+}

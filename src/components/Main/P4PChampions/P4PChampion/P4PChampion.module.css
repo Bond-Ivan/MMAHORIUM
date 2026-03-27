@@ -1,0 +1,56 @@
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.raiting {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    width: 28px;
+    text-align: center;
+    color: #4a4a5a;
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+
+.item:nth-child(1) .raiting {
+  color: gold;
+}
+
+.item:nth-child(2) .raiting {
+  color: silver;
+}
+
+.item:nth-child(3) .raiting {
+  color: #a87900;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 5px;
+}
+
+.weight {
+    font-size: 14px;
+    color: #4a4a5a;
+}
+
+.record {
+    font-size: 14px;
+    color: #4a4a5a;
+}

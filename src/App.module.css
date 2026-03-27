@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+}
+
+.wrapper {
+    width: 100%;
+}
+
+.main {
+    padding: 24px;
+}
