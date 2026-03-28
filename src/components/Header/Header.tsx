@@ -12,7 +12,6 @@ function Header({ title }: HeaderProps): ReactElement {
             <div className={styles.actions}>
                 <button className={styles.badgeLive}>
                     <div className={styles.badgeLiveDot}>
-
                     </div>
                     Live
                 </button>

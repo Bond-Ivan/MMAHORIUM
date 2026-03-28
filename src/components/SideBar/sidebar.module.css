@@ -58,28 +58,37 @@
 }
 
 .navItem {
-	display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    color: #8a8a9a;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
-    border: none;
-    background: none;
-    width: 100%;
-    text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #8a8a9a;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
 }
+
 .navItem:hover {
-	background-color:#1f1f2d;
-	color: #e8e8ed;
+  background-color: #1f1f2d;
+  color: #e8e8ed;
 }
-.navItem:active {
-	background-color: #e8372a26;
-	color: #e8372a;
+
+.navItemActive {
+  background-color: #e8372a26;
+  color: #e8372a;
+}
+
+/* активный элемент при hover оставляем таким же */
+.navItem.navItemActive,
+.navItem.navItemActive:hover {
+  background-color: #e8372a26;
+  color: #e8372a;
 }
 
 .sidebarFooter {

@@ -1,0 +1,102 @@
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.item {
+  background-color: #13131a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  cursor: pointer;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  opacity: 0;
+  transform: translateY(12px);
+  animation-name: slideInUp;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.date {
+    text-align: center;
+    background-color: #1f1f2d;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.dateDay {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1;
+    color: #e8372a;
+}
+
+.dateMonth {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: #8a8a9a;
+}
+
+
+.name {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.32px;
+    margin-bottom: 4px;
+}
+
+.weight {
+    font-size: 16px;
+    color: #8a8a9a;
+    margin-bottom: 8px
+}
+
+.place {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 14px;
+    color: #4a4a5a;
+}
+
+.type {
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background-color: #1f1f2d;
+    color: #4a4a5a;
+}
+
+.typeNumbered {
+    background-color: rgba(245, 166, 35, 0.15);
+    color: #f5a623;
+}
+
+.typeFN {
+    background-color: rgba(74, 158, 255, 0.15);
+    color: #4a9eff;
+}
+
+.icon {
+    width: 12px;
+    height: 12px;
+}

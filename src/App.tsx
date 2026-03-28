@@ -2,9 +2,10 @@ import Header from './components/Header/Header';
 import SideBar from './components/SideBar/SideBar';
 import styles from './App.module.css';
 import { Route, Routes, useLocation } from "react-router-dom";
-import Main from './components/Main/Main';
 import { AnimatePresence, motion } from "framer-motion";
 import pagesAnimation from './constants/animations';
+import Main from './components/Pages/Main/Main';
+import Tournaments from './components/Pages/Tournaments/Tournaments';
 
 function App() {
   const location = useLocation();
@@ -72,7 +73,7 @@ function App() {
                     variants={pagesAnimation}
                     transition={{ duration: 0.3 }}
                   >
-                    <div></div>
+                    <Tournaments />
                   </motion.div>
                 }
               />

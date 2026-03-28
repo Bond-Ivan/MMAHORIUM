@@ -8,6 +8,6 @@ export const UfcWeightClass = {
   Middleweight: "Средний вес до 84 кг",
   LightHeavyweight: "Полутяжёлый вес до 93 кг",
   Heavyweight: "Тяжёлый вес до 120 кг",
-};
+} as const;
 
 export type UfcWeightClass = keyof typeof UfcWeightClass;

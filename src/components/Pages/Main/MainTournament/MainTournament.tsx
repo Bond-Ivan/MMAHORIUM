@@ -1,7 +1,8 @@
 import { useEffect, useState, type ReactElement } from "react";
 import styles from './MainTournament.module.css';
-import { UfcWeightClass } from "../../../constants/weights";
+
 import { getTimeLeft } from "./MainTournament.utils";
+import { UfcWeightClass } from "../../../../constants/weights";
 
 function MainTournament(): ReactElement {
     const [timeLeft, setTimeLeft] = useState({
