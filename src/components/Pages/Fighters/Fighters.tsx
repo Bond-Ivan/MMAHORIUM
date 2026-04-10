@@ -12,7 +12,7 @@ function Fighters(): ReactElement {
         <>
             <main className={styles.main}>
                 <h2 className={styles.title}>
-                    Бойцы UFC<span className={styles.pretitle}> 2026</span>
+                    Бойцы UFC
                 </h2>
                 <ul className={styles.weights}>
                     {weightClasses.map((weightClass, index) => (
@@ -28,7 +28,7 @@ function Fighters(): ReactElement {
                 </ul>
                 <ul className={styles.fighters}>
                     {flyWeight.map((value, index) => (
-                        <Fighter key={index} value={value} />
+                        <Fighter key={index} value={value} index={index} />
                     ))}
                 </ul>
             </main>

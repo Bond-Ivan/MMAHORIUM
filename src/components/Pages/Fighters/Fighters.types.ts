@@ -11,4 +11,9 @@ export type fighterType = {
   DES: number;
   SUB: number;
   img: string;
+  age: number;
+  height: number;
+  weight: number;
+  debut: string;
+  armSpan: number;
 };

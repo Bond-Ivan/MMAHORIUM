@@ -92,18 +92,18 @@ const pastTournaments: TournamentType[] = [
     type: 'ПРОШЕДШИЙ',
     mainResult: 'Алекса Грассо vs Мэйси Барбер (ко-мейн ивент)',
   },
-];
-
-const futureTournaments: TournamentType[] = [
   {
     dateDay: '4',
     dateMonth: 'Apr',
     place: 'США, Лас-Вегас',
     name: 'UFC Fight Night 272: Ренату Мойкану vs Крис Данкан',
     weight: 'Lightweight',
-    type: 'FIGHT NIGHT',
+    type: 'ПРОШЕДШИЙ',
     mainResult: 'Вирна Жандироба vs Табата Риччи (ко-мейн ивент)',
   },
+];
+
+const futureTournaments: TournamentType[] = [
   {
     dateDay: '11',
     dateMonth: 'Apr',

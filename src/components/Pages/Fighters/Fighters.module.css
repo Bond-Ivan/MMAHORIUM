@@ -13,12 +13,6 @@
     margin-bottom: 20px;
 }
 
-.pretitle {
-    color: #e8372a;
-    font-style: normal;
-    margin-left: 10px;
-}
-
 .weights {
     display: flex;
     gap: 8px;

@@ -16,7 +16,7 @@ import BrunoSilva from "../../../../../public/BrunoSilva.png";
 import TagirUlanbekov from "../../../../../public/TagirUlanbekov.png";
 import TimElliott from "../../../../../public/TimElliott.png";
 
-export const flyWeight: fighterType[] = [ 
+export const flyWeight: fighterType[] = [
     {
         name: 'Джошуа Ван',
         nickname: null,
@@ -29,7 +29,12 @@ export const flyWeight: fighterType[] = [
         KO: 8,
         DES: 6,
         SUB: 2,
-        img: `${JoshuaWang}`
+        img: `${JoshuaWang}`,
+        age: 24,
+        height: 165.1,
+        weight: 56.47,
+        debut: '24.06.23',
+        armSpan: 165.1,
     },
     {
         name: 'Александр Пантожа',
@@ -43,7 +48,12 @@ export const flyWeight: fighterType[] = [
         KO: 8,
         DES: 10,
         SUB: 12,
-        img: `${AlexanderPantoja}`
+        img: `${AlexanderPantoja}`,
+        age: 35,
+        height: 165.1,
+        weight: 56.7,
+        debut: '29.01.17',
+        armSpan: 170.18,
     },
     {
         name: 'Манель Кейпе',
@@ -57,7 +67,12 @@ export const flyWeight: fighterType[] = [
         KO: 14,
         DES: 3,
         SUB: 5,
-        img: `${ManelCape}`
+        img: `${ManelCape}`,
+        age: 32,
+        height: 165.1,
+        weight: 57.15,
+        debut: '06.02.21',
+        armSpan: 172.72,
     },
     {
         name: 'Татсуро Таира',
@@ -71,7 +86,12 @@ export const flyWeight: fighterType[] = [
         KO: 6,
         DES: 4,
         SUB: 8,
-        img: `${TatsuroTaira}`
+        img: `${TatsuroTaira}`,
+        age: 26,
+        height: 170.18,
+        weight: 57.15,
+        debut: '30.04.22',
+        armSpan: 177.8,
     },
     {
         name: 'Брэндон Ройвал',
@@ -86,6 +106,11 @@ export const flyWeight: fighterType[] = [
         DES: 4,
         SUB: 9,
         img: `${BrandonRoyal}`,
+        age: 33,
+        height: 175.26,
+        weight: 57.15,
+        debut: '30.05.20',
+        armSpan: 172.72,
     },
     {
         name: 'Киоджи Хоригучи',
@@ -100,6 +125,11 @@ export const flyWeight: fighterType[] = [
         DES: 15,
         SUB: 6,
         img: `${KyojiHoriguchi}`,
+        age: 35,
+        height: 162.56,
+        weight: 56.7,
+        debut: '20.10.13',
+        armSpan: 175.26,
     },
     {
         name: 'Лонэ Кавана',
@@ -114,6 +144,11 @@ export const flyWeight: fighterType[] = [
         DES: 5,
         SUB: 1,
         img: `${LoneKavanagh}`,
+        age: 26,
+        height: 167.64,
+        weight: 57.15,
+        debut: '23.11.24',
+        armSpan: 170.18,
     },
     {
         name: 'Амир Альбази',
@@ -128,6 +163,11 @@ export const flyWeight: fighterType[] = [
         DES: 3,
         SUB: 9,
         img: `${AmirAlbazi}`,
+        age: 32,
+        height: 165.1,
+        weight: 56.93,
+        debut: '18.07.20',
+        armSpan: 172.72,
     },
     {
         name: 'Асу Алмабаев',
@@ -142,6 +182,11 @@ export const flyWeight: fighterType[] = [
         DES: 10,
         SUB: 10,
         img: `${AsuAlmabaev}`,
+        age: 32,
+        height: 162.56,
+        weight: 56.93,
+        debut: '05.08.23',
+        armSpan: 165.1,
     },
     {
         name: 'Брэндон Морено',
@@ -156,6 +201,11 @@ export const flyWeight: fighterType[] = [
         DES: 7,
         SUB: 11,
         img: `${BrandonMoreno}`,
+        age: 32,
+        height: 170.18,
+        weight: 56.7,
+        debut: '02.10.16',
+        armSpan: 177.8,
     },
     {
         name: 'Алекс Перез',
@@ -170,6 +220,11 @@ export const flyWeight: fighterType[] = [
         DES: 12,
         SUB: 7,
         img: `${AlexPerez}`,
+        age: 34,
+        height: 167.64,
+        weight: 58.29,
+        debut: '08.08.17',
+        armSpan: 166.37,
     },
     {
         name: 'Тим Эллиотт',
@@ -184,6 +239,11 @@ export const flyWeight: fighterType[] = [
         DES: 11,
         SUB: 8,
         img: `${TimElliott}`,
+        age: 39,
+        height: 170.18,
+        weight: 57.15,
+        debut: '05.05.12',
+        armSpan: 167.64,
     },
     {
         name: 'Стив Эрцег',
@@ -198,6 +258,11 @@ export const flyWeight: fighterType[] = [
         DES: 5,
         SUB: 6,
         img: `${SteveErceg}`,
+        age: 30,
+        height: 172.72,
+        weight: 61.46,
+        debut: '20.05.23',
+        armSpan: 172.72,
     },
     {
         name: 'Чарльс Джонсон',
@@ -212,6 +277,11 @@ export const flyWeight: fighterType[] = [
         DES: 8,
         SUB: 3,
         img: `${CharlesJohnson}`,
+        age: 35,
+        height: 175.26,
+        weight: 57.15,
+        debut: '23.07.22',
+        armSpan: 177.8,
     },
     {
         name: 'Тагир Уланбеков',
@@ -226,6 +296,11 @@ export const flyWeight: fighterType[] = [
         DES: 8,
         SUB: 8,
         img: `${TagirUlanbekov}`,
+        age: 34,
+        height: 170.18,
+        weight: 56.93,
+        debut: '10.10.20',
+        armSpan: 177.8,
     },
     {
         name: 'Бруно Силва',
@@ -240,6 +315,11 @@ export const flyWeight: fighterType[] = [
         DES: 4,
         SUB: 5,
         img: `${BrunoSilva}`,
+        age: 36,
+        height: 162.56,
+        weight: 56.93,
+        debut: '07.09.19',
+        armSpan: 165.1,
     },
 
 ];

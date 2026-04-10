@@ -12,7 +12,7 @@ const news = [
     title: 'Чарльз Оливейра вошёл в топ-10 P4P после победы над Холлоуэем',
     text: 'После зрелищной победы методом TKO в третьем раунде, бразилец снова претендует на звание лучшего лёгкого веса.',
     date: '29 марта 2026',
-    image: 'https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1NV84z.img?w=952&h=556&m=4&q=100',
+    image: 'https://ss.sport-express.ru/userfiles/materials/214/2145799/1180x665.jpg',
     type: 'РЕЙТИНГИ',
   },
   {
@@ -20,7 +20,7 @@ const news = [
     title: 'Топурия vs. Гейджи: главный бой UFC Freedom 250 подтверждён на 14 июня в Белом доме',
     text: 'Менеджер Топурии Эли Абдулла подтвердил: интерим-чемпион Джастин Гейджи бросит вызов чемпиону лёгкого веса Илье Топурии на грандиозном турнире, который пройдёт на лужайке Белого дома в Вашингтоне.',
     date: '30 марта 2026',
-    image: 'https://ss.sport-express.ru/userfiles/materials/214/2145799/1180x665.jpg',
+    image: 'https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1NV84z.img?w=952&h=556&m=4&q=100',
     type: 'ГЛАВНОЕ',
   },
 
