@@ -83,18 +83,18 @@ const pastTournaments: TournamentType[] = [
     type: 'ПРОШЕДШИЙ',
     mainResult: 'Евлоев def. Мёрфи via MD',
   },
-];
-
-const futureTournaments: TournamentType[] = [
   {
     dateDay: '28',
     dateMonth: 'Mar',
     place: 'США, Сиэтл',
     name: 'UFC Fight Night 271: Исраэль Адесанья vs Джо Пайфер',
     weight: 'Middleweight',
-    type: 'FIGHT NIGHT',
+    type: 'ПРОШЕДШИЙ',
     mainResult: 'Алекса Грассо vs Мэйси Барбер (ко-мейн ивент)',
   },
+];
+
+const futureTournaments: TournamentType[] = [
   {
     dateDay: '4',
     dateMonth: 'Apr',

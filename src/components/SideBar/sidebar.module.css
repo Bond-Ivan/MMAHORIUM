@@ -9,7 +9,7 @@
     height: 100dvh;
     overflow-y: auto;
     z-index: 100;
-    transition: width 180ms cubic-bezier(0.16, 1, 0.3, 1), transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s ease-in-out;
 }
 
 .logo {
@@ -67,7 +67,7 @@
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s ease-in-out;
   border: none;
   background: none;
   width: 100%;
@@ -84,7 +84,6 @@
   color: #e8372a;
 }
 
-/* активный элемент при hover оставляем таким же */
 .navItem.navItemActive,
 .navItem.navItemActive:hover {
   background-color: #e8372a26;

@@ -6,6 +6,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import pagesAnimation from './constants/animations';
 import Main from './components/Pages/Main/Main';
 import Tournaments from './components/Pages/Tournaments/Tournaments';
+import News from './components/Pages/News/News';
+import Achievements from './components/Pages/Achievements/Achievements';
+import Fighters from './components/Pages/Fighters/Fighters';
 
 function App() {
   const location = useLocation();
@@ -59,7 +62,7 @@ function App() {
                     variants={pagesAnimation}
                     transition={{ duration: 0.3 }}
                   >
-                    <div></div>
+                    <Fighters />
                   </motion.div>
                 }
               />
@@ -87,7 +90,7 @@ function App() {
                     variants={pagesAnimation}
                     transition={{ duration: 0.3 }}
                   >
-                    <div></div>
+                    <Achievements />
                   </motion.div>
                 }
               />
@@ -101,7 +104,7 @@ function App() {
                     variants={pagesAnimation}
                     transition={{ duration: 0.3 }}
                   >
-                    <div></div>
+                    <News />
                   </motion.div>
                 }
               />

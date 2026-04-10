@@ -1,5 +1,4 @@
 export const UfcWeightClass = {
-  Strawweight: "Минимальный вес до 52 кг",
   Flyweight: "Наилегчайший вес до 57 кг",
   Bantamweight: "Легчайший вес до 61 кг",
   Featherweight: "Полулёгкий вес до 66 кг",

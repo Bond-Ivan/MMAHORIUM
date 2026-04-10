@@ -23,7 +23,7 @@ function MainCardList(): ReactElement {
     const items = [
         { id: '1', title: 'АКТИВНЫХ БОЙЦОВ', text: 'В реестре UFC', value: count },
         { id: '2', title: 'ТУРНИРОВ ЗАПЛАНИРОВАНО', text: 'В этому году', value: 35 },
-        { id: '3', title: 'ТУРНИРОВ ПРОШЛО', text: 'В этом году', value: 8 },
+        { id: '3', title: 'ТУРНИРОВ ПРОШЛО', text: 'В этом году', value: 9 },
         { id: '4', title: 'ДЕБЮТИРОВАВШИХ БОЙЦОВ', text: 'В этом году', value: 32 },
     ];
 
