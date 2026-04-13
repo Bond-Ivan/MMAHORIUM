@@ -1,13 +1,16 @@
-import { type ReactElement, useEffect, useRef, useState } from "react";
+import { type ReactElement, useEffect, useRef } from "react";
 import styles from "./Fighter.module.css";
 import type { fighterType } from "../Fighters.types";
 
 type FighterProps = {
-  value: fighterType;
+  value: fighterType & { weightClassName?: string };
   index: number;
+  showCategory?: boolean;
+  isFlipped: boolean;
+  onFlip: () => void;
 };
 
-function Fighter({ value, index }: FighterProps): ReactElement {
+function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps): ReactElement {
   const koPercent = value.victory ? Math.round((value.KO * 100) / value.victory) : 0;
   const subPercent = value.victory ? Math.round((value.SUB * 100) / value.victory) : 0;
   const desPercent = value.victory ? 100 - koPercent - subPercent : 0;
@@ -20,11 +23,20 @@ function Fighter({ value, index }: FighterProps): ReactElement {
   const cardRef = useRef<HTMLLIElement>(null);
   const innerCardRef = useRef<HTMLDivElement>(null);
   const glareRef = useRef<HTMLDivElement>(null);
-
-  const [isFlipped, setIsFlipped] = useState(false);
+  
+  // Реф для блокировки hover-эффектов на время анимации
+  const isAnimatingRef = useRef(false);
 
   const handleCardClick = () => {
-    setIsFlipped((prev) => !prev);
+    if (isAnimatingRef.current) return; // Защита от быстрого клика
+    
+    isAnimatingRef.current = true;
+    onFlip();
+    
+    // Снимаем блокировку через 700мс (время CSS transition)
+    setTimeout(() => {
+      isAnimatingRef.current = false;
+    }, 700); 
   };
 
   useEffect(() => {
@@ -33,7 +45,8 @@ function Fighter({ value, index }: FighterProps): ReactElement {
     const glare = glareRef.current;
 
     const calculateAngle = (e: MouseEvent) => {
-      if (isFlipped) return;
+      // Игнорируем mousemove, если карточка перевернута ИЛИ сейчас идет анимация
+      if (isFlipped || isAnimatingRef.current) return;
 
       if (card && innerCard && glare) {
         const rect = card.getBoundingClientRect();
@@ -52,7 +65,7 @@ function Fighter({ value, index }: FighterProps): ReactElement {
     };
 
     const handleMouseLeave = () => {
-      if (isFlipped) return;
+      if (isFlipped || isAnimatingRef.current) return;
 
       if (innerCard && glare) {
         innerCard.style.transform = `rotateY(0deg) rotateX(0deg) scale(1)`;
@@ -71,7 +84,7 @@ function Fighter({ value, index }: FighterProps): ReactElement {
         card.removeEventListener("mouseleave", handleMouseLeave);
       }
     };
-  }, [isFlipped]);
+  }, [isFlipped]); // Зависимость от isFlipped обязательна
 
   useEffect(() => {
     if (isFlipped && innerCardRef.current) {
@@ -92,7 +105,6 @@ function Fighter({ value, index }: FighterProps): ReactElement {
         className={`${styles.innerCard} ${isFlipped ? styles.flipped : ""}`}
         ref={innerCardRef}
       >
-
         <div
           className={styles.front}
           style={{ "--bg-image": `url(${value.img})` } as React.CSSProperties}
@@ -102,7 +114,12 @@ function Fighter({ value, index }: FighterProps): ReactElement {
           <div className={styles.overlay} />
 
           <div className={styles.top}>
-            {value.isChampion && <span className={styles.champ}>Чемпион</span>}
+            <div className={styles.badges}>
+              {showCategory && value.weightClassName && (
+                <span className={styles.categoryBadge}>{value.weightClassName}</span>
+              )}
+              {value.isChampion && <span className={styles.champ}>Чемпион</span>}
+            </div>
             <span className={styles.position}>{value.rang !== 0 ? value.rang : 'C'}</span>
           </div>
 
@@ -163,6 +180,9 @@ function Fighter({ value, index }: FighterProps): ReactElement {
               <h3 className={styles.backName}>{value.name}</h3>
               {value.nickname && (
                 <p className={styles.backNickname}>"{value.nickname}"</p>
+              )}
+              {showCategory && value.weightClassName && (
+                <span className={styles.backCategoryBadge}>{value.weightClassName}</span>
               )}
               {value.isChampion && (
                 <span className={styles.backChampBadge}>🏆 Чемпион</span>
