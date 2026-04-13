@@ -9,7 +9,6 @@ import Fighter from "./Fighter/Fighter";
 
 function Fighters(): ReactElement {
     const [activeIndex, setActiveIndex] = useState(0);
-    // Храним индексы перевернутых карточек
     const [flippedCards, setFlippedCards] = useState<number[]>([]);
 
     const allWeightsData = [
@@ -23,22 +22,18 @@ function Fighters(): ReactElement {
         ? allWeightsData.flat() 
         : allWeightsData[activeIndex - 1] || [];
 
-    // При смене категории сбрасываем открытые карточки
     const handleCategoryChange = (index: number) => {
         setActiveIndex(index);
         setFlippedCards([]); 
     };
 
-    // Логика ограничения переворота (максимум 2)
     const handleFlip = (index: number) => {
         setFlippedCards(prev => {
             if (prev.includes(index)) {
-                // Если карточка уже была открыта, закрываем её
                 return prev.filter(i => i !== index);
             }
             const newFlipped = [...prev, index];
             if (newFlipped.length > 2) {
-                // Если открываем третью - закрываем первую из открытых
                 return newFlipped.slice(1);
             }
             return newFlipped;

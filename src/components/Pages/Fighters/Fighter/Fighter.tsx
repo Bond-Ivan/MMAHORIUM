@@ -23,17 +23,15 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
   const cardRef = useRef<HTMLLIElement>(null);
   const innerCardRef = useRef<HTMLDivElement>(null);
   const glareRef = useRef<HTMLDivElement>(null);
-  
-  // Реф для блокировки hover-эффектов на время анимации
+
   const isAnimatingRef = useRef(false);
 
   const handleCardClick = () => {
-    if (isAnimatingRef.current) return; // Защита от быстрого клика
+    if (isAnimatingRef.current) return;
     
     isAnimatingRef.current = true;
     onFlip();
     
-    // Снимаем блокировку через 700мс (время CSS transition)
     setTimeout(() => {
       isAnimatingRef.current = false;
     }, 700); 
@@ -45,7 +43,6 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
     const glare = glareRef.current;
 
     const calculateAngle = (e: MouseEvent) => {
-      // Игнорируем mousemove, если карточка перевернута ИЛИ сейчас идет анимация
       if (isFlipped || isAnimatingRef.current) return;
 
       if (card && innerCard && glare) {
@@ -84,7 +81,7 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
         card.removeEventListener("mouseleave", handleMouseLeave);
       }
     };
-  }, [isFlipped]); // Зависимость от isFlipped обязательна
+  }, [isFlipped]);
 
   useEffect(() => {
     if (isFlipped && innerCardRef.current) {
