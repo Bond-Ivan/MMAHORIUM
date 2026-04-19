@@ -19,7 +19,7 @@ import TimElliott from "../../../../../public/TimElliott.png";
 export const flyWeight: fighterType[] = [
     {
         name: 'Джошуа Ван',
-        nickname: null,
+        nickname: `"The Fearless"`,
         rang: 0,
         victory: 16,
         defeat: 2,
@@ -57,7 +57,7 @@ export const flyWeight: fighterType[] = [
     },
     {
         name: 'Манель Кейпе',
-        nickname: null,
+        nickname: `"Starboy"`,
         rang: 2,
         victory: 22,
         defeat: 7,
@@ -76,7 +76,7 @@ export const flyWeight: fighterType[] = [
     },
     {
         name: 'Татсуро Таира',
-        nickname: null,
+        nickname: `"The Best"`,
         rang: 3,
         victory: 18,
         defeat: 1,

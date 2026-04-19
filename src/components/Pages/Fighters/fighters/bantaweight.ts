@@ -10,6 +10,11 @@ import AimannZahabi from "../../../../../public/AimannZahabi.png";
 import DavesonFigueredo from "../../../../../public/DavesonFigueredo.png";
 import DavidMartinez from "../../../../../public/DavidMartinez.png";
 import MarlonVera from "../../../../../public/MarlonVera.png";
+import ViniciusOliveira from "../../../../../public/ViniciusOliveira.png";
+import PaytonTalbott from "../../../../../public/PaytonTalbott.png";
+import RaulRosasJr from "../../../../../public/RaulRosasJr.png";
+import MontelJackson from "../../../../../public/MontelJackson.png";
+import FaridBasharat from "../../../../../public/FaridBasharat.png";
 
 export const bantaWeight: fighterType[] = [
     {
@@ -233,7 +238,7 @@ export const bantaWeight: fighterType[] = [
         KO: 7,
         DES: 3,
         SUB: 1,
-        img: ``,
+        img: `${PaytonTalbott}`,
         age: 27,
         height: 177.8,
         weight: 61.69,
@@ -252,7 +257,7 @@ export const bantaWeight: fighterType[] = [
         KO: 16,
         DES: 5,
         SUB: 2,
-        img: ``,
+        img: `${ViniciusOliveira}`,
         age: 30,
         height: 175.26,
         weight: 61.69,
@@ -271,7 +276,7 @@ export const bantaWeight: fighterType[] = [
         KO: 2,
         DES: 4,
         SUB: 6,
-        img: ``,
+        img: `${RaulRosasJr}`,
         age: 21,
         height: 175.26,
         weight: 61.23,
@@ -290,7 +295,7 @@ export const bantaWeight: fighterType[] = [
         KO: 2,
         DES: 4,
         SUB: 6,
-        img: ``,
+        img: `${MontelJackson}`,
         age: 33,
         height: 177.8,
         weight: 61.69,
@@ -309,7 +314,7 @@ export const bantaWeight: fighterType[] = [
         KO: 2,
         DES: 4,
         SUB: 6,
-        img: ``,
+        img: `${FaridBasharat}`,
         age: 28,
         height: 172.72,
         weight: 61.69,

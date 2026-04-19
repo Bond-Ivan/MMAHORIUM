@@ -3,9 +3,10 @@ import styles from "./Fighters.module.css";
 import Footer from "../../Footer/Footer";
 import weightClasses from "./Fighters.utils";
 import { flyWeight } from "./fighters/flyWeight";
-import { bantaWeight } from "./fighters/bantaweight";
 
 import Fighter from "./Fighter/Fighter";
+import { featherWeight } from "./fighters/featherWeight";
+import { bantaWeight } from "./fighters/bantaWeight";
 
 function Fighters(): ReactElement {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -13,7 +14,8 @@ function Fighters(): ReactElement {
 
     const allWeightsData = [
         flyWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[0] })), 
-        bantaWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[1] }))
+        bantaWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[1] })),
+        featherWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[2] })),
     ];
 
     const displayCategories = ["Все", ...weightClasses];
