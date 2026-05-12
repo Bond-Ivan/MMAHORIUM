@@ -1,32 +1,18 @@
-import { useEffect, useState, type ReactElement } from "react";
+import { type ReactElement } from "react";
 import styles from './P4PChampions.module.css';
 import P4PChampion from "./P4PChampion/P4PChampion";
 import { Link } from "react-router-dom";
+import P4PChampionsArray from "./P4PChampions.utils";
 
 export type P4PFighter = {
     p4pRank: number;
     name: string;
     nickname: string | null;
-    weightClass: string | null;
+    weightClass: string;
     record: string | null;
 };
 
 function P4PChampions(): ReactElement {
-    const [fighters, setFighters] = useState<P4PFighter[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
-
-    useEffect(() => {
-        fetch("http://localhost:4000/api/ufc-p4p")
-            .then((res) => res.json())
-            .then((data: P4PFighter[]) => {
-                setFighters(data);
-                setIsLoading(false);
-            })
-            .catch((error) => {
-                console.error("Ошибка при получении P4P бойцов:", error);
-                setIsLoading(false);
-            });
-    }, []);
 
     return (
         <section className={styles.container}>
@@ -38,21 +24,19 @@ function P4PChampions(): ReactElement {
                 </Link>
             </div>
             <div className={styles.wrapper}>
-                {isLoading ? (
-                    <div className={styles.loader}>Загрузка бойцов...</div>
-                ) : (
+
                     <ul className={styles.list}>
-                        {fighters.map((fighter) => (
+                        {P4PChampionsArray.map((fighter) => (
                             <P4PChampion
                                 key={fighter.p4pRank}
                                 rank={fighter.p4pRank}
                                 name={fighter.name}
+                                nickname={fighter.nickname}
                                 weightClass={fighter.weightClass}
                                 record={fighter.record}
                             />
                         ))}
                     </ul>
-                )}
             </div>
         </section>
     );

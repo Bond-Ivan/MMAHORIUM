@@ -19,7 +19,7 @@ import FaridBasharat from "../../../../../public/FaridBasharat.png";
 export const bantaWeight: fighterType[] = [
     {
         name: 'Пётр Ян',
-        nickname: `"No Mercy"`,
+        nickname: `«No Mercy»`,
         rang: 0,
         victory: 20,
         defeat: 5,
@@ -37,8 +37,8 @@ export const bantaWeight: fighterType[] = [
         armSpan: 170.18,
     },
     {
-        name: 'Мераб Двалишвили ',
-        nickname: null,
+        name: 'Мераб Двалишвили',
+        nickname: `«The Machine»`,
         rang: 1,
         victory: 21,
         defeat: 5,
@@ -57,7 +57,7 @@ export const bantaWeight: fighterType[] = [
     },
     {
         name: 'Умар Нурмагомедов',
-        nickname: null,
+        nickname: `«The Young Eagle»`,
         rang: 2,
         victory: 20,
         defeat: 1,
@@ -76,7 +76,7 @@ export const bantaWeight: fighterType[] = [
     },
     {
         name: `Шон О'Мэлли`,
-        nickname: `"Sugar"`,
+        nickname: `«Sugar»`,
         rang: 3,
         victory: 19,
         defeat: 3,
@@ -95,7 +95,7 @@ export const bantaWeight: fighterType[] = [
     },
     {
         name: 'Кори Сэндхаген',
-        nickname: null,
+        nickname: `«The Sandman»`,
         rang: 4,
         victory: 18,
         defeat: 6,
@@ -114,7 +114,7 @@ export const bantaWeight: fighterType[] = [
     },
     {
         name: 'Сонг Ядонг',
-        nickname: null,
+        nickname: `«The Kung Fu Kid»`,
         rang: 5,
         victory: 22,
         defeat: 9,
@@ -152,7 +152,7 @@ export const bantaWeight: fighterType[] = [
     },
     {
         name: 'Дейвесон Фигередо',
-        nickname: `"Deus da Guerra"`,
+        nickname: `«Deus da Guerra»`,
         rang: 7,
         victory: 25,
         defeat: 6,
@@ -190,7 +190,7 @@ export const bantaWeight: fighterType[] = [
     },
     {
         name: 'Дэвид Мартинез',
-        nickname: null,
+        nickname: `«Black Spartan»`,
         rang: 9,
         victory: 14,
         defeat: 1,
@@ -209,7 +209,7 @@ export const bantaWeight: fighterType[] = [
     },
     {
         name: 'Марлон Вера',
-        nickname: `"Chito"`,
+        nickname: `«Chito»`,
         rang: 10,
         victory: 23,
         defeat: 12,
@@ -247,7 +247,7 @@ export const bantaWeight: fighterType[] = [
     },
     {
         name: 'Винисиус Оливейрат',
-        nickname: null,
+        nickname: `«Lok Dog»`,
         rang: 12,
         victory: 23,
         defeat: 4,
@@ -266,7 +266,7 @@ export const bantaWeight: fighterType[] = [
     },
     {
         name: 'Рауль Росас мл.',
-        nickname: null,
+        nickname: `«El Niño Problema»`,
         rang: 13,
         victory: 13,
         defeat: 1,
@@ -285,7 +285,7 @@ export const bantaWeight: fighterType[] = [
     },
     {
         name: 'Монтел Джексон',
-        nickname: `"Quik"`,
+        nickname: `«Quik»`,
         rang: 14,
         victory: 15,
         defeat: 3,
@@ -304,7 +304,7 @@ export const bantaWeight: fighterType[] = [
     },
     {
         name: 'Фарид Башарат',
-        nickname: null,
+        nickname: `«Ferocious»`,
         rang: 15,
         victory: 15,
         defeat: 0,

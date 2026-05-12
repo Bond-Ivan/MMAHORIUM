@@ -7,6 +7,10 @@ import { flyWeight } from "./fighters/flyWeight";
 import Fighter from "./Fighter/Fighter";
 import { featherWeight } from "./fighters/featherWeight";
 import { bantaWeight } from "./fighters/bantaWeight";
+import { lightWeight } from "./fighters/lightWeight";
+import { welterWeight } from "./fighters/welterWeight";
+import { middleWeight } from "./fighters/middleWeight";
+import { lightHeavyWeight } from "./fighters/lightHeavyWeight";
 
 function Fighters(): ReactElement {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -16,6 +20,10 @@ function Fighters(): ReactElement {
         flyWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[0] })), 
         bantaWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[1] })),
         featherWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[2] })),
+        lightWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[3] })),
+        welterWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[4] })),
+        middleWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[5] })),
+        lightHeavyWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[6] })),
     ];
 
     const displayCategories = ["Все", ...weightClasses];

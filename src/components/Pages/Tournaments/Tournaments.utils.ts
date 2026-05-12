@@ -101,16 +101,13 @@ const pastTournaments: TournamentType[] = [
     type: 'ПРОШЕДШИЙ',
     mainResult: 'Вирна Жандироба vs Табата Риччи (ко-мейн ивент)',
   },
-];
-
-const futureTournaments: TournamentType[] = [
   {
     dateDay: '11',
     dateMonth: 'Apr',
     place: 'США, Майами',
     name: 'UFC 327: Иржи Прохазка vs Карлос Ульберг',
     weight: 'LightHeavyweight',
-    type: 'NUMBERED',
+    type: 'ПРОШЕДШИЙ',
     mainResult: 'Джошуа Ван vs Тацуро Таира (флайвейт)',
   },
   {
@@ -119,7 +116,7 @@ const futureTournaments: TournamentType[] = [
     place: 'Канада, Виннипег',
     name: 'UFC Fight Night 273: Гилберт Бёрнс vs Майк Малотт',
     weight: 'Welterweight',
-    type: 'FIGHT NIGHT',
+    type: 'ПРОШЕДШИЙ',
     mainResult: 'Кайлер Филлипс vs Шарль Журден (бой карда)',
   },
   {
@@ -128,7 +125,7 @@ const futureTournaments: TournamentType[] = [
     place: 'США, Лас-Вегас',
     name: 'UFC Fight Night 274: Алджамейн Стерлинг vs Юссеф Залал',
     weight: 'Featherweight',
-    type: 'FIGHT NIGHT',
+    type: 'ПРОШЕДШИЙ',
     mainResult: 'Остальные бои пока неизвестны',
   },
   {
@@ -137,7 +134,7 @@ const futureTournaments: TournamentType[] = [
     place: 'Австралия, Перт',
     name: 'UFC Fight Night 275: Джек Делла Маддалена vs Карлос Пратес',
     weight: 'Welterweight',
-    type: 'FIGHT NIGHT',
+    type: 'ПРОШЕДШИЙ',
     mainResult: 'Бенеил Дариюш vs Куиллан Солкилд (лайтвейt)',
   },
   {
@@ -146,9 +143,12 @@ const futureTournaments: TournamentType[] = [
     place: 'США, Ньюарк',
     name: 'UFC 328: Хамзат Чимаев vs Шон Стрикленд',
     weight: 'Middleweight',
-    type: 'NUMBERED',
+    type: 'ПРОШЕДШИЙ',
     mainResult: 'Александр Волков vs Вальдо Кортес-Акоста (хэвиweight)',
   },
+];
+
+const futureTournaments: TournamentType[] = [
   {
     dateDay: '16',
     dateMonth: 'May',
@@ -183,6 +183,27 @@ const futureTournaments: TournamentType[] = [
     name: 'UFC Freedom 250: Илия Топурия vs Джастин Гейджи',
     weight: 'Lightweight',
     type: 'FREEDOM',
+    mainResult: 'Алекс Перейра vs Сирил Ган (heavyweight)',
+  },
+
+
+
+  {
+    dateDay: '21',
+    dateMonth: 'Jun',
+    place: 'США, Лас-Вегас',
+    name: 'UFC Fight Night 278: Кейпе vs Хоригучи',
+    weight: 'Flyweight',
+    type: 'FIGHT NIGHT',
+    mainResult: 'Остальные бои пока неизвестны',
+  },
+  {
+    dateDay: '27',
+    dateMonth: 'Jun',
+    place: 'Баку, Азербайджан',
+    name: 'UFC Freedom 250: Физиев vs Торрес',
+    weight: 'Lightweight',
+    type: 'FIGHT NIGHT',
     mainResult: 'Алекс Перейра vs Сирил Ган (heavyweight)',
   },
 ];

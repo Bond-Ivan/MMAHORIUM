@@ -19,6 +19,13 @@
     margin-right: 15px;
 }
 
+.nickname {
+    display: block;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
 .item:nth-child(1) .raiting {
   color: gold;
 }
@@ -42,7 +49,10 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .weight {
