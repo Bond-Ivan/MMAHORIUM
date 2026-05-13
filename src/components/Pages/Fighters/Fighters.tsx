@@ -11,6 +11,7 @@ import { lightWeight } from "./fighters/lightWeight";
 import { welterWeight } from "./fighters/welterWeight";
 import { middleWeight } from "./fighters/middleWeight";
 import { lightHeavyWeight } from "./fighters/lightHeavyWeight";
+import { heavyWeight } from "./fighters/heavyWeight";
 
 function Fighters(): ReactElement {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -24,6 +25,7 @@ function Fighters(): ReactElement {
         welterWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[4] })),
         middleWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[5] })),
         lightHeavyWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[6] })),
+        heavyWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[7] })),
     ];
 
     const displayCategories = ["Все", ...weightClasses];

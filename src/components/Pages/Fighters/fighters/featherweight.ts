@@ -57,7 +57,7 @@ export const featherWeight: fighterType[] = [
     },
     {
         name: 'Диего Лопес',
-        nickname: `«Nightmare»`,
+        nickname: null,
         rang: 2,
         victory: 27,
         defeat: 8,

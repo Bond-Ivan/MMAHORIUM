@@ -76,7 +76,7 @@ export const welterWeight: fighterType[] = [
     },
     {
         name: 'Майкл Моралес',
-        nickname: `«The Nightmare»`,
+        nickname: null,
         rang: 3,
         victory: 19,
         defeat: 0,
