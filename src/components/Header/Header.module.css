@@ -1,52 +1,50 @@
 .header {
-    height: 56px;
-    background: #13131a;
-    border-bottom: 1px solid #ffffff14;
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    gap: 16px;
-    position: sticky;
-    top: 0;
-    z-index: 50;
+  height: 56px;
+  background: #13131a;
+  border-bottom: 1px solid #ffffff14;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .title {
-    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    flex: 1;
-    color: #e8e8ed;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  flex: 1;
+  color: #e8e8ed;
 }
 
 .actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .badgeLive {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    background-color: #e8372a26;
-    color: #e8372a;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 4px 12px;
-    border-radius: 100px;
-    text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #e8372a26;
+  color: #e8372a;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
 }
 
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
     transform: scale(1);
   }
-
   50% {
     opacity: 0.5;
     transform: scale(0.8);
@@ -54,20 +52,62 @@
 }
 
 .badgeLiveDot {
-    width: 6px;
-    height: 6px;
-    background-color: #e8372a;
-    border-radius: 50%;
-    animation: pulse 1.5s ease-in-out infinite;
+  width: 6px;
+  height: 6px;
+  background-color: #e8372a;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
 }
 
 .themeToggle {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8a8a9a;
+  transition: all 0.3s ease-in-out;
+}
+
+.menuToggle {
+  display: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  color: #e8e8ed;
+  flex-shrink: 0;
+  transition: background 0.3s ease-in-out;
+}
+
+.menuToggle:hover {
+  background-color: #1f1f2d;
+}
+
+@media (max-width: 1024px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .badgeLive {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 15px;
+  }
+
+  .badgeLive {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .menuToggle {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #8a8a9a;
-    transition: all 0.3s ease-in-out;
+  }
 }

@@ -198,3 +198,86 @@
 .timeLocal {
     color: #8a8a9a;
 }
+
+
+@media (max-width: 1024px) {
+    .eventLabel {
+        font-size: 10px;
+    }
+
+    .eventName {
+        font-size: 30px;
+    }
+
+    .eventWeight {
+        font-size: 10px;
+    }
+
+    .infoBlock::before {
+        font-size: 38px;
+    }
+
+    .fighterName {
+        font-size: 22px;
+    }
+
+    .fighterRaiting {
+        font-size: 10px;
+    }
+
+    .badge {
+        font-size: 28px;
+    }
+
+    .footer {
+        font-size: 11px;
+        gap: 12px;
+    }
+
+    .footerElem {
+        gap: 5px;
+    }
+
+    .timeTitle {
+        font-size: 12px;
+    }
+
+    .timValue {
+        font-size: 38px;
+    }
+
+    .timeText {
+        font-size: 8px;
+    }
+
+    .timeLocal {
+        font-size: 12px;
+    }
+
+    .timeBox {
+        padding: 14px 12px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .timeWrapper {
+        margin-bottom: 10px;
+    }
+
+    .timeTitle {
+        font-size: 10px;
+    }
+
+    .timeLocal {
+        font-size: 10px;
+    }
+
+     .timValue {
+        font-size: 30px;
+    }
+}

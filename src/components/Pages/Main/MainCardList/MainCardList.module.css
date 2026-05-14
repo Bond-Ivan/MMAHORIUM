@@ -6,3 +6,9 @@
     flex: 1;
     overflow-y: auto;
 }
+
+@media (max-width: 768px) {
+    .list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

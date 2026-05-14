@@ -52,3 +52,27 @@
     flex-direction: column;
     gap: 8px;
 }
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 28px;
+    }
+
+    .link {
+        font-size: 14px;
+    }
+
+    .wrapper {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 18px;
+    }
+
+    .link {
+        font-size: 10px;
+    }
+}
