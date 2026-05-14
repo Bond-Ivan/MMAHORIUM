@@ -18,3 +18,9 @@
     font-style: normal;
     margin-left: 10px;
 }
+
+@media (max-width: 576px) {
+    .main {
+        padding: 16px;
+    }
+}

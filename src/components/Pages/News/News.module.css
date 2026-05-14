@@ -24,3 +24,9 @@
     grid-template-columns: 1fr 1fr;
     gap: 16px;
 }
+
+@media (max-width: 576px) {
+    .main {
+        padding: 16px;
+    }
+}

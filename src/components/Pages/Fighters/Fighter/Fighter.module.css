@@ -4,7 +4,7 @@
     width: 100%;
     list-style: none;
     cursor: pointer;
-    opacity: 0; 
+    opacity: 0;
     transform: scale(0.8);
     animation: fadeScaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -476,8 +476,173 @@
         opacity: 0;
         transform: scale(0.8);
     }
+
     100% {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 28px;
+    }
+
+    .button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .front,
+    .back {
+        max-height: 280px;
+    }
+
+    .front,
+    .back {
+        max-height: 280px;
+    }
+
+    .front {
+        min-height: 280px;
+    }
+
+    .categoryBadge {
+        font-size: 6px;
+    }
+
+    .champ {
+        font-size: 6px;
+    }
+
+    .position {
+        font-size: 25px;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .nickname {
+        font-size: 10px;
+    }
+
+    .recordDescription {
+        font-size: 8px;
+    }
+
+    .recordTitle {
+        font-size: 18px;
+    }
+
+    .barLabel {
+        font-size: 8px;
+    }
+
+    .barTrack {
+        height: 4px;
+    }
+
+    .flipHint {
+        font-size: 5px;
+    }
+
+    .backName {
+        font-size: 12px;
+    }
+
+    .backNickname {
+        font-size: 8px;
+    }
+
+    .backChampBadge {
+        font-size: 6px;
+    }
+
+
+    .backStatLabel {
+        font-size: 8px;
+
+    }
+
+    .backStatValue {
+        font-size: 12px;
+    }
+
+    .winRateLabel {
+        font-size: 8px;
+    }
+
+    .winRateBarTrack {
+        height: 3px;
+    }
+
+    .winRateValue {
+        font-size: 12px;
+    }
+
+    .head {
+        min-height: 45px;
+    }
+}
+
+@media (max-width: 576px) {
+    .title {
+        font-size: 22px;
+    }
+
+    .button {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+
+    .front,
+    .back {
+        max-height: 260px;
+    }
+
+    .front,
+    .back {
+        max-height: 260px;
+    }
+
+    .front {
+        min-height: 260px;
+    }
+
+    .name {
+        font-size: 14px;
+    }
+
+    .nickname {
+        font-size: 8px;
+    }
+
+    .recordTitle {
+        font-size: 16px;
+    }
+
+    .recordDescription {
+        font-size: 6px;
+    }
+
+    .barLabel {
+        font-size: 6px;
+    }
+
+    .barTrack {
+        height: 2px;
+    }
+
+    .body {
+        padding: 12px 12px 6px 12px;
+    }
+
+    .position {
+        font-size: 20px;
+    }
+
+    .head {
+        min-height: 30px;
     }
 }

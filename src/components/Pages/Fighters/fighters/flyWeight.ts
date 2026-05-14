@@ -138,7 +138,7 @@ export const flyWeight: fighterType[] = [
         victory: 10,
         defeat: 1,
         draw: 0,
-        country: 'England',
+        country: 'Англия',
         isChampion: false,
         KO: 4,
         DES: 5,

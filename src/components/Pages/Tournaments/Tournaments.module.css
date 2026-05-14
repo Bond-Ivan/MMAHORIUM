@@ -45,18 +45,24 @@
 }
 
 .button:hover {
-  border-color: #e8372a;
-  color: #e8372a;
+    border-color: #e8372a;
+    color: #e8372a;
 }
 
 .button.buttonActive:hover {
-  background-color: #e8372a;
-  border-color: #e8372a;
-  color: #fff;
+    background-color: #e8372a;
+    border-color: #e8372a;
+    color: #fff;
 }
 
 .list {
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+@media (max-width: 576px) {
+    .main {
+        padding: 16px;
+    }
 }

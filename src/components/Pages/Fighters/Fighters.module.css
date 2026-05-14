@@ -51,6 +51,46 @@
 
 .fighters {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 16px;
+}
+
+@media (max-width: 1024px) {
+    .fighters {
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .fighters {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .title {
+        font-size: 22px;
+    }
+
+    .button {
+        padding: 8px 16px;
+        font-size: 10px;
+    }
+
+    .main {
+        padding: 16px;
+    }
+
+    .fighters {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
 }

@@ -14,7 +14,7 @@ import { lightHeavyWeight } from "./fighters/lightHeavyWeight";
 import { heavyWeight } from "./fighters/heavyWeight";
 
 function Fighters(): ReactElement {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(1);
     const [flippedCards, setFlippedCards] = useState<number[]>([]);
 
     const allWeightsData = [
