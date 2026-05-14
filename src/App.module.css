@@ -115,8 +115,11 @@ input[type='file'] {
   display: flex;
 }
 
+/* App.module.css */
 .wrapper {
-  width: 100%;
+    width: 100%;
+    min-width: 0;        /* ✅ важно для flex-детей */
+    overflow-x: hidden;  /* ✅ убирает горизонтальный скролл */
 }
 
 .main {

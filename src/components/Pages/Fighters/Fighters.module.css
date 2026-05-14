@@ -16,8 +16,16 @@
 .weights {
     display: flex;
     gap: 8px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
     margin-bottom: 20px;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.weights::-webkit-scrollbar {
+    display: none;
 }
 
 .button {
@@ -65,7 +73,7 @@
     }
 
     .button {
-        padding: 8px 16px;
+        padding: 6px 10px;
         font-size: 14px;
     }
 }
@@ -82,7 +90,7 @@
     }
 
     .button {
-        padding: 8px 16px;
+        padding: 4px 8px;
         font-size: 10px;
     }
 

@@ -18,7 +18,7 @@ function SideBar({ isOpen, onClose }: SideBarProps): ReactElement {
         </div>
         <div className={styles.logoText}>MMA<span className={styles.logoTextSpan}>HORIUM</span></div>
       </div>
-      <div>
+      <div className={styles.sidebarInner}>
         <nav className={styles.navigation}>
           <div>
             <h2 className={styles.navTitle}>ГЛАВНАЯ</h2>

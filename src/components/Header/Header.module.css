@@ -41,10 +41,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.5;
     transform: scale(0.8);
@@ -60,14 +63,17 @@
 }
 
 .themeToggle {
-  width: 36px;
-  height: 36px;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #8a8a9a;
   transition: all 0.3s ease-in-out;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .menuToggle {
@@ -94,6 +100,13 @@
   .badgeLive {
     font-size: 10px;
   }
+
+  .themeToggle {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -104,10 +117,32 @@
   .badgeLive {
     font-size: 8px;
   }
+
+  .themeToggle {
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
 }
 
 @media (max-width: 576px) {
   .menuToggle {
     display: flex;
+  }
+
+  .badgeLive {
+    font-size: 6px;
+  }
+
+  .title {
+    font-size: 12px;
+  }
+
+  .themeToggle {
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 }

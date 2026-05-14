@@ -10,6 +10,7 @@ import News from './components/Pages/News/News';
 import Achievements from './components/Pages/Achievements/Achievements';
 import Fighters from './components/Pages/Fighters/Fighters';
 import { useState } from 'react';
+import ScrollToTop from './shared/scrollTop/scrollTop';
 
 function App() {
   const location = useLocation();
@@ -42,6 +43,7 @@ function App() {
           onMenuToggle={() => setIsSidebarOpen(prev => !prev)}
           isSidebarOpen={isSidebarOpen}
         />
+        <ScrollToTop />
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<motion.div key="main" initial="initial" animate="in" variants={pagesAnimation} transition={{ duration: 0.3 }}><Main /></motion.div>} />

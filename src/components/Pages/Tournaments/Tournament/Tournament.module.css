@@ -1,31 +1,36 @@
 @keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.info {
+    display: contents;
 }
 
 .item {
-  background-color: #13131a;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 20px 24px;
-  display: grid;
-  grid-template-columns: 80px 1fr auto;
-  gap: 16px;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  opacity: 0;
-  transform: translateY(12px);
-  animation-name: slideInUp;
-  animation-duration: 0.4s;
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    background-color: #13131a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(12px);
+    animation-name: slideInUp;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .date {
@@ -83,6 +88,7 @@
     white-space: nowrap;
     background-color: #1f1f2d;
     color: #4a4a5a;
+    max-width: max-content;
 }
 
 .typeNumbered {
@@ -98,4 +104,113 @@
 .icon {
     width: 12px;
     height: 12px;
+}
+
+@media (max-width: 1024px) {
+    .name {
+        font-size: 18px;
+    }
+
+    .weight {
+        font-size: 14px;
+    }
+
+    .place {
+        font-size: 10px;
+    }
+
+    .type {
+        font-size: 8px;
+    }
+
+    .dateDay {
+        font-size: 26px;
+    }
+
+    .dateMonth {
+        font-size: 8px;
+    }
+
+    .item {
+        padding: 14px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .weight {
+        font-size: 12px;
+    }
+
+    .place {
+        font-size: 8px;
+    }
+
+    .type {
+        font-size: 6px;
+    }
+
+    .dateDay {
+        font-size: 22px;
+    }
+
+    .dateMonth {
+        font-size: 6px;
+    }
+}
+
+@media (max-width: 576px) {
+    .item {
+        grid-template-columns: unset;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .type {
+        margin: auto;
+    }
+
+    .name {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+
+    .weight {
+        font-size: 8px;
+        margin-bottom: 12px;
+    }
+
+    .place {
+        font-size: 6px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 12px;
+    }
+
+    .type {
+        font-size: 4px;
+    }
+
+    .dateDay {
+        font-size: 22px;
+    }
+
+    .dateMonth {
+        font-size: 5px;
+    }
+
+    .date {
+        padding: 6px 18px;
+    }
 }
