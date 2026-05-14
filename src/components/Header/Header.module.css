@@ -130,19 +130,4 @@
   .menuToggle {
     display: flex;
   }
-
-  .badgeLive {
-    font-size: 6px;
-  }
-
-  .title {
-    font-size: 12px;
-  }
-
-  .themeToggle {
-    svg {
-      width: 16px;
-      height: 16px;
-    }
-  }
 }

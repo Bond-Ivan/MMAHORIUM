@@ -16,10 +16,8 @@
     height: 100dvh;
     z-index: 100;
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    /* ❌ overflow-y: auto — убрать отсюда */
 }
 
-/* ✅ overflow переносим на внутренний контейнер */
 .sidebarInner {
     display: flex;
     flex-direction: column;
@@ -170,10 +168,6 @@
     transform: translateX(0);
   }
 
-  .logoText {
-    font-size: 14px;
-  }
-
   .logo {
     padding: 14px;
     gap: 8px;
@@ -182,19 +176,5 @@
   .logoIcon {
     width: 25px;
     height: 25px;
-  }
-
-  .navTitle {
-    font-size: 10px;
-  }
-
-  .navItem {
-    padding: 4px 8px;
-    font-size: 12px;
-
-    svg {
-      width: 14px;
-      height: 14px;
-    }
   }
 }

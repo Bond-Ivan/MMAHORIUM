@@ -182,32 +182,21 @@
     }
 
     .name {
-        font-size: 12px;
         margin-bottom: 6px;
     }
 
     .weight {
-        font-size: 8px;
         margin-bottom: 12px;
     }
 
     .place {
-        font-size: 6px;
         display: flex;
         justify-content: center;
         margin-bottom: 12px;
     }
 
-    .type {
-        font-size: 4px;
-    }
-
     .dateDay {
         font-size: 22px;
-    }
-
-    .dateMonth {
-        font-size: 5px;
     }
 
     .date {
