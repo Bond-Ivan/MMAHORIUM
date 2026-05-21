@@ -12,20 +12,29 @@ import Fighters from './components/Pages/Fighters/Fighters';
 import { useState } from 'react';
 import ScrollToTop from './shared/scrollTop/scrollTop';
 import Compare from './components/Pages/Compare/Compare';
+import { useLang } from './hooks/useLang';
 
 function App() {
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { t } = useLang();
 
   const getTitleByPath = (path: string): string => {
     switch (path) {
-      case "/": return "Главная";
-      case "/fighters": return "Бойцы";
-      case "/tournaments": return "Турниры";
-      case "/achievements": return "Достижения";
-      case "/news": return "Новости";
-      case "/compare": return "Сравнение";
-      default: return "Главная";
+      case "/":
+        return t("sidebar.overview");
+      case "/fighters":
+        return t("sidebar.fighters");
+      case "/tournaments":
+        return t("sidebar.tournaments");
+      case "/achievements":
+        return t("sidebar.achievements");
+      case "/news":
+        return t("sidebar.news");
+      case "/compare":
+        return t("sidebar.compare");
+      default:
+        return t("sidebar.overview");
     }
   };
 
@@ -53,7 +62,6 @@ function App() {
             <Route path="/achievements" element={<motion.div key="achievements" initial="initial" animate="in" variants={pagesAnimation} transition={{ duration: 0.3 }}><Achievements /></motion.div>} />
             <Route path="/news" element={<motion.div key="news" initial="initial" animate="in" variants={pagesAnimation} transition={{ duration: 0.3 }}><News /></motion.div>} />
             <Route path="/compare" element={<motion.div key="compare" initial="initial" animate="in" variants={pagesAnimation} transition={{ duration: 0.3 }}><Compare /></motion.div>} />
-
           </Routes>
         </AnimatePresence>
       </div>
