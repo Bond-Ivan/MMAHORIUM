@@ -1,0 +1,81 @@
+.table {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+}
+
+.head {
+    display: grid;
+    grid-template-columns: 2rem 1fr 4rem;
+    padding: .4rem .75rem;
+    font-size: .65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: #8a8a94;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 2rem 1fr 4rem;
+    align-items: center;
+    padding: .6rem .75rem;
+    background: #1a1a1f;
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 8px;
+    transition: border-color .25s ease, background .25s ease;
+}
+
+.row:hover {
+    background: #222228;
+    border-color: rgba(201, 162, 39, .2);
+}
+
+.row.active {
+    border-color: rgba(68, 189, 50, .2);
+}
+
+.row.active .name {
+    color: #fff;
+}
+
+.rank {
+    font-size: .75rem;
+    font-weight: 700;
+    color: #c9a227;
+    text-align: center;
+}
+
+.fighter {
+    display: flex;
+    flex-direction: column;
+    gap: .05rem;
+    overflow: hidden;
+}
+
+.name {
+    font-size: clamp(.8rem, 1.7vw, .9rem);
+    font-weight: 600;
+    color: #e8e8ec;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.division {
+    font-size: .65rem;
+    color: #8a8a94;
+}
+
+.extra {
+    font-size: .62rem;
+    color: #c9a227;
+}
+
+.value {
+    font-size: clamp(.85rem, 2vw, 1rem);
+    font-weight: 800;
+    color: #fff;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,62 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    gap: .85rem;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: clamp(120px, 22vw, 200px) 1fr clamp(70px, 14vw, 130px);
+    align-items: center;
+    gap: .75rem;
+}
+
+.label {
+    font-size: clamp(.75rem, 1.6vw, .88rem);
+    font-weight: 600;
+    color: #e8e8ec;
+    text-align: right;
+}
+
+.barTrack {
+    height: 28px;
+    background: #1a1a1f;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 60%, rgba(255, 255, 255, .12));
+    border-radius: inherit;
+}
+
+.value {
+    font-size: clamp(.72rem, 1.5vw, .84rem);
+    color: #8a8a94;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 520px) {
+    .row {
+        grid-template-columns: 1fr;
+        gap: .3rem;
+    }
+
+    .label {
+        text-align: left;
+    }
+
+    .value {
+        font-size: .72rem;
+    }
+}

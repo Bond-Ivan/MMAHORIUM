@@ -1,3 +1,6 @@
+/* ─────────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────────── */
 .container {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -6,6 +9,9 @@
     margin-bottom: 24px;
 }
 
+/* ─────────────────────────────────────────────
+   INFO BLOCK
+───────────────────────────────────────────── */
 .infoBlock {
     background: linear-gradient(135deg, #13131a 0%, #1f1f2d 100%);
     border: 1px solid #e8372a;
@@ -26,8 +32,12 @@
     font-weight: 900;
     color: rgba(232, 55, 42, 0.08);
     letter-spacing: 1.6px;
+    pointer-events: none;
 }
 
+/* ─────────────────────────────────────────────
+   TIME BLOCK
+───────────────────────────────────────────── */
 .timeBlock {
     background-color: #13131a;
     border: 1px solid #ffffff14;
@@ -38,6 +48,9 @@
     flex-direction: column;
 }
 
+/* ─────────────────────────────────────────────
+   EVENT LABEL
+───────────────────────────────────────────── */
 .eventLabel {
     font-size: 14px;
     font-weight: 700;
@@ -70,18 +83,12 @@
     background: #e8372a;
     border-radius: 50%;
     animation: pulse 1.5s ease-in-out infinite;
+    flex-shrink: 0;
 }
 
-.fighters {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 20px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    margin: 16px 0;
-}
-
+/* ─────────────────────────────────────────────
+   EVENT INFO
+───────────────────────────────────────────── */
 .eventName {
     font-size: 45px;
     font-weight: 900;
@@ -107,6 +114,19 @@
 .weightIcon {
     width: 12px;
     height: 12px;
+}
+
+/* ─────────────────────────────────────────────
+   FIGHTERS ROW
+───────────────────────────────────────────── */
+.fighters {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 16px 0;
 }
 
 .firstFighter {
@@ -139,11 +159,23 @@
     flex-shrink: 0;
 }
 
+/* ─────────────────────────────────────────────
+   CARD FOOTER (meta + button)
+───────────────────────────────────────────── */
+.cardFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
 .footer {
     display: flex;
     gap: 20px;
     font-size: 16px;
     color: #8a8a9a;
+    flex-wrap: wrap;
 }
 
 .footerElem {
@@ -155,8 +187,36 @@
 .footerIcon {
     width: 14px;
     height: 14px;
+    flex-shrink: 0;
 }
 
+.cardBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border-radius: 9999px;
+    border: 1px solid rgba(232, 55, 42, 0.5);
+    background: rgba(232, 55, 42, 0.1);
+    color: #e8372a;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.cardBtn:hover {
+    background: rgba(232, 55, 42, 0.2);
+    border-color: #e8372a;
+    transform: translateX(2px);
+}
+
+/* ─────────────────────────────────────────────
+   TIME BOX
+───────────────────────────────────────────── */
 .timeWrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -199,7 +259,316 @@
     color: #8a8a9a;
 }
 
+/* ─────────────────────────────────────────────
+   MODAL — OVERLAY
+   Плавное появление/исчезновение через opacity + transition.
+   Элемент присутствует в DOM (isVisible=true), но
+   невидим в начальном и конечном состоянии.
+───────────────────────────────────────────── */
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 
+    /* начальное состояние (opening / closing) */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* активное состояние — класс добавляется через JS */
+.overlayVisible {
+    opacity: 1;
+}
+
+/* ─────────────────────────────────────────────
+   MODAL — PANEL
+───────────────────────────────────────────── */
+.modal {
+    width: 100%;
+    max-width: 760px;
+    max-height: 88vh;
+    border-radius: 20px;
+    background: linear-gradient(160deg, #13131a 0%, #1a1a28 100%);
+    border: 1px solid rgba(232, 55, 42, 0.25);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+        0 32px 80px rgba(0, 0, 0, 0.6),
+        0 0 60px rgba(232, 55, 42, 0.1);
+
+    /* Ключевые правила для корректного скролла:
+       display:flex + flex-direction:column позволяют header
+       быть sticky, а body — скроллиться внутри контейнера.
+       overflow:hidden на самом modal НЕ ставим —
+       это провоцирует "вылезание" скроллбара за border-radius.
+       Вместо этого: скроллится только .modalBody */
+    display: flex;
+    flex-direction: column;
+
+    /* начальное состояние */
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modalVisible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* ─────────────────────────────────────────────
+   MODAL — HEADER (sticky)
+───────────────────────────────────────────── */
+.modalHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 24px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    /* sticky внутри flex-контейнера — работает корректно */
+    position: sticky;
+    top: 0;
+    /* Фон чтобы контент под заголовком не просвечивал */
+    background: #13131a;
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+    flex-shrink: 0;
+}
+
+.modalEyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #e8372a;
+    margin-bottom: 6px;
+}
+
+.modalTitle {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+}
+
+.closeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.6);
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.closeBtn:hover {
+    background: rgba(232, 55, 42, 0.15);
+    color: #e8372a;
+    border-color: rgba(232, 55, 42, 0.4);
+}
+
+/* ─────────────────────────────────────────────
+   MODAL — BODY (скроллируемая часть)
+   Весь overflow сосредоточен здесь, а не на .modal,
+   поэтому скроллбар не выходит за rounded corners.
+───────────────────────────────────────────── */
+.modalBody {
+    padding: 20px 24px 24px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 7px;
+    border-radius: 0 0 20px 20px;
+}
+
+/* Кастомный скроллбар */
+.modalBody::-webkit-scrollbar {
+    width: 4px;
+}
+
+.modalBody::-webkit-scrollbar-track {
+    background: transparent;
+    margin-block: 4px;
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+    background: rgba(232, 55, 42, 0.4);
+    border-radius: 4px;
+}
+
+.modalBody::-webkit-scrollbar-thumb:hover {
+    background: rgba(232, 55, 42, 0.65);
+}
+
+/* ─────────────────────────────────────────────
+   FIGHT CARD — SECTIONS
+───────────────────────────────────────────── */
+.sectionLabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #8a8a9a;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.sectionLabel:first-child {
+    margin-top: 0;
+}
+
+.sectionDot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #e8372a;
+    flex-shrink: 0;
+}
+
+.sectionDotGray {
+    background: #4a4a5a;
+}
+
+/* ─────────────────────────────────────────────
+   FIGHT CARD — ROWS
+───────────────────────────────────────────── */
+.fightList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 4px;
+}
+
+.fightRow {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 96px 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.fightRow:hover {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: rgba(255, 255, 255, 0.09);
+}
+
+.mainEvent {
+    background: rgba(232, 55, 42, 0.07);
+    border-color: rgba(232, 55, 42, 0.22);
+    padding-top: 22px;
+}
+
+.mainEvent:hover {
+    background: rgba(232, 55, 42, 0.11);
+    border-color: rgba(232, 55, 42, 0.35);
+}
+
+.mainBadge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #e8372a;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    padding: 3px 12px;
+    border-radius: 0 0 8px 8px;
+    white-space: nowrap;
+}
+
+.fightFighter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fightFighterRight {
+    flex-direction: row-reverse;
+}
+
+.fightFighterInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.fightFighterInfoRight {
+    align-items: flex-end;
+}
+
+.fightFlag {
+    font-size: 20px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.fightName {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+}
+
+.fightRecord {
+    font-size: 12px;
+    color: #4a4a5a;
+    white-space: nowrap;
+}
+
+.fightCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.fightVs {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: #e8372a;
+    line-height: 1;
+}
+
+.fightWeight {
+    font-size: 10px;
+    font-weight: 700;
+    color: #4a4a5a;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE — 1024px
+───────────────────────────────────────────── */
 @media (max-width: 1024px) {
     .eventLabel {
         font-size: 10px;
@@ -257,9 +626,11 @@
     .timeBox {
         padding: 14px 12px;
     }
-
 }
 
+/* ─────────────────────────────────────────────
+   RESPONSIVE — 768px
+───────────────────────────────────────────── */
 @media (max-width: 768px) {
     .container {
         grid-template-columns: 1fr;
@@ -277,7 +648,60 @@
         font-size: 10px;
     }
 
-     .timValue {
+    .timValue {
         font-size: 30px;
+    }
+
+    /* Модал снизу как sheet на мобайле */
+    .overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .modal {
+        max-height: 92vh;
+        border-radius: 20px 20px 0 0;
+        /* Немного другая анимация для sheet — снизу вверх */
+        transform: translateY(40px) scale(1);
+    }
+
+    .modalVisible {
+        transform: translateY(0) scale(1);
+    }
+
+    .modalHeader {
+        border-radius: 20px 20px 0 0;
+        padding: 16px 16px 14px;
+    }
+
+    .modalBody {
+        border-radius: 0;
+        padding: 14px 16px 32px;
+    }
+
+    .modalTitle {
+        font-size: 20px;
+    }
+
+    .fightRow {
+        grid-template-columns: 1fr 64px 1fr;
+        gap: 8px;
+        padding: 12px 12px;
+    }
+
+    .fightName {
+        font-size: 14px;
+    }
+
+    .fightFlag {
+        font-size: 16px;
+    }
+
+    .fightRecord {
+        display: none;
+    }
+
+    .fightVs {
+        font-size: 16px;
     }
 }

@@ -11,6 +11,7 @@ import Achievements from './components/Pages/Achievements/Achievements';
 import Fighters from './components/Pages/Fighters/Fighters';
 import { useState } from 'react';
 import ScrollToTop from './shared/scrollTop/scrollTop';
+import Compare from './components/Pages/Compare/Compare';
 
 function App() {
   const location = useLocation();
@@ -23,7 +24,7 @@ function App() {
       case "/tournaments": return "Турниры";
       case "/achievements": return "Достижения";
       case "/news": return "Новости";
-      case "/comparison": return "Сравнение";
+      case "/compare": return "Сравнение";
       default: return "Главная";
     }
   };
@@ -51,7 +52,8 @@ function App() {
             <Route path="/tournaments" element={<motion.div key="tournaments" initial="initial" animate="in" variants={pagesAnimation} transition={{ duration: 0.3 }}><Tournaments /></motion.div>} />
             <Route path="/achievements" element={<motion.div key="achievements" initial="initial" animate="in" variants={pagesAnimation} transition={{ duration: 0.3 }}><Achievements /></motion.div>} />
             <Route path="/news" element={<motion.div key="news" initial="initial" animate="in" variants={pagesAnimation} transition={{ duration: 0.3 }}><News /></motion.div>} />
-            <Route path="/comparison" element={<motion.div key="comparison" initial="initial" animate="in" variants={pagesAnimation} transition={{ duration: 0.3 }}><div></div></motion.div>} />
+            <Route path="/compare" element={<motion.div key="compare" initial="initial" animate="in" variants={pagesAnimation} transition={{ duration: 0.3 }}><Compare /></motion.div>} />
+
           </Routes>
         </AnimatePresence>
       </div>

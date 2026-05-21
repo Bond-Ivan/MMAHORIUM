@@ -22,4 +22,4 @@ function News(): ReactElement {
     )
 }
 
-export default News; 
+export default News;

@@ -1,0 +1,92 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+    gap: 1rem;
+}
+
+.card {
+    background: #1a1a1f;
+    border: 1px solid rgba(255, 255, 255, .07);
+    border-radius: 12px;
+    padding: 1.1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(16px) scale(.97);
+    transition: opacity .45s ease, transform .45s ease, border-color .25s ease;
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.card:hover {
+    border-color: rgba(201, 162, 39, .3);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--ufc-gold, #c9a227), transparent);
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .2rem;
+}
+
+.flag {
+    font-size: 1.2rem;
+}
+
+.year {
+    font-size: .65rem;
+    font-weight: 700;
+    color: #c9a227;
+    letter-spacing: .08em;
+    background: rgba(201, 162, 39, .1);
+    padding: .15rem .4rem;
+    border-radius: 100px;
+}
+
+.name {
+    font-size: clamp(.85rem, 1.8vw, .95rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.achievement {
+    font-size: clamp(.68rem, 1.4vw, .75rem);
+    color: #8a8a94;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.badge {
+    align-self: flex-start;
+    margin-top: .4rem;
+    font-size: .6rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    color: #c9a227;
+    border: 1px solid rgba(201, 162, 39, .35);
+    border-radius: 4px;
+    padding: .1rem .35rem;
+}

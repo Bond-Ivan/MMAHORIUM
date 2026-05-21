@@ -4,7 +4,7 @@ import styles from "./Footer.module.css";
 function Footer(): ReactElement {
     return (
         <footer className={styles.footer}>
-            Copyright © 2026 MMA HORIUM Inc. All rights reserved.
+            Copyright © 2026 OctaGrid Inc. All rights reserved.
         </footer>
     )
 }

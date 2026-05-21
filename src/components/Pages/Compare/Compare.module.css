@@ -1,0 +1,585 @@
+.page {
+    min-height: 100vh;
+    padding: 40px 24px 80px;
+    color: #f8fafc;
+}
+
+.hero {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto 32px;
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    background: rgba(10, 15, 24, 0.72);
+    backdrop-filter: blur(18px);
+    overflow: hidden;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
+}
+
+.heroGlow {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 180, 70, 0.12), transparent 70%);
+    pointer-events: none;
+    filter: blur(8px);
+}
+
+.heroHeader {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #ffb347;
+}
+
+.title {
+    font-size: 44px;
+    line-height: 1;
+    margin-bottom: 16px;
+    font-weight: 900;
+}
+
+.subtitle {
+    max-width: 760px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+/* ── Selection ─────────────────────────────────────────────── */
+
+.selectionGrid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 120px 1fr;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.selectorCard {
+    padding: 24px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.selectorLabel {
+    margin-bottom: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #dbe4f3;
+}
+
+.versus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 179, 71, 0.25), rgba(255, 107, 44, 0.08));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 34px;
+    font-weight: 900;
+    color: #fff;
+    box-shadow: 0 0 40px rgba(255, 140, 0, 0.18);
+    animation: pulseVs 3s ease-in-out infinite;
+}
+
+/* ── Fighter Hero Cards ─────────────────────────────────────── */
+
+.fightersShowcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.fighterHeroCard {
+    position: relative;
+    min-height: 280px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #121826;
+    transform: translateY(0);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.fighterHeroCard:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.fighterImage {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center top;
+    transform: scale(1);
+    transition: transform 0.6s ease;
+}
+
+.fighterHeroCard:hover .fighterImage {
+    transform: scale(1.06);
+}
+
+.fighterOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            rgba(6, 10, 18, 0.06) 0%,
+            rgba(6, 10, 18, 0.28) 30%,
+            rgba(6, 10, 18, 0.92) 100%);
+}
+
+.fighterContent {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 16px 20px;
+    z-index: 1;
+}
+
+.weightBadge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 0 10px;
+    margin-bottom: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    font-size: 11px;
+    font-weight: 700;
+    color: #eef2ff;
+}
+
+.fighterName {
+    font-size: 22px;
+    line-height: 1.1;
+    font-weight: 900;
+    margin-bottom: 4px;
+}
+
+.fighterNick {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 10px;
+}
+
+.quickStats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.quickStats span {
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Dashboard ──────────────────────────────────────────────── */
+
+.dashboard {
+    max-width: 1440px;
+    margin: 0 auto 28px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+}
+
+.metricsCard,
+.chartCard,
+.summaryCard {
+    border-radius: 28px;
+    background: rgba(13, 18, 28, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+}
+
+.metricsCard,
+.chartCard {
+    padding: 28px;
+}
+
+.sectionTop {
+    margin-bottom: 24px;
+}
+
+.sectionTitle {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.sectionText {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+/* ── Metrics ────────────────────────────────────────────────── */
+
+.metricList {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.metricRow {
+    display: grid;
+    grid-template-columns: 110px 1fr 110px;
+    gap: 14px;
+    align-items: center;
+}
+
+.metricValue {
+    font-size: 16px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.metricValue:first-child {
+    text-align: right;
+}
+
+.winnerValue {
+    color: #ffb347;
+    text-shadow: 0 0 20px rgba(255, 179, 71, 0.22);
+}
+
+.metricCenter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.metricLabel {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.62);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.dualBar {
+    display: grid;
+    grid-template-columns: 1fr 18px 1fr;
+    align-items: center;
+    gap: 10px;
+}
+
+.dualSide {
+    height: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.dualSide:first-child {
+    justify-content: flex-end;
+}
+
+.metricDivider {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff, rgba(255, 255, 255, 0.15));
+    opacity: 0.8;
+}
+
+.barFill {
+    height: 8px;
+    border-radius: 999px;
+    transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+    animation: growBar 1.1s ease;
+}
+
+.leftBar {
+    background: linear-gradient(90deg, #ff8a3d, #ff4d2d);
+    box-shadow: 0 0 20px rgba(255, 107, 44, 0.22);
+}
+
+.rightBar {
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.22);
+}
+
+.barWinner {
+    filter: brightness(1.15) saturate(1.12);
+}
+
+/* ── Chart ──────────────────────────────────────────────────── */
+
+.chartLegend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.legendDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legendName {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.chartWrap {
+    width: 100%;
+    height: 480px;
+}
+
+/* ── Summary ────────────────────────────────────────────────── */
+
+.summaryGrid {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.summaryCard {
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.summaryCard::before {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: -20px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 179, 71, 0.12), transparent 70%);
+    pointer-events: none;
+}
+
+.summaryLabel {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-bottom: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.summaryValue {
+    position: relative;
+    z-index: 1;
+    display: block;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+/* ── Animations ─────────────────────────────────────────────── */
+
+@keyframes growBar {
+    from {
+        width: 0;
+        opacity: 0.35;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulseVs {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 40px rgba(255, 140, 0, 0.18);
+    }
+
+    50% {
+        transform: scale(1.06);
+        box-shadow: 0 0 60px rgba(255, 140, 0, 0.28);
+    }
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+
+@media (max-width: 1200px) {
+    .title {
+        font-size: 40px;
+    }
+
+    .fightersShowcase,
+    .dashboard,
+    .summaryGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .chartWrap {
+        height: 420px;
+    }
+
+    .summaryValue {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 900px) {
+    .page {
+        padding: 24px 16px 56px;
+    }
+
+    .hero {
+        padding: 20px;
+        border-radius: 24px;
+    }
+
+    .metricsCard,
+    .chartCard,
+    .summaryCard {
+        border-radius: 24px;
+    }
+
+    .selectionGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .versus {
+        width: 86px;
+        height: 86px;
+        font-size: 24px;
+    }
+
+    .fighterHeroCard {
+        min-height: 240px;
+    }
+
+    .fighterName {
+        font-size: 18px;
+    }
+
+    .fighterNick {
+        font-size: 12px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .metricRow {
+        grid-template-columns: 80px 1fr 80px;
+    }
+
+    .metricValue {
+        font-size: 14px;
+    }
+
+    .dualSide {
+        height: 12px;
+    }
+
+    .summaryValue {
+        font-size: 16px;
+    }
+
+    .summaryLabel {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 640px) {
+    .title {
+        font-size: 22px;
+    }
+
+    .fighterHeroCard {
+        min-height: 200px;
+    }
+
+    .fighterContent {
+        padding: 12px 14px;
+    }
+
+    .fighterName {
+        font-size: 16px;
+    }
+
+    .fighterNick {
+        font-size: 11px;
+        margin-bottom: 6px;
+    }
+
+    .quickStats span {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+
+    .metricsCard,
+    .chartCard {
+        padding: 20px;
+    }
+
+    .sectionTitle {
+        font-size: 22px;
+    }
+
+    .metricRow {
+        grid-template-columns: 64px 1fr 64px;
+        gap: 10px;
+    }
+
+    .metricLabel {
+        font-size: 10px;
+    }
+
+    .metricValue {
+        font-size: 12px;
+    }
+
+    .chartWrap {
+        height: 320px;
+    }
+
+    .summaryGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .summaryValue {
+        font-size: 14px;
+    }
+
+    .summaryLabel {
+        font-size: 6px;
+    }
+}

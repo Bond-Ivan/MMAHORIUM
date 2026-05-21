@@ -10,27 +10,49 @@
     }
 }
 
-.info {
-    display: contents;
+@keyframes fightRowIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .item {
     background-color: #13131a;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
-    padding: 20px 24px;
+    overflow: hidden;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.item:hover {
+    border-color: rgba(232, 55, 42, 0.3);
+}
+
+.itemOpen {
+    border-color: rgba(232, 55, 42, 0.45);
+    box-shadow: 0 4px 32px rgba(232, 55, 42, 0.08);
+}
+
+/* ── Header ── */
+.header {
+    width: 100%;
+    background: none;
+    border: none;
     display: grid;
-    grid-template-columns: 80px 1fr auto;
+    grid-template-columns: 80px 1fr;
     gap: 16px;
     align-items: center;
+    padding: 20px 24px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    opacity: 0;
-    transform: translateY(12px);
-    animation-name: slideInUp;
-    animation-duration: 0.4s;
-    animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
 }
 
 .date {
@@ -38,6 +60,7 @@
     background-color: #1f1f2d;
     border-radius: 8px;
     padding: 8px;
+    flex-shrink: 0;
 }
 
 .dateDay {
@@ -55,6 +78,12 @@
     color: #8a8a9a;
 }
 
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
 
 .name {
     font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
@@ -62,12 +91,13 @@
     font-weight: 700;
     letter-spacing: 0.32px;
     margin-bottom: 4px;
+    color: #fff;
 }
 
 .weight {
     font-size: 16px;
     color: #8a8a9a;
-    margin-bottom: 8px
+    margin-bottom: 8px;
 }
 
 .place {
@@ -76,6 +106,19 @@
     align-items: center;
     font-size: 14px;
     color: #4a4a5a;
+}
+
+.icon {
+    width: 12px;
+    height: 12px;
+}
+
+.rightGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    flex-shrink: 0;
 }
 
 .type {
@@ -88,7 +131,6 @@
     white-space: nowrap;
     background-color: #1f1f2d;
     color: #4a4a5a;
-    max-width: max-content;
 }
 
 .typeNumbered {
@@ -101,11 +143,170 @@
     color: #4a9eff;
 }
 
-.icon {
-    width: 12px;
-    height: 12px;
+.chevron {
+    color: #4a4a5a;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+    flex-shrink: 0;
 }
 
+.chevronOpen {
+    transform: rotate(180deg);
+    color: #e8372a;
+}
+
+/* ── Fights accordion (grid-trick) ── */
+.fights {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background: #0e0e16;
+    border-top: 0px solid rgba(255, 255, 255, 0.06);
+    transition:
+        grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        border-top-width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fightsOpen {
+    grid-template-rows: 1fr;
+    border-top-width: 1px;
+}
+
+.fightsInner {
+    overflow: hidden;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fightsOpen .fightsInner {
+    padding: 12px 24px 16px;
+}
+
+/* ── Fight row ── */
+.fightRow {
+    display: grid;
+    grid-template-columns: 200px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    animation: fightRowIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.fightRow:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.fightRowMain {
+    background: rgba(232, 55, 42, 0.05);
+    border-color: rgba(232, 55, 42, 0.15);
+}
+
+.fightRowMain:hover {
+    background: rgba(232, 55, 42, 0.08);
+}
+
+.fightRowTitle {
+    background: rgba(245, 166, 35, 0.05);
+    border-color: rgba(245, 166, 35, 0.18);
+}
+
+.fightWeightClass {
+    font-size: 11px;
+    font-weight: 600;
+    color: #5a5a7a;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fightRowTitle .fightWeightClass {
+    color: rgba(245, 166, 35, 0.7);
+}
+
+.fightRowMain .fightWeightClass {
+    color: rgba(232, 55, 42, 0.7);
+}
+
+.fightMatchup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.fighterName {
+    font-size: 14px;
+    font-weight: 600;
+    color: #c8c8d8;
+    transition: color 0.2s;
+}
+
+.winner {
+    color: #fff;
+    font-weight: 700;
+}
+
+.loser {
+    color: #4a4a5a;
+    text-decoration: line-through;
+    text-decoration-color: rgba(74, 74, 90, 0.5);
+}
+
+.fightVs {
+    font-size: 11px;
+    font-weight: 700;
+    color: #3a3a4a;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    flex-shrink: 0;
+}
+
+.fightResult {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.fightWinner {
+    font-size: 12px;
+    font-weight: 700;
+    color: #4caf77;
+}
+
+.fightMethod {
+    font-size: 11px;
+    color: #5a5a7a;
+    white-space: nowrap;
+}
+
+.fightResultAnnounced {
+    flex-shrink: 0;
+}
+
+.fightResultAnnounced span {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #4a9eff;
+    background: rgba(74, 158, 255, 0.1);
+    border: 1px solid rgba(74, 158, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+/* ── Responsive ── */
 @media (max-width: 1024px) {
     .name {
         font-size: 18px;
@@ -131,18 +332,32 @@
         font-size: 8px;
     }
 
-    .item {
+    .header {
         padding: 14px 10px;
+    }
+
+    .fightsInner {
+        padding: 0 12px;
+    }
+
+    .fightsOpen .fightsInner {
+        padding: 10px 12px;
+    }
+
+    .fightRow {
+        grid-template-columns: 140px 1fr auto;
+    }
+
+    .fightWeightClass {
+        font-size: 9px;
+    }
+
+    .fighterName {
+        font-size: 12px;
     }
 }
 
 @media (max-width: 768px) {
-    .info {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-
     .name {
         font-size: 16px;
     }
@@ -155,10 +370,6 @@
         font-size: 8px;
     }
 
-    .type {
-        font-size: 6px;
-    }
-
     .dateDay {
         font-size: 22px;
     }
@@ -166,19 +377,41 @@
     .dateMonth {
         font-size: 6px;
     }
+
+    .fightRow {
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+    }
+
+    .fightWeightClass {
+        grid-column: 1 / -1;
+    }
+
+    .fightMatchup {
+        gap: 6px;
+    }
+
+    .fighterName {
+        font-size: 11px;
+    }
 }
 
 @media (max-width: 576px) {
-    .item {
+    .header {
         grid-template-columns: unset;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         text-align: center;
     }
 
-    .type {
-        margin: auto;
+    .info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .rightGroup {
+        flex-direction: row;
+        align-items: center;
     }
 
     .name {
@@ -190,7 +423,6 @@
     }
 
     .place {
-        display: flex;
         justify-content: center;
         margin-bottom: 12px;
     }
@@ -201,5 +433,14 @@
 
     .date {
         padding: 6px 18px;
+    }
+
+    .fightRow {
+        grid-template-columns: 1fr;
+    }
+
+    .fightResult,
+    .fightResultAnnounced {
+        align-items: flex-start;
     }
 }

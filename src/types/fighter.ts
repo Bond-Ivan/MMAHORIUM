@@ -1,0 +1,20 @@
+export type FighterType = {
+  name: string;
+  nickname: string | null;
+  rang: number;
+  victory: number;
+  defeat: number;
+  draw: number;
+  country: string;
+  isChampion: boolean;
+  KO: number;
+  DES: number;
+  SUB: number;
+  img: string;
+  age: number;
+  height: number;
+  weight: number;
+  debut: string;
+  armSpan: number;
+  weightClassName?: string;
+};

@@ -1,0 +1,100 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: 1rem;
+    align-items: center;
+    background: #1a1a1f;
+    border: 1px solid rgba(255, 255, 255, .07);
+    border-radius: 10px;
+    padding: .85rem 1rem;
+    transition: border-color .25s ease;
+}
+
+.row:hover {
+    border-color: rgba(201, 162, 39, .25);
+}
+
+.time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeVal {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 800;
+    color: #c9a227;
+    line-height: 1;
+}
+
+.timeLabel {
+    font-size: .62rem;
+    color: #8a8a94;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+
+.fighters {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex-wrap: wrap;
+}
+
+.winner {
+    font-size: clamp(.82rem, 1.8vw, .95rem);
+    font-weight: 700;
+    color: #fff;
+}
+
+.vs {
+    font-size: .65rem;
+    color: #8a8a94;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.loser {
+    font-size: clamp(.75rem, 1.6vw, .88rem);
+    color: #8a8a94;
+}
+
+.event {
+    font-size: .68rem;
+    color: #c9a227;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+.bar {
+    height: 3px;
+    background: #222228;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.barFill {
+    height: 100%;
+    background: linear-gradient(90deg, #c0392b, #e74c3c);
+    border-radius: 100px;
+    transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 480px) {
+    .row {
+        grid-template-columns: 4rem 1fr;
+        gap: .75rem;
+    }
+}
