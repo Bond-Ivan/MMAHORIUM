@@ -12,6 +12,23 @@
         "theme": "Tema"
     },
     "footer": {
-    "copyright": "Copyright © 2026 OctaGrid Inc. Todos los derechos reservados."
-  }
+        "copyright": "Copyright © 2026 OctaGrid Inc. Todos los derechos reservados."
+    },
+    "fighters": {
+        "title": "Peleadores de UFC",
+        "categories": {
+            "all": "Todos",
+            "flyweight": "Peso mosca",
+            "bantamweight": "Peso gallo",
+            "featherweight": "Peso pluma",
+            "lightweight": "Peso ligero",
+            "welterweight": "Peso wélter",
+            "middleweight": "Peso medio",
+            "lightHeavyweight": "Peso semipesado",
+            "heavyweight": "Peso pesado",
+            "strawweightWomen": "Peso paja femenino",
+            "flyweightWomen": "Peso mosca femenino",
+            "bantamweightWomen": "Peso gallo femenino"
+        }
+    }
 }

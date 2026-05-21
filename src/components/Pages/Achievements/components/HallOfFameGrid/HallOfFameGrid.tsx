@@ -1,19 +1,28 @@
 import { useEffect, useRef, useState, type ReactElement } from "react";
-
 import styles from "./HallOfFameGrid.module.css";
 import type { HallOfFamer } from "../../utils/achievementsData";
+import { useLang } from "../../../../../hooks/useLang";
 
-interface Props { fighters: HallOfFamer[]; }
+interface Props {
+  fighters: HallOfFamer[];
+}
 
 export default function HallOfFameGrid({ fighters }: Props): ReactElement {
+  const { t } = useLang();
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      ([e]) => {
+        if (e.isIntersecting) {
+          setVisible(true);
+          obs.disconnect();
+        }
+      },
       { threshold: 0.1 }
     );
+
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
@@ -31,8 +40,10 @@ export default function HallOfFameGrid({ fighters }: Props): ReactElement {
             <span className={styles.year}>{f.year}</span>
           </div>
           <span className={styles.name}>{f.name}</span>
-          <span className={styles.achievement}>{f.achievement}</span>
-          <div className={styles.badge}>HOF</div>
+          <span className={styles.achievement}>{t(f.achievementKey)}</span>
+          <div className={styles.badge}>
+            {t("achievements.hallOfFame.shortLabel")}
+          </div>
         </div>
       ))}
     </div>

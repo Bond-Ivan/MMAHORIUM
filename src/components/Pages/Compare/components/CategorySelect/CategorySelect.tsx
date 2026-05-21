@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback, type ReactElement } from "react";
 import styles from "./CategorySelect.module.css";
+import { useLang } from "../../../../../hooks/useLang";
 
 type SelectOption = {
   label: string;
@@ -13,7 +14,13 @@ type CategorySelectProps = {
   accentColor: "orange" | "blue";
 };
 
-function CategorySelect({ options, value, onChange, accentColor }: CategorySelectProps): ReactElement {
+function CategorySelect({
+  options,
+  value,
+  onChange,
+  accentColor,
+}: CategorySelectProps): ReactElement {
+  const { t } = useLang();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -35,12 +42,16 @@ function CategorySelect({ options, value, onChange, accentColor }: CategorySelec
         className={`${styles.trigger} ${open ? styles.triggerOpen : ""}`}
         onClick={() => setOpen((v) => !v)}
       >
-        <span className={styles.triggerMeta}>Весовая</span>
+        <span className={styles.triggerMeta}>{t("compare.selectors.weightClass")}</span>
         <span className={styles.triggerValue}>{selected}</span>
         <svg
           className={`${styles.arrow} ${open ? styles.arrowOpen : ""}`}
-          width="16" height="16" viewBox="0 0 24 24"
-          fill="none" stroke="currentColor" strokeWidth="2.5"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
         >
           <path d="M6 9l6 6 6-6" />
         </svg>
@@ -53,11 +64,20 @@ function CategorySelect({ options, value, onChange, accentColor }: CategorySelec
               key={opt.value}
               type="button"
               className={`${styles.item} ${opt.value === value ? styles.itemActive : ""}`}
-              onClick={() => { onChange(opt.value); setOpen(false); }}
+              onClick={() => {
+                onChange(opt.value);
+                setOpen(false);
+              }}
             >
               {opt.value === value && (
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="3">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                >
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
               )}

@@ -1,7 +1,15 @@
 const weightClasses = [
-    "Наилегчайший", "Легчайший", "Полулёгкий",
-    "Лёгкий", "Полусредний", "Средний", "Полутяжёлый", "Тяжёлый",
-    "Минимальный (жен)", "Наилегчайший (жен)", "Легчайший (жен)"
+    "flyweight",
+    "bantamweight",
+    "featherweight",
+    "lightweight",
+    "welterweight",
+    "middleweight",
+    "lightHeavyweight",
+    "heavyweight",
+    "strawweightWomen",
+    "flyweightWomen",
+    "bantamweightWomen",
 ];
 
 export default weightClasses;

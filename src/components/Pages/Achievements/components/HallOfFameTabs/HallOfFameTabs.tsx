@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef, type ReactElement } from "react";
 import styles from "./HallOfFameTabs.module.css";
-import type { HallOfFamer, Contributor, FightWinger } from "../../utils/achievementsData";
+import type {
+  HallOfFamer,
+  Contributor,
+  FightWinger,
+} from "../../utils/achievementsData";
+import { useLang } from "../../../../../hooks/useLang";
 
 interface Props {
   pioneer: HallOfFamer[];
@@ -11,35 +16,61 @@ interface Props {
 
 type TabId = "modern" | "pioneer" | "contributors" | "fights";
 
-const TABS: { id: TabId; label: string; emoji: string }[] = [
-  { id: "modern",       label: "Современная эра",  emoji: "🏆" },
-  { id: "pioneer",      label: "Пионеры",           emoji: "⚔️" },
-  { id: "contributors", label: "Вне октагона",      emoji: "🎙️" },
-  { id: "fights",       label: "Легендарные бои",   emoji: "🥊" },
-];
-
-export default function HallOfFameTabs({ pioneer, modern, contributors, fights }: Props): ReactElement {
+export default function HallOfFameTabs({
+  pioneer,
+  modern,
+  contributors,
+  fights,
+}: Props): ReactElement {
+  const { t } = useLang();
   const [active, setActive] = useState<TabId>("modern");
   const [visible, setVisible] = useState(false);
   const [panelKey, setPanelKey] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
 
+  const tabs: { id: TabId; label: string; emoji: string }[] = [
+    {
+      id: "modern",
+      label: t("achievements.hallOfFame.tabs.modern"),
+      emoji: "🏆",
+    },
+    {
+      id: "pioneer",
+      label: t("achievements.hallOfFame.tabs.pioneer"),
+      emoji: "⚔️",
+    },
+    {
+      id: "contributors",
+      label: t("achievements.hallOfFame.tabs.contributors"),
+      emoji: "🎙️",
+    },
+    {
+      id: "fights",
+      label: t("achievements.hallOfFame.tabs.fights"),
+      emoji: "🥊",
+    },
+  ];
+
   useEffect(() => {
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      ([e]) => {
+        if (e.isIntersecting) {
+          setVisible(true);
+          obs.disconnect();
+        }
+      },
       { threshold: 0.05 }
     );
+
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
 
   const handleTabChange = (id: TabId) => {
-    // Сбрасываем visible → карточки уходят в opacity: 0
     setVisible(false);
     setActive(id);
-    setPanelKey(prev => prev + 1);
+    setPanelKey((prev) => prev + 1);
 
-    // Через один кадр снова включаем → анимация повторяется
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         setVisible(true);
@@ -58,8 +89,10 @@ export default function HallOfFameTabs({ pioneer, modern, contributors, fights }
         <span className={styles.year}>{f.year}</span>
       </div>
       <span className={styles.name}>{f.name}</span>
-      <span className={styles.achievement}>{f.achievement}</span>
-      <div className={styles.hof}>ЗС</div>
+      <span className={styles.achievement}>{t(f.achievementKey)}</span>
+      <div className={styles.hof}>
+        {t("achievements.hallOfFame.shortLabel")}
+      </div>
     </div>
   );
 
@@ -73,8 +106,10 @@ export default function HallOfFameTabs({ pioneer, modern, contributors, fights }
         <span className={styles.yearBig}>{c.year}</span>
       </div>
       <span className={styles.name}>{c.name}</span>
-      <span className={styles.achievement}>{c.role}</span>
-      <div className={styles.hof}>ЗС</div>
+      <span className={styles.achievement}>{t(c.roleKey)}</span>
+      <div className={styles.hof}>
+        {t("achievements.hallOfFame.shortLabel")}
+      </div>
     </div>
   );
 
@@ -86,30 +121,36 @@ export default function HallOfFameTabs({ pioneer, modern, contributors, fights }
     >
       <div className={styles.fightMeta}>
         <span className={styles.fightYear}>{f.year}</span>
-        <span className={styles.fightAward}>{f.award}</span>
+        <span className={styles.fightAward}>
+          {f.awardKey ? t(f.awardKey) : ""}
+        </span>
       </div>
       <span className={styles.fightTitle}>{f.fight}</span>
       <span className={styles.fightEvent}>{f.event}</span>
-      <span className={styles.fightResult}>{f.result}</span>
+      <span className={styles.fightResult}>{t(f.resultKey)}</span>
     </div>
   );
 
   return (
     <div ref={ref}>
       <div className={styles.tabBar}>
-        {TABS.map(t => (
+        {tabs.map((tab) => (
           <button
-            key={t.id}
-            className={`${styles.tab} ${active === t.id ? styles.tabActive : ""}`}
-            onClick={() => handleTabChange(t.id)}
+            key={tab.id}
+            className={`${styles.tab} ${active === tab.id ? styles.tabActive : ""}`}
+            onClick={() => handleTabChange(tab.id)}
+            type="button"
           >
-            <span className={styles.tabEmoji}>{t.emoji}</span>
-            <span className={styles.tabLabel}>{t.label}</span>
+            <span className={styles.tabEmoji}>{tab.emoji}</span>
+            <span className={styles.tabLabel}>{tab.label}</span>
             <span className={styles.tabCount}>
-              {t.id === "modern" ? modern.length
-               : t.id === "pioneer" ? pioneer.length
-               : t.id === "contributors" ? contributors.length
-               : fights.length}
+              {tab.id === "modern"
+                ? modern.length
+                : tab.id === "pioneer"
+                  ? pioneer.length
+                  : tab.id === "contributors"
+                    ? contributors.length
+                    : fights.length}
             </span>
           </button>
         ))}
@@ -121,16 +162,19 @@ export default function HallOfFameTabs({ pioneer, modern, contributors, fights }
             {modern.map((f, i) => renderFighter(f, i))}
           </div>
         )}
+
         {active === "pioneer" && (
           <div className={styles.grid}>
             {pioneer.map((f, i) => renderFighter(f, i))}
           </div>
         )}
+
         {active === "contributors" && (
           <div className={styles.gridContrib}>
             {contributors.map((c, i) => renderContributor(c, i))}
           </div>
         )}
+
         {active === "fights" && (
           <div className={styles.fightList}>
             {fights.map((f, i) => renderFight(f, i))}

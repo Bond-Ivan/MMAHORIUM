@@ -3,7 +3,6 @@ import styles from "./Fighters.module.css";
 import Footer from "../../Footer/Footer";
 import weightClasses from "./Fighters.utils";
 import { flyWeight } from "./fighters/flyWeight";
-
 import Fighter from "./Fighter/Fighter";
 import { featherWeight } from "./fighters/featherWeight";
 import { bantaWeight } from "./fighters/bantaWeight";
@@ -12,42 +11,48 @@ import { welterWeight } from "./fighters/welterWeight";
 import { middleWeight } from "./fighters/middleWeight";
 import { lightHeavyWeight } from "./fighters/lightHeavyWeight";
 import { heavyWeight } from "./fighters/heavyWeight";
+import { useLang } from "../../../hooks/useLang";
 
 function Fighters(): ReactElement {
+    const { t } = useLang();
     const [activeIndex, setActiveIndex] = useState(1);
     const [flippedCards, setFlippedCards] = useState<number[]>([]);
 
     const allWeightsData = [
-        flyWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[0] })), 
-        bantaWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[1] })),
-        featherWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[2] })),
-        lightWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[3] })),
-        welterWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[4] })),
-        middleWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[5] })),
-        lightHeavyWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[6] })),
-        heavyWeight.map(fighter => ({ ...fighter, weightClassName: weightClasses[7] })),
+        flyWeight.map((fighter) => ({ ...fighter, weightClassName: weightClasses[0] })),
+        bantaWeight.map((fighter) => ({ ...fighter, weightClassName: weightClasses[1] })),
+        featherWeight.map((fighter) => ({ ...fighter, weightClassName: weightClasses[2] })),
+        lightWeight.map((fighter) => ({ ...fighter, weightClassName: weightClasses[3] })),
+        welterWeight.map((fighter) => ({ ...fighter, weightClassName: weightClasses[4] })),
+        middleWeight.map((fighter) => ({ ...fighter, weightClassName: weightClasses[5] })),
+        lightHeavyWeight.map((fighter) => ({ ...fighter, weightClassName: weightClasses[6] })),
+        heavyWeight.map((fighter) => ({ ...fighter, weightClassName: weightClasses[7] })),
     ];
 
-    const displayCategories = ["Все", ...weightClasses];
+    const displayCategories = [
+        t("fighters.categories.all"),
+        ...weightClasses.slice(0, 8).map((item) => t(`fighters.categories.${item}`)),
+    ];
 
-    const currentFighters = activeIndex === 0 
-        ? allWeightsData.flat() 
-        : allWeightsData[activeIndex - 1] || [];
+    const currentFighters =
+        activeIndex === 0 ? allWeightsData.flat() : allWeightsData[activeIndex - 1] || [];
 
     const handleCategoryChange = (index: number) => {
         setActiveIndex(index);
-        setFlippedCards([]); 
+        setFlippedCards([]);
     };
 
     const handleFlip = (index: number) => {
-        setFlippedCards(prev => {
+        setFlippedCards((prev) => {
             if (prev.includes(index)) {
-                return prev.filter(i => i !== index);
+                return prev.filter((i) => i !== index);
             }
+
             const newFlipped = [...prev, index];
             if (newFlipped.length > 2) {
                 return newFlipped.slice(1);
             }
+
             return newFlipped;
         });
     };
@@ -55,9 +60,8 @@ function Fighters(): ReactElement {
     return (
         <>
             <main className={styles.main}>
-                <h2 className={styles.title}>
-                    Бойцы UFC
-                </h2>
+                <h2 className={styles.title}>{t("fighters.title")}</h2>
+
                 <ul className={styles.weights}>
                     {displayCategories.map((category, index) => (
                         <li key={index}>
@@ -70,22 +74,24 @@ function Fighters(): ReactElement {
                         </li>
                     ))}
                 </ul>
+
                 <ul key={activeIndex} className={styles.fighters}>
                     {currentFighters.map((value, index) => (
-                        <Fighter 
-                            key={index} 
-                            value={value} 
-                            index={index} 
-                            showCategory={activeIndex === 0} 
+                        <Fighter
+                            key={index}
+                            value={value}
+                            index={index}
+                            showCategory={activeIndex === 0}
                             isFlipped={flippedCards.includes(index)}
                             onFlip={() => handleFlip(index)}
                         />
                     ))}
                 </ul>
             </main>
+
             <Footer />
         </>
-    )
+    );
 }
 
 export default Fighters;

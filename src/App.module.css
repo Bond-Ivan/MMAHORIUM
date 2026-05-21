@@ -126,6 +126,7 @@ input[type='file'] {
 
 .main {
   padding: 24px;
+  padding-top: 80px;
 }
 
 /* Оверлей затемнения */

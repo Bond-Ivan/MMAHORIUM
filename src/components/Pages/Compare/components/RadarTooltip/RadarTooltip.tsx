@@ -1,10 +1,20 @@
 import type { ReactElement } from "react";
 import styles from "./RadarTooltip.module.css";
 import type { FighterType } from "../../../../../types/fighter";
+import { useLang } from "../../../../../hooks/useLang";
+
+type RadarTooltipPayloadItem = {
+  name: string;
+  value: number;
+  payload?: {
+    stat?: string;
+    statKey?: string;
+  };
+};
 
 type RadarTooltipProps = {
   active?: boolean;
-  payload?: { name: string; value: number }[];
+  payload?: RadarTooltipPayloadItem[];
   label?: string;
   leftFighter: FighterType;
   rightFighter: FighterType;
@@ -19,33 +29,49 @@ function RadarTooltip({
   rightFighter,
   getWinRate,
 }: RadarTooltipProps): ReactElement | null {
+  const { t } = useLang();
+
   if (!active || !payload?.length) return null;
 
-  const getRealValue = (name: string, stat: string): string => {
+  const getRealValue = (name: string, statKey: string): string => {
     const fighter = name === leftFighter.name ? leftFighter : rightFighter;
-    switch (stat) {
-      case "Возраст": return `${fighter.age} лет`;
-      case "Рост":    return `${fighter.height} см`;
-      case "Вес":     return `${fighter.weight} кг`;
-      case "Reach":   return `${fighter.armSpan} см`;
-      case "KO":      return `${fighter.KO}`;
-      case "Win %":   return `${getWinRate(fighter)}%`;
-      default:        return "—";
+
+    switch (statKey) {
+      case "age":
+        return `${fighter.age}${t("compare.units.years")}`;
+      case "height":
+        return `${fighter.height}${t("compare.units.cm")}`;
+      case "weight":
+        return `${fighter.weight}${t("compare.units.kg")}`;
+      case "reach":
+        return `${fighter.armSpan}${t("compare.units.cm")}`;
+      case "ko":
+        return `${fighter.KO}`;
+      case "winRate":
+        return `${getWinRate(fighter)}%`;
+      default:
+        return "—";
     }
   };
 
+  const tooltipTitle = payload[0]?.payload?.stat ?? label ?? "";
+
   return (
     <div className={styles.tooltip}>
-      <p className={styles.label}>{label}</p>
-      {payload.map((entry, i) => (
-        <p
-          key={i}
-          className={styles.row}
-          style={{ color: entry.name === leftFighter.name ? "#ff6b2c" : "#3b82f6" }}
-        >
-          {entry.name} : {getRealValue(entry.name, label ?? "")}
-        </p>
-      ))}
+      <p className={styles.label}>{tooltipTitle}</p>
+      {payload.map((entry, i) => {
+        const statKey = entry.payload?.statKey ?? "";
+
+        return (
+          <p
+            key={i}
+            className={styles.row}
+            style={{ color: entry.name === leftFighter.name ? "#ff6b2c" : "#3b82f6" }}
+          >
+            {entry.name} : {getRealValue(entry.name, statKey)}
+          </p>
+        );
+      })}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback, type ReactElement } from "react";
 import styles from "./FighterSelect.module.css";
+import { useLang } from "../../../../../hooks/useLang";
 
 type SelectOption = {
   label: string;
@@ -13,7 +14,13 @@ type FighterSelectProps = {
   accentColor: "orange" | "blue";
 };
 
-function FighterSelect({ options, value, onChange, accentColor }: FighterSelectProps): ReactElement {
+function FighterSelect({
+  options,
+  value,
+  onChange,
+  accentColor,
+}: FighterSelectProps): ReactElement {
+  const { t } = useLang();
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const ref = useRef<HTMLDivElement>(null);
@@ -38,7 +45,9 @@ function FighterSelect({ options, value, onChange, accentColor }: FighterSelectP
   }, [handleClose]);
 
   useEffect(() => {
-    if (open) setTimeout(() => searchRef.current?.focus(), 80);
+    if (open) {
+      setTimeout(() => searchRef.current?.focus(), 80);
+    }
   }, [open]);
 
   return (
@@ -48,12 +57,16 @@ function FighterSelect({ options, value, onChange, accentColor }: FighterSelectP
         className={`${styles.trigger} ${open ? styles.triggerOpen : ""}`}
         onClick={() => setOpen((v) => !v)}
       >
-        <span className={styles.triggerMeta}>Боец</span>
+        <span className={styles.triggerMeta}>{t("compare.selectors.fighter")}</span>
         <span className={styles.triggerValue}>{selected}</span>
         <svg
           className={`${styles.arrow} ${open ? styles.arrowOpen : ""}`}
-          width="16" height="16" viewBox="0 0 24 24"
-          fill="none" stroke="currentColor" strokeWidth="2.5"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
         >
           <path d="M6 9l6 6 6-6" />
         </svg>
@@ -62,15 +75,23 @@ function FighterSelect({ options, value, onChange, accentColor }: FighterSelectP
       {open && (
         <div className={styles.dropdown}>
           <div className={styles.searchRow}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" strokeWidth="2.5" className={styles.searchIcon}>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              className={styles.searchIcon}
+            >
               <circle cx="11" cy="11" r="8" />
               <path d="M21 21l-4.35-4.35" />
             </svg>
+
             <input
               ref={searchRef}
               className={styles.searchInput}
-              placeholder="Поиск бойца..."
+              placeholder={t("compare.selectors.searchFighter")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -78,18 +99,28 @@ function FighterSelect({ options, value, onChange, accentColor }: FighterSelectP
 
           <div className={styles.list}>
             {filtered.length === 0 ? (
-              <p className={styles.empty}>Не найдено</p>
+              <p className={styles.empty}>{t("compare.selectors.notFound")}</p>
             ) : (
               filtered.map((opt) => (
                 <button
                   key={opt.value}
                   type="button"
                   className={`${styles.item} ${opt.value === value ? styles.itemActive : ""}`}
-                  onClick={() => { onChange(opt.value); setOpen(false); setSearch(""); }}
+                  onClick={() => {
+                    onChange(opt.value);
+                    setOpen(false);
+                    setSearch("");
+                  }}
                 >
                   {opt.value === value && (
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" strokeWidth="3">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                    >
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
                   )}

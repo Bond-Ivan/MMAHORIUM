@@ -26,6 +26,7 @@ import FighterSelect from "./components/FighterSelect/FighterSelect";
 import CategorySelect from "./components/CategorySelect/CategorySelect";
 import RadarTooltip from "./components/RadarTooltip/RadarTooltip";
 import type { FighterType } from "../../../types/fighter";
+import { useLang } from "../../../hooks/useLang";
 
 type CompareMetric = {
     key: string;
@@ -37,6 +38,8 @@ type CompareMetric = {
 };
 
 function Compare(): ReactElement {
+    const { t } = useLang();
+
     const allWeightsData = useMemo<FighterType[][]>(
         () => [
             flyWeight.map((f) => ({ ...f, weightClassName: weightClasses[0] })),
@@ -73,51 +76,113 @@ function Compare(): ReactElement {
         fighter.victory + fighter.defeat + fighter.draw;
 
     const metrics: CompareMetric[] = [
-        { key: "age", label: "Возраст", leftValue: leftFighter.age, rightValue: rightFighter.age, suffix: " лет", reverse: true },
-        { key: "height", label: "Рост", leftValue: leftFighter.height, rightValue: rightFighter.height, suffix: " см" },
-        { key: "weight", label: "Вес", leftValue: leftFighter.weight, rightValue: rightFighter.weight, suffix: " кг" },
-        { key: "armSpan", label: "Размах рук", leftValue: leftFighter.armSpan, rightValue: rightFighter.armSpan, suffix: " см" },
-        { key: "fights", label: "Всего боёв", leftValue: getTotalFights(leftFighter), rightValue: getTotalFights(rightFighter) },
-        { key: "wins", label: "Победы", leftValue: leftFighter.victory, rightValue: rightFighter.victory },
-        { key: "ko", label: "Нокауты", leftValue: leftFighter.KO, rightValue: rightFighter.KO },
-        { key: "sub", label: "Сабмишены", leftValue: leftFighter.SUB, rightValue: rightFighter.SUB },
-        { key: "draw", label: "Ничьи", leftValue: leftFighter.draw, rightValue: rightFighter.draw },
-        { key: "winRate", label: "% побед", leftValue: getWinRate(leftFighter), rightValue: getWinRate(rightFighter), suffix: "%" },
+        {
+            key: "age",
+            label: t("compare.metrics.age"),
+            leftValue: leftFighter.age,
+            rightValue: rightFighter.age,
+            suffix: t("compare.units.years"),
+            reverse: true,
+        },
+        {
+            key: "height",
+            label: t("compare.metrics.height"),
+            leftValue: leftFighter.height,
+            rightValue: rightFighter.height,
+            suffix: t("compare.units.cm"),
+        },
+        {
+            key: "weight",
+            label: t("compare.metrics.weight"),
+            leftValue: leftFighter.weight,
+            rightValue: rightFighter.weight,
+            suffix: t("compare.units.kg"),
+        },
+        {
+            key: "armSpan",
+            label: t("compare.metrics.armSpan"),
+            leftValue: leftFighter.armSpan,
+            rightValue: rightFighter.armSpan,
+            suffix: t("compare.units.cm"),
+        },
+        {
+            key: "fights",
+            label: t("compare.metrics.totalFights"),
+            leftValue: getTotalFights(leftFighter),
+            rightValue: getTotalFights(rightFighter),
+        },
+        {
+            key: "wins",
+            label: t("compare.metrics.wins"),
+            leftValue: leftFighter.victory,
+            rightValue: rightFighter.victory,
+        },
+        {
+            key: "ko",
+            label: t("compare.metrics.ko"),
+            leftValue: leftFighter.KO,
+            rightValue: rightFighter.KO,
+        },
+        {
+            key: "sub",
+            label: t("compare.metrics.sub"),
+            leftValue: leftFighter.SUB,
+            rightValue: rightFighter.SUB,
+        },
+        {
+            key: "draw",
+            label: t("compare.metrics.draws"),
+            leftValue: leftFighter.draw,
+            rightValue: rightFighter.draw,
+        },
+        {
+            key: "winRate",
+            label: t("compare.metrics.winRate"),
+            leftValue: getWinRate(leftFighter),
+            rightValue: getWinRate(rightFighter),
+            suffix: "%",
+        },
     ];
 
     const radarData = [
         {
-            stat: "Возраст",
+            statKey: "age",
+            stat: t("compare.radar.age"),
             A: Math.max(1, 100 - leftFighter.age),
             B: Math.max(1, 100 - rightFighter.age),
             fullMark: 100,
         },
         {
-            stat: "Рост",
+            statKey: "height",
+            stat: t("compare.radar.height"),
             A: leftFighter.height,
             B: rightFighter.height,
             fullMark: Math.max(leftFighter.height, rightFighter.height, 200),
         },
         {
-            stat: "Вес",
+            statKey: "weight",
+            stat: t("compare.radar.weight"),
             A: leftFighter.weight,
             B: rightFighter.weight,
             fullMark: Math.max(leftFighter.weight, rightFighter.weight, 130),
         },
         {
-            stat: "Reach",
+            statKey: "reach",
+            stat: t("compare.radar.reach"),
             A: leftFighter.armSpan,
             B: rightFighter.armSpan,
             fullMark: Math.max(leftFighter.armSpan, rightFighter.armSpan, 220),
         },
         {
-            stat: "KO",
+            statKey: "ko",
+            stat: t("compare.radar.ko"),
             A: leftFighter.KO,
             B: rightFighter.KO,
             fullMark: Math.max(leftFighter.KO, rightFighter.KO, 20),
         },
         {
-            stat: "Win %",
+            statKey: "winRate",
+            stat: t("compare.radar.winRate"),
             A: getWinRate(leftFighter),
             B: getWinRate(rightFighter),
             fullMark: 100,
@@ -130,7 +195,26 @@ function Compare(): ReactElement {
         return metric.leftValue > metric.rightValue ? "left" : "right";
     };
 
-    const categoryOptions = ["Все", ...weightClasses];
+    const categoryOptions = [
+        t("fighters.categories.all"),
+        ...weightClasses.map((_, index) =>
+            t(`fighters.categories.${[
+                "flyweight",
+                "bantamweight",
+                "featherweight",
+                "lightweight",
+                "welterweight",
+                "middleweight",
+                "lightHeavyweight",
+                "heavyweight",
+            ][index]}`)
+        ),
+    ];
+
+    const getSummaryWinner = (leftValue: number, rightValue: number, leftName: string, rightName: string) => {
+        if (leftValue === rightValue) return t("compare.summary.equal");
+        return leftValue > rightValue ? leftName : rightName;
+    };
 
     return (
         <>
@@ -139,21 +223,21 @@ function Compare(): ReactElement {
                     <div className={styles.heroGlow} />
 
                     <div className={styles.heroHeader}>
-                        <p className={styles.eyebrow}>UFC analytics</p>
-                        <h1 className={styles.title}>Сравнение бойцов</h1>
-                        <p className={styles.subtitle}>
-                            Выбирай любых двух бойцов, сравнивай их характеристики, рекорд,
-                            нокаутирующую мощь, сабмишены, антропометрию и процент побед.
-                        </p>
+                        <p className={styles.eyebrow}>{t("compare.hero.eyebrow")}</p>
+                        <h1 className={styles.title}>{t("compare.hero.title")}</h1>
+                        <p className={styles.subtitle}>{t("compare.hero.subtitle")}</p>
                     </div>
 
                     <div className={styles.selectionGrid}>
                         <div className={styles.selectorCard}>
-                            <p className={styles.selectorLabel}>Боец 1</p>
+                            <p className={styles.selectorLabel}>{t("compare.selectors.fighter1")}</p>
                             <CategorySelect
                                 options={categoryOptions.map((label, value) => ({ label, value }))}
                                 value={leftCategory}
-                                onChange={(val) => { setLeftCategory(val); setLeftIndex(0); }}
+                                onChange={(val) => {
+                                    setLeftCategory(val);
+                                    setLeftIndex(0);
+                                }}
                                 accentColor="orange"
                             />
                             <FighterSelect
@@ -164,14 +248,17 @@ function Compare(): ReactElement {
                             />
                         </div>
 
-                        <div className={styles.versus}>VS</div>
+                        <div className={styles.versus}>{t("compare.common.vs")}</div>
 
                         <div className={styles.selectorCard}>
-                            <p className={styles.selectorLabel}>Боец 2</p>
+                            <p className={styles.selectorLabel}>{t("compare.selectors.fighter2")}</p>
                             <CategorySelect
                                 options={categoryOptions.map((label, value) => ({ label, value }))}
                                 value={rightCategory}
-                                onChange={(val) => { setRightCategory(val); setRightIndex(0); }}
+                                onChange={(val) => {
+                                    setRightCategory(val);
+                                    setRightIndex(0);
+                                }}
                                 accentColor="blue"
                             />
                             <FighterSelect
@@ -190,11 +277,17 @@ function Compare(): ReactElement {
                             <div className={styles.fighterContent}>
                                 <span className={styles.weightBadge}>{leftFighter.weightClassName}</span>
                                 <h2 className={styles.fighterName}>{leftFighter.name}</h2>
-                                <p className={styles.fighterNick}>{leftFighter.nickname || "Без прозвища"}</p>
+                                <p className={styles.fighterNick}>
+                                    {leftFighter.nickname || t("compare.common.noNickname")}
+                                </p>
                                 <div className={styles.quickStats}>
                                     <span>{leftFighter.country}</span>
-                                    <span>{leftFighter.victory}-{leftFighter.defeat}-{leftFighter.draw}</span>
-                                    <span>{getWinRate(leftFighter)}% win rate</span>
+                                    <span>
+                                        {leftFighter.victory}-{leftFighter.defeat}-{leftFighter.draw}
+                                    </span>
+                                    <span>
+                                        {getWinRate(leftFighter)}% {t("compare.common.winRate")}
+                                    </span>
                                 </div>
                             </div>
                         </article>
@@ -205,11 +298,17 @@ function Compare(): ReactElement {
                             <div className={styles.fighterContent}>
                                 <span className={styles.weightBadge}>{rightFighter.weightClassName}</span>
                                 <h2 className={styles.fighterName}>{rightFighter.name}</h2>
-                                <p className={styles.fighterNick}>{rightFighter.nickname || "Без прозвища"}</p>
+                                <p className={styles.fighterNick}>
+                                    {rightFighter.nickname || t("compare.common.noNickname")}
+                                </p>
                                 <div className={styles.quickStats}>
                                     <span>{rightFighter.country}</span>
-                                    <span>{rightFighter.victory}-{rightFighter.defeat}-{rightFighter.draw}</span>
-                                    <span>{getWinRate(rightFighter)}% win rate</span>
+                                    <span>
+                                        {rightFighter.victory}-{rightFighter.defeat}-{rightFighter.draw}
+                                    </span>
+                                    <span>
+                                        {getWinRate(rightFighter)}% {t("compare.common.winRate")}
+                                    </span>
                                 </div>
                             </div>
                         </article>
@@ -219,8 +318,8 @@ function Compare(): ReactElement {
                 <section className={styles.dashboard}>
                     <div className={styles.metricsCard}>
                         <div className={styles.sectionTop}>
-                            <h3 className={styles.sectionTitle}>Характеристики</h3>
-                            <p className={styles.sectionText}>Визуально видно, кто сильнее по каждому параметру.</p>
+                            <h3 className={styles.sectionTitle}>{t("compare.sections.metricsTitle")}</h3>
+                            <p className={styles.sectionText}>{t("compare.sections.metricsText")}</p>
                         </div>
 
                         <div className={styles.metricList}>
@@ -233,7 +332,8 @@ function Compare(): ReactElement {
                                 return (
                                     <div key={metric.key} className={styles.metricRow}>
                                         <div className={`${styles.metricValue} ${winner === "left" ? styles.winnerValue : ""}`}>
-                                            {metric.leftValue}{metric.suffix || ""}
+                                            {metric.leftValue}
+                                            {metric.suffix || ""}
                                         </div>
 
                                         <div className={styles.metricCenter}>
@@ -256,7 +356,8 @@ function Compare(): ReactElement {
                                         </div>
 
                                         <div className={`${styles.metricValue} ${winner === "right" ? styles.winnerValue : ""}`}>
-                                            {metric.rightValue}{metric.suffix || ""}
+                                            {metric.rightValue}
+                                            {metric.suffix || ""}
                                         </div>
                                     </div>
                                 );
@@ -266,8 +367,8 @@ function Compare(): ReactElement {
 
                     <div className={styles.chartCard}>
                         <div className={styles.sectionTop}>
-                            <h3 className={styles.sectionTitle}>Профиль бойцов</h3>
-                            <p className={styles.sectionText}>Сводная форма по ключевым показателям.</p>
+                            <h3 className={styles.sectionTitle}>{t("compare.sections.profileTitle")}</h3>
+                            <p className={styles.sectionText}>{t("compare.sections.profileText")}</p>
                         </div>
 
                         <div className={styles.chartLegend}>
@@ -302,27 +403,42 @@ function Compare(): ReactElement {
 
                 <section className={styles.summaryGrid}>
                     <div className={styles.summaryCard}>
-                        <span className={styles.summaryLabel}>Лучшая ударная мощь</span>
+                        <span className={styles.summaryLabel}>{t("compare.summary.bestStriking")}</span>
                         <strong className={styles.summaryValue}>
-                            {leftFighter.KO === rightFighter.KO ? "Одинаково" : leftFighter.KO > rightFighter.KO ? leftFighter.name : rightFighter.name}
+                            {getSummaryWinner(leftFighter.KO, rightFighter.KO, leftFighter.name, rightFighter.name)}
                         </strong>
                     </div>
                     <div className={styles.summaryCard}>
-                        <span className={styles.summaryLabel}>Лучший винрейт</span>
+                        <span className={styles.summaryLabel}>{t("compare.summary.bestWinRate")}</span>
                         <strong className={styles.summaryValue}>
-                            {getWinRate(leftFighter) === getWinRate(rightFighter) ? "Одинаково" : getWinRate(leftFighter) > getWinRate(rightFighter) ? leftFighter.name : rightFighter.name}
+                            {getSummaryWinner(
+                                getWinRate(leftFighter),
+                                getWinRate(rightFighter),
+                                leftFighter.name,
+                                rightFighter.name
+                            )}
                         </strong>
                     </div>
                     <div className={styles.summaryCard}>
-                        <span className={styles.summaryLabel}>Больше рост</span>
+                        <span className={styles.summaryLabel}>{t("compare.summary.longerReach")}</span>
                         <strong className={styles.summaryValue}>
-                            {leftFighter.armSpan === rightFighter.armSpan ? "Одинаково" : leftFighter.armSpan > rightFighter.armSpan ? leftFighter.name : rightFighter.name}
+                            {getSummaryWinner(
+                                leftFighter.armSpan,
+                                rightFighter.armSpan,
+                                leftFighter.name,
+                                rightFighter.name
+                            )}
                         </strong>
                     </div>
                     <div className={styles.summaryCard}>
-                        <span className={styles.summaryLabel}>Больше опыта</span>
+                        <span className={styles.summaryLabel}>{t("compare.summary.moreExperience")}</span>
                         <strong className={styles.summaryValue}>
-                            {getTotalFights(leftFighter) === getTotalFights(rightFighter) ? "Одинаково" : getTotalFights(leftFighter) > getTotalFights(rightFighter) ? leftFighter.name : rightFighter.name}
+                            {getSummaryWinner(
+                                getTotalFights(leftFighter),
+                                getTotalFights(rightFighter),
+                                leftFighter.name,
+                                rightFighter.name
+                            )}
                         </strong>
                     </div>
                 </section>

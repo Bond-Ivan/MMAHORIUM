@@ -1,12 +1,15 @@
 import type { ReactElement } from "react";
-
 import styles from "./SpeedTable.module.css";
 import type { FastKO } from "../../utils/achievementsData";
+import { useLang } from "../../../../../hooks/useLang";
 
-interface Props { data: FastKO[]; }
+interface Props {
+  data: FastKO[];
+}
 
 export default function SpeedTable({ data }: Props): ReactElement {
-  const max = Math.max(...data.map(d => d.seconds));
+  const { t } = useLang();
+  const max = Math.max(...data.map((d) => d.seconds));
 
   return (
     <div className={styles.wrap}>
@@ -14,15 +17,20 @@ export default function SpeedTable({ data }: Props): ReactElement {
         <div key={i} className={styles.row}>
           <div className={styles.time}>
             <span className={styles.timeVal}>{d.time}</span>
-            <span className={styles.timeLabel}>сек</span>
+            <span className={styles.timeLabel}>
+              {t("achievements.units.secondsShort")}
+            </span>
           </div>
+
           <div className={styles.info}>
             <div className={styles.fighters}>
               <span className={styles.winner}>{d.fighter}</span>
-              <span className={styles.vs}>vs</span>
+              <span className={styles.vs}>{t("tournament.vs")}</span>
               <span className={styles.loser}>{d.opponent}</span>
             </div>
+
             <span className={styles.event}>{d.event}</span>
+
             <div className={styles.bar}>
               <div
                 className={styles.barFill}

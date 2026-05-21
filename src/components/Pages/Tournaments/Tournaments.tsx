@@ -7,8 +7,11 @@ import {
 } from "./Tournaments.utils";
 import Tournament from "./Tournament/Tournament";
 import Footer from "../../Footer/Footer";
+import { useLang } from "../../../hooks/useLang";
 
 function Tournaments(): ReactElement {
+  const { t } = useLang();
+
   const [isFutureTournaments, setIsFutureTournaments] = useState(true);
   const [animationKey, setAnimationKey] = useState(0);
 
@@ -32,7 +35,8 @@ function Tournaments(): ReactElement {
     <>
       <main className={styles.main}>
         <h2 className={styles.title}>
-          Турниры <span className={styles.pretitle}> 2026</span>
+          {t("tournaments.title")}{" "}
+          <span className={styles.pretitle}>{t("tournaments.year")}</span>
         </h2>
 
         <div className={styles.buttons}>
@@ -41,7 +45,7 @@ function Tournaments(): ReactElement {
               }`}
             onClick={handleShowFuture}
           >
-            Предстоящие
+            {t("tournaments.future")}
           </button>
 
           <button
@@ -49,7 +53,7 @@ function Tournaments(): ReactElement {
               }`}
             onClick={handleShowPast}
           >
-            Прошедшие
+            {t("tournaments.past")}
           </button>
         </div>
 

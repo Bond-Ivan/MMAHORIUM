@@ -11,7 +11,489 @@
     "compare": "Compare",
     "theme": "Theme"
   },
+  "home": {
+    "p4p": {
+      "title": "Pound-for-pound",
+      "allFighters": "All fighters"
+    },
+    "mainCards": {
+      "activeFighters": {
+        "title": "ACTIVE FIGHTERS",
+        "text": "On the UFC roster"
+      },
+      "eventsPlanned": {
+        "title": "EVENTS SCHEDULED",
+        "text": "This year"
+      },
+      "eventsCompleted": {
+        "title": "EVENTS COMPLETED",
+        "text": "This year"
+      },
+      "fightersDebuted": {
+        "title": "FIGHTERS WHO DEBUTED",
+        "text": "This year"
+      }
+    },
+    "mainTournament": {
+      "nextEvent": "Next event",
+      "mainEventTitle": "Song vs Figueiredo",
+      "date": "May 30, 2026",
+      "location": "Macau, China",
+      "locationShort": "Macau",
+      "showFullCard": "Show full card",
+      "fullCard": "Full card",
+      "fullCardLower": "full card",
+      "countdownTitle": "UNTIL START",
+      "localTime": "Moscow time",
+      "mainCardLabel": "Main card",
+      "prelimsLabel": "Preliminary card",
+      "mainEventBadge": "MAIN EVENT",
+      "time": {
+        "days": "DAYS",
+        "hours": "HOURS",
+        "minutes": "MINUTES",
+        "seconds": "SECONDS"
+      },
+      "shortNames": {
+        "song": "Song",
+        "figueiredo": "Figueiredo"
+      }
+    }
+  },
   "footer": {
     "copyright": "Copyright © 2026 OctaGrid Inc. All rights reserved."
+  },
+  "fighters": {
+    "title": "UFC Fighters",
+    "categories": {
+      "all": "All",
+      "flyweight": "Flyweight",
+      "bantamweight": "Bantamweight",
+      "featherweight": "Featherweight",
+      "lightweight": "Lightweight",
+      "welterweight": "Welterweight",
+      "middleweight": "Middleweight",
+      "lightHeavyWeight": "Light Heavyweight",
+      "lightHeavyweight": "Light Heavyweight",
+      "heavyweight": "Heavyweight",
+      "strawweightWomen": "Women's Strawweight",
+      "flyweightWomen": "Women's Flyweight",
+      "bantamweightWomen": "Women's Bantamweight"
+    }
+  },
+  "fighter": {
+    "champion": "Champion",
+    "flipHint": "Click to learn more",
+    "backHint": "↩ Click to flip back",
+    "winRate": "Win rate %",
+    "records": {
+      "wins": "wins",
+      "losses": "losses",
+      "draws": "draws"
+    },
+    "stats": {
+      "country": "Country",
+      "age": "Age",
+      "height": "Height",
+      "weight": "Weight",
+      "armSpan": "Reach",
+      "debut": "Debut"
+    },
+    "units": {
+      "cm": "cm",
+      "kg": "kg"
+    }
+  },
+  "weights": {
+    "flyweight": "Flyweight (up to 57 kg)",
+    "bantamweight": "Bantamweight (up to 61 kg)",
+    "featherweight": "Featherweight (up to 66 kg)",
+    "lightweight": "Lightweight (up to 70 kg)",
+    "welterweight": "Welterweight (up to 77 kg)",
+    "middleweight": "Middleweight (up to 84 kg)",
+    "lightHeavyWeight": "Light Heavyweight (up to 93 kg)",
+    "lightHeavyweight": "Light Heavyweight (up to 93 kg)",
+    "heavyweight": "Heavyweight (up to 120 kg)"
+  },
+  "countries": {
+    "RU": "Russia",
+    "IE": "Ireland",
+    "BR": "Brazil",
+    "EC": "Ecuador",
+    "AU": "Australia",
+    "US": "USA",
+    "JM": "Jamaica",
+    "NG": "Nigeria",
+    "CA": "Canada",
+    "RS": "Serbia",
+    "GB": "United Kingdom",
+    "UA": "Ukraine",
+    "AE": "United Arab Emirates",
+    "ZA": "South Africa",
+    "NL": "Netherlands",
+    "GE": "Georgia",
+    "ES": "Spain",
+    "FR": "France",
+    "PL": "Poland",
+    "NZ": "New Zealand",
+    "KG": "Kyrgyzstan",
+    "MX": "Mexico",
+    "IR": "Iran",
+    "CZ": "Czechia",
+    "CH": "Switzerland",
+    "UZ": "Uzbekistan",
+    "AT": "Austria",
+    "MD": "Moldova",
+    "HR": "Croatia",
+    "DO": "Dominican Republic",
+    "MM": "Myanmar",
+    "AO": "Angola",
+    "JP": "Japan",
+    "IQ": "Iraq",
+    "KZ": "Kazakhstan",
+    "MA": "Morocco",
+    "AR": "Argentina",
+    "UG": "Uganda",
+    "CN": "China",
+    "AF": "Afghanistan"
+  },
+  "tournaments": {
+    "title": "Tournaments",
+    "year": "2026",
+    "future": "Upcoming",
+    "past": "Past"
+  },
+  "tournament": {
+    "vs": "vs",
+    "announced": "Announced",
+    "types": {
+      "numbered": "NUMBERED",
+      "freedom": "FREEDOM",
+      "fightNight": "FIGHT NIGHT",
+      "past": "PAST"
+    }
+  },
+  "news": {
+    "title": "News",
+    "imageAlt": "News image",
+    "backButton": "← Back",
+    "types": {
+      "rankings": "RANKINGS",
+      "top": "TOP STORY",
+      "announcements": "ANNOUNCEMENTS"
+    },
+    "items": {
+      "1": {
+        "title": "Charles Oliveira entered the top 10 P4P after his win over Holloway",
+        "text": "After an emphatic third-round TKO victory, the Brazilian is once again making his case as the best lightweight in the world.",
+        "date": "March 29, 2026"
+      },
+      "2": {
+        "title": "Topuria vs. Gaethje: UFC Freedom 250 main event confirmed for June 14 at the White House",
+        "text": "Topuria's manager Ali Abdelaziz confirmed that interim champion Justin Gaethje will challenge lightweight champion Ilia Topuria at a blockbuster event on the White House lawn in Washington.",
+        "date": "March 30, 2026"
+      },
+      "3": {
+        "title": "Islam Makhachev ready to defend the belt against Michael Morales or a surprise contender",
+        "text": "The welterweight champion's team is considering several options for his next fight.",
+        "date": "March 28, 2026"
+      },
+      "4": {
+        "title": "UFC 327 in Miami: Prochazka vs. Ulberg — battle for the light heavyweight belt",
+        "text": "Jiri Prochazka returns to a title fight after his rematch with Alex Pereira. Carlos Ulberg remains the division's most dangerous knockout artist.",
+        "date": "March 25, 2026"
+      }
+    }
+  },
+  "achievements": {
+    "hero": {
+      "title": "Records &",
+      "titleAccent": "Achievements",
+      "subtitle": "Historic UFC records — stats, milestones, and legends who shaped MMA history"
+    },
+    "keyStats": {
+      "title": "stats",
+      "titleAccent": "Key",
+      "description": "The biggest UFC records of all time"
+    },
+    "longestTitleReigns": {
+      "title": "reigns",
+      "titleAccent": "Longest title",
+      "description": "The longest championship reigns in UFC history (days)"
+    },
+    "mostWins": {
+      "title": "wins",
+      "titleAccent": "Most",
+      "description": "UFC record — all fights included"
+    },
+    "longestWinStreaks": {
+      "title": "streaks",
+      "titleAccent": "Win",
+      "description": "Highest number of consecutive wins"
+    },
+    "titleBoutWins": {
+      "title": "Wins in",
+      "titleAccent": "title bouts",
+      "description": "Leaders in UFC championship-fight wins"
+    },
+    "mostKnockouts": {
+      "title": "Most",
+      "titleAccent": "knockouts",
+      "description": "KO + TKO across a UFC career"
+    },
+    "mostFinishes": {
+      "title": "Most",
+      "titleAccent": "finishes",
+      "description": "KO + submission across a career"
+    },
+    "fastestKnockouts": {
+      "title": "knockouts",
+      "titleAccent": "Fastest",
+      "description": "The fastest knockouts in promotion history"
+    },
+    "ppvRecords": {
+      "title": "Pay-Per-View",
+      "titleAccent": "Records",
+      "description": "Top 5 best-selling UFC events of all time"
+    },
+    "hallOfFame": {
+      "title": "UFC",
+      "titleAccent": "Hall of Fame",
+      "description": "All wings — 60+ MMA legends",
+      "shortLabel": "HOF",
+      "tabs": {
+        "modern": "Modern Era",
+        "pioneer": "Pioneers",
+        "contributors": "Contributors",
+        "fights": "Legendary Fights"
+      }
+    },
+    "labels": {
+      "fighter": "Fighter",
+      "wins": "Wins",
+      "streak": "Streak",
+      "ko": "KO",
+      "fin": "Fin",
+      "ppv": "PPV"
+    },
+    "units": {
+      "days": "days",
+      "secondsShort": "sec"
+    }
+  },
+  "hallOfFame": {
+    "title": "UFC",
+    "titleAccent": "Hall of Fame",
+    "description": "All wings — 60+ MMA legends",
+    "shortLabel": "HOF",
+    "tabs": {
+      "modern": "Modern Era",
+      "pioneer": "Pioneers",
+      "contributors": "Contributors",
+      "fights": "Legendary Fights"
+    }
+  },
+  "achievementsData": {
+    "keyStats": {
+      "days": "days",
+      "wins": "wins",
+      "ppvSales": "PPV sales",
+      "knockouts": "knockouts",
+      "finishes": "finishes",
+      "fastestKo": "sec — knockout",
+      "reignRecord": "Title reign record — Anderson Silva",
+      "ufcWinsRecord": "UFC record — Jim Miller",
+      "ppvRecord": "UFC 229: McGregor vs Nurmagomedov",
+      "koRecord": "Record — Derrick Lewis",
+      "finishRecord": "Record — Charles Oliveira",
+      "fastestKoRecord": "Masvidal vs Askren, UFC 239"
+    },
+    "divisions": {
+      "lightweight": "Lightweight",
+      "welterweight": "Welterweight",
+      "middleweight": "Middleweight",
+      "heavyweight": "Heavyweight",
+      "lightHeavyWeight": "Light Heavyweight",
+      "lightHeavyweight": "Light Heavyweight",
+      "bantamweight": "Bantamweight",
+      "featherweight": "Featherweight",
+      "lightweightWelterweight": "Lightweight / Welterweight",
+      "lightweightFeatherweight": "Lightweight / Featherweight",
+      "featherweightLightweight": "Featherweight / Lightweight",
+      "heavyweightLightHeavyweight": "Heavyweight / Light Heavyweight",
+      "heavyweightLightHeavyweightMiddleweight": "Heavyweight / Light Heavyweight / Middleweight"
+    },
+    "extras": {
+      "active": "Active",
+      "andersonStreak": "2006–2013",
+      "usmanStreak": "2015–2022",
+      "merabStreak": "2018–2025",
+      "hollowayStreak": "2014–2019",
+      "gspStreak": "2007–Ret.",
+      "jonesStreak": "2010–2017",
+      "khabibStreak": "2012–Ret."
+    },
+    "hallOfFame": {
+      "pioneer": {
+        "royceGracie": "Winner of UFC 1, 2, and 4 tournaments — most tournament wins (3)",
+        "kenShamrock": "First UFC Superfight Champion, 2 title defenses",
+        "danSevern": "UFC Superfight Champion, winner of UFC 5 and Ultimate Ultimate 1995",
+        "randyCouture": "6 championship reigns — UFC record; oldest champion (45)",
+        "markColeman": "First UFC Heavyweight Champion, winner of UFC 10 and 11",
+        "chuckLiddell": "UFC Light Heavyweight Champion, record 7 straight knockouts",
+        "mattHughes": "Two-time UFC Welterweight Champion, 7 defenses",
+        "titoOrtiz": "UFC Light Heavyweight Champion, 5 defenses",
+        "patMiletich": "First UFC Welterweight Champion, 4 defenses",
+        "basRutten": "UFC Heavyweight Champion",
+        "antonioNogueira": "PRIDE Heavyweight Champion, interim UFC Champion",
+        "donFrye": "Winner of UFC 8 and Ultimate Ultimate 1996",
+        "mauriceSmith": "UFC Heavyweight Champion, 1 defense",
+        "kazushiSakuraba": "Winner of the UFC Japan Heavyweight Tournament",
+        "mattSerra": "UFC Welterweight Champion, winner of TUF 4",
+        "richFranklin": "UFC Middleweight Champion, 2 defenses",
+        "kevinRandleman": "UFC Heavyweight Champion (posthumous)",
+        "andersonSilva": "Middleweight Champion, 2,457 days — record; 16 straight wins",
+        "jensPulver": "First UFC Lightweight Champion, 2 defenses",
+        "wanderleiSilva": "PRIDE Middleweight Champion, 22 wins — PRIDE record",
+        "vitorBelfort": "UFC Light Heavyweight Champion, 13 first-round finishes — record",
+        "markKerr": "Winner of UFC 14 and UFC 15, NCAA Division I champion"
+      },
+      "modern": {
+        "forrestGriffin": "Winner of TUF 1, UFC Light Heavyweight Champion",
+        "bjPenn": "Champion in two divisions: Welterweight and Lightweight",
+        "urijahFaber": "WEC Featherweight Champion, 5 title defenses",
+        "rondaRousey": "First female UFC champion, 6 title defenses",
+        "rashadEvans": "UFC Light Heavyweight Champion, winner of TUF 2",
+        "michaelBisping": "UFC Middleweight Champion, 16 wins — division record",
+        "gsp": "Champion in two divisions, 13 title fight wins",
+        "dc": "Champion in two divisions: Light Heavyweight and Heavyweight",
+        "khabib": "29-0, undefeated, UFC Lightweight Champion",
+        "cerrone": "23 wins, 48 Zuffa fights — all-time record",
+        "joseAldo": "UFC Featherweight Champion — 1,848 days, 7 defenses",
+        "mauricioRua": "UFC Light Heavyweight Champion, PRIDE GP 2005 winner",
+        "joanna": "UFC Women's Strawweight Champion, 5 defenses",
+        "frankieEdgar": "UFC Lightweight Champion, 3 defenses",
+        "robbieLawler": "UFC Welterweight Champion, 2 Fight of the Year awards (2014, 2015)",
+        "amandaNunes": "Simultaneous champion in 2 divisions, 3,940 days — all-time record",
+        "dominickCruz": "Two-time UFC Bantamweight Champion, 3 defenses",
+        "demetriousJohnson": "11 straight title defenses — UFC record, UFC Flyweight Champion",
+        "chrisWeidman": "UFC Middleweight Champion, ended Anderson Silva's streak"
+      }
+    },
+    "contributors": {
+      "mask": "Founder of Tapout — the first major MMA brand",
+      "blatnick": "UFC commentator and commissioner who helped legalize MMA",
+      "meyrowitz": "Co-founder and owner of UFC (from UFC 6 to 2001)",
+      "joeSilva": "UFC matchmaker from 1997 to 2016",
+      "bruceConnal": "UFC TV producer from 1997 to 2018",
+      "artDavie": "UFC co-founder, first matchmaker (UFC 1–5)",
+      "marcRatner": "UFC vice president who helped legalize MMA in all 50 states",
+      "craigPiligian": "Creator of The Ultimate Fighter (2005)",
+      "thomasGerbasi": "Editor-in-chief of UFC.com, key MMA historian"
+    },
+    "fights": {
+      "griffinBonnar": {
+        "result": "Griffin won (split decision)",
+        "award": "Fight of the Year 2005"
+      },
+      "hughesTrigg": {
+        "result": "Hughes won (submission, round 1)",
+        "award": "Submission of the Year 2005"
+      },
+      "colemanWilliams": {
+        "result": "Williams won (head-kick knockout)",
+        "award": "Biggest Upset"
+      },
+      "ruaHenderson": {
+        "result": "Henderson won (unanimous decision)",
+        "award": "Fight of the Year 2011"
+      },
+      "sanchezGuida": {
+        "result": "Sanchez won (split decision)",
+        "award": "Fight of the Year 2009"
+      },
+      "jonesGustafsson": {
+        "result": "Jones won (unanimous decision)",
+        "award": "Fight of the Year 2013"
+      },
+      "swansonChoi": {
+        "result": "Swanson won (unanimous decision)",
+        "award": "Fight of the Year 2016"
+      },
+      "lawlerMacdonald": {
+        "result": "Lawler won (TKO, round 5)",
+        "award": "Fight of the Year 2015"
+      },
+      "silvaSonnen": {
+        "result": "Silva won (triangle submission, round 5)",
+        "award": "Fight of the Year 2010"
+      },
+      "adesanyaGastelum": {
+        "result": "Adesanya won (unanimous decision)",
+        "award": "Fight of the Year 2019"
+      },
+      "zhangJoanna": {
+        "result": "Zhang won (split decision)",
+        "award": "Fight of the Year 2020"
+      }
+    }
+  },
+  "compare": {
+    "hero": {
+      "eyebrow": "Analytics",
+      "title": "Fighter Comparison",
+      "subtitle": "Pick any two fighters and compare their attributes, record, knockout power, submissions, physical metrics, and win percentage."
+    },
+    "selectors": {
+      "fighter1": "Fighter 1",
+      "fighter2": "Fighter 2",
+      "fighter": "Fighter",
+      "weightClass": "Weight class",
+      "searchFighter": "Search fighter...",
+      "notFound": "Nothing found"
+    },
+    "sections": {
+      "metricsTitle": "Attributes",
+      "metricsText": "A quick visual view of who leads in each metric.",
+      "profileTitle": "Fighter Profile",
+      "profileText": "A combined shape based on the key indicators."
+    },
+    "metrics": {
+      "age": "Age",
+      "height": "Height",
+      "weight": "Weight",
+      "armSpan": "Reach",
+      "totalFights": "Total fights",
+      "wins": "Wins",
+      "ko": "Knockouts",
+      "sub": "Submissions",
+      "draws": "Draws",
+      "winRate": "Win %"
+    },
+    "radar": {
+      "age": "Age",
+      "height": "Height",
+      "weight": "Weight",
+      "reach": "Reach",
+      "ko": "KO",
+      "winRate": "Win %"
+    },
+    "summary": {
+      "bestStriking": "Best striking power",
+      "bestWinRate": "Best win rate",
+      "longerReach": "Longer reach",
+      "moreExperience": "More experience",
+      "equal": "Equal"
+    },
+    "common": {
+      "vs": "VS",
+      "noNickname": "No nickname",
+      "winRate": "win rate"
+    },
+    "units": {
+      "years": " yrs",
+      "cm": " cm",
+      "kg": " kg"
+    }
   }
 }

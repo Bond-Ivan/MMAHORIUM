@@ -1,6 +1,7 @@
 import { type ReactElement, useEffect, useRef } from "react";
 import styles from "./Fighter.module.css";
 import type { fighterType } from "../Fighters.types";
+import { useLang } from "../../../../hooks/useLang";
 
 type FighterProps = {
   value: fighterType & { weightClassName?: string };
@@ -11,6 +12,7 @@ type FighterProps = {
 };
 
 function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps): ReactElement {
+  const { t } = useLang();
   const koPercent = value.victory ? Math.round((value.KO * 100) / value.victory) : 0;
   const subPercent = value.victory ? Math.round((value.SUB * 100) / value.victory) : 0;
   const desPercent = value.victory ? 100 - koPercent - subPercent : 0;
@@ -23,18 +25,17 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
   const cardRef = useRef<HTMLLIElement>(null);
   const innerCardRef = useRef<HTMLDivElement>(null);
   const glareRef = useRef<HTMLDivElement>(null);
-
   const isAnimatingRef = useRef(false);
 
   const handleCardClick = () => {
     if (isAnimatingRef.current) return;
-    
+
     isAnimatingRef.current = true;
     onFlip();
-    
+
     setTimeout(() => {
       isAnimatingRef.current = false;
-    }, 700); 
+    }, 700);
   };
 
   useEffect(() => {
@@ -96,7 +97,7 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
       ref={cardRef}
       tabIndex={0}
       onClick={handleCardClick}
-      style={{ animationDelay: `${index * 0.1}s` }} 
+      style={{ animationDelay: `${index * 0.1}s` }}
     >
       <div
         className={`${styles.innerCard} ${isFlipped ? styles.flipped : ""}`}
@@ -113,11 +114,11 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
           <div className={styles.top}>
             <div className={styles.badges}>
               {showCategory && value.weightClassName && (
-                <span className={styles.categoryBadge}>{value.weightClassName}</span>
+                <span className={styles.categoryBadge}>{t(`fighters.categories.${value.weightClassName}`)}</span>
               )}
-              {value.isChampion && <span className={styles.champ}>Чемпион</span>}
+              {value.isChampion && <span className={styles.champ}>{t("fighter.champion")}</span>}
             </div>
-            <span className={styles.position}>{value.rang !== 0 ? value.rang : 'C'}</span>
+            <span className={styles.position}>{value.rang !== 0 ? value.rang : "C"}</span>
           </div>
 
           <div className={styles.body}>
@@ -130,15 +131,15 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
               <div className={styles.rang}>
                 <div className={styles.record}>
                   <h4 className={styles.recordTitle}>{value.victory}</h4>
-                  <p className={styles.recordDescription}>побед</p>
+                  <p className={styles.recordDescription}>{t("fighter.records.wins")}</p>
                 </div>
                 <div className={styles.record}>
                   <h4 className={styles.recordTitle}>{value.defeat}</h4>
-                  <p className={styles.recordDescription}>пор.</p>
+                  <p className={styles.recordDescription}>{t("fighter.records.losses")}</p>
                 </div>
                 <div className={styles.record}>
                   <h4 className={styles.recordTitle}>{value.draw}</h4>
-                  <p className={styles.recordDescription}>нич.</p>
+                  <p className={styles.recordDescription}>{t("fighter.records.draws")}</p>
                 </div>
               </div>
 
@@ -158,7 +159,7 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
           </div>
 
           <div className={styles.flipHint}>
-            <span>Нажмите, чтобы узнать больше</span>
+            <span>{t("fighter.flipHint")}</span>
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4" />
             </svg>
@@ -175,15 +176,11 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
             />
             <div className={styles.backHeroInfo}>
               <h3 className={styles.backName}>{value.name}</h3>
-              {value.nickname && (
-                <p className={styles.backNickname}>"{value.nickname}"</p>
-              )}
+              {value.nickname && <p className={styles.backNickname}>"{value.nickname}"</p>}
               {showCategory && value.weightClassName && (
-                <span className={styles.backCategoryBadge}>{value.weightClassName}</span>
+                <span className={styles.backCategoryBadge}>{t(`fighters.categories.${value.weightClassName}`)}</span>
               )}
-              {value.isChampion && (
-                <span className={styles.backChampBadge}>🏆 Чемпион</span>
-              )}
+              {value.isChampion && <span className={styles.backChampBadge}>🏆 {t("fighter.champion")}</span>}
             </div>
           </div>
 
@@ -191,33 +188,33 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
 
           <div className={styles.backStats}>
             <div>
-              <span className={styles.backStatLabel}>Страна: </span>
-              <span className={styles.backStatValue}>{value.country}</span>
+              <span className={styles.backStatLabel}>{t("fighter.stats.country")}: </span>
+              <span className={styles.backStatValue}>{t(`countries.${value.country}`)}</span>
             </div>
             <div>
-              <span className={styles.backStatLabel}>Возраст: </span>
+              <span className={styles.backStatLabel}>{t("fighter.stats.age")}: </span>
               <span className={styles.backStatValue}>{value.age}</span>
             </div>
             <div>
-              <span className={styles.backStatLabel}>Рост: </span>
-              <span className={styles.backStatValue}>{value.height} см</span>
+              <span className={styles.backStatLabel}>{t("fighter.stats.height")}: </span>
+              <span className={styles.backStatValue}>{value.height} {t("fighter.units.cm")}</span>
             </div>
             <div>
-              <span className={styles.backStatLabel}>Вес: </span>
-              <span className={styles.backStatValue}>{value.weight} кг</span>
+              <span className={styles.backStatLabel}>{t("fighter.stats.weight")}: </span>
+              <span className={styles.backStatValue}>{value.weight} {t("fighter.units.kg")}</span>
             </div>
             <div>
-              <span className={styles.backStatLabel}>Размах рук: </span>
-              <span className={styles.backStatValue}>{value.armSpan} см</span>
+              <span className={styles.backStatLabel}>{t("fighter.stats.armSpan")}: </span>
+              <span className={styles.backStatValue}>{value.armSpan} {t("fighter.units.cm")}</span>
             </div>
             <div>
-              <span className={styles.backStatLabel}>Дебют: </span>
+              <span className={styles.backStatLabel}>{t("fighter.stats.debut")}: </span>
               <span className={styles.backStatValue}>{value.debut}</span>
             </div>
           </div>
 
           <div className={styles.winRateBlock}>
-            <span className={styles.winRateLabel}>% побед</span>
+            <span className={styles.winRateLabel}>{t("fighter.winRate")}</span>
             <div className={styles.winRateBarTrack}>
               <div
                 className={styles.winRateBarFill}
@@ -228,10 +225,9 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
           </div>
 
           <div className={styles.backFooter}>
-            <span className={styles.backFooterText}>↩ Нажмите, чтобы вернуть</span>
+            <span className={styles.backFooterText}>{t("fighter.backHint")}</span>
           </div>
         </div>
-
       </div>
     </li>
   );
