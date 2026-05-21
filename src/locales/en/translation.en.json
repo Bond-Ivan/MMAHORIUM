@@ -11,6 +11,12 @@
     "compare": "Compare",
     "theme": "Theme"
   },
+  "header": {
+    "live": "Live",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "selectLanguage": "Select language"
+  },
   "home": {
     "p4p": {
       "title": "Pound-for-pound",

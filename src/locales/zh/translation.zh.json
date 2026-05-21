@@ -11,6 +11,12 @@
         "compare": "对比",
         "theme": "主题"
     },
+    "header": {
+        "live": "直播",
+        "openMenu": "打开菜单",
+        "closeMenu": "关闭菜单",
+        "selectLanguage": "选择语言"
+    },
     "home": {
         "p4p": {
             "title": "排名",

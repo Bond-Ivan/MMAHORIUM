@@ -11,6 +11,12 @@
     "compare": "Сравнить",
     "theme": "Тема"
   },
+  "header": {
+    "live": "Live",
+    "openMenu": "Открыть меню",
+    "closeMenu": "Закрыть меню",
+    "selectLanguage": "Выбрать язык"
+  },
   "home": {
     "p4p": {
       "title": "Рейтинг",

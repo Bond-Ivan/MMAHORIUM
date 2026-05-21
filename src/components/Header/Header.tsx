@@ -9,7 +9,7 @@ type HeaderProps = {
 };
 
 function Header({ title, onMenuToggle, isSidebarOpen }: HeaderProps): ReactElement {
-  const { lang, setLang } = useLang();
+  const { lang, setLang, t } = useLang();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -21,8 +21,9 @@ function Header({ title, onMenuToggle, isSidebarOpen }: HeaderProps): ReactEleme
         setDropdownOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
@@ -30,7 +31,11 @@ function Header({ title, onMenuToggle, isSidebarOpen }: HeaderProps): ReactEleme
       <button
         className={styles.menuToggle}
         onClick={onMenuToggle}
-        aria-label={isSidebarOpen ? "Закрыть меню" : "Открыть меню"}
+        aria-label={
+          isSidebarOpen
+            ? t("header.closeMenu")
+            : t("header.openMenu")
+        }
       >
         <svg
           width="20"
@@ -61,20 +66,19 @@ function Header({ title, onMenuToggle, isSidebarOpen }: HeaderProps): ReactEleme
       <div className={styles.actions}>
         <button className={styles.badgeLive}>
           <div className={styles.badgeLiveDot} />
-          Live
+          {t("header.live")}
         </button>
 
-        {/* Language Dropdown */}
         <div className={styles.langWrapper} ref={dropdownRef}>
           <button
             className={styles.langToggle}
             onClick={() => setDropdownOpen(prev => !prev)}
-            aria-label="Выбрать язык"
+            aria-label={t("header.selectLanguage")}
           >
             <span className={styles.langFlag}>{currentLang.flag}</span>
             <span className={styles.langLabel}>{currentLang.label}</span>
             <svg
-              className={`${styles.langChevron} ${dropdownOpen ? styles.langChevronOpen : ''}`}
+              className={`${styles.langChevron} ${dropdownOpen ? styles.langChevronOpen : ""}`}
               width="12"
               height="12"
               viewBox="0 0 24 24"
@@ -92,7 +96,7 @@ function Header({ title, onMenuToggle, isSidebarOpen }: HeaderProps): ReactEleme
               {LANGS.map(l => (
                 <button
                   key={l.code}
-                  className={`${styles.langOption} ${l.code === lang ? styles.langOptionActive : ''}`}
+                  className={`${styles.langOption} ${l.code === lang ? styles.langOptionActive : ""}`}
                   onClick={() => {
                     setLang(l.code);
                     setDropdownOpen(false);
