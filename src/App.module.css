@@ -22,7 +22,7 @@ a:hover {
 }
 
 body {
-  font-family: Inter, "Helvetica Neue", sans-serif;
+  font-family: 'Rajdhani', 'Helvetica Neue', sans-serif;
   font-size: 18px;
   color: #e8e8ed;
   background: #0d0d0f;
@@ -117,9 +117,11 @@ input[type='file'] {
 
 /* App.module.css */
 .wrapper {
-    width: 100%;
-    min-width: 0;        /* ✅ важно для flex-детей */
-    overflow-x: hidden;  /* ✅ убирает горизонтальный скролл */
+  width: 100%;
+  min-width: 0;
+  /* ✅ важно для flex-детей */
+  overflow-x: hidden;
+  /* ✅ убирает горизонтальный скролл */
 }
 
 .main {

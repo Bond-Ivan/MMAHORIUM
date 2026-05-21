@@ -1,0 +1,17 @@
+{
+    "sidebar": {
+        "section_main": "INÍCIO",
+        "overview": "Visão Geral",
+        "section_data": "DADOS",
+        "fighters": "Lutadores",
+        "tournaments": "Torneios",
+        "achievements": "Conquistas",
+        "news": "Notícias",
+        "section_features": "RECURSOS",
+        "compare": "Comparar",
+        "theme": "Tema"
+    },
+    "footer": {
+    "copyright": "Copyright © 2026 OctaGrid Inc. Todos os direitos reservados."
+  }
+}

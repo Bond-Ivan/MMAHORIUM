@@ -1,0 +1,17 @@
+{
+  "sidebar": {
+    "section_main": "ГЛАВНАЯ",
+    "overview": "Обзор",
+    "section_data": "ДАННЫЕ",
+    "fighters": "Бойцы",
+    "tournaments": "Турниры",
+    "achievements": "Достижения",
+    "news": "Новости",
+    "section_features": "ФИЧИ",
+    "compare": "Сравнить",
+    "theme": "Тема"
+  },
+  "footer": {
+    "copyright": "Авторское право © 2026 OctaGrid Inc. Все права защищены."
+  }
+}

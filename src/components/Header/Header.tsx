@@ -1,5 +1,6 @@
-import type { ReactElement } from "react";
+import { useState, useRef, useEffect, type ReactElement } from "react";
 import styles from "./Header.module.css";
+import { useLang, LANGS } from "../../hooks/useLang";
 
 type HeaderProps = {
   title: string;
@@ -8,6 +9,22 @@ type HeaderProps = {
 };
 
 function Header({ title, onMenuToggle, isSidebarOpen }: HeaderProps): ReactElement {
+  const { lang, setLang } = useLang();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const currentLang = LANGS.find(l => l.code === lang) ?? LANGS[0];
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
     <header className={styles.header}>
       <button
@@ -46,9 +63,48 @@ function Header({ title, onMenuToggle, isSidebarOpen }: HeaderProps): ReactEleme
           <div className={styles.badgeLiveDot} />
           Live
         </button>
-        <button className={styles.themeToggle}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 2v2"></path><path d="M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715"></path><path d="M16 12a4 4 0 0 0-4-4"></path><path d="m19 5-1.256 1.256"></path><path d="M20 12h2"></path></svg>
-        </button>
+
+        {/* Language Dropdown */}
+        <div className={styles.langWrapper} ref={dropdownRef}>
+          <button
+            className={styles.langToggle}
+            onClick={() => setDropdownOpen(prev => !prev)}
+            aria-label="Выбрать язык"
+          >
+            <span className={styles.langFlag}>{currentLang.flag}</span>
+            <span className={styles.langLabel}>{currentLang.label}</span>
+            <svg
+              className={`${styles.langChevron} ${dropdownOpen ? styles.langChevronOpen : ''}`}
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+
+          {dropdownOpen && (
+            <div className={styles.langDropdown}>
+              {LANGS.map(l => (
+                <button
+                  key={l.code}
+                  className={`${styles.langOption} ${l.code === lang ? styles.langOptionActive : ''}`}
+                  onClick={() => {
+                    setLang(l.code);
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <span>{l.flag}</span>
+                  <span>{l.label}</span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

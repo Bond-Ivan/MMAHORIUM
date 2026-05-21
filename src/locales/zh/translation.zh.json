@@ -1,0 +1,17 @@
+{
+    "sidebar": {
+        "section_main": "主页",
+        "overview": "概览",
+        "section_data": "数据",
+        "fighters": "选手",
+        "tournaments": "赛事",
+        "achievements": "成就",
+        "news": "新闻",
+        "section_features": "功能",
+        "compare": "对比",
+        "theme": "主题"
+    },
+    "footer": {
+        "copyright": "版权所有 © 2026 OctaGrid Inc. 保留所有权利。"
+    }
+}

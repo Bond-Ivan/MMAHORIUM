@@ -136,6 +136,7 @@
 
 .cardText {
     font-size: 13px;
+    height: 40px;
     color: #8a8a9a;
     line-height: 1.6;
     margin-bottom: 16px;
