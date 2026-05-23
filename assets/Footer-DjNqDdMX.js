@@ -1,0 +1,1 @@
+import{i as e,r as t,t as n}from"./jsx-runtime-BwAD125O.js";var r={footer:`_footer_fqxfh_1`},i=e(),a=n();function o(){let e=(0,i.c)(4),{t:n}=t(),o;e[0]===n?o=e[1]:(o=n(`footer.copyright`),e[0]=n,e[1]=o);let s;return e[2]===o?s=e[3]:(s=(0,a.jsx)(`footer`,{className:r.footer,children:o}),e[2]=o,e[3]=s),s}export{o as t};
