@@ -1,20 +1,4 @@
 import type { fighterType } from "../Fighters.types";
-import TomAspinall from "../../../../../public/TomAspinall.png";
-import CyrilGan from "../../../../../public/CyrilGan.png";
-import AlexanderVolkov from "../../../../../public/AlexanderVolkov.png";
-import SergeyPavlovich from "../../../../../public/SergeyPavlovich.png";
-import ValdoCortezAcosta from "../../../../../public/ValdoCortez-Acosta.png";
-import JoshHokit from "../../../../../public/JoshHokit.png";
-import SergeySpivak from "../../../../../public/SergeySpivak.png";
-import CurtisBlades from "../../../../../public/CurtisBlades.png";
-import RizvanKuniev from "../../../../../public/RizvanKuniev.png";
-import DerrickLewis from "../../../../../public/DerrickLewis.png";
-import TyrellFortune from "../../../../../public/TyrellFortune.png";
-import AnteDelia from "../../../../../public/AnteDelia.png";
-import MarcinTybura from "../../../../../public/MarcinTybura.png";
-import WalterWalker from "../../../../../public/WalterWalker.png";
-import BrandoPericic from "../../../../../public/BrandoPericic.png";
-import TallisonTeixeira from "../../../../../public/TallisonTeixeira.png";
 
 export const heavyWeight: fighterType[] = [
   {
@@ -29,7 +13,7 @@ export const heavyWeight: fighterType[] = [
     KO: 12,
     DES: 0,
     SUB: 3,
-    img: `${TomAspinall}`,
+    img: "/TomAspinall.webp",
     age: 33,
     height: 196,
     weight: 120.2,
@@ -48,7 +32,7 @@ export const heavyWeight: fighterType[] = [
     KO: 6,
     DES: 4,
     SUB: 3,
-    img: `${CyrilGan}`,
+    img: "/CyrilGan.webp",
     age: 36,
     height: 193,
     weight: 120.2,
@@ -67,7 +51,7 @@ export const heavyWeight: fighterType[] = [
     KO: 24,
     DES: 12,
     SUB: 4,
-    img: `${AlexanderVolkov}`,
+    img: "/AlexanderVolkov.webp",
     age: 37,
     height: 201,
     weight: 120.2,
@@ -86,7 +70,7 @@ export const heavyWeight: fighterType[] = [
     KO: 15,
     DES: 5,
     SUB: 0,
-    img: `${SergeyPavlovich}`,
+    img: "/SergeyPavlovich.webp",
     age: 33,
     height: 191,
     weight: 120.2,
@@ -105,7 +89,7 @@ export const heavyWeight: fighterType[] = [
     KO: 9,
     DES: 7,
     SUB: 1,
-    img: `${ValdoCortezAcosta}`,
+    img: "/ValdoCortezAcosta.webp",
     age: 34,
     height: 193,
     weight: 120.2,
@@ -124,7 +108,7 @@ export const heavyWeight: fighterType[] = [
     KO: 5,
     DES: 1,
     SUB: 3,
-    img: `${JoshHokit}`,
+    img: "/JoshHokit.webp",
     age: 28,
     height: 185,
     weight: 120.2,
@@ -143,7 +127,7 @@ export const heavyWeight: fighterType[] = [
     KO: 7,
     DES: 3,
     SUB: 8,
-    img: `${SergeySpivak}`,
+    img: "/SergeySpivak.webp",
     age: 31,
     height: 191,
     weight: 120.2,
@@ -162,7 +146,7 @@ export const heavyWeight: fighterType[] = [
     KO: 13,
     DES: 6,
     SUB: 0,
-    img: `${CurtisBlades}`,
+    img: "/CurtisBlades.webp",
     age: 35,
     height: 193,
     weight: 120.2,
@@ -181,7 +165,7 @@ export const heavyWeight: fighterType[] = [
     KO: 6,
     DES: 4,
     SUB: 2,
-    img: `${RizvanKuniev}`,
+    img: "/RizvanKuniev.webp",
     age: 33,
     height: 193,
     weight: 120.2,
@@ -200,7 +184,7 @@ export const heavyWeight: fighterType[] = [
     KO: 24,
     DES: 4,
     SUB: 1,
-    img: `${DerrickLewis}`,
+    img: "/DerrickLewis.webp",
     age: 41,
     height: 191,
     weight: 120.2,
@@ -219,7 +203,7 @@ export const heavyWeight: fighterType[] = [
     KO: 11,
     DES: 5,
     SUB: 1,
-    img: `${TyrellFortune}`,
+    img: "/TyrellFortune.webp",
     age: 35,
     height: 191,
     weight: 120.2,
@@ -238,7 +222,7 @@ export const heavyWeight: fighterType[] = [
     KO: 12,
     DES: 7,
     SUB: 7,
-    img: `${AnteDelia}`,
+    img: "/AnteDelia.webp",
     age: 35,
     height: 192,
     weight: 120.2,
@@ -257,7 +241,7 @@ export const heavyWeight: fighterType[] = [
     KO: 10,
     DES: 10,
     SUB: 7,
-    img: `${MarcinTybura}`,
+    img: "/MarcinTybura.webp",
     age: 40,
     height: 191,
     weight: 120.2,
@@ -276,7 +260,7 @@ export const heavyWeight: fighterType[] = [
     KO: 6,
     DES: 4,
     SUB: 5,
-    img: `${WalterWalker}`,
+    img: "/WalterWalker.webp",
     age: 28,
     height: 198,
     weight: 120.2,
@@ -295,7 +279,7 @@ export const heavyWeight: fighterType[] = [
     KO: 6,
     DES: 0,
     SUB: 1,
-    img: `${BrandoPericic}`,
+    img: "/BrandoPericic.webp",
     age: 31,
     height: 196,
     weight: 120.2,
@@ -314,7 +298,7 @@ export const heavyWeight: fighterType[] = [
     KO: 7,
     DES: 1,
     SUB: 1,
-    img: `${TallisonTeixeira}`,
+    img: "/TallisonTeixeira.webp",
     age: 26,
     height: 201,
     weight: 120.2,

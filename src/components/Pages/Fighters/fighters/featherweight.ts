@@ -1,20 +1,4 @@
 import type { fighterType } from "../Fighters.types";
-import AlexanderVolkanovsky from "../../../../../public/AlexanderVolkanovsky.png";
-import MovsarYevloyev from "../../../../../public/MovsarYevloyev.png";
-import DiegoLopez from "../../../../../public/DiegoLopez.png";
-import LeronMurphy from "../../../../../public/LeronMurphy.png";
-import YairRodriguez from "../../../../../public/YairRodriguez.png";
-import AlgemaineSterling from "../../../../../public/AlgemaineSterling.png";
-import JeanSilva from "../../../../../public/JeanSilva.png";
-import YoussefZalal from "../../../../../public/YoussefZalal.png";
-import ArnoldAllen from "../../../../../public/ArnoldAllen.png";
-import SteveGarcia from "../../../../../public/SteveGarcia.png";
-import KevinVallejos from "../../../../../public/KevinVallejos.png";
-import BrianOrtega from "../../../../../public/BrianOrtega.png";
-import MelkizaelCosta from "../../../../../public/MelkizaelCosta.png";
-import AaronPico from "../../../../../public/AaronPico.png";
-import DavidOnama from "../../../../../public/DavidOnama.png";
-import PatricioPitbull from "../../../../../public/PatricioPitbull.png";
 
 export const featherWeight: fighterType[] = [
   {
@@ -29,7 +13,7 @@ export const featherWeight: fighterType[] = [
     KO: 13,
     DES: 12,
     SUB: 3,
-    img: `${AlexanderVolkanovsky}`,
+    img: "/AlexanderVolkanovsky.webp",
     age: 37,
     height: 168,
     weight: 65.8,
@@ -48,7 +32,7 @@ export const featherWeight: fighterType[] = [
     KO: 3,
     DES: 13,
     SUB: 4,
-    img: `${MovsarYevloyev}`,
+    img: "/MovsarYevloyev.webp",
     age: 32,
     height: 170,
     weight: 65.8,
@@ -67,7 +51,7 @@ export const featherWeight: fighterType[] = [
     KO: 11,
     DES: 4,
     SUB: 12,
-    img: `${DiegoLopez}`,
+    img: "/DiegoLopez.webp",
     age: 31,
     height: 180,
     weight: 65.8,
@@ -86,7 +70,7 @@ export const featherWeight: fighterType[] = [
     KO: 8,
     DES: 9,
     SUB: 0,
-    img: `${LeronMurphy}`,
+    img: "/LeronMurphy.webp",
     age: 34,
     height: 175,
     weight: 65.8,
@@ -105,7 +89,7 @@ export const featherWeight: fighterType[] = [
     KO: 3,
     DES: 14,
     SUB: 8,
-    img: `${AlgemaineSterling}`,
+    img: "/AlgemaineSterling.webp",
     age: 36,
     height: 170,
     weight: 65.8,
@@ -124,7 +108,7 @@ export const featherWeight: fighterType[] = [
     KO: 8,
     DES: 8,
     SUB: 5,
-    img: `${YairRodriguez}`,
+    img: "/YairRodriguez.webp",
     age: 33,
     height: 180,
     weight: 65.8,
@@ -143,7 +127,7 @@ export const featherWeight: fighterType[] = [
     KO: 12,
     DES: 2,
     SUB: 3,
-    img: `${JeanSilva}`,
+    img: "/JeanSilva.webp",
     age: 29,
     height: 170,
     weight: 65.8,
@@ -162,7 +146,7 @@ export const featherWeight: fighterType[] = [
     KO: 7,
     DES: 10,
     SUB: 4,
-    img: `${ArnoldAllen}`,
+    img: "/ArnoldAllen.webp",
     age: 32,
     height: 173,
     weight: 65.8,
@@ -181,7 +165,7 @@ export const featherWeight: fighterType[] = [
     KO: 4,
     DES: 4,
     SUB: 10,
-    img: `${YoussefZalal}`,
+    img: "/YoussefZalal.webp",
     age: 29,
     height: 178,
     weight: 65.8,
@@ -200,7 +184,7 @@ export const featherWeight: fighterType[] = [
     KO: 15,
     DES: 4,
     SUB: 0,
-    img: `${SteveGarcia}`,
+    img: "/SteveGarcia.webp",
     age: 33,
     height: 183,
     weight: 65.8,
@@ -219,7 +203,7 @@ export const featherWeight: fighterType[] = [
     KO: 13,
     DES: 3,
     SUB: 2,
-    img: `${KevinVallejos}`,
+    img: "/KevinVallejos.webp",
     age: 24,
     height: 170,
     weight: 65.8,
@@ -238,7 +222,7 @@ export const featherWeight: fighterType[] = [
     KO: 3,
     DES: 4,
     SUB: 8,
-    img: `${BrianOrtega}`,
+    img: "/BrianOrtega.webp",
     age: 35,
     height: 173,
     weight: 65.8,
@@ -257,7 +241,7 @@ export const featherWeight: fighterType[] = [
     KO: 9,
     DES: 9,
     SUB: 8,
-    img: `${MelkizaelCosta}`,
+    img: "/MelkizaelCosta.webp",
     age: 29,
     height: 178,
     weight: 65.8,
@@ -276,7 +260,7 @@ export const featherWeight: fighterType[] = [
     KO: 9,
     DES: 3,
     SUB: 2,
-    img: `${AaronPico}`,
+    img: "/AaronPico.webp",
     age: 29,
     height: 173,
     weight: 65.8,
@@ -295,7 +279,7 @@ export const featherWeight: fighterType[] = [
     KO: 7,
     DES: 4,
     SUB: 3,
-    img: `${DavidOnama}`,
+    img: "/DavidOnama.webp",
     age: 31,
     height: 180,
     weight: 65.8,
@@ -314,7 +298,7 @@ export const featherWeight: fighterType[] = [
     KO: 12,
     DES: 13,
     SUB: 12,
-    img: `${PatricioPitbull}`,
+    img: "/PatricioPitbull.webp",
     age: 38,
     height: 168,
     weight: 65.8,

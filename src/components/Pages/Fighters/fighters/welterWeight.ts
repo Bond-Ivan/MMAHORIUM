@@ -1,20 +1,4 @@
 import type { fighterType } from "../Fighters.types";
-import IslamMakhachev from "../../../../../public/IslamMakhachev.png";
-import IanMachadoGary from "../../../../../public/IanMachadoGary.png";
-import CarlosPrates from "../../../../../public/CarlosPrates.png";
-import MichaelMorales from "../../../../../public/MichaelMorales.png";
-import JackDellaMaddalena from "../../../../../public/JackDellaMaddalena.png";
-import BelalMuhammad from "../../../../../public/BelalMuhammad.png";
-import SeanBrady from "../../../../../public/SeanBrady.png";
-import LeonEdwards from "../../../../../public/LeonEdwards.png";
-import KamaruUsman from "../../../../../public/KamaruUsman.png";
-import JoaquinBuckley from "../../../../../public/JoaquinBuckley.png";
-import GabrielBonfim from "../../../../../public/GabrielBonfim.png";
-import MikeMalott from "../../../../../public/MikeMalott.png";
-import UrosMedich from "../../../../../public/UrosMedich.png";
-import MichaelPage from "../../../../../public/MichaelPage.png";
-import YaroslavAmosov from "../../../../../public/YaroslavAmosov.png";
-import DanielRodriguez from "../../../../../public/DanielRodriguez.png";
 
 export const welterWeight: fighterType[] = [
   {
@@ -29,7 +13,7 @@ export const welterWeight: fighterType[] = [
     KO: 5,
     DES: 10,
     SUB: 13,
-    img: `${IslamMakhachev}`,
+    img: "/IslamMakhachev.webp",
     age: 34,
     height: 178,
     weight: 77.1,
@@ -48,7 +32,7 @@ export const welterWeight: fighterType[] = [
     KO: 7,
     DES: 9,
     SUB: 1,
-    img: `${IanMachadoGary}`,
+    img: "/IanMachadoGary.webp",
     age: 28,
     height: 191,
     weight: 77.1,
@@ -67,7 +51,7 @@ export const welterWeight: fighterType[] = [
     KO: 19,
     DES: 2,
     SUB: 3,
-    img: `${CarlosPrates}`,
+    img: "/CarlosPrates.webp",
     age: 32,
     height: 185,
     weight: 77.1,
@@ -86,7 +70,7 @@ export const welterWeight: fighterType[] = [
     KO: 14,
     DES: 4,
     SUB: 1,
-    img: `${MichaelMorales}`,
+    img: "/MichaelMorales.webp",
     age: 26,
     height: 183,
     weight: 77.1,
@@ -105,7 +89,7 @@ export const welterWeight: fighterType[] = [
     KO: 12,
     DES: 4,
     SUB: 2,
-    img: `${JackDellaMaddalena}`,
+    img: "/JackDellaMaddalena.webp",
     age: 29,
     height: 180,
     weight: 77.1,
@@ -124,7 +108,7 @@ export const welterWeight: fighterType[] = [
     KO: 5,
     DES: 18,
     SUB: 1,
-    img: `${BelalMuhammad}`,
+    img: "/BelalMuhammad.webp",
     age: 37,
     height: 180,
     weight: 77.1,
@@ -143,7 +127,7 @@ export const welterWeight: fighterType[] = [
     KO: 3,
     DES: 10,
     SUB: 6,
-    img: `${SeanBrady}`,
+    img: "/SeanBrady.webp",
     age: 33,
     height: 178,
     weight: 77.1,
@@ -162,7 +146,7 @@ export const welterWeight: fighterType[] = [
     KO: 7,
     DES: 12,
     SUB: 3,
-    img: `${LeonEdwards}`,
+    img: "/LeonEdwards.webp",
     age: 34,
     height: 183,
     weight: 77.1,
@@ -181,7 +165,7 @@ export const welterWeight: fighterType[] = [
     KO: 9,
     DES: 11,
     SUB: 1,
-    img: `${KamaruUsman}`,
+    img: "/KamaruUsman.webp",
     age: 38,
     height: 183,
     weight: 77.1,
@@ -200,7 +184,7 @@ export const welterWeight: fighterType[] = [
     KO: 15,
     DES: 6,
     SUB: 0,
-    img: `${JoaquinBuckley}`,
+    img: "/JoaquinBuckley.webp",
     age: 32,
     height: 178,
     weight: 77.1,
@@ -219,7 +203,7 @@ export const welterWeight: fighterType[] = [
     KO: 4,
     DES: 2,
     SUB: 13,
-    img: `${GabrielBonfim}`,
+    img: "/GabrielBonfim.webp",
     age: 28,
     height: 185,
     weight: 77.1,
@@ -238,7 +222,7 @@ export const welterWeight: fighterType[] = [
     KO: 6,
     DES: 2,
     SUB: 6,
-    img: `${MikeMalott}`,
+    img: "/MikeMalott.webp",
     age: 34,
     height: 185,
     weight: 77.1,
@@ -257,7 +241,7 @@ export const welterWeight: fighterType[] = [
     KO: 11,
     DES: 0,
     SUB: 2,
-    img: `${UrosMedich}`,
+    img: "/UrosMedich.webp",
     age: 33,
     height: 185,
     weight: 77.1,
@@ -276,7 +260,7 @@ export const welterWeight: fighterType[] = [
     KO: 13,
     DES: 9,
     SUB: 3,
-    img: `${MichaelPage}`,
+    img: "/MichaelPage.webp",
     age: 39,
     height: 191,
     weight: 77.1,
@@ -295,7 +279,7 @@ export const welterWeight: fighterType[] = [
     KO: 9,
     DES: 8,
     SUB: 12,
-    img: `${YaroslavAmosov}`,
+    img: "/YaroslavAmosov.webp",
     age: 32,
     height: 183,
     weight: 77.1,
@@ -314,7 +298,7 @@ export const welterWeight: fighterType[] = [
     KO: 9,
     DES: 7,
     SUB: 4,
-    img: `${DanielRodriguez}`,
+    img: "/DanielRodriguez.webp",
     age: 38,
     height: 185,
     weight: 77.1,

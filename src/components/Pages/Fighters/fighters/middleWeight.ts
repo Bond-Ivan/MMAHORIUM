@@ -1,20 +1,4 @@
 import type { fighterType } from "../Fighters.types";
-import SeanStrickland from "../../../../../public/SeanStrickland.png";
-import KhamzatChimaev from "../../../../../public/KhamzatChimaev.png";
-import DrikusDuPlessis from "../../../../../public/DrikusDuPlessis.png";
-import NassurdinImavov from "../../../../../public/NassurdinImavov.png";
-import BrendanAllen from "../../../../../public/BrendanAllen.png";
-import AnthonyHernandez from "../../../../../public/AnthonyHernandez.png";
-import CayoBorrallo from "../../../../../public/CayoBorrallo.png";
-import JoePifer from "../../../../../public/JoePifer.png";
-import RainierdeRidder from "../../../../../public/RainierdeRidder.png";
-import IsraelAdesanya from "../../../../../public/IsraelAdesanya.png";
-import RobertWhittaker from "../../../../../public/RobertWhittaker.png";
-import JaredCannonier from "../../../../../public/JaredCannonier.png";
-import GregoryRodriguez from "../../../../../public/GregoryRodriguez.jpg";
-import ChristianLeroyDuncan from "../../../../../public/ChristianLeroyDuncan.jpg";
-import PauloCosta from "../../../../../public/PauloCosta.png";
-import RomanDolidze from "../../../../../public/RomanDolidze.jpg";
 
 export const middleWeight: fighterType[] = [
   {
@@ -29,7 +13,7 @@ export const middleWeight: fighterType[] = [
     KO: 12,
     DES: 15,
     SUB: 4,
-    img: `${SeanStrickland}`,
+    img: "/SeanStrickland.webp",
     age: 35,
     height: 185,
     weight: 83.9,
@@ -48,7 +32,7 @@ export const middleWeight: fighterType[] = [
     KO: 6,
     DES: 3,
     SUB: 6,
-    img: `${KhamzatChimaev}`,
+    img: "/KhamzatChimaev.webp",
     age: 32,
     height: 188,
     weight: 83.9,
@@ -67,7 +51,7 @@ export const middleWeight: fighterType[] = [
     KO: 9,
     DES: 3,
     SUB: 11,
-    img: `${DrikusDuPlessis}`,
+    img: "/DrikusDuPlessis.webp",
     age: 32,
     height: 185,
     weight: 83.9,
@@ -86,7 +70,7 @@ export const middleWeight: fighterType[] = [
     KO: 7,
     DES: 6,
     SUB: 4,
-    img: `${NassurdinImavov}`,
+    img: "/NassurdinImavov.webp",
     age: 30,
     height: 191,
     weight: 83.9,
@@ -105,7 +89,7 @@ export const middleWeight: fighterType[] = [
     KO: 5,
     DES: 9,
     SUB: 4,
-    img: `${CayoBorrallo}`,
+    img: "/CayoBorrallo.webp",
     age: 33,
     height: 187,
     weight: 83.9,
@@ -124,7 +108,7 @@ export const middleWeight: fighterType[] = [
     KO: 6,
     DES: 6,
     SUB: 14,
-    img: `${BrendanAllen}`,
+    img: "/BrendanAllen.webp",
     age: 30,
     height: 188,
     weight: 83.9,
@@ -143,7 +127,7 @@ export const middleWeight: fighterType[] = [
     KO: 10,
     DES: 2,
     SUB: 4,
-    img: `${JoePifer}`,
+    img: "/JoePifer.webp",
     age: 29,
     height: 188,
     weight: 83.9,
@@ -162,7 +146,7 @@ export const middleWeight: fighterType[] = [
     KO: 3,
     DES: 3,
     SUB: 9,
-    img: `${AnthonyHernandez}`,
+    img: "/AnthonyHernandez.webp",
     age: 32,
     height: 183,
     weight: 83.9,
@@ -181,7 +165,7 @@ export const middleWeight: fighterType[] = [
     KO: 5,
     DES: 3,
     SUB: 13,
-    img: `${RainierdeRidder}`,
+    img: "/RainierdeRidder.webp",
     age: 35,
     height: 193,
     weight: 83.9,
@@ -200,7 +184,7 @@ export const middleWeight: fighterType[] = [
     KO: 16,
     DES: 8,
     SUB: 0,
-    img: `${IsraelAdesanya}`,
+    img: "/IsraelAdesanya.webp",
     age: 36,
     height: 193,
     weight: 83.9,
@@ -219,7 +203,7 @@ export const middleWeight: fighterType[] = [
     KO: 11,
     DES: 11,
     SUB: 5,
-    img: `${RobertWhittaker}`,
+    img: "/RobertWhittaker.webp",
     age: 35,
     height: 183,
     weight: 83.9,
@@ -238,7 +222,7 @@ export const middleWeight: fighterType[] = [
     KO: 11,
     DES: 5,
     SUB: 2,
-    img: `${JaredCannonier}`,
+    img: "/JaredCannonier.webp",
     age: 42,
     height: 180,
     weight: 83.9,
@@ -257,7 +241,7 @@ export const middleWeight: fighterType[] = [
     KO: 12,
     DES: 4,
     SUB: 3,
-    img: `${GregoryRodriguez}`,
+    img: "/GregoryRodriguez.webp",
     age: 34,
     height: 191,
     weight: 83.9,
@@ -276,7 +260,7 @@ export const middleWeight: fighterType[] = [
     KO: 10,
     DES: 3,
     SUB: 1,
-    img: `${ChristianLeroyDuncan}`,
+    img: "/ChristianLeroyDuncan.webp",
     age: 30,
     height: 188,
     weight: 83.9,
@@ -295,7 +279,7 @@ export const middleWeight: fighterType[] = [
     KO: 12,
     DES: 3,
     SUB: 1,
-    img: `${PauloCosta}`,
+    img: "/PauloCosta.webp",
     age: 35,
     height: 185,
     weight: 83.9,
@@ -314,7 +298,7 @@ export const middleWeight: fighterType[] = [
     KO: 8,
     DES: 4,
     SUB: 3,
-    img: `${RomanDolidze}`,
+    img: "/RomanDolidze.webp",
     age: 37,
     height: 188,
     weight: 83.9,

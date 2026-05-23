@@ -45,19 +45,54 @@
     isolation: isolate;
 }
 
-.frontBg {
+/* Картинка через <img> — заменяет frontBg с background-image */
+.fighterImg {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: opacity 0.4s ease;
     z-index: -1;
-    background-image: var(--bg-image);
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    transition: transform 0.4s ease-out;
 }
 
-.card:hover .frontBg {
+.imgVisible {
+    opacity: 1;
+}
+
+.imgHidden {
+    opacity: 0;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.imgSkeleton {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    z-index: -1;
+}
+
+/* Zoom эффект при hover теперь на img */
+.card:hover .fighterImg {
     transform: scale(1.05);
+    transition: transform 0.4s ease-out, opacity 0.4s ease;
+}
+
+.frontBg {
+    display: none;
+    /* больше не нужен */
 }
 
 .glare {
@@ -266,6 +301,7 @@
     color: rgba(255, 255, 255, 0.5);
 }
 
+/* BACK */
 .back {
     position: absolute;
     inset: 0;
@@ -498,11 +534,6 @@
         max-height: 280px;
     }
 
-    .front,
-    .back {
-        max-height: 280px;
-    }
-
     .front {
         min-height: 280px;
     }
@@ -559,10 +590,8 @@
         font-size: 6px;
     }
 
-
     .backStatLabel {
         font-size: 8px;
-
     }
 
     .backStatValue {
@@ -594,11 +623,6 @@
     .button {
         padding: 4px 8px;
         font-size: 12px;
-    }
-
-    .front,
-    .back {
-        max-height: 260px;
     }
 
     .front,

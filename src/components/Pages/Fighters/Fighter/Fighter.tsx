@@ -1,4 +1,4 @@
-import { type ReactElement, useEffect, useRef } from "react";
+import { type ReactElement, useEffect, useRef, useState } from "react";
 import styles from "./Fighter.module.css";
 import type { fighterType } from "../Fighters.types";
 import { useLang } from "../../../../hooks/useLang";
@@ -13,6 +13,7 @@ type FighterProps = {
 
 function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps): ReactElement {
   const { t } = useLang();
+  const [imgLoaded, setImgLoaded] = useState(false);
   const koPercent = value.victory ? Math.round((value.KO * 100) / value.victory) : 0;
   const subPercent = value.victory ? Math.round((value.SUB * 100) / value.victory) : 0;
   const desPercent = value.victory ? 100 - koPercent - subPercent : 0;
@@ -29,10 +30,8 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
 
   const handleCardClick = () => {
     if (isAnimatingRef.current) return;
-
     isAnimatingRef.current = true;
     onFlip();
-
     setTimeout(() => {
       isAnimatingRef.current = false;
     }, 700);
@@ -45,18 +44,14 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
 
     const calculateAngle = (e: MouseEvent) => {
       if (isFlipped || isAnimatingRef.current) return;
-
       if (card && innerCard && glare) {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-
         const halfWidth = rect.width / 2;
         const halfHeight = rect.height / 2;
-
         const calcAngleX = (y - halfHeight) / 20;
         const calcAngleY = (x - halfWidth) / 20;
-
         innerCard.style.transform = `rotateY(${calcAngleY}deg) rotateX(${-calcAngleX}deg) scale(1.03)`;
         glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.04), transparent)`;
       }
@@ -64,7 +59,6 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
 
     const handleMouseLeave = () => {
       if (isFlipped || isAnimatingRef.current) return;
-
       if (innerCard && glare) {
         innerCard.style.transform = `rotateY(0deg) rotateX(0deg) scale(1)`;
         glare.style.background = `none`;
@@ -103,10 +97,21 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
         className={`${styles.innerCard} ${isFlipped ? styles.flipped : ""}`}
         ref={innerCardRef}
       >
-        <div
-          className={styles.front}
-          style={{ "--bg-image": `url(${value.img})` } as React.CSSProperties}
-        >
+        {/* FRONT */}
+        <div className={styles.front}>
+          {/* Skeleton пока картинка грузится */}
+          {!imgLoaded && <div className={styles.imgSkeleton} />}
+
+          {/* Сама картинка */}
+          <img
+            src={`${import.meta.env.BASE_URL}${value.img.replace(/^\//, '')}`}
+            alt={value.name}
+            className={`${styles.fighterImg} ${imgLoaded ? styles.imgVisible : styles.imgHidden}`}
+            loading="lazy"
+            decoding="async"
+            onLoad={() => setImgLoaded(true)}
+          />
+
           <div className={styles.frontBg} />
           <div className={styles.glare} ref={glareRef} />
           <div className={styles.overlay} />
@@ -166,13 +171,14 @@ function Fighter({ value, index, showCategory, isFlipped, onFlip }: FighterProps
           </div>
         </div>
 
+        {/* BACK */}
         <div className={styles.back}>
           <div className={styles.backGrid} />
 
           <div className={styles.backHero}>
             <div
               className={styles.backAvatar}
-              style={{ backgroundImage: `url(${value.img})` }}
+              style={{ backgroundImage: `url(${import.meta.env.BASE_URL}${value.img.replace(/^\//, '')})` }}
             />
             <div className={styles.backHeroInfo}>
               <h3 className={styles.backName}>{value.name}</h3>

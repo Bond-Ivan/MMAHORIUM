@@ -1,20 +1,4 @@
 import type { fighterType } from "../Fighters.types";
-import CarlosOlberg from "../../../../../public/CarlosOlberg.png";
-import MagomedAnkalaev from "../../../../../public/MagomedAnkalaev.png";
-import AlexPereira from "../../../../../public/AlexPereira.png";
-import JiriProkhazka from "../../../../../public/JiriProkhazka.png";
-import JanBlachowicz from "../../../../../public/JanBlachowicz.png";
-import KhalilRountreeJr from "../../../../../public/KhalilRountreeJr.png";
-import JamalHill from "../../../../../public/JamalHill.png";
-import PauloCosta from "../../../../../public/PauloCosta.png";
-import AzamatMurzakanov from "../../../../../public/AzamatMurzakanov.png";
-import VolkanOzdemir from "../../../../../public/VolkanOzdemir.png";
-import BogdanGuskov from "../../../../../public/BogdanGuskov.jpg";
-import DominicReyes from "../../../../../public/DominicReyes.png";
-import AlexanderRakich from "../../../../../public/AlexanderRakich.jpg";
-import NikitaKrylov from "../../../../../public/NikitaKrylov.jpg";
-import JohnnyWalker from "../../../../../public/JohnnyWalker.png";
-import AlonzoMenifield from "../../../../../public/AlonzoMenifield.png";
 
 export const lightHeavyWeight: fighterType[] = [
     {
@@ -29,7 +13,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 10,
         DES: 4,
         SUB: 1,
-        img: `${CarlosOlberg}`,
+        img: "/CarlosOlberg.webp",
         age: 35,
         height: 193,
         weight: 93.0,
@@ -48,7 +32,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 11,
         DES: 10,
         SUB: 0,
-        img: `${MagomedAnkalaev}`,
+        img: "/MagomedAnkalaev.webp",
         age: 33,
         height: 191,
         weight: 93.0,
@@ -67,7 +51,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 11,
         DES: 2,
         SUB: 0,
-        img: `${AlexPereira}`,
+        img: "/AlexPereira.webp",
         age: 38,
         height: 193,
         weight: 93.0,
@@ -86,7 +70,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 28,
         DES: 1,
         SUB: 3,
-        img: `${JiriProkhazka}`,
+        img: "/JiriProkhazka.webp",
         age: 33,
         height: 191,
         weight: 93.0,
@@ -105,7 +89,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 9,
         DES: 11,
         SUB: 9,
-        img: `${JanBlachowicz}`,
+        img: "/JanBlachowicz.webp",
         age: 43,
         height: 188,
         weight: 93.0,
@@ -124,7 +108,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 9,
         DES: 6,
         SUB: 0,
-        img: `${KhalilRountreeJr}`,
+        img: "/KhalilRountreeJr.webp",
         age: 36,
         height: 185,
         weight: 93.0,
@@ -143,7 +127,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 7,
         DES: 5,
         SUB: 0,
-        img: `${JamalHill}`,
+        img: "/JamalHill.webp",
         age: 34,
         height: 193,
         weight: 93.0,
@@ -162,7 +146,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 12,
         DES: 3,
         SUB: 1,
-        img: `${PauloCosta}`,
+        img: "/PauloCosta.webp",
         age: 35,
         height: 185,
         weight: 93.0,
@@ -181,7 +165,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 12,
         DES: 3,
         SUB: 1,
-        img: `${AzamatMurzakanov}`,
+        img: "/AzamatMurzakanov.webp",
         age: 35,
         height: 178,
         weight: 93.0,
@@ -200,7 +184,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 14,
         DES: 5,
         SUB: 2,
-        img: `${VolkanOzdemir}`,
+        img: "/VolkanOzdemir.webp",
         age: 36,
         height: 188,
         weight: 93.0,
@@ -219,7 +203,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 15,
         DES: 0,
         SUB: 3,
-        img: `${BogdanGuskov}`,
+        img: "/BogdanGuskov.webp",
         age: 33,
         height: 191,
         weight: 93.0,
@@ -238,7 +222,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 10,
         DES: 4,
         SUB: 2,
-        img: `${DominicReyes}`,
+        img: "/DominicReyes.webp",
         age: 36,
         height: 193,
         weight: 93.0,
@@ -257,7 +241,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 9,
         DES: 4,
         SUB: 1,
-        img: `${AlexanderRakich}`,
+        img: "/AlexanderRakich.webp",
         age: 34,
         height: 193,
         weight: 93.0,
@@ -276,7 +260,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 13,
         DES: 2,
         SUB: 16,
-        img: `${NikitaKrylov}`,
+        img: "/NikitaKrylov.webp",
         age: 34,
         height: 191,
         weight: 93.0,
@@ -295,7 +279,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 17,
         DES: 2,
         SUB: 3,
-        img: `${JohnnyWalker}`,
+        img: "/JohnnyWalker.webp",
         age: 34,
         height: 198,
         weight: 93.0,
@@ -314,7 +298,7 @@ export const lightHeavyWeight: fighterType[] = [
         KO: 10,
         DES: 4,
         SUB: 3,
-        img: `${AlonzoMenifield}`,
+        img: "/AlonzoMenifield.webp",
         age: 38,
         height: 183,
         weight: 93.0,

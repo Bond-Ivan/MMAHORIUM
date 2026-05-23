@@ -1,20 +1,4 @@
 import type { fighterType } from "../Fighters.types";
-import PeterYan from "../../../../../public/PeterYan.png";
-import MerabDvalishvili from "../../../../../public/MerabDvalishvili.png";
-import UmarNurmagomedov from "../../../../../public/UmarNurmagomedov.png";
-import SeanOMalley from "../../../../../public/SeanOMalley.png";
-import SongYadong from "../../../../../public/SongYadong.png";
-import CoreySandhagen from "../../../../../public/CoreySandhagen.png";
-import MarioBautista from "../../../../../public/MarioBautista.png";
-import AimannZahabi from "../../../../../public/AimannZahabi.png";
-import DavesonFigueredo from "../../../../../public/DavesonFigueredo.png";
-import DavidMartinez from "../../../../../public/DavidMartinez.png";
-import MarlonVera from "../../../../../public/MarlonVera.png";
-import ViniciusOliveira from "../../../../../public/ViniciusOliveira.png";
-import PaytonTalbott from "../../../../../public/PaytonTalbott.png";
-import RaulRosasJr from "../../../../../public/RaulRosasJr.png";
-import MontelJackson from "../../../../../public/MontelJackson.png";
-import FaridBasharat from "../../../../../public/FaridBasharat.png";
 
 export const bantaWeight: fighterType[] = [
     {
@@ -29,7 +13,7 @@ export const bantaWeight: fighterType[] = [
         KO: 7,
         DES: 12,
         SUB: 1,
-        img: `${PeterYan}`,
+        img: "/PeterYan.webp",
         age: 33,
         height: 171,
         weight: 61.2,
@@ -48,7 +32,7 @@ export const bantaWeight: fighterType[] = [
         KO: 3,
         DES: 16,
         SUB: 2,
-        img: `${MerabDvalishvili}`,
+        img: "/MerabDvalishvili.webp",
         age: 35,
         height: 168,
         weight: 61.2,
@@ -67,7 +51,7 @@ export const bantaWeight: fighterType[] = [
         KO: 2,
         DES: 11,
         SUB: 7,
-        img: `${UmarNurmagomedov}`,
+        img: "/UmarNurmagomedov.webp",
         age: 30,
         height: 173,
         weight: 61.2,
@@ -86,7 +70,7 @@ export const bantaWeight: fighterType[] = [
         KO: 12,
         DES: 6,
         SUB: 1,
-        img: `${SeanOMalley}`,
+        img: "/SeanOMalley.webp",
         age: 31,
         height: 180,
         weight: 61.2,
@@ -105,7 +89,7 @@ export const bantaWeight: fighterType[] = [
         KO: 8,
         DES: 7,
         SUB: 3,
-        img: `${CoreySandhagen}`,
+        img: "/CoreySandhagen.webp",
         age: 33,
         height: 180,
         weight: 61.2,
@@ -124,7 +108,7 @@ export const bantaWeight: fighterType[] = [
         KO: 9,
         DES: 10,
         SUB: 3,
-        img: `${SongYadong}`,
+        img: "/SongYadong.webp",
         age: 28,
         height: 173,
         weight: 61.2,
@@ -143,7 +127,7 @@ export const bantaWeight: fighterType[] = [
         KO: 6,
         DES: 6,
         SUB: 2,
-        img: `${AimannZahabi}`,
+        img: "/AimannZahabi.webp",
         age: 38,
         height: 173,
         weight: 61.2,
@@ -162,7 +146,7 @@ export const bantaWeight: fighterType[] = [
         KO: 9,
         DES: 7,
         SUB: 9,
-        img: `${DavesonFigueredo}`,
+        img: "/DavesonFigueredo.webp",
         age: 38,
         height: 165,
         weight: 61.2,
@@ -181,7 +165,7 @@ export const bantaWeight: fighterType[] = [
         KO: 3,
         DES: 7,
         SUB: 7,
-        img: `${MarioBautista}`,
+        img: "/MarioBautista.webp",
         age: 32,
         height: 175,
         weight: 61.2,
@@ -200,7 +184,7 @@ export const bantaWeight: fighterType[] = [
         KO: 10,
         DES: 4,
         SUB: 0,
-        img: `${DavidMartinez}`,
+        img: "/DavidMartinez.webp",
         age: 27,
         height: 165,
         weight: 61.2,
@@ -219,7 +203,7 @@ export const bantaWeight: fighterType[] = [
         KO: 8,
         DES: 5,
         SUB: 10,
-        img: `${MarlonVera}`,
+        img: "/MarlonVera.webp",
         age: 33,
         height: 173,
         weight: 61.2,
@@ -238,7 +222,7 @@ export const bantaWeight: fighterType[] = [
         KO: 7,
         DES: 3,
         SUB: 1,
-        img: `${PaytonTalbott}`,
+        img: "/PaytonTalbott.webp",
         age: 27,
         height: 178,
         weight: 61.2,
@@ -257,7 +241,7 @@ export const bantaWeight: fighterType[] = [
         KO: 16,
         DES: 5,
         SUB: 2,
-        img: `${ViniciusOliveira}`,
+        img: "/ViniciusOliveira.webp",
         age: 30,
         height: 175,
         weight: 61.2,
@@ -276,7 +260,7 @@ export const bantaWeight: fighterType[] = [
         KO: 2,
         DES: 4,
         SUB: 7,
-        img: `${RaulRosasJr}`,
+        img: "/RaulRosasJr.webp",
         age: 21,
         height: 175,
         weight: 61.2,
@@ -295,7 +279,7 @@ export const bantaWeight: fighterType[] = [
         KO: 8,
         DES: 6,
         SUB: 1,
-        img: `${MontelJackson}`,
+        img: "/MontelJackson.webp",
         age: 33,
         height: 178,
         weight: 61.2,
@@ -314,7 +298,7 @@ export const bantaWeight: fighterType[] = [
         KO: 1,
         DES: 8,
         SUB: 6,
-        img: `${FaridBasharat}`,
+        img: "/FaridBasharat.webp",
         age: 28,
         height: 173,
         weight: 61.2,

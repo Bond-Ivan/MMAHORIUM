@@ -1,20 +1,4 @@
 import type { fighterType } from "../Fighters.types";
-import IlyaTopuria from "../../../../../public/IlyaTopuria.png";
-import JustinGage from "../../../../../public/JustinGage.png";
-import ArmanTsarukyan from "../../../../../public/ArmanTsarukyan.png";
-import CharlesOliveira from "../../../../../public/CharlesOliveira.png";
-import MaxHolloway from "../../../../../public/MaxHolloway.png";
-import BenoitSaintDenis from "../../../../../public/BenoitSaintDenis.png";
-import PaddyPimblett from "../../../../../public/PaddyPimblett.png";
-import MateuszGamrot from "../../../../../public/MateuszGamrot.png";
-import DanHooker from "../../../../../public/DanHooker.png";
-import RenatoMoikano from "../../../../../public/RenatoMoikano.png";
-import MauricioRuffi from "../../../../../public/MauricioRuffi.png";
-import RafaelFiziev from "../../../../../public/RafaelFiziev.png";
-import BeneelDariusz from "../../../../../public/BeneelDariusz.png";
-import MichaelChandler from "../../../../../public/MichaelChandler.png";
-import FaresZiam from "../../../../../public/FaresZiam.png";
-import QuillanSalkild from "../../../../../public/QuillanSalkild.png";
 
 export const lightWeight: fighterType[] = [
     {
@@ -29,7 +13,7 @@ export const lightWeight: fighterType[] = [
         KO: 7,
         DES: 2,
         SUB: 8,
-        img: `${IlyaTopuria}`,
+        img: "/IlyaTopuria.webp",
         age: 29,
         height: 170,
         weight: 70.3,
@@ -48,7 +32,7 @@ export const lightWeight: fighterType[] = [
         KO: 20,
         DES: 6,
         SUB: 1,
-        img: `${JustinGage}`,
+        img: "/JustinGage.webp",
         age: 37,
         height: 180,
         weight: 70.3,
@@ -67,7 +51,7 @@ export const lightWeight: fighterType[] = [
         KO: 9,
         DES: 8,
         SUB: 6,
-        img: `${ArmanTsarukyan}`,
+        img: "/ArmanTsarukyan.webp",
         age: 29,
         height: 170,
         weight: 70.3,
@@ -86,7 +70,7 @@ export const lightWeight: fighterType[] = [
         KO: 10,
         DES: 5,
         SUB: 22,
-        img: `${CharlesOliveira}`,
+        img: "/CharlesOliveira.webp",
         age: 36,
         height: 178,
         weight: 70.3,
@@ -105,7 +89,7 @@ export const lightWeight: fighterType[] = [
         KO: 12,
         DES: 13,
         SUB: 2,
-        img: `${MaxHolloway}`,
+        img: "/MaxHolloway.webp",
         age: 34,
         height: 180,
         weight: 70.3,
@@ -124,7 +108,7 @@ export const lightWeight: fighterType[] = [
         KO: 6,
         DES: 0,
         SUB: 11,
-        img: `${BenoitSaintDenis}`,
+        img: "/BenoitSaintDenis.webp",
         age: 30,
         height: 180,
         weight: 70.3,
@@ -143,7 +127,7 @@ export const lightWeight: fighterType[] = [
         KO: 7,
         DES: 6,
         SUB: 10,
-        img: `${PaddyPimblett}`,
+        img: "/PaddyPimblett.webp",
         age: 31,
         height: 178,
         weight: 70.3,
@@ -162,7 +146,7 @@ export const lightWeight: fighterType[] = [
         KO: 8,
         DES: 12,
         SUB: 6,
-        img: `${MateuszGamrot}`,
+        img: "/MateuszGamrot.webp",
         age: 35,
         height: 178,
         weight: 70.3,
@@ -181,7 +165,7 @@ export const lightWeight: fighterType[] = [
         KO: 11,
         DES: 6,
         SUB: 7,
-        img: `${DanHooker}`,
+        img: "/DanHooker.webp",
         age: 36,
         height: 183,
         weight: 70.3,
@@ -200,7 +184,7 @@ export const lightWeight: fighterType[] = [
         KO: 2,
         DES: 8,
         SUB: 11,
-        img: `${RenatoMoikano}`,
+        img: "/RenatoMoikano.webp",
         age: 36,
         height: 180,
         weight: 70.3,
@@ -219,7 +203,7 @@ export const lightWeight: fighterType[] = [
         KO: 12,
         DES: 1,
         SUB: 0,
-        img: `${MauricioRuffi}`,
+        img: "/MauricioRuffi.webp",
         age: 29,
         height: 180,
         weight: 70.3,
@@ -238,7 +222,7 @@ export const lightWeight: fighterType[] = [
         KO: 8,
         DES: 4,
         SUB: 1,
-        img: `${RafaelFiziev}`,
+        img: "/RafaelFiziev.webp",
         age: 33,
         height: 173,
         weight: 70.3,
@@ -257,7 +241,7 @@ export const lightWeight: fighterType[] = [
         KO: 5,
         DES: 3,
         SUB: 4,
-        img: `${QuillanSalkild}`,
+        img: "/QuillanSalkild.webp",
         age: 26,
         height: 183,
         weight: 70.3,
@@ -276,7 +260,7 @@ export const lightWeight: fighterType[] = [
         KO: 11,
         DES: 5,
         SUB: 7,
-        img: `${MichaelChandler}`,
+        img: "/MichaelChandler.webp",
         age: 39,
         height: 173,
         weight: 70.3,
@@ -295,7 +279,7 @@ export const lightWeight: fighterType[] = [
         KO: 5,
         DES: 10,
         SUB: 8,
-        img: `${BeneelDariusz}`,
+        img: "/BeneelDariusz.webp",
         age: 36,
         height: 178,
         weight: 70.3,
@@ -314,7 +298,7 @@ export const lightWeight: fighterType[] = [
         KO: 7,
         DES: 7,
         SUB: 4,
-        img: `${FaresZiam}`,
+        img: "/FaresZiam.webp",
         age: 29,
         height: 185,
         weight: 70.3,

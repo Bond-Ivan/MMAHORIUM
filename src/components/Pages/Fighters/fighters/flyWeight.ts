@@ -1,20 +1,4 @@
 import type { fighterType } from "../Fighters.types";
-import JoshuaWang from "../../../../../public/JoshuaWang.png";
-import AlexanderPantoja from "../../../../../public/AlexanderPantoja.png";
-import ManelCape from "../../../../../public/ManelCape.png";
-import TatsuroTaira from "../../../../../public/TatsuroTaira.png";
-import BrandonRoyal from "../../../../../public/BrandonRoyal.png";
-import KyojiHoriguchi from "../../../../../public/KyojiHoriguchi.png";
-import LoneKavanagh from "../../../../../public/LoneKavanagh.png";
-import AmirAlbazi from "../../../../../public/AmirAlbazi.png";
-import AsuAlmabaev from "../../../../../public/AsuAlmabaev.png";
-import BrandonMoreno from "../../../../../public/BrandonMoreno.png";
-import AlexPerez from "../../../../../public/AlexPerez.png";
-import SteveErceg from "../../../../../public/SteveErceg.png";
-import CharlesJohnson from "../../../../../public/CharlesJohnson.png";
-import BrunoSilva from "../../../../../public/BrunoSilva.png";
-import TagirUlanbekov from "../../../../../public/TagirUlanbekov.png";
-import TimElliott from "../../../../../public/TimElliott.png";
 
 export const flyWeight: fighterType[] = [
   {
@@ -29,7 +13,7 @@ export const flyWeight: fighterType[] = [
     KO: 8,
     DES: 6,
     SUB: 2,
-    img: `${JoshuaWang}`,
+    img: "/JoshuaWang.webp",
     age: 24,
     height: 165,
     weight: 56.7,
@@ -48,7 +32,7 @@ export const flyWeight: fighterType[] = [
     KO: 8,
     DES: 10,
     SUB: 12,
-    img: `${AlexanderPantoja}`,
+    img: "/AlexanderPantoja.webp",
     age: 35,
     height: 165,
     weight: 56.7,
@@ -67,7 +51,7 @@ export const flyWeight: fighterType[] = [
     KO: 14,
     DES: 3,
     SUB: 5,
-    img: `${ManelCape}`,
+    img: "/ManelCape.webp",
     age: 32,
     height: 165,
     weight: 56.7,
@@ -86,7 +70,7 @@ export const flyWeight: fighterType[] = [
     KO: 6,
     DES: 4,
     SUB: 8,
-    img: `${TatsuroTaira}`,
+    img: "/TatsuroTaira.webp",
     age: 26,
     height: 170,
     weight: 56.7,
@@ -105,7 +89,7 @@ export const flyWeight: fighterType[] = [
     KO: 4,
     DES: 4,
     SUB: 9,
-    img: `${BrandonRoyal}`,
+    img: "/BrandonRoyal.webp",
     age: 33,
     height: 175,
     weight: 56.7,
@@ -124,7 +108,7 @@ export const flyWeight: fighterType[] = [
     KO: 15,
     DES: 15,
     SUB: 6,
-    img: `${KyojiHoriguchi}`,
+    img: "/KyojiHoriguchi.webp",
     age: 35,
     height: 163,
     weight: 56.7,
@@ -143,7 +127,7 @@ export const flyWeight: fighterType[] = [
     KO: 4,
     DES: 5,
     SUB: 1,
-    img: `${LoneKavanagh}`,
+    img: "/LoneKavanagh.webp",
     age: 26,
     height: 168,
     weight: 56.7,
@@ -162,7 +146,7 @@ export const flyWeight: fighterType[] = [
     KO: 5,
     DES: 3,
     SUB: 9,
-    img: `${AmirAlbazi}`,
+    img: "/AmirAlbazi.webp",
     age: 32,
     height: 165,
     weight: 56.7,
@@ -181,7 +165,7 @@ export const flyWeight: fighterType[] = [
     KO: 3,
     DES: 10,
     SUB: 10,
-    img: `${AsuAlmabaev}`,
+    img: "/AsuAlmabaev.webp",
     age: 32,
     height: 163,
     weight: 56.7,
@@ -200,7 +184,7 @@ export const flyWeight: fighterType[] = [
     KO: 5,
     DES: 7,
     SUB: 11,
-    img: `${BrandonMoreno}`,
+    img: "/BrandonMoreno.webp",
     age: 32,
     height: 170,
     weight: 56.7,
@@ -219,7 +203,7 @@ export const flyWeight: fighterType[] = [
     KO: 2,
     DES: 6,
     SUB: 6,
-    img: `${SteveErceg}`,
+    img: "/SteveErceg.webp",
     age: 30,
     height: 173,
     weight: 56.7,
@@ -238,7 +222,7 @@ export const flyWeight: fighterType[] = [
     KO: 7,
     DES: 12,
     SUB: 7,
-    img: `${AlexPerez}`,
+    img: "/AlexPerez.webp",
     age: 34,
     height: 168,
     weight: 56.7,
@@ -257,7 +241,7 @@ export const flyWeight: fighterType[] = [
     KO: 3,
     DES: 12,
     SUB: 8,
-    img: `${TimElliott}`,
+    img: "/TimElliott.webp",
     age: 39,
     height: 170,
     weight: 56.7,
@@ -276,7 +260,7 @@ export const flyWeight: fighterType[] = [
     KO: 8,
     DES: 8,
     SUB: 3,
-    img: `${CharlesJohnson}`,
+    img: "/CharlesJohnson.webp",
     age: 35,
     height: 175,
     weight: 56.7,
@@ -295,7 +279,7 @@ export const flyWeight: fighterType[] = [
     KO: 1,
     DES: 8,
     SUB: 8,
-    img: `${TagirUlanbekov}`,
+    img: "/TagirUlanbekov.webp",
     age: 34,
     height: 170,
     weight: 56.7,
@@ -314,7 +298,7 @@ export const flyWeight: fighterType[] = [
     KO: 6,
     DES: 4,
     SUB: 5,
-    img: `${BrunoSilva}`,
+    img: "/BrunoSilva.webp",
     age: 36,
     height: 163,
     weight: 56.7,
