@@ -7,6 +7,7 @@ import pagesAnimation from "./constants/animations";
 import { lazy, Suspense, useState, type ReactNode } from "react";
 import ScrollToTop from "./shared/scrollTop/scrollTop";
 import { useLang } from "./hooks/useLang";
+import Ai from "./components/Pages/Ai/Ai";
 
 const Main = lazy(() => import("./components/Pages/Main/Main"));
 const Tournaments = lazy(() => import("./components/Pages/Tournaments/Tournaments"));
@@ -121,6 +122,14 @@ function App() {
                 element={
                   <AnimatedPage pageKey="compare">
                     <Compare />
+                  </AnimatedPage>
+                }
+              />
+              <Route
+                path="/ai"
+                element={
+                  <AnimatedPage pageKey="ai">
+                    <Ai />
                   </AnimatedPage>
                 }
               />

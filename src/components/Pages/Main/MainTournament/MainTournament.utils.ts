@@ -13,7 +13,7 @@ export function getTimeLeft(targetDate: number): TimeLeft {
     return { days: "00", hours: "00", minutes: "00", seconds: "00" };
   }
 
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  const days = Math.floor(difference / (1000 * 60 * 60 * 24)) + 1;
   const hours = Math.floor(
     (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
   );

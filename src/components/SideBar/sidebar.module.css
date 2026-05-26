@@ -175,3 +175,9 @@
     height: 25px;
   }
 }
+
+.navItemDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}

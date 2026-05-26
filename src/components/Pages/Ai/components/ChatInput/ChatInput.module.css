@@ -1,0 +1,158 @@
+.wrap {
+    position: sticky;
+    bottom: 0;
+    z-index: 3;
+    padding-top: 8px;
+    background: linear-gradient(180deg, transparent 0%, rgba(9, 9, 11, 0.5) 24%, rgba(9, 9, 11, 0.9) 100%);
+}
+
+.inputShell {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 12px;
+    padding: 14px;
+    padding-top: 34px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(18px);
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+}
+
+.topGlow {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 15% 0%, rgba(255, 140, 45, 0.12), transparent 28%);
+    pointer-events: none;
+}
+
+.leftChip {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    color: rgba(255, 222, 204, 0.86);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 140, 45, 0.16);
+    background: rgba(255, 140, 45, 0.08);
+}
+
+.textarea {
+    min-height: 24px;
+    max-height: 180px;
+    width: 100%;
+    resize: none;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #fff6f1;
+    font-size: 15px;
+    line-height: 1.6;
+    font-family: inherit;
+    padding: 2px 2px 4px 2px;
+    overflow-y: auto;
+}
+
+.textarea::placeholder {
+    color: rgba(255, 245, 236, 0.35);
+}
+
+.sendButton {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border: 0;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, #ffa043 0%, #ff6a32 100%);
+    box-shadow:
+        0 18px 34px rgba(255, 111, 48, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        filter 180ms ease,
+        opacity 180ms ease;
+}
+
+.sendButton:hover:not(:disabled) {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow:
+        0 24px 42px rgba(255, 111, 48, 0.36),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+    filter: saturate(1.06);
+}
+
+.sendButton:active:not(:disabled) {
+    transform: translateY(0) scale(0.98);
+}
+
+.sendButton:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.sendInner {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.sendInner svg {
+    width: 22px;
+    height: 22px;
+}
+
+.bottomMeta {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 6px 0;
+    color: rgba(255, 244, 236, 0.34);
+    font-size: 11px;
+}
+
+@media (max-width: 768px) {
+    .inputShell {
+        padding: 12px;
+        padding-top: 32px;
+        gap: 10px;
+        border-radius: 18px;
+    }
+
+    .textarea {
+        font-size: 14px;
+    }
+
+    .sendButton {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+    }
+
+    .sendInner svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .bottomMeta {
+        flex-direction: column;
+        gap: 4px;
+        font-size: 10px;
+    }
+}

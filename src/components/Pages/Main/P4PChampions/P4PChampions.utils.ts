@@ -45,17 +45,17 @@ const P4PChampionsArray: P4PFighter[] = [
   },
   {
     p4pRank: 7,
-    name: "Sean Strickland",
-    nickname: "Tarzan",
-    weightClass: "middleweight",
-    record: "31-7-0",
-  },
-  {
-    p4pRank: 8,
     name: "Merab Dvalishvili",
     nickname: "The Machine",
     weightClass: "bantamweight",
     record: "21-5-0",
+  },
+  {
+    p4pRank: 8,
+    name: "Sean Strickland",
+    nickname: "Tarzan",
+    weightClass: "middleweight",
+    record: "31-7-0",
   },
   {
     p4pRank: 9,

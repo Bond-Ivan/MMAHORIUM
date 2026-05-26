@@ -194,12 +194,12 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 10px 18px;
+    padding: 8px 14px;
     border-radius: 9999px;
     border: 1px solid rgba(232, 55, 42, 0.5);
     background: rgba(232, 55, 42, 0.1);
     color: #e8372a;
-    font-size: 13px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.6px;
     cursor: pointer;

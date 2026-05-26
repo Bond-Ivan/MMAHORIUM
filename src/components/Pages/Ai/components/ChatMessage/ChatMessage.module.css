@@ -1,0 +1,212 @@
+.message {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    animation: messageIn 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.user {
+    flex-direction: row-reverse;
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 16px 28px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(16px);
+}
+
+.contentWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    width: min(100%, 900px);
+}
+
+.user .contentWrap {
+    align-items: flex-end;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-inline: 6px;
+}
+
+.author {
+    color: rgba(255, 244, 236, 0.94);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.time {
+    color: rgba(255, 244, 236, 0.36);
+    font-size: 12px;
+}
+
+.bubble {
+    position: relative;
+    overflow: hidden;
+    padding: 16px 18px;
+    border-radius: 22px;
+    line-height: 1.72;
+    font-size: 14px;
+    word-break: break-word;
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.assistantBubble {
+    color: #fff7f2;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.035));
+    border-top-left-radius: 8px;
+}
+
+.assistantBubble::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 136, 42, 0.045), transparent 36%);
+    pointer-events: none;
+}
+
+.userBubble {
+    color: #fffaf6;
+    border: 1px solid rgba(255, 123, 46, 0.18);
+    background:
+        linear-gradient(180deg, rgba(255, 122, 26, 0.22), rgba(255, 91, 45, 0.1));
+    border-top-right-radius: 8px;
+}
+
+.bubble p,
+.bubble ul,
+.bubble ol,
+.bubble h1,
+.bubble h2,
+.bubble h3,
+.bubble h4,
+.bubble blockquote {
+    margin: 0 0 12px;
+}
+
+.bubble p:last-child,
+.bubble ul:last-child,
+.bubble ol:last-child,
+.bubble h1:last-child,
+.bubble h2:last-child,
+.bubble h3:last-child,
+.bubble h4:last-child,
+.bubble blockquote:last-child {
+    margin-bottom: 0;
+}
+
+.bubble h1,
+.bubble h2,
+.bubble h3,
+.bubble h4 {
+    color: #fff7f1;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.03em;
+    line-height: 1.03;
+}
+
+.bubble h2 {
+    font-size: 27px;
+}
+
+.bubble ul,
+.bubble ol {
+    padding-left: 20px;
+}
+
+.bubble li {
+    margin-bottom: 6px;
+}
+
+.bubble strong {
+    color: #ffd3b4;
+    font-weight: 700;
+}
+
+.bubble blockquote {
+    padding: 10px 14px;
+    border-left: 3px solid rgba(255, 138, 42, 0.45);
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+}
+
+.bubble code {
+    padding: 2px 6px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 13px;
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.1em;
+    margin-left: 3px;
+    vertical-align: text-bottom;
+    border-radius: 2px;
+    background: #ff8a2a;
+    box-shadow: 0 0 16px rgba(255, 138, 42, 0.35);
+    animation: blink 0.9s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes messageIn {
+    0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.985);
+        filter: blur(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 13px;
+        font-size: 16px;
+    }
+
+    .bubble {
+        padding: 14px 15px;
+        border-radius: 18px;
+        font-size: 13px;
+    }
+
+    .bubble h2 {
+        font-size: 22px;
+    }
+
+    .contentWrap {
+        width: 100%;
+    }
+}
