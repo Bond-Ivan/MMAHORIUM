@@ -183,7 +183,7 @@ function MainTournament(): ReactElement {
           </div>
 
           <h2 className={styles.eventName}>
-            UFC Fight Night 277: <br />
+            MMA Fight Night 277: <br />
             {t("home.mainTournament.mainEventTitle")}
           </h2>
 
@@ -359,7 +359,7 @@ function MainTournament(): ReactElement {
             <div className={styles.modalHeader}>
               <div>
                 <p className={styles.modalEyebrow}>
-                  UFC Fight Night 277 · {t("home.mainTournament.date")} · {t("home.mainTournament.locationShort")}
+                  MMA Fight Night 277 · {t("home.mainTournament.date")} · {t("home.mainTournament.locationShort")}
                 </p>
                 <h3 className={styles.modalTitle}>
                   {t("home.mainTournament.mainEventTitle")} — {t("home.mainTournament.fullCardLower")}

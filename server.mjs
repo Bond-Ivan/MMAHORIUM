@@ -50,16 +50,16 @@ let lastFightersCountUpdate = 0;
 const COUNT_CACHE_TTL = 1000 * 60 * 10; // 10 минут
 
 // =======================================================
-// 2. P4P И ДЕТАЛИ БОЙЦОВ (ufc.ru / ufc.com) + КЭШ
+// 2. P4P И ДЕТАЛИ БОЙЦОВ (mma.ru / mma.com) + КЭШ
 // =======================================================
-const UFC_BASE_URL = "https://www.ufc.ru";
-const UFC_RANKINGS_URL = "https://www.ufc.com/rankings";
+const UFC_BASE_URL = "https://www.mma.ru";
+const UFC_RANKINGS_URL = "https://www.mma.com/rankings";
 
 async function getOfficialP4PList() {
   const res = await fetch(UFC_RANKINGS_URL, {
     headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" },
   });
-  if (!res.ok) throw new Error(`HTTP Error ufc.com: ${res.status}`);
+  if (!res.ok) throw new Error(`HTTP Error mma.com: ${res.status}`);
 
   const html = await res.text();
   const dom = new JSDOM(html);
@@ -187,7 +187,7 @@ async function updateP4PData() {
   try {
     const p4pList = await getOfficialP4PList();
     if (p4pList.length === 0) {
-      console.log("ВНИМАНИЕ: Не удалось найти бойцов на сайте UFC");
+      console.log("ВНИМАНИЕ: Не удалось найти бойцов на сайте MMA");
       return;
     }
 
@@ -222,7 +222,7 @@ async function updateP4PData() {
 // 4. ЭНДПОИНТЫ API
 // =======================================================
 
-app.get("/api/ufc-p4p", (req, res) => {
+app.get("/api/mma-p4p", (req, res) => {
   if (!isP4PReady) {
     return res.status(503).json({
       error:
@@ -234,7 +234,7 @@ app.get("/api/ufc-p4p", (req, res) => {
   res.json(cachedP4P);
 });
 
-app.get("/api/ufc-count", async (req, res) => {
+app.get("/api/mma-count", async (req, res) => {
   try {
     const now = Date.now();
 

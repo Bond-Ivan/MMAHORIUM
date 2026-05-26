@@ -12,7 +12,7 @@ function News(): ReactElement {
     <>
       <main className={styles.main}>
         <h2 className={styles.title}>
-          {t("news.title")} <span className={styles.pretitle}>UFC</span>
+          {t("news.title")} <span className={styles.pretitle}>MMA</span>
         </h2>
         <ul className={styles.list}>
           {news.map((item) => (

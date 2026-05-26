@@ -1,0 +1,228 @@
+.main {
+    padding: 24px;
+    padding-top: 80px;
+}
+
+.title {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 0.48px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #8a8a9a;
+    margin-bottom: 28px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+}
+
+.card {
+    background: #13131a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    border-color: rgba(232, 55, 42, 0.45);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(232, 55, 42, 0.12);
+}
+
+.cardIcon {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.cardBody {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cardTitle {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: #f0f0f0;
+}
+
+.cardDesc {
+    font-size: 14px;
+    color: #8a8a9a;
+    line-height: 1.5;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.tag {
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(232, 55, 42, 0.1);
+    border: 1px solid rgba(232, 55, 42, 0.25);
+    color: #e8372a;
+    letter-spacing: 0.3px;
+}
+
+.playBtn {
+    width: 100%;
+    padding: 11px 0;
+    background: #e8372a;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.playBtn:hover {
+    background: #ff4535;
+}
+
+.playBtn:active {
+    transform: scale(0.98);
+}
+
+/* ── Fullscreen overlay ── */
+.fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    background: #09090d;
+}
+
+.gameBar {
+    flex-shrink: 0;
+    height: 48px;
+    background: rgba(10, 10, 14, 0.97);
+    border-bottom: 1px solid rgba(232, 55, 42, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    z-index: 10;
+}
+
+.gameBarTitle {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.exitBtn {
+    padding: 7px 18px;
+    background: transparent;
+    border: 1px solid rgba(232, 55, 42, 0.5);
+    border-radius: 6px;
+    color: #e8372a;
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.exitBtn:hover {
+    background: rgba(232, 55, 42, 0.12);
+    border-color: #e8372a;
+}
+
+.gameFrame {
+    flex: 1;
+    border: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .title {
+        font-size: 28px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .main {
+        padding: 16px;
+        padding-top: 80px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .gameBar {
+        height: 44px;
+        padding: 0 12px;
+    }
+
+    .gameBarTitle {
+        font-size: 15px;
+    }
+
+    .exitBtn {
+        padding: 5px 12px;
+        font-size: 13px;
+    }
+}

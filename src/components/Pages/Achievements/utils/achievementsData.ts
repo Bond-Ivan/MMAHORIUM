@@ -124,20 +124,20 @@ export const mostFinishes: StatRecord[] = [
 ];
 
 export const fastestKnockouts: FastKO[] = [
-  { fighter: "Jorge Masvidal", opponent: "Ben Askren", event: "UFC 239", time: "0:05", seconds: 5 },
-  { fighter: "Duane Ludwig", opponent: "Jonathan Goulet", event: "UFC Fight Night 3", time: "0:06", seconds: 6 },
-  { fighter: "Todd Duffee", opponent: "Tim Hague", event: "UFC 102", time: "0:07", seconds: 7 },
-  { fighter: "Ryan Jimmo", opponent: "Anthony Perosh", event: "UFC 149", time: "0:07", seconds: 7 },
-  { fighter: "Terrance McKinney", opponent: "Matt Frevola", event: "UFC 263", time: "0:07", seconds: 7 },
-  { fighter: "Conor McGregor", opponent: "Jose Aldo (title)", event: "UFC 194", time: "0:13", seconds: 13 },
+  { fighter: "Jorge Masvidal", opponent: "Ben Askren", event: "MMA 239", time: "0:05", seconds: 5 },
+  { fighter: "Duane Ludwig", opponent: "Jonathan Goulet", event: "MMA Fight Night 3", time: "0:06", seconds: 6 },
+  { fighter: "Todd Duffee", opponent: "Tim Hague", event: "MMA 102", time: "0:07", seconds: 7 },
+  { fighter: "Ryan Jimmo", opponent: "Anthony Perosh", event: "MMA 149", time: "0:07", seconds: 7 },
+  { fighter: "Terrance McKinney", opponent: "Matt Frevola", event: "MMA 263", time: "0:07", seconds: 7 },
+  { fighter: "Conor McGregor", opponent: "Jose Aldo (title)", event: "MMA 194", time: "0:13", seconds: 13 },
 ];
 
 export const ppvRecords: PPVRecord[] = [
-  { event: "UFC 229", fighters: "McGregor vs Nurmagomedov", buys: 2400000, revenue: "$180M" },
-  { event: "UFC 202", fighters: "McGregor vs Diaz 2", buys: 1650000, revenue: "$90M" },
-  { event: "UFC 100", fighters: "Lesnar vs Mir 2", buys: 1600000, revenue: "$82M" },
-  { event: "UFC 196", fighters: "McGregor vs Diaz", buys: 1500000, revenue: "$80M" },
-  { event: "UFC 194", fighters: "McGregor vs Aldo", buys: 1400000, revenue: "$80M" },
+  { event: "MMA 229", fighters: "McGregor vs Nurmagomedov", buys: 2400000, revenue: "$180M" },
+  { event: "MMA 202", fighters: "McGregor vs Diaz 2", buys: 1650000, revenue: "$90M" },
+  { event: "MMA 100", fighters: "Lesnar vs Mir 2", buys: 1600000, revenue: "$82M" },
+  { event: "MMA 196", fighters: "McGregor vs Diaz", buys: 1500000, revenue: "$80M" },
+  { event: "MMA 194", fighters: "McGregor vs Aldo", buys: 1400000, revenue: "$80M" },
 ];
 
 export const pioneerWing: HallOfFamer[] = [
@@ -201,14 +201,14 @@ export const contributorsWing: Contributor[] = [
 
 export const fightWing: FightWinger[] = [
   { fight: "Griffin vs Bonnar I", event: "TUF 1 Finale", year: 2013, resultKey: "achievementsData.fights.griffinBonnar.result", awardKey: "achievementsData.fights.griffinBonnar.award" },
-  { fight: "Hughes vs Trigg II", event: "UFC 52", year: 2015, resultKey: "achievementsData.fights.hughesTrigg.result", awardKey: "achievementsData.fights.hughesTrigg.award" },
-  { fight: "Coleman vs Williams", event: "UFC 17", year: 2016, resultKey: "achievementsData.fights.colemanWilliams.result", awardKey: "achievementsData.fights.colemanWilliams.award" },
-  { fight: "Rua vs Henderson I", event: "UFC 139", year: 2018, resultKey: "achievementsData.fights.ruaHenderson.result", awardKey: "achievementsData.fights.ruaHenderson.award" },
+  { fight: "Hughes vs Trigg II", event: "MMA 52", year: 2015, resultKey: "achievementsData.fights.hughesTrigg.result", awardKey: "achievementsData.fights.hughesTrigg.award" },
+  { fight: "Coleman vs Williams", event: "MMA 17", year: 2016, resultKey: "achievementsData.fights.colemanWilliams.result", awardKey: "achievementsData.fights.colemanWilliams.award" },
+  { fight: "Rua vs Henderson I", event: "MMA 139", year: 2018, resultKey: "achievementsData.fights.ruaHenderson.result", awardKey: "achievementsData.fights.ruaHenderson.award" },
   { fight: "Sanchez vs Guida", event: "TUF: USA vs UK", year: 2019, resultKey: "achievementsData.fights.sanchezGuida.result", awardKey: "achievementsData.fights.sanchezGuida.award" },
-  { fight: "Jones vs Gustafsson I", event: "UFC 165", year: 2021, resultKey: "achievementsData.fights.jonesGustafsson.result", awardKey: "achievementsData.fights.jonesGustafsson.award" },
-  { fight: "Swanson vs Doo Ho Choi", event: "UFC 206", year: 2022, resultKey: "achievementsData.fights.swansonChoi.result", awardKey: "achievementsData.fights.swansonChoi.award" },
-  { fight: "Lawler vs MacDonald II", event: "UFC 189", year: 2023, resultKey: "achievementsData.fights.lawlerMacdonald.result", awardKey: "achievementsData.fights.lawlerMacdonald.award" },
-  { fight: "Silva vs Sonnen I", event: "UFC 117", year: 2024, resultKey: "achievementsData.fights.silvaSonnen.result", awardKey: "achievementsData.fights.silvaSonnen.award" },
-  { fight: "Adesanya vs Gastelum", event: "UFC 236", year: 2025, resultKey: "achievementsData.fights.adesanyaGastelum.result", awardKey: "achievementsData.fights.adesanyaGastelum.award" },
-  { fight: "Zhang Weili vs Jedrzejczyk I", event: "UFC 248", year: 2026, resultKey: "achievementsData.fights.zhangJoanna.result", awardKey: "achievementsData.fights.zhangJoanna.award" },
+  { fight: "Jones vs Gustafsson I", event: "MMA 165", year: 2021, resultKey: "achievementsData.fights.jonesGustafsson.result", awardKey: "achievementsData.fights.jonesGustafsson.award" },
+  { fight: "Swanson vs Doo Ho Choi", event: "MMA 206", year: 2022, resultKey: "achievementsData.fights.swansonChoi.result", awardKey: "achievementsData.fights.swansonChoi.award" },
+  { fight: "Lawler vs MacDonald II", event: "MMA 189", year: 2023, resultKey: "achievementsData.fights.lawlerMacdonald.result", awardKey: "achievementsData.fights.lawlerMacdonald.award" },
+  { fight: "Silva vs Sonnen I", event: "MMA 117", year: 2024, resultKey: "achievementsData.fights.silvaSonnen.result", awardKey: "achievementsData.fights.silvaSonnen.award" },
+  { fight: "Adesanya vs Gastelum", event: "MMA 236", year: 2025, resultKey: "achievementsData.fights.adesanyaGastelum.result", awardKey: "achievementsData.fights.adesanyaGastelum.award" },
+  { fight: "Zhang Weili vs Jedrzejczyk I", event: "MMA 248", year: 2026, resultKey: "achievementsData.fights.zhangJoanna.result", awardKey: "achievementsData.fights.zhangJoanna.award" },
 ];

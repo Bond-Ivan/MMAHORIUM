@@ -22,7 +22,7 @@ function ChatMessage({ message, isStreaming = false }: Props): ReactElement {
             <div className={styles.contentWrap}>
                 <div className={styles.meta}>
                     <span className={styles.author}>
-                        {isAssistant ? "UFC Oracle" : "Ты"}
+                        {isAssistant ? "MMA Oracle" : "Ты"}
                     </span>
                     <span className={styles.time}>
                         {new Date(message.timestamp).toLocaleTimeString("ru-RU", {

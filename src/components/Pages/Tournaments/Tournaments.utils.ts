@@ -27,7 +27,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "Jan",
     place: "USA",
     type: "PAST",
-    name: "UFC 324: Gaethje vs Pimblett",
+    name: "MMA 324: Gaethje vs Pimblett",
     weight: "Lightweight",
     mainResult: "Gaethje def. Pimblett — UD",
     fights: [
@@ -46,7 +46,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "Jan",
     place: "Australia",
     type: "PAST",
-    name: "UFC 325: Volkanovski vs Lopes 2",
+    name: "MMA 325: Volkanovski vs Lopes 2",
     weight: "Featherweight",
     mainResult: "Volkanovski def. Lopes — UD",
     fights: [
@@ -65,7 +65,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "Feb",
     place: "USA",
     type: "PAST",
-    name: "UFC Fight Night 266: Bautista vs Oliveira",
+    name: "MMA Fight Night 266: Bautista vs Oliveira",
     weight: "Bantamweight",
     mainResult: "Bautista def. Oliveira — SUB R2",
     fights: [
@@ -84,7 +84,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "Feb",
     place: "USA",
     type: "PAST",
-    name: "UFC Fight Night 267: Strickland vs Hernandez",
+    name: "MMA Fight Night 267: Strickland vs Hernandez",
     weight: "Middleweight",
     mainResult: "Strickland def. Hernandez — TKO R3",
     fights: [
@@ -103,7 +103,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "Feb",
     place: "Mexico",
     type: "PAST",
-    name: "UFC Fight Night 268: Moreno vs Kavanagh",
+    name: "MMA Fight Night 268: Moreno vs Kavanagh",
     weight: "Flyweight",
     mainResult: "Moreno def. Kavanagh — UD",
     fights: [
@@ -122,7 +122,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "Mar",
     place: "USA",
     type: "PAST",
-    name: "UFC 326: Holloway vs Oliveira 2",
+    name: "MMA 326: Holloway vs Oliveira 2",
     weight: "Lightweight",
     mainResult: "Holloway def. Oliveira — UD",
     fights: [
@@ -141,7 +141,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "Mar",
     place: "USA",
     type: "PAST",
-    name: "UFC Fight Night 269: Emmett vs Vallejos",
+    name: "MMA Fight Night 269: Emmett vs Vallejos",
     weight: "Featherweight",
     mainResult: "Emmett def. Vallejos — TKO R1",
     fights: [
@@ -160,7 +160,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "Mar",
     place: "United Kingdom",
     type: "PAST",
-    name: "UFC Fight Night 270: Evloev vs Murphy",
+    name: "MMA Fight Night 270: Evloev vs Murphy",
     weight: "Featherweight",
     mainResult: "Evloev def. Murphy — MD",
     fights: [
@@ -179,7 +179,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "Mar",
     place: "USA, Seattle",
     type: "PAST",
-    name: "UFC Fight Night 271: Adesanya vs Pyfer",
+    name: "MMA Fight Night 271: Adesanya vs Pyfer",
     weight: "Middleweight",
     mainResult: "Adesanya def. Pyfer",
     fights: [
@@ -205,7 +205,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "Apr",
     place: "USA, Las Vegas",
     type: "PAST",
-    name: "UFC Fight Night 272: Moicano vs Duncan",
+    name: "MMA Fight Night 272: Moicano vs Duncan",
     weight: "Lightweight",
     mainResult: "Moicano def. Duncan",
     fights: [
@@ -231,7 +231,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "Apr",
     place: "USA, Miami",
     type: "PAST",
-    name: "UFC 327: Prochazka vs Ulberg",
+    name: "MMA 327: Prochazka vs Ulberg",
     weight: "LightHeavyweight",
     mainResult: "Prochazka def. Ulberg",
     fights: [
@@ -257,7 +257,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "Apr",
     place: "Canada, Winnipeg",
     type: "PAST",
-    name: "UFC Fight Night 273: Burns vs Malott",
+    name: "MMA Fight Night 273: Burns vs Malott",
     weight: "Welterweight",
     mainResult: "Burns def. Malott",
     fights: [
@@ -283,7 +283,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "Apr",
     place: "USA, Las Vegas",
     type: "PAST",
-    name: "UFC Fight Night 274: Sterling vs Zalal",
+    name: "MMA Fight Night 274: Sterling vs Zalal",
     weight: "Featherweight",
     mainResult: "Sterling def. Zalal",
     fights: [
@@ -302,7 +302,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "May",
     place: "Australia, Perth",
     type: "PAST",
-    name: "UFC Fight Night 275: Della Maddalena vs Prates",
+    name: "MMA Fight Night 275: Della Maddalena vs Prates",
     weight: "Welterweight",
     mainResult: "Della Maddalena def. Prates",
     fights: [
@@ -328,7 +328,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "May",
     place: "USA, Newark",
     type: "PAST",
-    name: "UFC 328: Chimaev vs Strickland",
+    name: "MMA 328: Chimaev vs Strickland",
     weight: "Middleweight",
     mainResult: "Strickland def. Chimaev — SD (new champion!)",
     fights: [
@@ -398,7 +398,7 @@ const pastTournaments: TournamentType[] = [
     dateMonth: "May",
     place: "USA, Las Vegas",
     type: "PAST",
-    name: "UFC Fight Night 276: Allen vs Costa",
+    name: "MMA Fight Night 276: Allen vs Costa",
     weight: "Featherweight",
     mainResult: "Allen def. Costa — UD (50–45, 50–45, 49–46)",
     fights: [
@@ -469,7 +469,7 @@ const futureTournaments: TournamentType[] = [
     dateMonth: "May",
     place: "China, Macau",
     type: "FIGHT NIGHT",
-    name: "UFC Fight Night 277: Song Yadong vs Figueiredo",
+    name: "MMA Fight Night 277: Song Yadong vs Figueiredo",
     weight: "Bantamweight",
     mainResult: "Fights announced",
     fights: [
@@ -487,7 +487,7 @@ const futureTournaments: TournamentType[] = [
     dateMonth: "Jun",
     place: "USA, Las Vegas",
     type: "FIGHT NIGHT",
-    name: "UFC Fight Night 278: Muhammad vs Bonfim",
+    name: "MMA Fight Night 278: Muhammad vs Bonfim",
     weight: "Welterweight",
     mainResult: "Fights announced",
     fights: [
@@ -500,7 +500,7 @@ const futureTournaments: TournamentType[] = [
     dateMonth: "Jun",
     place: "USA, Washington",
     type: "FREEDOM",
-    name: "UFC Freedom 250: Topuria vs Gaethje",
+    name: "MMA Freedom 250: Topuria vs Gaethje",
     weight: "Lightweight",
     mainResult: "Main card announced",
     fights: [
@@ -517,7 +517,7 @@ const futureTournaments: TournamentType[] = [
     dateMonth: "Jun",
     place: "USA, Las Vegas",
     type: "FIGHT NIGHT",
-    name: "UFC Fight Night: Kape vs Horiguchi",
+    name: "MMA Fight Night: Kape vs Horiguchi",
     weight: "Flyweight",
     mainResult: "Details pending",
     fights: [
@@ -529,7 +529,7 @@ const futureTournaments: TournamentType[] = [
     dateMonth: "Jun",
     place: "Baku, Azerbaijan",
     type: "FIGHT NIGHT",
-    name: "UFC Fight Night: Fiziev vs Torres",
+    name: "MMA Fight Night: Fiziev vs Torres",
     weight: "Lightweight",
     mainResult: "Details pending",
     fights: [

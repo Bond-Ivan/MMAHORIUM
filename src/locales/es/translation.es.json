@@ -26,7 +26,7 @@
     "mainCards": {
       "activeFighters": {
         "title": "PELEADORES ACTIVOS",
-        "text": "En el roster de UFC"
+        "text": "En el roster de MMA"
       },
       "eventsPlanned": {
         "title": "TORNEOS PROGRAMADOS",
@@ -71,7 +71,7 @@
     "copyright": "Copyright © 2026 OctaGrid Inc. Todos los derechos reservados."
   },
   "fighters": {
-    "title": "Peleadores de UFC",
+    "title": "Peleadores de MMA",
     "categories": {
       "all": "Todos",
       "flyweight": "Peso mosca",
@@ -196,7 +196,7 @@
         "date": "29 de marzo de 2026"
       },
       "2": {
-        "title": "Topuria vs. Gaethje: el combate estelar de UFC Freedom 250 fue confirmado para el 14 de junio en la Casa Blanca",
+        "title": "Topuria vs. Gaethje: el combate estelar de MMA Freedom 250 fue confirmado para el 14 de junio en la Casa Blanca",
         "text": "El mánager de Topuria, Ali Abdelaziz, confirmó que el campeón interino Justin Gaethje desafiará al campeón de peso ligero Ilia Topuria en un gran evento que se celebrará en los jardines de la Casa Blanca en Washington.",
         "date": "30 de marzo de 2026"
       },
@@ -206,7 +206,7 @@
         "date": "28 de marzo de 2026"
       },
       "4": {
-        "title": "UFC 327 en Miami: Prochazka vs. Ulberg — batalla por el cinturón semipesado",
+        "title": "MMA 327 en Miami: Prochazka vs. Ulberg — batalla por el cinturón semipesado",
         "text": "Jiri Prochazka regresa a una pelea por el título después de su revancha con Alex Pereira. Carlos Ulberg sigue siendo el noqueador más peligroso de la división.",
         "date": "25 de marzo de 2026"
       }
@@ -216,22 +216,22 @@
     "hero": {
       "title": "Récords y",
       "titleAccent": "Logros",
-      "subtitle": "Récords históricos de UFC: estadísticas, hitos y leyendas que marcaron la historia de las MMA"
+      "subtitle": "Récords históricos de MMA: estadísticas, hitos y leyendas que marcaron la historia de las MMA"
     },
     "keyStats": {
       "title": "estadísticas",
       "titleAccent": "Clave",
-      "description": "Los mayores récords de UFC de todos los tiempos"
+      "description": "Los mayores récords de MMA de todos los tiempos"
     },
     "longestTitleReigns": {
       "title": "reinados",
       "titleAccent": "Más largos",
-      "description": "Los reinados de campeonato más largos en la historia de UFC (días)"
+      "description": "Los reinados de campeonato más largos en la historia de MMA (días)"
     },
     "mostWins": {
       "title": "victorias",
       "titleAccent": "Más",
-      "description": "Récord de UFC: todas las peleas incluidas"
+      "description": "Récord de MMA: todas las peleas incluidas"
     },
     "longestWinStreaks": {
       "title": "rachas",
@@ -241,12 +241,12 @@
     "titleBoutWins": {
       "title": "Victorias en",
       "titleAccent": "peleas titulares",
-      "description": "Líderes en victorias en combates por el campeonato de UFC"
+      "description": "Líderes en victorias en combates por el campeonato de MMA"
     },
     "mostKnockouts": {
       "title": "Más",
       "titleAccent": "nocauts",
-      "description": "KO + TKO a lo largo de una carrera en UFC"
+      "description": "KO + TKO a lo largo de una carrera en MMA"
     },
     "mostFinishes": {
       "title": "Más",
@@ -261,11 +261,11 @@
     "ppvRecords": {
       "title": "Récords de",
       "titleAccent": "Pay-Per-View",
-      "description": "Top 5 de los eventos de UFC más vendidos de todos los tiempos"
+      "description": "Top 5 de los eventos de MMA más vendidos de todos los tiempos"
     },
     "hallOfFame": {
       "title": "Salón de la",
-      "titleAccent": "Fama UFC",
+      "titleAccent": "Fama MMA",
       "description": "Todas las alas: más de 60 leyendas de las MMA",
       "shortLabel": "HOF",
       "tabs": {
@@ -297,11 +297,11 @@
       "finishes": "finalizaciones",
       "fastestKo": "s — nocaut",
       "reignRecord": "Récord de reinado — Anderson Silva",
-      "ufcWinsRecord": "Récord UFC — Jim Miller",
-      "ppvRecord": "UFC 229: McGregor vs Nurmagomedov",
+      "ufcWinsRecord": "Récord MMA — Jim Miller",
+      "ppvRecord": "MMA 229: McGregor vs Nurmagomedov",
       "koRecord": "Récord — Derrick Lewis",
       "finishRecord": "Récord — Charles Oliveira",
-      "fastestKoRecord": "Masvidal vs Askren, UFC 239"
+      "fastestKoRecord": "Masvidal vs Askren, MMA 239"
     },
     "divisions": {
       "lightweight": "Ligero",
@@ -330,61 +330,61 @@
     },
     "hallOfFame": {
       "pioneer": {
-        "royceGracie": "Ganador de los torneos UFC 1, 2 y 4 — más victorias en torneos (3)",
-        "kenShamrock": "Primer campeón de Superfight en UFC, 2 defensas del título",
-        "danSevern": "Campeón de Superfight en UFC, ganador de UFC 5 y Ultimate Ultimate 1995",
-        "randyCouture": "6 reinados de campeonato — récord de UFC; campeón de mayor edad (45 años)",
-        "markColeman": "Primer campeón de peso pesado de UFC, ganador de UFC 10 y 11",
-        "chuckLiddell": "Campeón semipesado de UFC, récord de 7 nocauts consecutivos",
-        "mattHughes": "Dos veces campeón wélter de UFC, 7 defensas",
-        "titoOrtiz": "Campeón semipesado de UFC, 5 defensas",
-        "patMiletich": "Primer campeón wélter de UFC, 4 defensas",
-        "basRutten": "Campeón de peso pesado de UFC",
-        "antonioNogueira": "Campeón de peso pesado de PRIDE, campeón interino de UFC",
-        "donFrye": "Ganador de UFC 8 y Ultimate Ultimate 1996",
-        "mauriceSmith": "Campeón de peso pesado de UFC, 1 defensa",
-        "kazushiSakuraba": "Ganador del torneo de peso pesado de UFC Japan",
-        "mattSerra": "Campeón wélter de UFC, ganador de TUF 4",
-        "richFranklin": "Campeón de peso medio de UFC, 2 defensas",
-        "kevinRandleman": "Campeón de peso pesado de UFC (póstumo)",
+        "royceGracie": "Ganador de los torneos MMA 1, 2 y 4 — más victorias en torneos (3)",
+        "kenShamrock": "Primer campeón de Superfight en MMA, 2 defensas del título",
+        "danSevern": "Campeón de Superfight en MMA, ganador de MMA 5 y Ultimate Ultimate 1995",
+        "randyCouture": "6 reinados de campeonato — récord de MMA; campeón de mayor edad (45 años)",
+        "markColeman": "Primer campeón de peso pesado de MMA, ganador de MMA 10 y 11",
+        "chuckLiddell": "Campeón semipesado de MMA, récord de 7 nocauts consecutivos",
+        "mattHughes": "Dos veces campeón wélter de MMA, 7 defensas",
+        "titoOrtiz": "Campeón semipesado de MMA, 5 defensas",
+        "patMiletich": "Primer campeón wélter de MMA, 4 defensas",
+        "basRutten": "Campeón de peso pesado de MMA",
+        "antonioNogueira": "Campeón de peso pesado de PRIDE, campeón interino de MMA",
+        "donFrye": "Ganador de MMA 8 y Ultimate Ultimate 1996",
+        "mauriceSmith": "Campeón de peso pesado de MMA, 1 defensa",
+        "kazushiSakuraba": "Ganador del torneo de peso pesado de MMA Japan",
+        "mattSerra": "Campeón wélter de MMA, ganador de TUF 4",
+        "richFranklin": "Campeón de peso medio de MMA, 2 defensas",
+        "kevinRandleman": "Campeón de peso pesado de MMA (póstumo)",
         "andersonSilva": "Campeón de peso medio, 2.457 días — récord; 16 victorias consecutivas",
-        "jensPulver": "Primer campeón de peso ligero de UFC, 2 defensas",
+        "jensPulver": "Primer campeón de peso ligero de MMA, 2 defensas",
         "wanderleiSilva": "Campeón de peso medio de PRIDE, 22 victorias — récord de PRIDE",
-        "vitorBelfort": "Campeón semipesado de UFC, 13 finalizaciones en el primer asalto — récord",
-        "markKerr": "Ganador de UFC 14 y UFC 15, campeón de NCAA Division I"
+        "vitorBelfort": "Campeón semipesado de MMA, 13 finalizaciones en el primer asalto — récord",
+        "markKerr": "Ganador de MMA 14 y MMA 15, campeón de NCAA Division I"
       },
       "modern": {
-        "forrestGriffin": "Ganador de TUF 1, campeón semipesado de UFC",
+        "forrestGriffin": "Ganador de TUF 1, campeón semipesado de MMA",
         "bjPenn": "Campeón en dos divisiones: wélter y ligero",
         "urijahFaber": "Campeón pluma de WEC, 5 defensas del título",
-        "rondaRousey": "Primera campeona femenina de UFC, 6 defensas del título",
-        "rashadEvans": "Campeón semipesado de UFC, ganador de TUF 2",
-        "michaelBisping": "Campeón de peso medio de UFC, 16 victorias — récord divisional",
+        "rondaRousey": "Primera campeona femenina de MMA, 6 defensas del título",
+        "rashadEvans": "Campeón semipesado de MMA, ganador de TUF 2",
+        "michaelBisping": "Campeón de peso medio de MMA, 16 victorias — récord divisional",
         "gsp": "Campeón en dos divisiones, 13 victorias en peleas titulares",
         "dc": "Campeón en dos divisiones: semipesado y pesado",
-        "khabib": "29-0, invicto, campeón de peso ligero de UFC",
+        "khabib": "29-0, invicto, campeón de peso ligero de MMA",
         "cerrone": "23 victorias, 48 peleas en Zuffa — récord absoluto",
-        "joseAldo": "Campeón pluma de UFC — 1.848 días, 7 defensas",
-        "mauricioRua": "Campeón semipesado de UFC, ganador del PRIDE GP 2005",
-        "joanna": "Campeona de peso paja femenino de UFC, 5 defensas",
-        "frankieEdgar": "Campeón de peso ligero de UFC, 3 defensas",
-        "robbieLawler": "Campeón wélter de UFC, 2 premios a Pelea del Año (2014, 2015)",
+        "joseAldo": "Campeón pluma de MMA — 1.848 días, 7 defensas",
+        "mauricioRua": "Campeón semipesado de MMA, ganador del PRIDE GP 2005",
+        "joanna": "Campeona de peso paja femenino de MMA, 5 defensas",
+        "frankieEdgar": "Campeón de peso ligero de MMA, 3 defensas",
+        "robbieLawler": "Campeón wélter de MMA, 2 premios a Pelea del Año (2014, 2015)",
         "amandaNunes": "Campeona simultánea en 2 divisiones, 3.940 días — récord histórico",
-        "dominickCruz": "Dos veces campeón gallo de UFC, 3 defensas",
-        "demetriousJohnson": "11 defensas seguidas del título — récord de UFC, campeón mosca de UFC",
-        "chrisWeidman": "Campeón de peso medio de UFC, terminó la racha de Anderson Silva"
+        "dominickCruz": "Dos veces campeón gallo de MMA, 3 defensas",
+        "demetriousJohnson": "11 defensas seguidas del título — récord de MMA, campeón mosca de MMA",
+        "chrisWeidman": "Campeón de peso medio de MMA, terminó la racha de Anderson Silva"
       }
     },
     "contributors": {
       "mask": "Fundador de Tapout, la primera gran marca de MMA",
-      "blatnick": "Comentarista y comisionado de UFC que ayudó a legalizar las MMA",
-      "meyrowitz": "Cofundador y propietario de UFC (de UFC 6 a 2001)",
-      "joeSilva": "Matchmaker de UFC desde 1997 hasta 2016",
-      "bruceConnal": "Productor de TV de UFC desde 1997 hasta 2018",
-      "artDavie": "Cofundador de UFC, primer matchmaker (UFC 1–5)",
-      "marcRatner": "Vicepresidente de UFC que ayudó a legalizar las MMA en los 50 estados",
+      "blatnick": "Comentarista y comisionado de MMA que ayudó a legalizar las MMA",
+      "meyrowitz": "Cofundador y propietario de MMA (de MMA 6 a 2001)",
+      "joeSilva": "Matchmaker de MMA desde 1997 hasta 2016",
+      "bruceConnal": "Productor de TV de MMA desde 1997 hasta 2018",
+      "artDavie": "Cofundador de MMA, primer matchmaker (MMA 1–5)",
+      "marcRatner": "Vicepresidente de MMA que ayudó a legalizar las MMA en los 50 estados",
       "craigPiligian": "Creador de The Ultimate Fighter (2005)",
-      "thomasGerbasi": "Editor jefe de UFC.com, historiador clave de las MMA"
+      "thomasGerbasi": "Editor jefe de MMA.com, historiador clave de las MMA"
     },
     "fights": {
       "griffinBonnar": {

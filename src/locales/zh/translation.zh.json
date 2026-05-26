@@ -26,7 +26,7 @@
         "mainCards": {
             "activeFighters": {
                 "title": "现役选手数量",
-                "text": "UFC 名册中"
+                "text": "MMA 名册中"
             },
             "eventsPlanned": {
                 "title": "计划举行的赛事",
@@ -37,7 +37,7 @@
                 "text": "本年度"
             },
             "fightersDebuted": {
-                "title": "完成 UFC 首秀的选手",
+                "title": "完成 MMA 首秀的选手",
                 "text": "本年度"
             }
         },
@@ -71,7 +71,7 @@
         "copyright": "版权 © 2026 OctaGrid Inc. 保留所有权利。"
     },
     "fighters": {
-        "title": "UFC 选手",
+        "title": "MMA 选手",
         "categories": {
             "all": "全部",
             "flyweight": "蝇量级",
@@ -104,7 +104,7 @@
             "height": "身高",
             "weight": "体重",
             "armSpan": "臂展",
-            "debut": "UFC 首秀"
+            "debut": "MMA 首秀"
         },
         "units": {
             "cm": "厘米",
@@ -196,7 +196,7 @@
                 "date": "2026 年 3 月 29 日"
             },
             "2": {
-                "title": "托普里亚 vs 盖奇：UFC Freedom 250 主赛确定将于 6 月 14 日在白宫举行",
+                "title": "托普里亚 vs 盖奇：MMA Freedom 250 主赛确定将于 6 月 14 日在白宫举行",
                 "text": "托普里亚经纪人阿里·阿卜杜拉齐兹确认：临时冠军贾斯汀·盖奇将向轻量级冠军伊利亚·托普里亚发起挑战，赛事将在华盛顿白宫草坪上举行。",
                 "date": "2026 年 3 月 30 日"
             },
@@ -206,7 +206,7 @@
                 "date": "2026 年 3 月 28 日"
             },
             "4": {
-                "title": "UFC 327 迈阿密：普罗哈兹卡 vs 乌尔伯格——轻重量级金腰带之战",
+                "title": "MMA 327 迈阿密：普罗哈兹卡 vs 乌尔伯格——轻重量级金腰带之战",
                 "text": "伊日·普罗哈兹卡在与佩雷拉重赛后再次回到冠军战。卡洛斯·乌尔伯格则被视为该级别最危险的 KO 选手之一。",
                 "date": "2026 年 3 月 25 日"
             }
@@ -216,55 +216,55 @@
         "hero": {
             "title": "纪录 &",
             "titleAccent": "成就",
-            "subtitle": "UFC 历史纪录 —— 数据、里程碑与改写 MMA 历史的传奇选手"
+            "subtitle": "MMA 历史纪录 —— 数据、里程碑与改写 MMA 历史的传奇选手"
         },
         "keyStats": {
             "title": "数据",
             "titleAccent": "核心",
-            "description": "UFC 史上最重要的纪录"
+            "description": "MMA 史上最重要的纪录"
         },
         "longestTitleReigns": {
             "title": "卫冕期",
             "titleAccent": "冠军统治",
-            "description": "UFC 历史上持续时间最长的冠军统治期（天）"
+            "description": "MMA 历史上持续时间最长的冠军统治期（天）"
         },
         "mostWins": {
             "title": "胜场",
             "titleAccent": "最多",
-            "description": "UFC 职业生涯总胜场纪录（全部比赛）"
+            "description": "MMA 职业生涯总胜场纪录（全部比赛）"
         },
         "longestWinStreaks": {
             "title": "连胜",
             "titleAccent": "最长",
-            "description": "UFC 历史上最长连胜纪录"
+            "description": "MMA 历史上最长连胜纪录"
         },
         "titleBoutWins": {
             "title": "冠军战",
             "titleAccent": "胜场纪录",
-            "description": "在 UFC 冠军战中获胜最多的选手"
+            "description": "在 MMA 冠军战中获胜最多的选手"
         },
         "mostKnockouts": {
             "title": "最多",
             "titleAccent": "KO",
-            "description": "在 UFC 生涯中完成的 KO + TKO 总数"
+            "description": "在 MMA 生涯中完成的 KO + TKO 总数"
         },
         "mostFinishes": {
             "title": "最多",
             "titleAccent": "终结",
-            "description": "在 UFC 生涯中通过 KO 或降服终结对手的总次数"
+            "description": "在 MMA 生涯中通过 KO 或降服终结对手的总次数"
         },
         "fastestKnockouts": {
             "title": "KO",
             "titleAccent": "最快",
-            "description": "UFC 历史上用时最短的 KO"
+            "description": "MMA 历史上用时最短的 KO"
         },
         "ppvRecords": {
             "title": "付费直播",
             "titleAccent": "销量纪录",
-            "description": "史上 PPV 销量最高的前 5 场 UFC 赛事"
+            "description": "史上 PPV 销量最高的前 5 场 MMA 赛事"
         },
         "hallOfFame": {
-            "title": "UFC",
+            "title": "MMA",
             "titleAccent": "名人堂",
             "description": "各个荣誉序列中的 60+ 位 MMA 传奇",
             "shortLabel": "名人堂",
@@ -289,7 +289,7 @@
         }
     },
     "hallOfFame": {
-        "title": "UFC",
+        "title": "MMA",
         "titleAccent": "名人堂",
         "description": "各个荣誉序列中的 60+ 位 MMA 传奇",
         "shortLabel": "名人堂",
@@ -309,11 +309,11 @@
             "finishes": "终结次数",
             "fastestKo": "秒 —— KO",
             "reignRecord": "最长冠军统治 —— 安德森·席尔瓦",
-            "ufcWinsRecord": "UFC 胜场纪录 —— 吉姆·米勒",
-            "ppvRecord": "UFC 229：麦格雷戈 vs 努尔马戈梅多夫",
+            "ufcWinsRecord": "MMA 胜场纪录 —— 吉姆·米勒",
+            "ppvRecord": "MMA 229：麦格雷戈 vs 努尔马戈梅多夫",
             "koRecord": "KO 纪录 —— 德里克·刘易斯",
             "finishRecord": "终结纪录 —— 查尔斯·奥利维拉",
-            "fastestKoRecord": "马斯维达尔 vs 阿斯克伦，UFC 239"
+            "fastestKoRecord": "马斯维达尔 vs 阿斯克伦，MMA 239"
         },
         "divisions": {
             "lightweight": "轻量级",
@@ -342,61 +342,61 @@
         },
         "hallOfFame": {
             "pioneer": {
-                "royceGracie": "UFC 1、2、4 赛制冠军 —— 赛事冠军次数纪录（3 次）",
-                "kenShamrock": "首位 UFC 超级战冠军，2 次卫冕",
-                "danSevern": "UFC 超级战冠军，UFC 5 及 Ultimate Ultimate 1995 冠军",
-                "randyCouture": "6 段冠军统治 —— UFC 纪录；最年长冠军（45 岁）",
-                "markColeman": "首位 UFC 重量级冠军，UFC 10 和 11 冠军",
-                "chuckLiddell": "UFC 轻重量级冠军，7 连 KO 纪录",
-                "mattHughes": "两届 UFC 次中量级冠军，7 次卫冕",
-                "titoOrtiz": "UFC 轻重量级冠军，5 次卫冕",
-                "patMiletich": "首位 UFC 次中量级冠军，4 次卫冕",
-                "basRutten": "UFC 重量级冠军",
-                "antonioNogueira": "PRIDE 重量级冠军，UFC 临时冠军",
-                "donFrye": "UFC 8 和 Ultimate Ultimate 1996 冠军",
-                "mauriceSmith": "UFC 重量级冠军，1 次卫冕",
-                "kazushiSakuraba": "UFC 日本站重量级锦标赛冠军",
-                "mattSerra": "UFC 次中量级冠军，TUF 4 冠军",
-                "richFranklin": "UFC 中量级冠军，2 次卫冕",
-                "kevinRandleman": "UFC 重量级冠军（追授）",
-                "andersonSilva": "中量级冠军，2 457 天统治期 —— UFC 纪录；16 连胜",
-                "jensPulver": "首位 UFC 轻量级冠军，2 次卫冕",
+                "royceGracie": "MMA 1、2、4 赛制冠军 —— 赛事冠军次数纪录（3 次）",
+                "kenShamrock": "首位 MMA 超级战冠军，2 次卫冕",
+                "danSevern": "MMA 超级战冠军，MMA 5 及 Ultimate Ultimate 1995 冠军",
+                "randyCouture": "6 段冠军统治 —— MMA 纪录；最年长冠军（45 岁）",
+                "markColeman": "首位 MMA 重量级冠军，MMA 10 和 11 冠军",
+                "chuckLiddell": "MMA 轻重量级冠军，7 连 KO 纪录",
+                "mattHughes": "两届 MMA 次中量级冠军，7 次卫冕",
+                "titoOrtiz": "MMA 轻重量级冠军，5 次卫冕",
+                "patMiletich": "首位 MMA 次中量级冠军，4 次卫冕",
+                "basRutten": "MMA 重量级冠军",
+                "antonioNogueira": "PRIDE 重量级冠军，MMA 临时冠军",
+                "donFrye": "MMA 8 和 Ultimate Ultimate 1996 冠军",
+                "mauriceSmith": "MMA 重量级冠军，1 次卫冕",
+                "kazushiSakuraba": "MMA 日本站重量级锦标赛冠军",
+                "mattSerra": "MMA 次中量级冠军，TUF 4 冠军",
+                "richFranklin": "MMA 中量级冠军，2 次卫冕",
+                "kevinRandleman": "MMA 重量级冠军（追授）",
+                "andersonSilva": "中量级冠军，2 457 天统治期 —— MMA 纪录；16 连胜",
+                "jensPulver": "首位 MMA 轻量级冠军，2 次卫冕",
                 "wanderleiSilva": "PRIDE 中量级冠军，22 胜 —— PRIDE 纪录",
-                "vitorBelfort": "UFC 轻重量级冠军，13 场首回合终结 —— 纪录",
-                "markKerr": "UFC 14、UFC 15 冠军，NCAA 一级冠军"
+                "vitorBelfort": "MMA 轻重量级冠军，13 场首回合终结 —— 纪录",
+                "markKerr": "MMA 14、MMA 15 冠军，NCAA 一级冠军"
             },
             "modern": {
-                "forrestGriffin": "TUF 1 冠军，UFC 轻重量级冠军",
+                "forrestGriffin": "TUF 1 冠军，MMA 轻重量级冠军",
                 "bjPenn": "两级别冠军：次中量级 + 轻量级",
                 "urijahFaber": "WEC 羽量级冠军，5 次卫冕",
-                "rondaRousey": "首位 UFC 女子冠军，6 次卫冕",
-                "rashadEvans": "UFC 轻重量级冠军，TUF 2 冠军",
-                "michaelBisping": "UFC 中量级冠军，16 胜 —— 级别纪录",
+                "rondaRousey": "首位 MMA 女子冠军，6 次卫冕",
+                "rashadEvans": "MMA 轻重量级冠军，TUF 2 冠军",
+                "michaelBisping": "MMA 中量级冠军，16 胜 —— 级别纪录",
                 "gsp": "两级别冠军，13 场冠军战胜利",
                 "dc": "两级别冠军：轻重量级 + 重量级",
-                "khabib": "29 战全胜，UFC 轻量级冠军",
+                "khabib": "29 战全胜，MMA 轻量级冠军",
                 "cerrone": "23 胜，48 场 Zuffa 比赛 —— 历史纪录",
-                "joseAldo": "UFC 羽量级冠军 —— 1 848 天统治期，7 次卫冕",
-                "mauricioRua": "UFC 轻重量级冠军，PRIDE GP 2005 冠军",
-                "joanna": "UFC 女子草量级冠军，5 次卫冕",
-                "frankieEdgar": "UFC 轻量级冠军，3 次卫冕",
-                "robbieLawler": "UFC 次中量级冠军，2014/2015 年度最佳比赛 2 次",
+                "joseAldo": "MMA 羽量级冠军 —— 1 848 天统治期，7 次卫冕",
+                "mauricioRua": "MMA 轻重量级冠军，PRIDE GP 2005 冠军",
+                "joanna": "MMA 女子草量级冠军，5 次卫冕",
+                "frankieEdgar": "MMA 轻量级冠军，3 次卫冕",
+                "robbieLawler": "MMA 次中量级冠军，2014/2015 年度最佳比赛 2 次",
                 "amandaNunes": "两级别同时冠军，3 940 天统治 —— 史上纪录",
-                "dominickCruz": "两届 UFC 雏量级冠军，3 次卫冕",
-                "demetriousJohnson": "11 连续卫冕 —— UFC 纪录，UFC 蝇量级冠军",
-                "chrisWeidman": "UFC 中量级冠军，终结安德森·席尔瓦统治"
+                "dominickCruz": "两届 MMA 雏量级冠军，3 次卫冕",
+                "demetriousJohnson": "11 连续卫冕 —— MMA 纪录，MMA 蝇量级冠军",
+                "chrisWeidman": "MMA 中量级冠军，终结安德森·席尔瓦统治"
             }
         },
         "contributors": {
             "mask": "Tapout 品牌创始人 —— 首个大型 MMA 品牌",
-            "blatnick": "UFC 解说与官员，推动 MMA 合法化",
-            "meyrowitz": "UFC 联合创始人及前任老板（UFC 6 至 2001 年）",
-            "joeSilva": "1997–2016 年 UFC 配对总监",
-            "bruceConnal": "1997–2018 年 UFC 电视制作人",
-            "artDavie": "UFC 联合创始人，首任配对人（UFC 1–5）",
-            "marcRatner": "UFC 副总裁，推动 MMA 在美国 50 州全面合法化",
+            "blatnick": "MMA 解说与官员，推动 MMA 合法化",
+            "meyrowitz": "MMA 联合创始人及前任老板（MMA 6 至 2001 年）",
+            "joeSilva": "1997–2016 年 MMA 配对总监",
+            "bruceConnal": "1997–2018 年 MMA 电视制作人",
+            "artDavie": "MMA 联合创始人，首任配对人（MMA 1–5）",
+            "marcRatner": "MMA 副总裁，推动 MMA 在美国 50 州全面合法化",
             "craigPiligian": "《The Ultimate Fighter》节目创始人（2005）",
-            "thomasGerbasi": "UFC.com 主编，重要 MMA 史学作者"
+            "thomasGerbasi": "MMA.com 主编，重要 MMA 史学作者"
         },
         "fights": {
             "griffinBonnar": {

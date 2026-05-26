@@ -35,7 +35,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--ufc-gold, #c9a227), transparent);
+    background: linear-gradient(90deg, var(--mma-gold, #c9a227), transparent);
     opacity: 0;
     transition: opacity .25s ease;
 }
