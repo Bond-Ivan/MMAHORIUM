@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MMA Trivia Challenge</title>
+    <style>
+        :root {
+            --bg: #09090d;
+            --surface: #111118;
+            --surface2: #1a1a24;
+            --border: #2a2a38;
+            --text: #f0f0f0;
+            --muted: #888;
+            --gold: #d4a017;
+            --red: #e8372a;
+            --green: #27ae60;
+            --font: 'Barlow Condensed', sans-serif;
+            --display: 'Bebas Neue', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #app {
+            width: 100%;
+            max-width: 600px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            gap: 16px;
+            text-align: center;
+        }
+
+        .screen.active {
+            display: flex;
+        }
+
+        .logo {
+            font-family: var(--display);
+            font-size: 2.8rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+        }
+
+        .logo-sub {
+            font-size: 1rem;
+            color: var(--muted);
+        }
+
+        .btn {
+            font-family: var(--font);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all .15s;
+            min-height: 44px;
+            width: 100%;
+        }
+
+        .btn-red {
+            background: var(--red);
+            color: #fff;
+        }
+
+        .btn-red:hover {
+            background: #ff4535;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .hud {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .hud-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .hud-label {
+            font-size: .6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+        }
+
+        .hud-value {
+            font-family: var(--display);
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        .timer-wrap {
+            width: 100%;
+            height: 5px;
+            background: var(--surface2);
+            border-radius: 3px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .timer-bar {
+            height: 100%;
+            background: var(--gold);
+            border-radius: 3px;
+            transition: width .2s linear, background .5s;
+        }
+
+        .prize-bar {
+            display: flex;
+            gap: 4px;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+        }
+
+        .prize-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--surface2);
+            font-size: .55rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .prize-dot.done {
+            background: var(--green);
+            border-color: var(--green);
+            color: #fff;
+        }
+
+        .prize-dot.current {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .prize-dot.wrong {
+            background: var(--red);
+            border-color: var(--red);
+            color: #fff;
+        }
+
+        .q-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px;
+            flex-shrink: 0;
+        }
+
+        .q-num {
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        .q-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .answers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .ans-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 10px;
+            font-family: var(--font);
+            font-size: .95rem;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: all .15s;
+            min-height: 52px;
+            line-height: 1.3;
+            touch-action: manipulation;
+        }
+
+        .ans-btn:hover:not(:disabled) {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .ans-btn.correct {
+            background: rgba(39, 174, 96, .2);
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .ans-btn.wrong {
+            background: rgba(232, 55, 42, .2);
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        .lifelines {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .life-btn {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 7px 14px;
+            font-family: var(--font);
+            font-size: .78rem;
+            font-weight: 700;
+            color: var(--text);
+            cursor: pointer;
+            transition: all .15s;
+            min-height: 36px;
+        }
+
+        .life-btn:hover:not(.used) {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .life-btn.used {
+            opacity: .3;
+            cursor: not-allowed;
+        }
+
+        .result-icon {
+            font-size: 3.5rem;
+        }
+
+        .result-title {
+            font-family: var(--display);
+            font-size: 2.2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .result-score {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .stat-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: .65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+        }
+
+        .stat-val {
+            font-family: var(--display);
+            font-size: 1.4rem;
+            color: var(--text);
+        }
+
+        @media(max-width:400px) {
+            .answers {
+                grid-template-columns: 1fr;
+            }
+
+            .ans-btn {
+                min-height: 44px;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+        }
+
+        @media(max-height:600px) {
+            .prize-bar {
+                display: none;
+            }
+
+            .q-card {
+                padding: 12px;
+            }
+
+            .q-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <div class="screen active" id="screen-start">
+            <div class="logo">🧠 MMA TRIVIA</div>
+            <div class="logo-sub">15 вопросов · 3 подсказки · 30 сек на вопрос</div>
+            <button class="btn btn-red" id="btn-start">Начать игру</button>
+        </div>
+        <div class="screen" id="screen-game">
+            <div class="hud">
+                <div class="hud-item"><span class="hud-label">Вопрос</span><span class="hud-value" id="h-q">1/15</span>
+                </div>
+                <div class="hud-item"><span class="hud-label">Очки</span><span class="hud-value" id="h-score">0</span>
+                </div>
+                <div class="hud-item"><span class="hud-label">Серия</span><span class="hud-value"
+                        id="h-streak">0🔥</span></div>
+                <div class="hud-item"><span class="hud-label">Время</span><span class="hud-value" id="h-time">30</span>
+                </div>
+            </div>
+            <div class="timer-wrap">
+                <div class="timer-bar" id="timer-bar" style="width:100%"></div>
+            </div>
+            <div class="prize-bar" id="prize-bar"></div>
+            <div class="q-card">
+                <div class="q-num" id="q-num">Вопрос 1</div>
+                <div class="q-text" id="q-text">...</div>
+            </div>
+            <div class="answers" id="answers"></div>
+            <div class="lifelines">
+                <button class="life-btn" id="ll-50">50/50</button>
+                <button class="life-btn" id="ll-skip">⏭ Пропуск</button>
+                <button class="life-btn" id="ll-time">⏱ +15 сек</button>
+            </div>
+        </div>
+        <div class="screen" id="screen-result">
+            <div class="result-icon" id="r-icon">🏆</div>
+            <div class="result-title" id="r-title">РЕЗУЛЬТАТ</div>
+            <div class="result-score" id="r-score">Очки: 0</div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Правильных</div>
+                    <div class="stat-val" id="r-correct">0/15</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Макс. серия</div>
+                    <div class="stat-val" id="r-streak">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Точность</div>
+                    <div class="stat-val" id="r-acc">0%</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Оценка</div>
+                    <div class="stat-val" id="r-grade">—</div>
+                </div>
+            </div>
+            <button class="btn btn-red" id="btn-restart">Играть снова</button>
+        </div>
+    </div>
+    <script>
+        const Q = [
+            { q: "Кто рекордсмен MMA по числу защит титула в одной категории?", a: ["Джон Джонс", "Андерсон Силва", "Деметриус Джонсон", "Дастин Порьер"], c: 2 },
+            { q: "В каком году основан MMA?", a: ["1991", "1993", "1995", "1997"], c: 1 },
+            { q: "Первый чемпион MMA?", a: ["Рорион Грейси", "Хойс Грейси", "Кен Шемрок", "Патрик Смит"], c: 1 },
+            { q: "Сколько раундов в нечемпионском бою MMA?", a: ["2", "3", "4", "5"], c: 1 },
+            { q: "Конор МакГрегор стал двойным чемпионом. Какие категории?", a: ["Лёгкий и полулёгкий", "Полулёгкий и лёгкий", "Полусредний и средний", "Лёгкий и полусредний"], c: 1 },
+            { q: "Прозвище Израэля Адесаньи?", a: ["The Spider", "The Last Stylebender", "The Nigerian Nightmare", "Notorious"], c: 1 },
+            { q: "Сколько весовых категорий в мужском MMA?", a: ["7", "8", "9", "10"], c: 1 },
+            { q: "Как расшифровывается MMA?", a: ["Mixed Martial Arts", "Modern Martial Arena", "Mixed Macho Athletics", "Master Martial Ability"], c: 0 },
+            { q: "Самый быстрый нокаут в истории MMA — чья победа?", a: ["МакГрегор", "Масвидаль", "Тодд Дафи", "Гейджи"], c: 2 },
+            { q: "Кто из женщин дольше всех удерживал титул в MMA?", a: ["Ронда Роузи", "Аманда Нунес", "Валентина Шевченко", "Карла Эспарза"], c: 2 },
+            { q: "Родная страна Хабиба Нурмагомедова?", a: ["Азербайджан", "Казахстан", "Россия", "Грузия"], c: 2 },
+            { q: "Вес в категории полулёгкого (featherweight)?", a: ["135 lb", "145 lb", "155 lb", "170 lb"], c: 1 },
+            { q: "Прозвище Конора МакГрегора?", a: ["The Eagle", "The Spider", "Notorious", "Blessed"], c: 2 },
+            { q: "Первый чемпион MMA в тяжёлом весе из Африки?", a: ["Деррик Льюис", "Фрэнсис Нганну", "Серхио Перейра", "Алистар Оверим"], c: 1 },
+            { q: "Что означает прозвище Хабиба 'The Eagle'?", a: ["Орёл", "Сокол", "Ястреб", "Беркут"], c: 0 },
+        ];
+        const PRIZES = [100, 200, 300, 500, 750, 1000, 1500, 2000, 3000, 5000, 7500, 10000, 15000, 20000, 50000];
+        let qi = 0, score = 0, streak = 0, maxStreak = 0, correct = 0, timeLeft = 30, timerInt = null, answering = false;
+        function buildPrize() { const pb = document.getElementById('prize-bar'); pb.innerHTML = ''; for (let i = 0; i < 15; i++) { const d = document.createElement('div'); d.className = 'prize-dot'; d.id = 'pd-' + i; d.textContent = PRIZES[i] >= 1000 ? PRIZES[i] / 1000 + 'K' : PRIZES[i]; pb.appendChild(d); } }
+        function updatePrize(s) { for (let i = 0; i < 15; i++) { const d = document.getElementById('pd-' + i); if (!d) continue; d.className = 'prize-dot'; if (i < qi) d.classList.add('done'); else if (i === qi) d.classList.add(s === 'wrong' ? 'wrong' : 'current'); } }
+        function loadQ() { if (qi >= Q.length) { endGame(); return; } const q = Q[qi]; answering = false; document.getElementById('q-num').textContent = `Вопрос ${qi + 1}/15`; document.getElementById('q-text').textContent = q.q; document.getElementById('h-q').textContent = `${qi + 1}/15`; updatePrize(''); const ans = document.getElementById('answers'); ans.innerHTML = ''; q.a.forEach((opt, i) => { const b = document.createElement('button'); b.className = 'ans-btn'; b.textContent = opt; b.addEventListener('click', () => answer(i)); ans.appendChild(b); }); document.getElementById('ll-50').classList.remove('used'); document.getElementById('ll-skip').classList.remove('used'); document.getElementById('ll-time').classList.remove('used'); startTimer(30); }
+        function startTimer(s) { clearInterval(timerInt); timeLeft = s; document.getElementById('h-time').textContent = s; document.getElementById('timer-bar').style.width = '100%'; timerInt = setInterval(() => { timeLeft--; document.getElementById('h-time').textContent = timeLeft; document.getElementById('timer-bar').style.width = (timeLeft / s * 100) + '%'; document.getElementById('timer-bar').style.background = timeLeft > 15 ? '#d4a017' : timeLeft > 7 ? '#e67e22' : '#c0392b'; if (timeLeft <= 0) { clearInterval(timerInt); timeout(); } }, 1000); }
+        function timeout() { if (answering) return; answering = true; streak = 0; document.getElementById('h-streak').textContent = '0🔥'; document.querySelectorAll('.ans-btn')[Q[qi].c].classList.add('correct'); updatePrize('wrong'); setTimeout(() => { qi++; loadQ(); }, 1500); }
+        function answer(i) { if (answering) return; answering = true; clearInterval(timerInt); const q = Q[qi], btns = document.querySelectorAll('.ans-btn'); if (i === q.c) { btns[i].classList.add('correct'); correct++; streak++; maxStreak = Math.max(maxStreak, streak); score += PRIZES[qi] + (streak >= 3 ? Math.floor(PRIZES[qi] * .2) : 0); document.getElementById('h-score').textContent = score; document.getElementById('h-streak').textContent = streak + '🔥'; updatePrize('done'); setTimeout(() => { qi++; loadQ(); }, 900); } else { btns[i].classList.add('wrong'); btns[q.c].classList.add('correct'); streak = 0; document.getElementById('h-streak').textContent = '0🔥'; updatePrize('wrong'); setTimeout(() => { qi++; loadQ(); }, 1500); } }
+        function endGame() { clearInterval(timerInt); const acc = Math.round(correct / 15 * 100), grade = correct >= 13 ? '🥇 S' : correct >= 10 ? '🥈 A' : correct >= 7 ? '🥉 B' : correct >= 4 ? '💪 C' : '📚 D'; document.getElementById('r-icon').textContent = correct >= 10 ? '🏆' : '😤'; document.getElementById('r-title').textContent = correct >= 10 ? 'ЧЕМПИОН!' : 'ПРОДОЛЖАЙ!'; document.getElementById('r-score').textContent = 'Очки: ' + score.toLocaleString(); document.getElementById('r-correct').textContent = correct + '/15'; document.getElementById('r-streak').textContent = maxStreak; document.getElementById('r-acc').textContent = acc + '%'; document.getElementById('r-grade').textContent = grade; show('screen-result'); }
+        function show(id) { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById(id).classList.add('active'); }
+        document.getElementById('btn-start').addEventListener('click', () => { qi = 0; score = 0; streak = 0; maxStreak = 0; correct = 0; document.getElementById('h-score').textContent = '0'; document.getElementById('h-streak').textContent = '0🔥'; buildPrize(); show('screen-game'); loadQ(); });
+        document.getElementById('btn-restart').addEventListener('click', () => show('screen-start'));
+        document.getElementById('ll-50').addEventListener('click', function () { if (this.classList.contains('used') || answering) return; this.classList.add('used'); const btns = document.querySelectorAll('.ans-btn'); let h = 0; for (let i = 0; i < 4; i++) { if (i !== Q[qi].c && h < 2) { btns[i].style.opacity = '.2'; btns[i].disabled = true; h++; } } });
+        document.getElementById('ll-skip').addEventListener('click', function () { if (this.classList.contains('used') || answering) return; this.classList.add('used'); answering = true; clearInterval(timerInt); setTimeout(() => { answering = false; qi++; loadQ(); }, 300); });
+        document.getElementById('ll-time').addEventListener('click', function () { if (this.classList.contains('used')) return; this.classList.add('used'); timeLeft += 15; document.getElementById('h-time').textContent = timeLeft; });
+    </script>
+</body>
+
+</html>

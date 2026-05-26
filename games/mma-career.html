@@ -1,0 +1,2464 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMA Career Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --bg: #0c0b0a;
+            --surface: #141312;
+            --surface-2: #1a1917;
+            --surface-3: #201f1d;
+            --border: rgba(255, 255, 255, 0.1);
+            --border-2: rgba(255, 255, 255, 0.06);
+            --text: #e8e6e3;
+            --muted: #7a7876;
+            --faint: #3d3c3a;
+            --gold: #d4a017;
+            --gold-dim: #8a6810;
+            --gold-bg: rgba(212, 160, 23, 0.08);
+            --red: #c0392b;
+            --red-dim: #7a1f15;
+            --red-bg: rgba(192, 57, 43, 0.1);
+            --green: #27ae60;
+            --green-dim: #196138;
+            --green-bg: rgba(39, 174, 96, 0.1);
+            --blue: #2980b9;
+            --blue-dim: #1a5276;
+            --blue-bg: rgba(41, 128, 185, 0.1);
+            --r-sm: 4px;
+            --r-md: 6px;
+            --r-lg: 10px;
+            --font-d: 'Oswald', sans-serif;
+            --font-b: 'Inter', sans-serif;
+            --t: 180ms cubic-bezier(.16, 1, .3, 1);
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: var(--font-b);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.5;
+            overflow: hidden
+        }
+
+        /* LAYOUT */
+        #app {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            height: 100vh;
+            max-width: 1100px;
+            margin: 0 auto
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-2);
+            background: var(--surface);
+            gap: 16px;
+            flex-shrink: 0
+        }
+
+        .logo {
+            font-family: var(--font-d);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            color: var(--gold)
+        }
+
+        .logo span {
+            color: var(--text);
+            opacity: .5;
+            font-weight: 400
+        }
+
+        .header-info {
+            display: flex;
+            gap: 20px;
+            align-items: center
+        }
+
+        .hinfo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1px
+        }
+
+        .hinfo-label {
+            font-size: .65rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .1em
+        }
+
+        .hinfo-val {
+            font-family: var(--font-d);
+            font-size: .95rem;
+            font-weight: 600;
+            color: var(--gold)
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            overflow: hidden
+        }
+
+        nav {
+            background: var(--surface);
+            border-right: 1px solid var(--border-2);
+            display: flex;
+            flex-direction: column;
+            padding: 12px 0;
+            overflow-y: auto;
+            flex-shrink: 0
+        }
+
+        .nav-section {
+            padding: 4px 12px 2px;
+            font-size: .6rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: var(--faint);
+            margin-top: 8px
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: var(--muted);
+            font-family: var(--font-b);
+            font-size: .85rem;
+            width: 100%;
+            text-align: left;
+            border-radius: 0;
+            transition: color var(--t), background var(--t);
+            min-height: 40px
+        }
+
+        .nav-btn svg {
+            flex-shrink: 0;
+            opacity: .7
+        }
+
+        .nav-btn:hover {
+            background: var(--surface-2);
+            color: var(--text)
+        }
+
+        .nav-btn.active {
+            background: color-mix(in oklch, var(--gold) 10%, var(--surface));
+            color: var(--gold);
+            font-weight: 500
+        }
+
+        .nav-btn.active svg {
+            opacity: 1
+        }
+
+        .content {
+            overflow-y: auto;
+            padding: 24px;
+            background: var(--bg)
+        }
+
+        /* PANELS */
+        .panel {
+            display: none
+        }
+
+        .panel.active {
+            display: block
+        }
+
+        .panel-title {
+            font-family: var(--font-d);
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: .06em;
+            margin-bottom: 16px;
+            color: var(--text)
+        }
+
+        .panel-subtitle {
+            font-size: .8rem;
+            color: var(--muted);
+            margin-bottom: 20px;
+            margin-top: -12px
+        }
+
+        /* CARDS */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border-2);
+            border-radius: var(--r-lg);
+            padding: 16px;
+            margin-bottom: 12px
+        }
+
+        .card-title {
+            font-family: var(--font-d);
+            font-size: .95rem;
+            font-weight: 600;
+            letter-spacing: .05em;
+            margin-bottom: 10px;
+            color: var(--text)
+        }
+
+        .card-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 5px 0;
+            border-bottom: 1px solid var(--border-2)
+        }
+
+        .card-row:last-child {
+            border-bottom: none
+        }
+
+        .card-label {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        .card-val {
+            font-size: .85rem;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums
+        }
+
+        /* GRID LAYOUTS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px
+        }
+
+        /* STAT BARS */
+        .stat-bar {
+            margin-bottom: 10px
+        }
+
+        .stat-bar-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px
+        }
+
+        .stat-bar-label {
+            font-size: .75rem;
+            color: var(--muted)
+        }
+
+        .stat-bar-val {
+            font-size: .75rem;
+            font-weight: 600;
+            color: var(--text)
+        }
+
+        .stat-bar-bg {
+            height: 6px;
+            background: var(--surface-3);
+            border-radius: 3px;
+            overflow: hidden
+        }
+
+        .stat-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width .5s ease
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 9px 18px;
+            border: none;
+            border-radius: var(--r-md);
+            font-family: var(--font-b);
+            font-size: .82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--t);
+            min-height: 36px;
+            white-space: nowrap
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+            font-weight: 600
+        }
+
+        .btn-gold:hover {
+            background: #e6b020;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(212, 160, 23, .35)
+        }
+
+        .btn-gold:active {
+            transform: translateY(0)
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            padding: 8px 16px
+        }
+
+        .btn-ghost:hover {
+            color: var(--text);
+            border-color: rgba(255, 255, 255, .25)
+        }
+
+        .btn-danger {
+            background: var(--red-bg);
+            color: var(--red);
+            border: 1px solid rgba(192, 57, 43, .25)
+        }
+
+        .btn-danger:hover {
+            background: var(--red);
+            color: #fff
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: .75rem;
+            min-height: 30px
+        }
+
+        .btn:disabled {
+            opacity: .35;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 14px
+        }
+
+        /* BADGES */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: 99px;
+            font-size: .68rem;
+            font-weight: 600;
+            letter-spacing: .05em;
+            text-transform: uppercase
+        }
+
+        .badge-gold {
+            background: var(--gold-bg);
+            color: var(--gold);
+            border: 1px solid rgba(212, 160, 23, .2)
+        }
+
+        .badge-red {
+            background: var(--red-bg);
+            color: var(--red);
+            border: 1px solid rgba(192, 57, 43, .2)
+        }
+
+        .badge-green {
+            background: var(--green-bg);
+            color: var(--green);
+            border: 1px solid rgba(39, 174, 96, .2)
+        }
+
+        .badge-blue {
+            background: var(--blue-bg);
+            color: var(--blue);
+            border: 1px solid rgba(41, 128, 185, .2)
+        }
+
+        .badge-gray {
+            background: var(--surface-3);
+            color: var(--muted);
+            border: 1px solid var(--border-2)
+        }
+
+        /* FIGHTER CREATE */
+        #create-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 32px
+        }
+
+        .create-title {
+            font-family: var(--font-d);
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-align: center;
+            margin-bottom: 6px
+        }
+
+        .create-title span {
+            color: var(--gold)
+        }
+
+        .create-sub {
+            color: var(--muted);
+            font-size: .85rem;
+            text-align: center;
+            margin-bottom: 32px
+        }
+
+        .create-form {
+            background: var(--surface);
+            border: 1px solid var(--border-2);
+            border-radius: var(--r-lg);
+            padding: 28px;
+            width: 100%;
+            max-width: 600px
+        }
+
+        .create-form h2 {
+            font-family: var(--font-d);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            letter-spacing: .06em
+        }
+
+        .field {
+            margin-bottom: 16px
+        }
+
+        .field label {
+            display: block;
+            font-size: .75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            margin-bottom: 6px
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 9px 12px;
+            color: var(--text);
+            font-family: var(--font-b);
+            font-size: .88rem;
+            transition: border-color var(--t)
+        }
+
+        .field input:focus,
+        .field select:focus {
+            outline: none;
+            border-color: var(--gold)
+        }
+
+        .field input::placeholder {
+            color: var(--faint)
+        }
+
+        .style-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px
+        }
+
+        .style-opt {
+            padding: 10px 8px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            cursor: pointer;
+            text-align: center;
+            transition: all var(--t)
+        }
+
+        .style-opt:hover {
+            border-color: rgba(255, 255, 255, .25);
+            background: var(--surface-3)
+        }
+
+        .style-opt.selected {
+            border-color: var(--gold);
+            background: var(--gold-bg)
+        }
+
+        .style-opt-name {
+            font-family: var(--font-d);
+            font-size: .9rem;
+            font-weight: 600;
+            letter-spacing: .05em;
+            color: var(--text);
+            margin-bottom: 3px
+        }
+
+        .style-opt-desc {
+            font-size: .68rem;
+            color: var(--muted)
+        }
+
+        .pts-left {
+            font-size: .8rem;
+            color: var(--muted);
+            margin-bottom: 12px
+        }
+
+        .pts-left span {
+            color: var(--gold);
+            font-weight: 700
+        }
+
+        .attr-row {
+            display: grid;
+            grid-template-columns: 100px 1fr auto auto;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px
+        }
+
+        .attr-label {
+            font-size: .8rem;
+            color: var(--text)
+        }
+
+        .attr-bar {
+            height: 8px;
+            background: var(--surface-3);
+            border-radius: 4px;
+            overflow: hidden
+        }
+
+        .attr-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: var(--gold);
+            transition: width .2s
+        }
+
+        .attr-val {
+            font-family: var(--font-d);
+            font-size: .9rem;
+            font-weight: 600;
+            width: 28px;
+            text-align: center;
+            color: var(--gold)
+        }
+
+        .attr-btns {
+            display: flex;
+            gap: 4px
+        }
+
+        .attr-btn {
+            width: 24px;
+            height: 24px;
+            border: 1px solid var(--border);
+            border-radius: var(--r-sm);
+            background: var(--surface-3);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .85rem;
+            transition: all var(--t)
+        }
+
+        .attr-btn:hover:not(:disabled) {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold)
+        }
+
+        .attr-btn:disabled {
+            opacity: .25;
+            cursor: not-allowed
+        }
+
+        /* FIGHTER PROFILE */
+        .fighter-header {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 20px;
+            align-items: start;
+            margin-bottom: 20px
+        }
+
+        .fighter-avatar-lg {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--surface-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-d);
+            font-size: 2rem;
+            font-weight: 700;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            flex-shrink: 0
+        }
+
+        .fighter-meta h1 {
+            font-family: var(--font-d);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: .05em;
+            line-height: 1;
+            margin-bottom: 4px
+        }
+
+        .fighter-meta .nick {
+            font-size: .8rem;
+            color: var(--gold);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: 8px
+        }
+
+        .fighter-meta .badges {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap
+        }
+
+        .fighter-record {
+            text-align: right
+        }
+
+        .record-big {
+            font-family: var(--font-d);
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: .05em;
+            line-height: 1;
+            color: var(--gold)
+        }
+
+        .record-label {
+            font-size: .65rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .1em
+        }
+
+        .xp-bar-outer {
+            background: var(--surface-3);
+            border-radius: 4px;
+            height: 8px;
+            margin-top: 12px;
+            overflow: hidden;
+            position: relative
+        }
+
+        .xp-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+            border-radius: 4px;
+            transition: width .6s ease
+        }
+
+        .xp-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: .65rem;
+            color: var(--muted);
+            margin-bottom: 3px
+        }
+
+        /* TRAINING */
+        .train-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px
+        }
+
+        .train-card {
+            background: var(--surface);
+            border: 1px solid var(--border-2);
+            border-radius: var(--r-lg);
+            padding: 16px;
+            cursor: pointer;
+            transition: all var(--t);
+            position: relative;
+            overflow: hidden
+        }
+
+        .train-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+            opacity: 0;
+            transition: opacity var(--t)
+        }
+
+        .train-card:hover::before {
+            opacity: .04
+        }
+
+        .train-card:hover {
+            border-color: rgba(255, 255, 255, .2);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, .3)
+        }
+
+        .train-card.cooling::before {
+            background: var(--blue);
+            opacity: .06
+        }
+
+        .train-card.cooling {
+            border-color: rgba(41, 128, 185, .2)
+        }
+
+        .train-name {
+            font-family: var(--font-d);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: .04em;
+            margin-bottom: 6px;
+            position: relative
+        }
+
+        .train-desc {
+            font-size: .75rem;
+            color: var(--muted);
+            margin-bottom: 12px;
+            position: relative
+        }
+
+        .train-effect {
+            font-size: .75rem;
+            color: var(--green);
+            font-weight: 500;
+            margin-bottom: 8px;
+            position: relative
+        }
+
+        .train-cost {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative
+        }
+
+        .train-cd {
+            font-size: .7rem;
+            color: var(--blue)
+        }
+
+        /* RANKINGS */
+        .rank-table {
+            width: 100%;
+            border-collapse: collapse
+        }
+
+        .rank-table th {
+            text-align: left;
+            font-size: .65rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: var(--muted);
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--border-2);
+            font-weight: 500
+        }
+
+        .rank-table td {
+            padding: 10px 10px;
+            border-bottom: 1px solid var(--border-2);
+            font-size: .82rem;
+            vertical-align: middle
+        }
+
+        .rank-table tr:last-child td {
+            border-bottom: none
+        }
+
+        .rank-table tr.player-row td {
+            background: var(--gold-bg)
+        }
+
+        .rank-num {
+            font-family: var(--font-d);
+            font-size: 1rem;
+            font-weight: 700;
+            width: 36px;
+            color: var(--muted)
+        }
+
+        .rank-num.top3 {
+            color: var(--gold)
+        }
+
+        .rank-name {
+            font-weight: 600;
+            color: var(--text)
+        }
+
+        .rank-record {
+            font-size: .75rem;
+            color: var(--muted);
+            font-variant-numeric: tabular-nums
+        }
+
+        .rank-rating {
+            font-family: var(--font-d);
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--gold)
+        }
+
+        .champ-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 1px 6px;
+            background: var(--gold);
+            color: #000;
+            border-radius: 3px;
+            font-size: .6rem;
+            font-weight: 700;
+            letter-spacing: .05em;
+            text-transform: uppercase
+        }
+
+        /* MATCHMAKING */
+        .fight-card-item {
+            background: var(--surface);
+            border: 1px solid var(--border-2);
+            border-radius: var(--r-lg);
+            padding: 16px 20px;
+            margin-bottom: 10px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto;
+            gap: 12px;
+            align-items: center
+        }
+
+        .fight-opponent-info h3 {
+            font-family: var(--font-d);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: .04em;
+            margin-bottom: 2px
+        }
+
+        .fight-opponent-info .rec {
+            font-size: .75rem;
+            color: var(--muted)
+        }
+
+        .fight-vs {
+            font-family: var(--font-d);
+            font-size: .85rem;
+            font-weight: 700;
+            color: var(--faint);
+            text-align: center
+        }
+
+        .fight-difficulty {
+            text-align: right
+        }
+
+        .odds-bar {
+            display: flex;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px
+        }
+
+        .odds-p {
+            background: var(--gold);
+            transition: flex var(--t)
+        }
+
+        .odds-o {
+            background: var(--red-dim);
+            transition: flex var(--t)
+        }
+
+        /* FIGHT SIMULATION */
+        #fight-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .95);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px
+        }
+
+        #fight-overlay.open {
+            display: flex
+        }
+
+        .fight-screen {
+            width: 100%;
+            max-width: 700px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            overflow: hidden
+        }
+
+        .fight-header {
+            background: var(--surface-2);
+            padding: 14px 20px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 12px;
+            align-items: center;
+            border-bottom: 1px solid var(--border-2)
+        }
+
+        .fight-fighter-hud {
+            display: flex;
+            flex-direction: column;
+            gap: 4px
+        }
+
+        .fight-fighter-hud.right {
+            align-items: flex-end
+        }
+
+        .fight-fname {
+            font-family: var(--font-d);
+            font-size: .95rem;
+            font-weight: 700;
+            letter-spacing: .04em
+        }
+
+        .fight-fname.gold {
+            color: var(--gold)
+        }
+
+        .fight-hp-bg {
+            width: 180px;
+            height: 8px;
+            background: var(--surface-3);
+            border-radius: 4px;
+            overflow: hidden;
+            max-width: 100%
+        }
+
+        .fight-hp-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width .3s ease
+        }
+
+        .fight-hp-fill.gold {
+            background: linear-gradient(90deg, #8a6810, var(--gold))
+        }
+
+        .fight-hp-fill.red {
+            background: linear-gradient(90deg, var(--red-dim), var(--red))
+        }
+
+        .fight-center-info {
+            text-align: center
+        }
+
+        .fight-round {
+            font-family: var(--font-d);
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--muted);
+            letter-spacing: .1em
+        }
+
+        .fight-time {
+            font-family: var(--font-d);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold);
+            font-variant-numeric: tabular-nums
+        }
+
+        .fight-log {
+            height: 220px;
+            overflow-y: auto;
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: .8rem
+        }
+
+        .fight-log-line {
+            padding: 3px 0;
+            border-bottom: 1px solid var(--border-2);
+            color: var(--muted)
+        }
+
+        .fight-log-line.hit {
+            color: var(--text)
+        }
+
+        .fight-log-line.big {
+            color: var(--gold);
+            font-weight: 600
+        }
+
+        .fight-log-line.danger {
+            color: var(--red)
+        }
+
+        .fight-action-bar {
+            padding: 12px 16px;
+            background: var(--surface-2);
+            border-top: 1px solid var(--border-2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px
+        }
+
+        .fight-action-desc {
+            font-size: .8rem;
+            color: var(--muted);
+            flex: 1
+        }
+
+        .corner-advice {
+            padding: 10px 16px;
+            background: var(--gold-bg);
+            border-top: 1px solid rgba(212, 160, 23, .15);
+            font-size: .78rem;
+            color: var(--gold)
+        }
+
+        /* HISTORY */
+        .history-item {
+            background: var(--surface);
+            border: 1px solid var(--border-2);
+            border-radius: var(--r-lg);
+            padding: 14px 18px;
+            margin-bottom: 8px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 12px;
+            align-items: center
+        }
+
+        .history-result {
+            font-family: var(--font-d);
+            font-size: 1.1rem;
+            font-weight: 700;
+            width: 36px;
+            text-align: center
+        }
+
+        .history-result.W {
+            color: var(--green)
+        }
+
+        .history-result.L {
+            color: var(--red)
+        }
+
+        .history-result.D {
+            color: var(--muted)
+        }
+
+        .history-opponent {
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 2px
+        }
+
+        .history-method {
+            font-size: .73rem;
+            color: var(--muted)
+        }
+
+        .history-date {
+            font-size: .72rem;
+            color: var(--faint);
+            text-align: right
+        }
+
+        /* ACHIEVEMENTS */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px
+        }
+
+        .ach-item {
+            background: var(--surface);
+            border: 1px solid var(--border-2);
+            border-radius: var(--r-lg);
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .ach-item.unlocked {
+            border-color: rgba(212, 160, 23, .3);
+            background: var(--gold-bg)
+        }
+
+        .ach-icon {
+            font-size: 1.4rem
+        }
+
+        .ach-name {
+            font-family: var(--font-d);
+            font-size: .82rem;
+            font-weight: 600;
+            letter-spacing: .04em;
+            color: var(--text)
+        }
+
+        .ach-desc {
+            font-size: .7rem;
+            color: var(--muted)
+        }
+
+        /* NEWS TICKER */
+        .news-ticker {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border-2);
+            padding: 6px 16px;
+            font-size: .72rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            overflow: hidden;
+            flex-shrink: 0
+        }
+
+        .news-label {
+            font-family: var(--font-d);
+            font-size: .65rem;
+            letter-spacing: .1em;
+            color: var(--gold);
+            text-transform: uppercase;
+            white-space: nowrap
+        }
+
+        .news-text {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis
+        }
+
+        /* TOASTS */
+        #toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .toast {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 12px 16px;
+            font-size: .82rem;
+            max-width: 320px;
+            animation: slideIn .25s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .4)
+        }
+
+        .toast.gold {
+            border-color: rgba(212, 160, 23, .35);
+            background: var(--gold-bg)
+        }
+
+        .toast.red {
+            border-color: rgba(192, 57, 43, .35);
+            background: var(--red-bg)
+        }
+
+        .toast.green {
+            border-color: rgba(39, 174, 96, .35);
+            background: var(--green-bg)
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(40px);
+                opacity: 0
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateX(40px)
+            }
+        }
+
+        /* MOBILE */
+        @media(max-width:640px) {
+            main {
+                grid-template-columns: 1fr
+            }
+
+            nav {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-2);
+                padding: 0
+            }
+
+            .nav-section {
+                display: none
+            }
+
+            .nav-btn {
+                min-width: 80px;
+                flex-direction: column;
+                gap: 3px;
+                padding: 8px 10px;
+                font-size: .65rem;
+                text-align: center
+            }
+
+            .nav-btn svg {
+                width: 18px;
+                height: 18px
+            }
+
+            .content {
+                padding: 14px
+            }
+
+            .fighter-header {
+                grid-template-columns: auto 1fr
+            }
+
+            .fighter-record {
+                grid-column: 1/-1
+            }
+
+            .grid-2,
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .fight-hp-bg {
+                width: 120px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- CREATE SCREEN -->
+        <div id="create-screen">
+            <div class="create-title">MMA <span>Career</span> Manager</div>
+            <div class="create-sub">Создай бойца и доберись до чемпионского пояса</div>
+            <div class="create-form">
+                <h2>НОВЫЙ БОЕЦ</h2>
+                <div class="grid-2" style="gap:12px;margin-bottom:16px">
+                    <div class="field">
+                        <label>Имя</label>
+                        <input type="text" id="inp-name" placeholder="Иван Петров" maxlength="24">
+                    </div>
+                    <div class="field">
+                        <label>Прозвище</label>
+                        <input type="text" id="inp-nick" placeholder="Гром" maxlength="20">
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Боевой стиль</label>
+                    <div class="style-grid" id="style-grid">
+                        <div class="style-opt selected" data-style="striker">
+                            <div class="style-opt-name">СТРАЙКЕР</div>
+                            <div class="style-opt-desc">Удары, стойка, КО</div>
+                        </div>
+                        <div class="style-opt" data-style="wrestler">
+                            <div class="style-opt-name">ГРЭППЛЕР</div>
+                            <div class="style-opt-desc">Борьба, клинч, TKO</div>
+                        </div>
+                        <div class="style-opt" data-style="bjj">
+                            <div class="style-opt-name">BJJ</div>
+                            <div class="style-opt-desc">Болевые, удушения</div>
+                        </div>
+                        <div class="style-opt" data-style="muay-thai">
+                            <div class="style-opt-name">МУЙ-ТАЙ</div>
+                            <div class="style-opt-desc">Удары локтями, ногами</div>
+                        </div>
+                        <div class="style-opt" data-style="boxer">
+                            <div class="style-opt-name">БОКСЁР</div>
+                            <div class="style-opt-desc">Высокая скорость рук</div>
+                        </div>
+                        <div class="style-opt" data-style="allround">
+                            <div class="style-opt-name">ALL-ROUND</div>
+                            <div class="style-opt-desc">Сбалансированный</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field" style="margin-top:16px">
+                    <label>Характеристики <span style="font-size:.8em">(распредели 10 очков)</span></label>
+                    <div class="pts-left">Очков осталось: <span id="pts-display">10</span></div>
+                    <div id="attr-builder"></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-gold" id="btn-create" style="width:100%">НАЧАТЬ КАРЬЕРУ →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME UI (hidden until created) -->
+        <div id="game-ui" style="display:none;grid-template-rows:auto auto 1fr;height:100vh">
+            <header>
+                <div class="logo">MMA <span>/</span> Manager</div>
+                <div class="news-ticker"
+                    style="flex:1;margin:0 16px;border:none;padding:0;border-radius:var(--r-md);background:var(--surface-2);padding:5px 12px">
+                    <span class="news-label">MMA NEWS</span>
+                    <span class="news-text" id="news-text">Добро пожаловать в MMA!</span>
+                </div>
+                <div class="header-info">
+                    <div class="hinfo">
+                        <span class="hinfo-label">Рейтинг</span>
+                        <span class="hinfo-val" id="h-rating">—</span>
+                    </div>
+                    <div class="hinfo">
+                        <span class="hinfo-label">Энергия</span>
+                        <span class="hinfo-val" id="h-energy">100%</span>
+                    </div>
+                    <div class="hinfo">
+                        <span class="hinfo-label">Неделя</span>
+                        <span class="hinfo-val" id="h-week">1</span>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <nav>
+                    <div class="nav-section">БОЕЦ</div>
+                    <button class="nav-btn active" data-panel="profile" onclick="switchPanel('profile')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                        </svg>
+                        Профиль
+                    </button>
+                    <button class="nav-btn" data-panel="stats" onclick="switchPanel('stats')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                        </svg>
+                        Атрибуты
+                    </button>
+                    <div class="nav-section">КАРЬЕРА</div>
+                    <button class="nav-btn" data-panel="training" onclick="switchPanel('training')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M6.5 6.5l11 11M17.5 6.5l-11 11" />
+                            <circle cx="12" cy="12" r="10" />
+                        </svg>
+                        Тренировки
+                    </button>
+                    <button class="nav-btn" data-panel="matchmaking" onclick="switchPanel('matchmaking')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" />
+                            <path d="M16 7V5a2 2 0 0 0-4 0v2M8 7V5a2 2 0 0 0-4 0v2" />
+                        </svg>
+                        Бои
+                    </button>
+                    <button class="nav-btn" data-panel="rankings" onclick="switchPanel('rankings')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="4 17 10 11 14 15 22 7" />
+                            <polyline points="15 7 22 7 22 14" />
+                        </svg>
+                        Рейтинг
+                    </button>
+                    <div class="nav-section">ИСТОРИЯ</div>
+                    <button class="nav-btn" data-panel="history" onclick="switchPanel('history')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                        История боёв
+                    </button>
+                    <button class="nav-btn" data-panel="achievements" onclick="switchPanel('achievements')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="8" r="6" />
+                            <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+                        </svg>
+                        Достижения
+                    </button>
+                </nav>
+                <div class="content">
+                    <!-- PROFILE -->
+                    <div class="panel active" id="panel-profile">
+                        <div class="fighter-header">
+                            <div class="fighter-avatar-lg" id="p-avatar">?</div>
+                            <div class="fighter-meta">
+                                <h1 id="p-name">—</h1>
+                                <div class="nick" id="p-nick">—</div>
+                                <div class="badges">
+                                    <span class="badge badge-gold" id="p-style">—</span>
+                                    <span class="badge badge-gray" id="p-division">Дебютант</span>
+                                </div>
+                            </div>
+                            <div class="fighter-record">
+                                <div class="record-big" id="p-record">0-0-0</div>
+                                <div class="record-label">В-П-Н</div>
+                            </div>
+                        </div>
+                        <div class="xp-label"><span>Опыт</span><span id="p-xp-text">0 / 100 XP</span></div>
+                        <div class="xp-bar-outer">
+                            <div class="xp-bar-fill" id="p-xp-bar" style="width:0%"></div>
+                        </div>
+
+                        <div class="grid-2" style="margin-top:20px">
+                            <div class="card">
+                                <div class="card-title">Статистика</div>
+                                <div class="card-row"><span class="card-label">Побед нокаутом</span><span
+                                        class="card-val" id="s-ko">0</span></div>
+                                <div class="card-row"><span class="card-label">Побед решением</span><span
+                                        class="card-val" id="s-dec">0</span></div>
+                                <div class="card-row"><span class="card-label">Побед болевым</span><span
+                                        class="card-val" id="s-sub">0</span></div>
+                                <div class="card-row"><span class="card-label">Серия побед</span><span class="card-val"
+                                        id="s-streak">0</span></div>
+                                <div class="card-row"><span class="card-label">Всего боёв</span><span class="card-val"
+                                        id="s-total">0</span></div>
+                            </div>
+                            <div class="card">
+                                <div class="card-title">Состояние</div>
+                                <div class="card-row"><span class="card-label">Энергия</span><span class="card-val"
+                                        id="p-energy-val">100%</span></div>
+                                <div class="card-row"><span class="card-label">Уровень</span><span class="card-val gold"
+                                        id="p-level">1</span></div>
+                                <div class="card-row"><span class="card-label">Рейтинг</span><span class="card-val"
+                                        id="p-rating-val">—</span></div>
+                                <div class="card-row"><span class="card-label">Репутация</span><span class="card-val"
+                                        id="p-rep">0</span></div>
+                                <div class="card-row"><span class="card-label">Деньги</span><span class="card-val"
+                                        id="p-money">$5,000</span></div>
+                            </div>
+                        </div>
+                        <div class="card" style="margin-top:0">
+                            <div class="card-title">Следующий шаг</div>
+                            <div id="next-advice" style="font-size:.82rem;color:var(--muted)">Выбери тренировку или
+                                запишись на бой в
+                                разделе «Бои».</div>
+                        </div>
+                    </div>
+
+                    <!-- STATS -->
+                    <div class="panel" id="panel-stats">
+                        <div class="panel-title">АТРИБУТЫ БОЙЦА</div>
+                        <div class="grid-2">
+                            <div class="card">
+                                <div class="card-title">Ударная техника</div>
+                                <div id="stats-striking"></div>
+                            </div>
+                            <div class="card">
+                                <div class="card-title">Борьба и грэпплинг</div>
+                                <div id="stats-grappling"></div>
+                            </div>
+                            <div class="card">
+                                <div class="card-title">Физические качества</div>
+                                <div id="stats-physical"></div>
+                            </div>
+                            <div class="card">
+                                <div class="card-title">Ментальные качества</div>
+                                <div id="stats-mental"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TRAINING -->
+                    <div class="panel" id="panel-training">
+                        <div class="panel-title">ТРЕНИРОВОЧНЫЙ ЛАГЕРЬ</div>
+                        <div class="panel-subtitle">Тренировки расходуют энергию. Энергия восстанавливается каждую
+                            неделю.</div>
+                        <div class="train-grid" id="training-grid"></div>
+                    </div>
+
+                    <!-- MATCHMAKING -->
+                    <div class="panel" id="panel-matchmaking">
+                        <div class="panel-title">БРОНИРОВАНИЕ БОЯ</div>
+                        <div class="panel-subtitle">Выбери соперника. Более сильные оппоненты дают больше рейтинга и
+                            денег.</div>
+                        <div id="matchmaking-list"></div>
+                    </div>
+
+                    <!-- RANKINGS -->
+                    <div class="panel" id="panel-rankings">
+                        <div class="panel-title">МИРОВОЙ РЕЙТИНГ MMA</div>
+                        <div class="card">
+                            <table class="rank-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Боец</th>
+                                        <th>Рекорд</th>
+                                        <th>Рейтинг</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="rankings-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- HISTORY -->
+                    <div class="panel" id="panel-history">
+                        <div class="panel-title">ИСТОРИЯ БОЁВ</div>
+                        <div id="history-list"></div>
+                    </div>
+
+                    <!-- ACHIEVEMENTS -->
+                    <div class="panel" id="panel-achievements">
+                        <div class="panel-title">ДОСТИЖЕНИЯ</div>
+                        <div class="achievement-grid" id="achievements-grid"></div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- FIGHT OVERLAY -->
+    <div id="fight-overlay">
+        <div class="fight-screen">
+            <div class="fight-header">
+                <div class="fight-fighter-hud">
+                    <div class="fight-fname gold" id="fo-p1-name">Боец 1</div>
+                    <div class="fight-hp-bg">
+                        <div class="fight-hp-fill gold" id="fo-p1-hp" style="width:100%"></div>
+                    </div>
+                    <div style="font-size:.7rem;color:var(--muted)">HP: <span id="fo-p1-hp-val">100</span></div>
+                </div>
+                <div class="fight-center-info">
+                    <div class="fight-round" id="fo-round">РАУНД 1</div>
+                    <div class="fight-time" id="fo-time">5:00</div>
+                </div>
+                <div class="fight-fighter-hud right">
+                    <div class="fight-fname" id="fo-p2-name">Боец 2</div>
+                    <div class="fight-hp-bg" style="margin-left:auto">
+                        <div class="fight-hp-fill red" id="fo-p2-hp" style="width:100%"></div>
+                    </div>
+                    <div style="font-size:.7rem;color:var(--muted);text-align:right">HP: <span
+                            id="fo-p2-hp-val">100</span></div>
+                </div>
+            </div>
+            <div class="fight-log" id="fight-log"></div>
+            <div class="corner-advice" id="corner-advice" style="display:none"></div>
+            <div class="fight-action-bar">
+                <div class="fight-action-desc" id="fight-action-desc">Идёт бой...</div>
+                <button class="btn btn-ghost btn-sm" id="btn-fast-fight">⏩ Ускорить</button>
+                <button class="btn btn-gold btn-sm" id="btn-next-round" style="display:none">Продолжить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast-container"></div>
+
+    <script>
+        // ============================================================
+        //  GAME STATE
+        // ============================================================
+        const G = {
+            fighter: null,
+            week: 1,
+            opponents: [],
+            rankings: [],
+            history: [],
+            achievements: [],
+            news: [],
+            pendingFight: null,
+        };
+
+        const ATTRS = [
+            { id: 'striking', label: 'Удары руками', group: 'striking', color: '#d4a017' },
+            { id: 'kicks', label: 'Удары ногами', group: 'striking', color: '#d4a017' },
+            { id: 'clinch', label: 'Клинч', group: 'striking', color: '#d4a017' },
+            { id: 'takedown', label: 'Тейкдаун', group: 'grappling', color: '#2980b9' },
+            { id: 'grappling', label: 'Грэпплинг', group: 'grappling', color: '#2980b9' },
+            { id: 'submissions', label: 'Болевые', group: 'grappling', color: '#2980b9' },
+            { id: 'strength', label: 'Сила', group: 'physical', color: '#27ae60' },
+            { id: 'speed', label: 'Скорость', group: 'physical', color: '#27ae60' },
+            { id: 'cardio', label: 'Выносливость', group: 'physical', color: '#27ae60' },
+            { id: 'chin', label: 'Подбородок', group: 'mental', color: '#c0392b' },
+            { id: 'heart', label: 'Характер', group: 'mental', color: '#c0392b' },
+            { id: 'iq', label: 'Боевой IQ', group: 'mental', color: '#c0392b' },
+        ];
+
+        const STYLE_BONUS = {
+            'striker': { striking: 3, kicks: 2, clinch: 1, speed: 2 },
+            'wrestler': { takedown: 4, grappling: 2, strength: 3, cardio: 1 },
+            'bjj': { submissions: 5, grappling: 3, chin: 1, heart: 1 },
+            'muay-thai': { kicks: 3, clinch: 4, striking: 2, cardio: 1 },
+            'boxer': { striking: 5, speed: 3, chin: 2 },
+            'allround': { striking: 1, kicks: 1, takedown: 1, grappling: 1, strength: 1, speed: 1, cardio: 1, heart: 1, chin: 1 },
+        };
+
+        const TRAINING_LIST = [
+            { id: 'mit', name: 'Работа на митах', desc: 'Повышает удары и скорость', effect: '+3 Удары, +2 Скорость', attrs: { striking: 3, speed: 2 }, cost: 15, cooldown: 1 },
+            { id: 'spgrd', name: 'Спарринг', desc: 'Полный контакт, развивает всё', effect: '+2 всё, рискованно', attrs: { striking: 2, kicks: 1, grappling: 1, cardio: 1 }, cost: 25, cooldown: 2, risky: true },
+            { id: 'drilling', name: 'Дриллинг борьбы', desc: 'Тейкдауны и позиции', effect: '+3 Тейкдаун, +2 Грэпплинг', attrs: { takedown: 3, grappling: 2 }, cost: 15, cooldown: 1 },
+            { id: 'bjjroll', name: 'БДЖ роллинг', desc: 'Болевые и удушения', effect: '+4 Болевые, +1 Грэпплинг', attrs: { submissions: 4, grappling: 1 }, cost: 20, cooldown: 2 },
+            { id: 'yoga', name: 'Растяжка и йога', desc: 'Восстановление энергии', effect: '+30 Энергия, +1 Выносливость', attrs: { cardio: 1 }, cost: 5, energy_restore: 30, cooldown: 0 },
+            { id: 'lifting', name: 'Силовые', desc: 'Сила и выносливость', effect: '+3 Сила, +2 Выносливость', attrs: { strength: 3, cardio: 2 }, cost: 15, cooldown: 1 },
+            { id: 'kicks_t', name: 'Тайский бокс', desc: 'Удары ногами и клинч', effect: '+4 Удары ногами, +2 Клинч', attrs: { kicks: 4, clinch: 2 }, cost: 20, cooldown: 2 },
+            { id: 'mental', name: 'Ментальная подготовка', desc: 'Психология боя', effect: '+2 Характер, +2 IQ, +1 Подбородок', attrs: { heart: 2, iq: 2, chin: 1 }, cost: 10, cooldown: 1 },
+        ];
+
+        const ACHIEVEMENTS_LIST = [
+            { id: 'first_win', name: 'Первая победа', desc: 'Выиграй первый бой', icon: '🥊', check: f => f.wins >= 1 },
+            { id: 'ko_artist', name: 'KO-художник', desc: '3 победы нокаутом', icon: '💥', check: f => f.koWins >= 3 },
+            { id: 'submission_king', name: 'Король болевых', desc: '3 победы болевым', icon: '🔒', check: f => f.subWins >= 3 },
+            { id: 'streak5', name: 'Пять подряд', desc: '5 побед подряд', icon: '🔥', check: f => f.streak >= 5 },
+            { id: 'top5', name: 'Топ-5', desc: 'Войди в топ-5 рейтинга', icon: '⭐', check: (f, g) => getRank(g) <= 5 },
+            { id: 'champion', name: 'ЧЕМПИОН!', desc: 'Завоюй пояс MMA', icon: '🏆', check: (f, g) => getRank(g) === 1 },
+            { id: 'fights20', name: 'Ветеран', desc: 'Проведи 20 боёв', icon: '🎖️', check: f => f.fights >= 20 },
+            { id: 'level10', name: 'Элита', desc: 'Достигни 10 уровня', icon: '💎', check: f => f.level >= 10 },
+        ];
+
+        const NEWS_POOL = [
+            'MMA анонсировал новый турнир',
+            'Действующий чемпион готовится к защите титула',
+            'Новый боец подписал контракт с промоушеном',
+            'Следующий чемпионский бой состоится через месяц',
+            'Звёздный боец заявил о возможном завершении карьеры',
+            'Организация проведёт грандиозный турнир в России',
+            'Эксперты назвали лучшие бои сезона',
+            'Победителя ожидает контракт и продвижение в рейтинге',
+        ];
+
+        // ============================================================
+        //  FIGHTER CREATION
+        // ============================================================
+        let createAttrs = {};
+        let createPts = 10;
+        let selectedStyle = 'striker';
+
+        ATTRS.forEach(a => createAttrs[a.id] = 50);
+
+        document.querySelectorAll('.style-opt').forEach(el => {
+            el.addEventListener('click', () => {
+                document.querySelectorAll('.style-opt').forEach(o => o.classList.remove('selected'));
+                el.classList.add('selected');
+                selectedStyle = el.dataset.style;
+            });
+        });
+
+        function buildAttrUI() {
+            const c = document.getElementById('attr-builder');
+            c.innerHTML = '';
+            ATTRS.forEach(a => {
+                const row = document.createElement('div');
+                row.className = 'attr-row';
+                row.innerHTML = `
+      <div class="attr-label">${a.label}</div>
+      <div class="attr-bar"><div class="attr-fill" id="cf-fill-${a.id}" style="width:${(createAttrs[a.id] / 100) * 100}%;background:${a.color}"></div></div>
+      <div class="attr-val" id="cf-val-${a.id}">${createAttrs[a.id]}</div>
+      <div class="attr-btns">
+        <button class="attr-btn" onclick="changeAttr('${a.id}',-1)" id="cf-minus-${a.id}">−</button>
+        <button class="attr-btn" onclick="changeAttr('${a.id}',1)"  id="cf-plus-${a.id}">+</button>
+      </div>`;
+                c.appendChild(row);
+            });
+            updateAttrUI();
+        }
+
+        function changeAttr(id, d) {
+            const v = createAttrs[id];
+            if (d > 0 && createPts <= 0) return;
+            if (d < 0 && v <= 40) return;
+            if (d > 0 && v >= 75) return;
+            createAttrs[id] += d;
+            createPts -= d;
+            updateAttrUI();
+        }
+
+        function updateAttrUI() {
+            document.getElementById('pts-display').textContent = createPts;
+            ATTRS.forEach(a => {
+                const v = createAttrs[a.id];
+                const fill = document.getElementById(`cf-fill-${a.id}`);
+                const val = document.getElementById(`cf-val-${a.id}`);
+                if (fill) fill.style.width = v + '%';
+                if (val) val.textContent = v;
+                const minus = document.getElementById(`cf-minus-${a.id}`);
+                const plus = document.getElementById(`cf-plus-${a.id}`);
+                if (minus) minus.disabled = v <= 40;
+                if (plus) plus.disabled = v >= 75 || createPts <= 0;
+            });
+        }
+
+        document.getElementById('btn-create').addEventListener('click', () => {
+            const name = document.getElementById('inp-name').value.trim() || 'Иван Петров';
+            const nick = document.getElementById('inp-nick').value.trim() || 'Боец';
+            createFighter(name, nick, selectedStyle, { ...createAttrs });
+        });
+
+        function createFighter(name, nick, style, attrs) {
+            const bonus = STYLE_BONUS[style] || {};
+            const finalAttrs = {};
+            ATTRS.forEach(a => {
+                finalAttrs[a.id] = Math.min(99, (attrs[a.id] || 50) + (bonus[a.id] || 0));
+            });
+
+            G.fighter = {
+                name, nick, style,
+                attrs: finalAttrs,
+                wins: 0, losses: 0, draws: 0,
+                koWins: 0, subWins: 0, decWins: 0,
+                streak: 0, fights: 0,
+                energy: 100, rating: 200, rep: 0,
+                xp: 0, level: 1,
+                xpToNext: 100,
+                money: 5000,
+                trainCooldowns: {},
+            };
+
+            G.achievements = ACHIEVEMENTS_LIST.map(a => ({ ...a, unlocked: false }));
+            generateRankings();
+            generateOpponents();
+            generateNews();
+
+            document.getElementById('create-screen').style.display = 'none';
+            document.getElementById('game-ui').style.display = 'grid';
+            updateUI();
+            switchPanel('profile');
+            toast('Добро пожаловать в MMA! Начни с тренировки или выбери первый бой.', 'gold');
+        }
+
+        // ============================================================
+        //  RANKINGS GENERATION
+        // ============================================================
+        const FIGHTER_NAMES = [
+            'Алексей Громов', 'Дмитрий Волков', 'Сергей Харитонов', 'Андрей Арловский',
+            'Фёдор Емельяненко', 'Ислам Махачев', 'Хамзат Чимаев', 'Пётр Ян',
+            'Александр Волкановски', 'Никита Крылов', 'Магомед Анкалаев', 'Шамиль Абдурахимов',
+            'Роман Долидзе', 'Виктор Пешта', 'Тэвита Дуту', 'Брэнтон Смит',
+            'Кевин Холланд', 'Джо Пайфер', 'Джейми Мулларки', 'Чарли Кэмпбелл',
+        ];
+        function rng(a, b) { return a + Math.floor(Math.random() * (b - a + 1)) }
+        function genName() { return FIGHTER_NAMES[rng(0, FIGHTER_NAMES.length - 1)] + ' #' + rng(1, 9) }
+
+        function generateRankings() {
+            G.rankings = [];
+            for (let i = 0; i < 20; i++) {
+                const w = rng(5, 25), l = rng(0, 8);
+                G.rankings.push({
+                    name: FIGHTER_NAMES[i] || genName(),
+                    wins: w, losses: l, draws: rng(0, 2),
+                    rating: 2000 - i * 70 + rng(-30, 30),
+                    isPlayer: false,
+                    ko: rng(0, w), sub: rng(0, Math.max(0, w - 1)), dec: 0,
+                });
+            }
+            G.rankings.sort((a, b) => b.rating - a.rating);
+        }
+
+        function generateOpponents() {
+            const baseRating = G.fighter ? G.fighter.rating : 200;
+            G.opponents = [];
+            const difficulties = [
+                { label: 'Новичок', ratingMod: -100, purse: 3000, ratingGain: 30 },
+                { label: 'Середняк', ratingMod: 0, purse: 7000, ratingGain: 60 },
+                { label: 'Контендер', ratingMod: 200, purse: 15000, ratingGain: 120 },
+                { label: 'Элита', ratingMod: 500, purse: 30000, ratingGain: 250 },
+            ];
+            difficulties.forEach(d => {
+                const oppRating = Math.max(100, baseRating + d.ratingMod + rng(-50, 50));
+                const wins = rng(3, 20), losses = rng(0, 6);
+                G.opponents.push({
+                    name: FIGHTER_NAMES[rng(0, FIGHTER_NAMES.length - 1)],
+                    wins, losses, draws: rng(0, 2),
+                    rating: oppRating,
+                    label: d.label,
+                    purse: d.purse,
+                    ratingGain: d.ratingGain,
+                    style: Object.keys(STYLE_BONUS)[rng(0, 5)],
+                });
+            });
+        }
+
+        function generateNews() {
+            G.news = [...NEWS_POOL].sort(() => Math.random() - 0.5).slice(0, 3);
+            showNextNews();
+        }
+
+        let newsIdx = 0;
+        function showNextNews() {
+            if (!G.news.length) return;
+            const el = document.getElementById('news-text');
+            if (el) el.textContent = G.news[newsIdx % G.news.length];
+            newsIdx++;
+            setTimeout(showNextNews, 8000);
+        }
+
+        // ============================================================
+        //  UI RENDERING
+        // ============================================================
+        function switchPanel(name) {
+            document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            const panel = document.getElementById('panel-' + name);
+            if (panel) panel.classList.add('active');
+            document.querySelector(`[data-panel="${name}"]`)?.classList.add('active');
+            renderPanel(name);
+        }
+
+        function renderPanel(name) {
+            const f = G.fighter;
+            if (!f) return;
+            if (name === 'profile') renderProfile();
+            if (name === 'stats') renderStats();
+            if (name === 'training') renderTraining();
+            if (name === 'matchmaking') renderMatchmaking();
+            if (name === 'rankings') renderRankings();
+            if (name === 'history') renderHistory();
+            if (name === 'achievements') renderAchievements();
+        }
+
+        function updateUI() {
+            const f = G.fighter;
+            if (!f) return;
+            document.getElementById('h-rating').textContent = f.rating;
+            document.getElementById('h-energy').textContent = f.energy + '%';
+            document.getElementById('h-week').textContent = G.week;
+            renderProfile();
+        }
+
+        function renderProfile() {
+            const f = G.fighter;
+            const initials = f.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+            document.getElementById('p-avatar').textContent = initials;
+            document.getElementById('p-name').textContent = f.name.toUpperCase();
+            document.getElementById('p-nick').textContent = '"' + f.nick + '"';
+            document.getElementById('p-style').textContent = f.style.replace('-', ' ').toUpperCase();
+            const rank = getRank(G);
+            document.getElementById('p-division').textContent = rank <= 1 ? 'ЧЕМПИОН 🏆' : rank <= 5 ? 'Топ-5' : rank <= 15 ? 'Топ-15' : 'Претендент';
+            document.getElementById('p-record').textContent = `${f.wins}-${f.losses}-${f.draws}`;
+            document.getElementById('s-ko').textContent = f.koWins;
+            document.getElementById('s-dec').textContent = f.decWins;
+            document.getElementById('s-sub').textContent = f.subWins;
+            document.getElementById('s-streak').textContent = f.streak;
+            document.getElementById('s-total').textContent = f.fights;
+            document.getElementById('p-energy-val').textContent = f.energy + '%';
+            document.getElementById('p-level').textContent = f.level;
+            document.getElementById('p-rating-val').textContent = f.rating + ' (' + (rank === 1 ? 'ЧЕМПИОН' : '#' + rank) + ')';
+            document.getElementById('p-rep').textContent = f.rep;
+            document.getElementById('p-money').textContent = '$' + f.money.toLocaleString();
+            const xpPct = Math.min(100, (f.xp / f.xpToNext) * 100);
+            document.getElementById('p-xp-bar').style.width = xpPct + '%';
+            document.getElementById('p-xp-text').textContent = f.xp + ' / ' + f.xpToNext + ' XP';
+            // advice
+            let adv = '';
+            if (f.energy < 30) adv = '⚠️ Энергия низкая! Сделай растяжку или восстанови силы.';
+            else if (f.fights === 0) adv = '💡 Проведи хотя бы одну тренировку, потом иди на первый бой.';
+            else if (rank <= 2) adv = '🏆 Ты в топ-2! Победи чемпиона и завоюй пояс!';
+            else if (rank <= 5) adv = '🔥 Ты в топ-5! Ещё несколько побед и чемпионский бой близко.';
+            else adv = `📈 Твой рейтинг: ${f.rating}. Побеждай более сильных соперников для карьерного роста.`;
+            document.getElementById('next-advice').textContent = adv;
+        }
+
+        function renderStats() {
+            const f = G.fighter;
+            const groups = { striking: 'stats-striking', grappling: 'stats-grappling', physical: 'stats-physical', mental: 'stats-mental' };
+            Object.entries(groups).forEach(([g, elId]) => {
+                const el = document.getElementById(elId);
+                if (!el) return;
+                el.innerHTML = '';
+                ATTRS.filter(a => a.group === g).forEach(a => {
+                    const val = f.attrs[a.id] || 50;
+                    el.innerHTML += `
+        <div class="stat-bar">
+          <div class="stat-bar-header">
+            <span class="stat-bar-label">${a.label}</span>
+            <span class="stat-bar-val">${val}</span>
+          </div>
+          <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:${val}%;background:${a.color}"></div></div>
+        </div>`;
+                });
+            });
+        }
+
+        function renderTraining() {
+            const f = G.fighter;
+            const el = document.getElementById('training-grid');
+            el.innerHTML = '';
+            TRAINING_LIST.forEach(t => {
+                const cd = f.trainCooldowns[t.id] || 0;
+                const cooling = cd > 0;
+                const noEnergy = f.energy < t.cost;
+                const card = document.createElement('div');
+                card.className = 'train-card' + (cooling ? ' cooling' : '');
+                card.innerHTML = `
+      <div class="train-name">${t.name}</div>
+      <div class="train-desc">${t.desc}</div>
+      <div class="train-effect">${t.effect}</div>
+      <div class="train-cost">
+        <span style="font-size:.73rem;color:var(--${noEnergy ? 'red' : 'muted'})">⚡ ${t.cost} энергии</span>
+        ${cooling ? `<span class="train-cd">CD: ${cd} нед.</span>` : ''}
+      </div>
+      ${cooling ? '<div style="font-size:.7rem;color:var(--blue);margin-top:6px">На перезарядке</div>' : ''}
+      ${noEnergy && !cooling ? '<div style="font-size:.7rem;color:var(--red);margin-top:6px">Мало энергии!</div>' : ''}
+    `;
+                if (!cooling && !noEnergy) {
+                    card.style.cursor = 'pointer';
+                    card.addEventListener('click', () => doTrain(t));
+                } else {
+                    card.style.opacity = '0.6';
+                    card.style.cursor = 'not-allowed';
+                }
+                el.appendChild(card);
+            });
+        }
+
+        function renderMatchmaking() {
+            const el = document.getElementById('matchmaking-list');
+            el.innerHTML = '';
+            G.opponents.forEach((opp, i) => {
+                const f = G.fighter;
+                const myOvr = getOverall(f.attrs);
+                const oppOvr = Math.max(30, Math.min(99, 50 + (opp.rating - f.rating) / 10));
+                const winChance = Math.max(10, Math.min(90, 50 + (myOvr - oppOvr) * 0.7));
+                const div = document.createElement('div');
+                div.className = 'fight-card-item';
+                div.innerHTML = `
+      <div class="fight-opponent-info">
+        <h3>${opp.name}</h3>
+        <div class="rec">${opp.wins}-${opp.losses}-${opp.draws} • ${opp.style.replace('-', ' ').toUpperCase()}</div>
+        <div style="font-size:.73rem;color:var(--muted);margin-top:4px">Рейтинг: ${opp.rating}</div>
+      </div>
+      <div class="fight-vs">VS</div>
+      <div>
+        <span class="badge badge-${i === 3 ? 'red' : i === 2 ? 'gold' : i === 1 ? 'blue' : 'gray'}">${opp.label}</span>
+        <div style="font-size:.75rem;color:var(--muted);margin-top:6px">Призовые: $${opp.purse.toLocaleString()}</div>
+        <div style="font-size:.75rem;color:var(--gold);margin-top:2px">+${opp.ratingGain} к рейтингу</div>
+        <div class="odds-bar" style="margin-top:8px">
+          <div class="odds-p" style="flex:${Math.round(winChance)}"></div>
+          <div class="odds-o" style="flex:${Math.round(100 - winChance)}"></div>
+        </div>
+        <div style="font-size:.65rem;color:var(--muted);margin-top:3px">Шанс победы: ${Math.round(winChance)}%</div>
+      </div>
+      <div>
+        <button class="btn btn-gold btn-sm" ${f.energy < 20 ? 'disabled' : ''} onclick="startFight(${i})">ДРАТЬСЯ</button>
+        ${f.energy < 20 ? '<div style="font-size:.68rem;color:var(--red);margin-top:4px">Нужно больше энергии</div>' : ''}
+      </div>
+    `;
+                el.appendChild(div);
+            });
+        }
+
+        function renderRankings() {
+            const tbody = document.getElementById('rankings-body');
+            tbody.innerHTML = '';
+            const allRanks = getFullRankings();
+            allRanks.forEach((r, i) => {
+                const tr = document.createElement('tr');
+                tr.className = r.isPlayer ? 'player-row' : '';
+                tr.innerHTML = `
+      <td class="rank-num ${i < 3 ? 'top3' : ''}">${i + 1}</td>
+      <td>
+        ${i === 0 ? '<span class="champ-badge">🏆 ЧЕМП</span> ' : ''}
+        <span class="rank-name">${r.name}</span>
+        ${r.isPlayer ? ' <span class="badge badge-gold" style="font-size:.6rem">ВЫ</span>' : ''}
+      </td>
+      <td class="rank-record">${r.wins}-${r.losses}-${r.draws || 0}</td>
+      <td class="rank-rating">${r.rating}</td>
+    `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderHistory() {
+            const el = document.getElementById('history-list');
+            if (!G.history.length) {
+                el.innerHTML = '<div style="color:var(--muted);font-size:.85rem;padding:20px 0">Боёв ещё не было. Запишись на бой!</div>';
+                return;
+            }
+            el.innerHTML = '';
+            [...G.history].reverse().forEach(h => {
+                const div = document.createElement('div');
+                div.className = 'history-item';
+                div.innerHTML = `
+      <div class="history-result ${h.result}">${h.result}</div>
+      <div>
+        <div class="history-opponent">${h.opponent}</div>
+        <div class="history-method">${h.method} · Раунд ${h.round}</div>
+      </div>
+      <div class="history-date">Нед. ${h.week}<br>${h.purse ? '+$' + h.purse.toLocaleString() : ''}</div>
+    `;
+                el.appendChild(div);
+            });
+        }
+
+        function renderAchievements() {
+            const el = document.getElementById('achievements-grid');
+            el.innerHTML = '';
+            G.achievements.forEach(a => {
+                const div = document.createElement('div');
+                div.className = 'ach-item' + (a.unlocked ? ' unlocked' : '');
+                div.innerHTML = `
+      <div class="ach-icon">${a.unlocked ? a.icon : '🔒'}</div>
+      <div class="ach-name" style="${!a.unlocked ? 'opacity:.5' : ''}">${a.name}</div>
+      <div class="ach-desc">${a.desc}</div>
+    `;
+                el.appendChild(div);
+            });
+        }
+
+        // ============================================================
+        //  HELPERS
+        // ============================================================
+        function getOverall(attrs) {
+            const vals = Object.values(attrs);
+            return Math.round(vals.reduce((s, v) => s + v, 0) / vals.length);
+        }
+
+        function getFullRankings() {
+            const f = G.fighter;
+            const all = [...G.rankings, {
+                name: f.name, wins: f.wins, losses: f.losses, draws: f.draws,
+                rating: f.rating, isPlayer: true,
+            }];
+            return all.sort((a, b) => b.rating - a.rating).slice(0, 20);
+        }
+
+        function getRank(g) {
+            const all = getFullRankings();
+            const idx = all.findIndex(r => r.isPlayer);
+            return idx + 1;
+        }
+
+        // ============================================================
+        //  TRAINING
+        // ============================================================
+        function doTrain(t) {
+            const f = G.fighter;
+            f.energy -= t.cost;
+            if (f.energy < 0) f.energy = 0;
+
+            if (t.energy_restore) f.energy = Math.min(100, f.energy + t.energy_restore);
+
+            Object.entries(t.attrs || {}).forEach(([id, gain]) => {
+                f.attrs[id] = Math.min(99, (f.attrs[id] || 50) + gain);
+            });
+
+            // sparring risk
+            if (t.risky && Math.random() < 0.2) {
+                const penalty = rng(1, 3);
+                f.attrs.chin = Math.max(30, f.attrs.chin - penalty);
+                toast('Жёсткий спарринг! -' + penalty + ' к подбородку.', 'red');
+            }
+
+            if (t.cooldown > 0) f.trainCooldowns[t.id] = t.cooldown;
+
+            addXP(20);
+            advanceWeek(false);
+            toast(`${t.name} завершена! ${t.effect}`, 'green');
+            renderTraining();
+            updateUI();
+        }
+
+        // ============================================================
+        //  FIGHT SIMULATION
+        // ============================================================
+        let fightSpeed = 1200;
+
+        function startFight(oppIdx) {
+            const opp = G.opponents[oppIdx];
+            G.pendingFight = opp;
+            G.fighter.energy = Math.max(5, G.fighter.energy - 20);
+
+            // Build opp attrs
+            const oppRating = opp.rating;
+            const base = Math.max(40, Math.min(85, 40 + oppRating / 30));
+            const bonus = STYLE_BONUS[opp.style] || {};
+            opp.attrs = {};
+            ATTRS.forEach(a => {
+                opp.attrs[a.id] = Math.min(99, Math.round(base + (bonus[a.id] || 0) * 0.8 + rng(-5, 5)));
+            });
+
+            openFightOverlay(G.fighter, opp);
+        }
+
+        function openFightOverlay(p, opp) {
+            const ov = document.getElementById('fight-overlay');
+            ov.classList.add('open');
+            document.getElementById('fo-p1-name').textContent = p.name.split(' ')[0].toUpperCase();
+            document.getElementById('fo-p2-name').textContent = opp.name.split(' ')[0].toUpperCase();
+            document.getElementById('fight-log').innerHTML = '';
+            document.getElementById('btn-next-round').style.display = 'none';
+            document.getElementById('corner-advice').style.display = 'none';
+            document.getElementById('btn-fast-fight').style.display = 'inline-flex';
+            fightSpeed = 1200;
+
+            document.getElementById('btn-fast-fight').onclick = () => { fightSpeed = 100; };
+            document.getElementById('btn-next-round').onclick = finishFight;
+
+            simulateFight(p, opp);
+        }
+
+        function simulateFight(p, opp) {
+            const rounds = 3;
+            let pHP = 100, oHP = 100;
+            let round = 1;
+            let winnerName = null;
+            let method = 'Решение';
+            let endRound = rounds;
+            const log = [];
+
+            // per-round sim
+            for (let r = 1; r <= rounds; r++) {
+                const roundLog = [];
+                let pRoundHP = pHP, oRoundHP = oHP;
+
+                for (let tick = 0; tick < 30; tick++) {
+                    const pAtk = getAttack(p.attrs);
+                    const oDef = getDefense(opp.attrs);
+                    const pDmg = Math.max(1, Math.round((pAtk - oDef * 0.5) * (0.7 + Math.random() * 0.6)));
+
+                    const oAtk = getAttack(opp.attrs);
+                    const pDef = getDefense(p.attrs);
+                    const oDmg = Math.max(1, Math.round((oAtk - pDef * 0.5) * (0.7 + Math.random() * 0.6)));
+
+                    oRoundHP -= pDmg;
+                    pRoundHP -= oDmg;
+
+                    if (pDmg >= 12) roundLog.push({ text: `${p.name.split(' ')[0]} наносит мощный удар! (${pDmg})`, cls: 'big' });
+                    else if (pDmg >= 6) roundLog.push({ text: `${p.name.split(' ')[0]} попадает (${pDmg})`, cls: 'hit' });
+
+                    if (oDmg >= 12) roundLog.push({ text: `${opp.name.split(' ')[0]} жёстко бьёт! (${oDmg})`, cls: 'danger' });
+                    else if (oDmg >= 6) roundLog.push({ text: `${opp.name.split(' ')[0]} попадает (${oDmg})`, cls: 'hit' });
+
+                    // submissions / takedowns
+                    if (Math.random() < 0.03 && p.attrs.submissions > 60) {
+                        roundLog.push({ text: `${p.name.split(' ')[0]} пытается сделать болевой!`, cls: 'big' });
+                        if (Math.random() < (p.attrs.submissions - opp.attrs.grappling) / 200 + 0.3) {
+                            winnerName = p.name; method = 'Болевой приём'; endRound = r;
+                            pHP = pRoundHP; oHP = 0;
+                            log.push(...roundLog);
+                            goto_result = true; break;
+                        }
+                    }
+
+                    if (oRoundHP <= 0) {
+                        winnerName = p.name; method = 'Нокаут'; endRound = r;
+                        pHP = pRoundHP; oHP = 0;
+                        roundLog.push({ text: `КО! ${opp.name.split(' ')[0]} не встаёт!`, cls: 'big' });
+                        log.push(...roundLog);
+                        goto_result = true; break;
+                    }
+                    if (pRoundHP <= 0) {
+                        winnerName = opp.name; method = 'Нокаут'; endRound = r;
+                        pHP = 0; oHP = oRoundHP;
+                        roundLog.push({ text: `КО! ${p.name.split(' ')[0]} не встаёт!`, cls: 'danger' });
+                        log.push(...roundLog);
+                        goto_result = true; break;
+                    }
+                }
+                if (goto_result) break;
+                pHP = Math.max(5, pRoundHP);
+                oHP = Math.max(5, oRoundHP);
+                log.push(...roundLog);
+                if (r < rounds) log.push({ text: `— Конец раунда ${r} —`, cls: '' });
+                goto_result = false;
+            }
+
+            // decision
+            if (!winnerName) {
+                method = 'Решение судей';
+                if (pHP > oHP) winnerName = p.name;
+                else if (oHP > pHP) winnerName = opp.name;
+                else { winnerName = null; method = 'Ничья'; }
+                endRound = rounds;
+            }
+
+            // Animate log
+            let i = 0;
+            const logEl = document.getElementById('fight-log');
+            let currentRoundDisplay = 1;
+
+            function animateLine() {
+                if (i >= log.length) {
+                    // show result
+                    setTimeout(() => {
+                        showFightResult(winnerName, method, endRound, pHP, oHP, log);
+                    }, fightSpeed);
+                    return;
+                }
+                const entry = log[i];
+                if (entry.text.startsWith('— Конец раунда')) {
+                    currentRoundDisplay++;
+                    document.getElementById('fo-round').textContent = `РАУНД ${currentRoundDisplay}`;
+                    const corner = document.getElementById('corner-advice');
+                    corner.style.display = 'block';
+                    corner.textContent = pHP > oHP ? '💬 Ты ведёшь по очкам! Держи темп.' :
+                        pHP < oHP * 0.7 ? '💬 Ты проигрываешь! Нужна активность!' : '💬 Ровный бой, атакуй больше!';
+                }
+                const line = document.createElement('div');
+                line.className = 'fight-log-line' + (entry.cls ? ' ' + entry.cls : '');
+                line.textContent = entry.text;
+                logEl.appendChild(line);
+                logEl.scrollTop = logEl.scrollHeight;
+
+                // update hp bars
+                const pPct = Math.max(0, (pHP / 100) * 100);
+                const oPct = Math.max(0, (oHP / 100) * 100);
+                document.getElementById('fo-p1-hp').style.width = pPct + '%';
+                document.getElementById('fo-p2-hp').style.width = oPct + '%';
+                document.getElementById('fo-p1-hp-val').textContent = Math.round(pHP);
+                document.getElementById('fo-p2-hp-val').textContent = Math.round(oHP);
+
+                i++;
+                setTimeout(animateLine, fightSpeed * (entry.cls === 'big' || entry.cls === 'danger' ? 1.5 : 1));
+            }
+            var goto_result = false;
+            animateLine();
+        }
+
+        function getAttack(attrs) {
+            return (attrs.striking * 1.2 + attrs.kicks * 0.8 + attrs.strength * 0.7) / 3;
+        }
+        function getDefense(attrs) {
+            return (attrs.chin * 0.8 + attrs.heart * 0.6 + attrs.speed * 0.5) / 3;
+        }
+
+        function showFightResult(winnerName, method, round, pHP, oHP, log) {
+            const f = G.fighter;
+            const opp = G.pendingFight;
+            const playerWon = winnerName === f.name;
+            const isDraw = winnerName === null;
+
+            const logEl = document.getElementById('fight-log');
+            const resultLine = document.createElement('div');
+            resultLine.className = 'fight-log-line big';
+            resultLine.style.cssText = 'font-size:1rem;padding:8px 0;text-align:center;border-top:1px solid var(--border)';
+            resultLine.textContent = isDraw ? '🤝 НИЧЬЯ!' : playerWon ? `🏆 ПОБЕДА — ${method.toUpperCase()}!` : `💔 ПОРАЖЕНИЕ — ${method.toUpperCase()}`;
+            logEl.appendChild(resultLine);
+            logEl.scrollTop = logEl.scrollHeight;
+
+            document.getElementById('btn-next-round').style.display = 'inline-flex';
+            document.getElementById('btn-fast-fight').style.display = 'none';
+            document.getElementById('corner-advice').style.display = 'none';
+            document.getElementById('fight-action-desc').textContent = playerWon ? `Победа! +$${opp.purse.toLocaleString()} · +${opp.ratingGain} рейтинга` : isDraw ? 'Ничья.' : 'Поражение...';
+
+            // Store result
+            G._fightResult = { winnerName, method, round, playerWon, isDraw, pHP, oHP };
+        }
+
+        function finishFight() {
+            const r = G._fightResult;
+            const f = G.fighter;
+            const opp = G.pendingFight;
+
+            document.getElementById('fight-overlay').classList.remove('open');
+
+            if (r.playerWon) {
+                f.wins++;
+                f.streak++;
+                f.money += opp.purse;
+                f.rating += opp.ratingGain;
+                f.rep += 10;
+                if (r.method === 'Нокаут') f.koWins++;
+                else if (r.method === 'Болевой приём') f.subWins++;
+                else f.decWins++;
+                addXP(50 + opp.ratingGain / 4);
+                toast(`Победа! +$${opp.purse.toLocaleString()} | +${opp.ratingGain} рейтинга`, 'gold');
+            } else if (r.isDraw) {
+                f.draws++;
+                f.streak = 0;
+                f.money += Math.floor(opp.purse / 2);
+                f.rating += 10;
+                f.rep += 3;
+                addXP(20);
+                toast('Ничья. +$' + Math.floor(opp.purse / 2).toLocaleString(), 'gray');
+            } else {
+                f.losses++;
+                f.streak = 0;
+                f.rating = Math.max(50, f.rating - Math.floor(opp.ratingGain / 2));
+                f.rep = Math.max(0, f.rep - 5);
+                addXP(15);
+                toast('Поражение. Не сдавайся!', 'red');
+            }
+
+            f.fights++;
+            G.history.push({
+                result: r.playerWon ? 'W' : r.isDraw ? 'D' : 'L',
+                opponent: opp.name,
+                method: r.method,
+                round: r.round,
+                week: G.week,
+                purse: r.playerWon ? opp.purse : 0,
+            });
+
+            // Update NPC rankings
+            G.rankings.forEach(npc => {
+                npc.rating += rng(-20, 30);
+                if (Math.random() < 0.1) {
+                    const w = rng(0, 1); npc.wins += w; npc.losses += 1 - w;
+                }
+            });
+
+            checkAchievements();
+            generateOpponents();
+            advanceWeek(true);
+            updateUI();
+            switchPanel('profile');
+        }
+
+        // ============================================================
+        //  XP & LEVELING
+        // ============================================================
+        function addXP(amount) {
+            const f = G.fighter;
+            f.xp += Math.round(amount);
+            while (f.xp >= f.xpToNext) {
+                f.xp -= f.xpToNext;
+                f.level++;
+                f.xpToNext = Math.round(f.xpToNext * 1.4);
+                // stat bonus on level up
+                const bonusAttr = ATTRS[rng(0, ATTRS.length - 1)];
+                f.attrs[bonusAttr.id] = Math.min(99, f.attrs[bonusAttr.id] + rng(1, 3));
+                toast(`🎉 Уровень ${f.level}! +${bonusAttr.label}`, 'gold');
+            }
+        }
+
+        // ============================================================
+        //  WEEK ADVANCE
+        // ============================================================
+        function advanceWeek(isFight) {
+            G.week++;
+            const f = G.fighter;
+
+            // Cooldowns
+            Object.keys(f.trainCooldowns).forEach(id => {
+                f.trainCooldowns[id]--;
+                if (f.trainCooldowns[id] <= 0) delete f.trainCooldowns[id];
+            });
+
+            // Energy recovery
+            if (!isFight) {
+                f.energy = Math.min(100, f.energy + 10);
+            } else {
+                f.energy = Math.min(100, f.energy + 25);
+            }
+
+            updateUI();
+        }
+
+        // ============================================================
+        //  ACHIEVEMENTS
+        // ============================================================
+        function checkAchievements() {
+            const f = G.fighter;
+            G.achievements.forEach(a => {
+                if (!a.unlocked && a.check(f, G)) {
+                    a.unlocked = true;
+                    toast(`🏅 Достижение разблокировано: ${a.name}!`, 'gold');
+                }
+            });
+        }
+
+        // ============================================================
+        //  TOAST
+        // ============================================================
+        function toast(msg, type = '') {
+            const c = document.getElementById('toast-container');
+            const t = document.createElement('div');
+            t.className = 'toast' + (type ? ' ' + type : '');
+            t.textContent = msg;
+            c.appendChild(t);
+            setTimeout(() => {
+                t.style.animation = 'fadeOut .3s ease forwards';
+                setTimeout(() => t.remove(), 350);
+            }, 3500);
+        }
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+        buildAttrUI();
+    </script>
+</body>
+
+</html>
