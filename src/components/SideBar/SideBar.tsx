@@ -2,7 +2,7 @@ import type { ReactElement } from "react";
 import styles from "./sidebar.module.css";
 import { NavLink } from "react-router-dom";
 import { useLang } from "../../hooks/useLang";
-
+import logo from "../../../public/favicon.png";
 
 type SideBarProps = {
   isOpen: boolean;
@@ -17,9 +17,7 @@ function SideBar({ isOpen, onClose }: SideBarProps): ReactElement {
     <aside className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ""}`}>
       <div className={styles.logo}>
         <div className={styles.logoIcon}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M6 4h8l4 4-4 4H6z"></path><path d="M6 12h8l4 4-4 4H6z"></path>
-          </svg>
+          <img src={logo} alt="logo" />
         </div>
         <div className={styles.logoText}>Octa<span className={styles.logoTextSpan}>Grid</span></div>
       </div>
