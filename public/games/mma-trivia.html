@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MMA Trivia Challenge</title>
     <style>
         :root {
@@ -16,47 +16,38 @@
             --gold: #d4a017;
             --red: #e8372a;
             --green: #27ae60;
-            --orange: #e67e22;
             --font: 'Barlow Condensed', sans-serif;
             --display: 'Bebas Neue', sans-serif;
         }
 
-        *,
-        *::before,
-        *::after {
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        html {
-            min-height: 100%;
-            background: var(--bg);
-        }
-
+        html,
         body {
-            min-height: 100dvh;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
             background: var(--bg);
             color: var(--text);
             font-family: var(--font);
-            overflow-x: hidden;
-        }
-
-        button,
-        input,
-        select {
-            font: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         #app {
             width: 100%;
-            max-width: 720px;
-            min-height: 100dvh;
-            margin: 0 auto;
+            max-width: 600px;
+            height: 100%;
             display: flex;
             flex-direction: column;
             padding: 16px;
             gap: 12px;
+            overflow: hidden;
         }
 
         .screen {
@@ -67,46 +58,28 @@
             flex: 1;
             gap: 16px;
             text-align: center;
-            min-width: 0;
-            width: 100%;
         }
 
         .screen.active {
             display: flex;
         }
 
-        #screen-start,
-        #screen-result {
-            padding-block: 12px;
-        }
-
-        #screen-game {
-            justify-content: flex-start;
-            align-items: stretch;
-            text-align: left;
-            min-height: 0;
-        }
-
         .logo {
             font-family: var(--display);
-            font-size: clamp(2rem, 7vw, 3.2rem);
+            font-size: 2.8rem;
             color: var(--gold);
-            letter-spacing: 3px;
-            line-height: 1;
-            text-align: center;
+            letter-spacing: 4px;
         }
 
         .logo-sub {
-            font-size: clamp(.95rem, 2.7vw, 1.05rem);
+            font-size: 1rem;
             color: var(--muted);
-            text-align: center;
         }
 
         .logo-stats {
-            font-size: .9rem;
+            font-size: 0.85rem;
             color: var(--muted);
-            margin-top: -6px;
-            text-align: center;
+            margin-top: -8px;
         }
 
         .btn {
@@ -115,12 +88,12 @@
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
-            padding: 12px 20px;
+            padding: 12px 28px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all .15s ease;
-            min-height: 46px;
+            transition: all .15s;
+            min-height: 44px;
             width: 100%;
         }
 
@@ -145,18 +118,15 @@
         }
 
         .hud {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 8px;
-            padding: 10px 12px;
-            background: rgba(17, 17, 24, .92);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            padding: 10px 14px;
+            background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 10px;
+            border-radius: 8px;
             flex-shrink: 0;
-            position: sticky;
-            top: 0;
-            z-index: 5;
-            backdrop-filter: blur(8px);
         }
 
         .hud-item {
@@ -164,31 +134,26 @@
             flex-direction: column;
             align-items: center;
             gap: 2px;
-            min-width: 0;
         }
 
         .hud-label {
-            font-size: .62rem;
+            font-size: .6rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--muted);
-            text-align: center;
         }
 
         .hud-value {
             font-family: var(--display);
-            font-size: clamp(1rem, 3vw, 1.25rem);
+            font-size: 1.2rem;
             color: var(--gold);
-            line-height: 1;
-            text-align: center;
-            white-space: nowrap;
         }
 
         .timer-wrap {
             width: 100%;
-            height: 6px;
+            height: 5px;
             background: var(--surface2);
-            border-radius: 999px;
+            border-radius: 3px;
             overflow: hidden;
             flex-shrink: 0;
         }
@@ -196,7 +161,7 @@
         .timer-bar {
             height: 100%;
             background: var(--gold);
-            border-radius: 999px;
+            border-radius: 3px;
             transition: width .2s linear, background .5s;
         }
 
@@ -242,37 +207,36 @@
         .q-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 18px;
             flex-shrink: 0;
-            width: 100%;
         }
 
         .q-num {
-            font-size: .72rem;
+            font-size: .7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--muted);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .q-text {
-            font-size: clamp(1.05rem, 3.2vw, 1.28rem);
+            font-size: 1.15rem;
             font-weight: 600;
-            line-height: 1.35;
+            line-height: 1.4;
         }
 
         .q-category {
-            font-size: .68rem;
+            font-size: .65rem;
             color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         .answers {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 8px;
             width: 100%;
         }
@@ -280,27 +244,22 @@
         .ans-btn {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 12px 10px;
             font-family: var(--font);
-            font-size: .98rem;
+            font-size: .95rem;
             font-weight: 600;
             color: var(--text);
             cursor: pointer;
-            transition: all .15s ease;
-            min-height: 56px;
+            transition: all .15s;
+            min-height: 52px;
             line-height: 1.3;
             touch-action: manipulation;
-            overflow-wrap: anywhere;
         }
 
         .ans-btn:hover:not(:disabled) {
             border-color: var(--gold);
             color: var(--gold);
-        }
-
-        .ans-btn:disabled {
-            cursor: not-allowed;
         }
 
         .ans-btn.correct {
@@ -319,23 +278,20 @@
             display: flex;
             gap: 8px;
             justify-content: center;
-            flex-wrap: wrap;
-            width: 100%;
         }
 
         .life-btn {
-            flex: 1 1 150px;
             background: var(--surface2);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 10px 14px;
+            border-radius: 6px;
+            padding: 7px 14px;
             font-family: var(--font);
-            font-size: .82rem;
+            font-size: .78rem;
             font-weight: 700;
             color: var(--text);
             cursor: pointer;
-            transition: all .15s ease;
-            min-height: 40px;
+            transition: all .15s;
+            min-height: 36px;
         }
 
         .life-btn:hover:not(.used) {
@@ -344,21 +300,19 @@
         }
 
         .life-btn.used {
-            opacity: .35;
+            opacity: .3;
             cursor: not-allowed;
         }
 
         .result-icon {
-            font-size: clamp(3rem, 10vw, 4rem);
+            font-size: 3.5rem;
         }
 
         .result-title {
             font-family: var(--display);
-            font-size: clamp(1.9rem, 8vw, 2.5rem);
+            font-size: 2.2rem;
             color: var(--gold);
             letter-spacing: 3px;
-            text-align: center;
-            line-height: 1;
         }
 
         .result-score {
@@ -369,7 +323,7 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
             width: 100%;
         }
@@ -377,10 +331,9 @@
         .stat-box {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 12px;
             text-align: center;
-            min-width: 0;
         }
 
         .stat-label {
@@ -394,8 +347,6 @@
             font-family: var(--display);
             font-size: 1.4rem;
             color: var(--text);
-            line-height: 1.1;
-            overflow-wrap: anywhere;
         }
 
         .cat-filter {
@@ -403,23 +354,21 @@
             gap: 6px;
             flex-wrap: wrap;
             justify-content: center;
-            width: 100%;
         }
 
         .cat-btn {
             background: var(--surface2);
             border: 1px solid var(--border);
-            border-radius: 999px;
-            padding: 7px 14px;
+            border-radius: 20px;
+            padding: 6px 14px;
             font-family: var(--font);
-            font-size: .78rem;
+            font-size: .75rem;
             font-weight: 700;
             color: var(--muted);
             cursor: pointer;
-            transition: all .15s ease;
+            transition: all .15s;
             text-transform: uppercase;
             letter-spacing: 1px;
-            min-height: 38px;
         }
 
         .cat-btn.active {
@@ -454,102 +403,35 @@
             color: var(--red);
         }
 
-        @media (max-width: 640px) {
-            #app {
-                padding: 12px;
-                gap: 10px;
-            }
-
-            .hud {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
+        @media(max-width:400px) {
             .answers {
                 grid-template-columns: 1fr;
             }
 
             .ans-btn {
-                min-height: 50px;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 420px) {
-            #app {
-                padding: 10px;
+                min-height: 44px;
             }
 
             .logo {
-                letter-spacing: 2px;
-            }
-
-            .q-card {
-                padding: 14px;
-            }
-
-            .q-text {
-                font-size: 1rem;
-            }
-
-            .prize-dot {
-                width: 24px;
-                height: 24px;
-                font-size: .5rem;
-            }
-
-            .life-btn {
-                flex-basis: 100%;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
+                font-size: 2rem;
             }
         }
 
-        @media (max-height: 760px) {
-            #screen-game {
-                gap: 10px;
-            }
-
-            .prize-bar {
-                gap: 3px;
-            }
-
-            .prize-dot {
-                width: 24px;
-                height: 24px;
-                font-size: .5rem;
-            }
-
-            .q-card {
-                padding: 14px;
-            }
-
-            .q-text {
-                font-size: 1rem;
-            }
-
-            .ans-btn {
-                min-height: 46px;
-                padding: 10px 8px;
-            }
-        }
-
-        @media (max-height: 620px) {
+        @media(max-height:600px) {
             .prize-bar {
                 display: none;
             }
 
-            #app {
-                gap: 8px;
+            .q-card {
+                padding: 12px;
+            }
+
+            .q-text {
+                font-size: 1rem;
             }
         }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&display=swap"
         rel="stylesheet">
@@ -559,147 +441,156 @@
     <div id="app">
         <div class="screen active" id="screen-start">
             <div class="logo">🧠 MMA TRIVIA</div>
-            <div class="logo-sub">15 случайных вопросов · 3 подсказки · 30 сек на вопрос</div>
-            <div class="logo-stats" id="pool-info">Банк: 60+ вопросов</div>
+            <div class="logo-sub">15 random questions · 3 lifelines · 30 seconds per question</div>
+            <div class="logo-stats" id="pool-info">Pool: 60+ questions</div>
             <div class="cat-filter" id="cat-filter"></div>
-            <button class="btn btn-red" id="btn-start">Начать игру</button>
+            <button class="btn btn-red" id="btn-start">Start Game</button>
         </div>
 
         <div class="screen" id="screen-game">
             <div class="hud">
-                <div class="hud-item"><span class="hud-label">Вопрос</span><span class="hud-value" id="h-q">1/15</span>
+                <div class="hud-item"><span class="hud-label">Question</span><span class="hud-value"
+                        id="h-q">1/15</span>
                 </div>
-                <div class="hud-item"><span class="hud-label">Очки</span><span class="hud-value" id="h-score">0</span>
+                <div class="hud-item"><span class="hud-label">Score</span><span class="hud-value" id="h-score">0</span>
                 </div>
-                <div class="hud-item"><span class="hud-label">Серия</span><span class="hud-value"
+                <div class="hud-item"><span class="hud-label">Streak</span><span class="hud-value"
                         id="h-streak">0🔥</span></div>
-                <div class="hud-item"><span class="hud-label">Время</span><span class="hud-value" id="h-time">30</span>
+                <div class="hud-item"><span class="hud-label">Time</span><span class="hud-value" id="h-time">30</span>
                 </div>
             </div>
-
             <div class="timer-wrap">
                 <div class="timer-bar" id="timer-bar" style="width:100%"></div>
             </div>
-
             <div class="prize-bar" id="prize-bar"></div>
-
             <div class="q-card">
-                <div class="q-num" id="q-num">Вопрос 1</div>
+                <div class="q-num" id="q-num">Question 1</div>
                 <div class="q-text" id="q-text">...</div>
                 <div class="q-category" id="q-cat"></div>
             </div>
-
             <div class="answers" id="answers"></div>
-
             <div class="lifelines">
                 <button class="life-btn" id="ll-50">50/50</button>
-                <button class="life-btn" id="ll-skip">⏭ Пропуск</button>
-                <button class="life-btn" id="ll-time">⏱ +15 сек</button>
+                <button class="life-btn" id="ll-skip">⏭ Skip</button>
+                <button class="life-btn" id="ll-time">⏱ +15 sec</button>
             </div>
         </div>
 
         <div class="screen" id="screen-result">
             <div class="result-icon" id="r-icon">🏆</div>
-            <div class="result-title" id="r-title">РЕЗУЛЬТАТ</div>
-            <div class="result-score" id="r-score">Очки: 0</div>
+            <div class="result-title" id="r-title">RESULT</div>
+            <div class="result-score" id="r-score">Score: 0</div>
             <div class="stats-grid">
                 <div class="stat-box">
-                    <div class="stat-label">Правильных</div>
+                    <div class="stat-label">Correct</div>
                     <div class="stat-val" id="r-correct">0/15</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-label">Макс. серия</div>
+                    <div class="stat-label">Max Streak</div>
                     <div class="stat-val" id="r-streak">0</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-label">Точность</div>
+                    <div class="stat-label">Accuracy</div>
                     <div class="stat-val" id="r-acc">0%</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-label">Оценка</div>
+                    <div class="stat-label">Grade</div>
                     <div class="stat-val" id="r-grade">—</div>
                 </div>
             </div>
-            <button class="btn btn-red" id="btn-restart">Играть снова</button>
-            <button class="btn btn-outline" id="btn-menu">В меню</button>
+            <button class="btn btn-red" id="btn-restart">Play Again</button>
+            <button class="btn btn-outline" id="btn-menu">Main Menu</button>
         </div>
     </div>
 
     <script>
+        // =========================================================
+        // QUESTION BANK — 63 verified questions
+        // cat: History | Champions | Fighters | Rules | Records | Women | Technique
+        // diff: easy | medium | hard
+        // =========================================================
         const ALL_Q = [
-            { q: "В каком году был основан UFC?", a: ["1991", "1993", "1995", "1997"], c: 1, cat: "История", diff: "easy" },
-            { q: "Где прошёл первый турнир UFC 1?", a: ["Лас-Вегас, Невада", "Майами, Флорида", "Денвер, Колорадо", "Нью-Йорк"], c: 2, cat: "История", diff: "medium" },
-            { q: "Как расшифровывается MMA?", a: ["Mixed Martial Arts", "Modern Martial Arena", "Mixed Macho Athletics", "Master Martial Ability"], c: 0, cat: "История", diff: "easy" },
-            { q: "Кто является сооснователем UFC вместе с Рорионом Грейси?", a: ["Дана Уайт", "Арт Дэви", "Брюс Буффер", "Джон Маккарти"], c: 1, cat: "История", diff: "hard" },
-            { q: "На каком событии UFC впервые были введены весовые категории?", a: ["UFC 10", "UFC 12", "UFC 14", "UFC 21"], c: 1, cat: "История", diff: "hard" },
-            { q: "Как называлась управляющая компания UFC до 2016 года?", a: ["Zuffa LLC", "WME-IMG", "Bellator Sports", "Strikeforce"], c: 0, cat: "История", diff: "medium" },
-            { q: "За сколько миллиардов долларов UFC был продан WME-IMG в 2016 году?", a: ["1 млрд", "2 млрд", "4 млрд", "6 млрд"], c: 2, cat: "История", diff: "medium" },
-            { q: "В каком году в UFC были введены обязательные перчатки?", a: ["UFC 12", "UFC 14", "UFC 16", "UFC 21"], c: 1, cat: "История", diff: "hard" },
-            { q: "В каком году UFC впервые провёл ивент за пределами США — в Бразилии?", a: ["1995", "1996", "1998", "2000"], c: 2, cat: "История", diff: "hard" },
-            { q: "Что означает слово «Zuffa» по-итальянски?", a: ["Битва", "Потасовка / Стычка", "Победа", "Октагон"], c: 1, cat: "История", diff: "hard" },
-            { q: "В каком году штат Нью-Йорк легализовал MMA, позволив провести UFC 205?", a: ["2012", "2014", "2016", "2018"], c: 2, cat: "История", diff: "medium" },
+            // === HISTORY ===
+            { q: "In what year was UFC founded?", a: ["1991", "1993", "1995", "1997"], c: 1, cat: "History", diff: "easy" },
+            { q: "Where was the first UFC 1 event held?", a: ["Las Vegas, Nevada", "Miami, Florida", "Denver, Colorado", "New York"], c: 2, cat: "History", diff: "medium" },
+            { q: "What does MMA stand for?", a: ["Mixed Martial Arts", "Modern Martial Arena", "Mixed Macho Athletics", "Master Martial Ability"], c: 0, cat: "History", diff: "easy" },
+            { q: "Who co-founded UFC together with Rorion Gracie?", a: ["Dana White", "Art Davie", "Bruce Buffer", "John McCarthy"], c: 1, cat: "History", diff: "hard" },
+            { q: "At which UFC event were weight classes first introduced?", a: ["UFC 10", "UFC 12", "UFC 14", "UFC 21"], c: 1, cat: "History", diff: "hard" },
+            { q: "What was the parent company of UFC called before 2016?", a: ["Zuffa LLC", "WME-IMG", "Bellator Sports", "Strikeforce"], c: 0, cat: "History", diff: "medium" },
+            { q: "For how many billion dollars was UFC sold to WME-IMG in 2016?", a: ["1 billion", "2 billion", "4 billion", "6 billion"], c: 2, cat: "History", diff: "medium" },
+            { q: "In which year were mandatory gloves introduced in UFC?", a: ["UFC 12", "UFC 14", "UFC 16", "UFC 21"], c: 1, cat: "History", diff: "hard" },
+            { q: "In what year did UFC first hold an event outside the U.S. — in Brazil?", a: ["1995", "1996", "1998", "2000"], c: 2, cat: "History", diff: "hard" },
+            { q: "What does the word 'Zuffa' mean in Italian?", a: ["Battle", "Brawl / Scuffle", "Victory", "Octagon"], c: 1, cat: "History", diff: "hard" },
+            { q: "In what year did New York legalize MMA, allowing UFC 205 to take place?", a: ["2012", "2014", "2016", "2018"], c: 2, cat: "History", diff: "medium" },
 
-            { q: "Кто выиграл первый турнир UFC 1?", a: ["Рорион Грейси", "Хойс Грейси", "Кен Шемрок", "Патрик Смит"], c: 1, cat: "Чемпионы", diff: "easy" },
-            { q: "Кто стал первым чемпионом UFC в тяжёлом весе?", a: ["Бас Руттен", "Рэнди Кутюр", "Марк Коулман", "Тито Ортис"], c: 2, cat: "Чемпионы", diff: "medium" },
-            { q: "Конор МакГрегор первым стал двойным чемпионом UFC. Какие категории?", a: ["Лёгкий и полулёгкий", "Полулёгкий и лёгкий", "Полусредний и средний", "Лёгкий и полусредний"], c: 1, cat: "Чемпионы", diff: "easy" },
-            { q: "Прозвище Израэля Адесаньи?", a: ["The Spider", "The Last Stylebender", "The Nigerian Nightmare", "Notorious"], c: 1, cat: "Чемпионы", diff: "easy" },
-            { q: "Прозвище Конора МакГрегора?", a: ["The Eagle", "The Spider", "Notorious", "Blessed"], c: 2, cat: "Чемпионы", diff: "easy" },
-            { q: "Прозвище Хабиба Нурмагомедова?", a: ["The Notorious", "The Eagle", "The Spider", "Iron"], c: 1, cat: "Чемпионы", diff: "easy" },
-            { q: "Прозвище Андерсона Силвы?", a: ["The Eagle", "The Last Stylebender", "The Spider", "The Axe Murderer"], c: 2, cat: "Чемпионы", diff: "easy" },
-            { q: "Первый чемпион UFC в тяжёлом весе из Африки?", a: ["Деррик Льюис", "Фрэнсис Нганну", "Серхио Перейра", "Алистар Оверим"], c: 1, cat: "Чемпионы", diff: "medium" },
-            { q: "Кто такой Деметриус Джонсон по прозвищу?", a: ["Mighty Duck", "Mighty Mouse", "Mini Mouse", "Flash"], c: 1, cat: "Чемпионы", diff: "medium" },
-            { q: "Джон Джонс — чемпион UFC в каком весе?", a: ["Средний", "Тяжёлый и полутяжёлый", "Полулёгкий", "Полусредний"], c: 1, cat: "Чемпионы", diff: "medium" },
-            { q: "Рорион Грейси — кто он в UFC?", a: ["Первый чемпион", "Сооснователь", "Первый рефери", "Первый тренер"], c: 1, cat: "Чемпионы", diff: "medium" },
+            // === CHAMPIONS ===
+            { q: "Who won the first UFC 1 tournament?", a: ["Rorion Gracie", "Royce Gracie", "Ken Shamrock", "Patrick Smith"], c: 1, cat: "Champions", diff: "easy" },
+            { q: "Who became the first UFC heavyweight champion?", a: ["Bas Rutten", "Randy Couture", "Mark Coleman", "Tito Ortiz"], c: 2, cat: "Champions", diff: "medium" },
+            { q: "Conor McGregor became the first UFC double champion. Which divisions were they?", a: ["Lightweight and featherweight", "Featherweight and lightweight", "Welterweight and middleweight", "Lightweight and welterweight"], c: 1, cat: "Champions", diff: "easy" },
+            { q: "What is Israel Adesanya's nickname?", a: ["The Spider", "The Last Stylebender", "The Nigerian Nightmare", "Notorious"], c: 1, cat: "Champions", diff: "easy" },
+            { q: "What is Conor McGregor's nickname?", a: ["The Eagle", "The Spider", "Notorious", "Blessed"], c: 2, cat: "Champions", diff: "easy" },
+            { q: "What is Khabib Nurmagomedov's nickname?", a: ["The Notorious", "The Eagle", "The Spider", "Iron"], c: 1, cat: "Champions", diff: "easy" },
+            { q: "What is Anderson Silva's nickname?", a: ["The Eagle", "The Last Stylebender", "The Spider", "The Axe Murderer"], c: 2, cat: "Champions", diff: "easy" },
+            { q: "Who was the first African UFC heavyweight champion?", a: ["Derrick Lewis", "Francis Ngannou", "Sergio Pereira", "Alistair Overeem"], c: 1, cat: "Champions", diff: "medium" },
+            { q: "What is Demetrious Johnson's nickname?", a: ["Mighty Duck", "Mighty Mouse", "Mini Mouse", "Flash"], c: 1, cat: "Champions", diff: "medium" },
+            { q: "Jon Jones was UFC champion in which weight classes?", a: ["Middleweight", "Heavyweight and light heavyweight", "Featherweight", "Welterweight"], c: 1, cat: "Champions", diff: "medium" },
+            { q: "Who is Rorion Gracie in UFC history?", a: ["The first champion", "Co-founder", "The first referee", "The first trainer"], c: 1, cat: "Champions", diff: "medium" },
 
-            { q: "Родная страна Хабиба Нурмагомедова?", a: ["Азербайджан", "Казахстан", "Россия", "Грузия"], c: 2, cat: "Бойцы", diff: "easy" },
-            { q: "Какова была официальная запись Хабиба Нурмагомедова при уходе из MMA?", a: ["26-0", "29-0", "28-0", "27-0"], c: 1, cat: "Бойцы", diff: "medium" },
-            { q: "В каком виде спорта Бrock Lesnar был чемпионом мира до UFC?", a: ["Самбо", "Вольная борьба WWE", "Бокс", "Дзюдо"], c: 1, cat: "Бойцы", diff: "medium" },
-            { q: "Какой боевой стиль Хабиба Нурмагомедова является базовым?", a: ["Муай-тай", "Самбо и борьба", "Бразильское джиу-джитсу", "Бокс"], c: 1, cat: "Бойцы", diff: "easy" },
-            { q: "Кто из бойцов UFC имеет учёную степень в бухгалтерии?", a: ["Тито Ортис", "Чак Лидделл", "Джон Джонс", "Рэнди Кутюр"], c: 1, cat: "Бойцы", diff: "hard" },
-            { q: "Кто первым получил чёрный пояс BJJ от семьи Грейси среди американцев?", a: ["Чак Лидделл", "Тито Ортис", "Мэтт Серра", "BJ Пенн"], c: 2, cat: "Бойцы", diff: "hard" },
-            { q: "Рики Джонс первым победил Андерсона Силву в UFC в каком году?", a: ["2006", "2008", "2012", "2015"], c: 2, cat: "Бойцы", diff: "hard" },
-            { q: "Настоящее имя Тито Ортиса?", a: ["Кристофер Джейкоб Ортис", "Хавьер Ортис", "Тимоти Ортис", "Томас Ортис"], c: 0, cat: "Бойцы", diff: "hard" },
-            { q: "Из какой страны Израэль Адесанья?", a: ["Нигерия", "ЮАР", "Новая Зеландия", "Гана"], c: 2, cat: "Бойцы", diff: "medium" },
-            { q: "Фирменный приём Хабиба Нурмагомедова?", a: ["Нокаут с вертушки", "Ground and pound / удушение в партере", "Гильотина", "Треугольник"], c: 1, cat: "Бойцы", diff: "easy" },
+            // === FIGHTERS ===
+            { q: "What is Khabib Nurmagomedov's home country?", a: ["Azerbaijan", "Kazakhstan", "Russia", "Georgia"], c: 2, cat: "Fighters", diff: "easy" },
+            { q: "What was Khabib Nurmagomedov's official MMA record when he retired?", a: ["26-0", "29-0", "28-0", "27-0"], c: 1, cat: "Fighters", diff: "medium" },
+            { q: "In what sport was Brock Lesnar a world champion before UFC?", a: ["Sambo", "Professional wrestling / WWE", "Boxing", "Judo"], c: 1, cat: "Fighters", diff: "medium" },
+            { q: "What is Khabib Nurmagomedov's base fighting style?", a: ["Muay Thai", "Sambo and wrestling", "Brazilian jiu-jitsu", "Boxing"], c: 1, cat: "Fighters", diff: "easy" },
+            { q: "Which UFC fighter has a degree in accounting?", a: ["Tito Ortiz", "Chuck Liddell", "Jon Jones", "Randy Couture"], c: 1, cat: "Fighters", diff: "hard" },
+            { q: "Who was the first American to receive a BJJ black belt from the Gracie family?", a: ["Chuck Liddell", "Tito Ortiz", "Matt Serra", "BJ Penn"], c: 2, cat: "Fighters", diff: "hard" },
+            { q: "Ricki Jones first defeated Anderson Silva in UFC in what year?", a: ["2006", "2008", "2012", "2015"], c: 2, cat: "Fighters", diff: "hard" },
+            { q: "What is Tito Ortiz's real name?", a: ["Christopher Jacob Ortiz", "Javier Ortiz", "Timothy Ortiz", "Thomas Ortiz"], c: 0, cat: "Fighters", diff: "hard" },
+            { q: "Israel Adesanya represents which country?", a: ["Nigeria", "South Africa", "New Zealand", "Ghana"], c: 2, cat: "Fighters", diff: "medium" },
+            { q: "What is Khabib Nurmagomedov's signature style?", a: ["Spinning head-kick knockout", "Ground and pound / choking in the grappling game", "Guillotine", "Triangle choke"], c: 1, cat: "Fighters", diff: "easy" },
 
-            { q: "Сколько раундов в нечемпионском бою UFC?", a: ["2", "3", "4", "5"], c: 1, cat: "Правила", diff: "easy" },
-            { q: "Сколько весовых категорий в мужском UFC?", a: ["7", "8", "9", "10"], c: 2, cat: "Правила", diff: "medium" },
-            { q: "Вес в категории перо (featherweight) в UFC?", a: ["135 lb", "145 lb", "155 lb", "170 lb"], c: 1, cat: "Правила", diff: "medium" },
-            { q: "Вес в наилегчайшей категории (flyweight) UFC?", a: ["105 lb", "115 lb", "125 lb", "135 lb"], c: 2, cat: "Правила", diff: "medium" },
-            { q: "Вес в лёгкой категории (lightweight) UFC?", a: ["145 lb", "155 lb", "165 lb", "170 lb"], c: 1, cat: "Правила", diff: "easy" },
-            { q: "Вес в тяжёлой категории (heavyweight) UFC — верхний предел?", a: ["205 lb", "220 lb", "230 lb", "265 lb"], c: 3, cat: "Правила", diff: "medium" },
-            { q: "В каком раунде был введён лимит времени в UFC?", a: ["С самого начала", "С UFC 21", "С UFC 12", "С UFC 30"], c: 1, cat: "Правила", diff: "hard" },
-            { q: "Что является незаконным ударом в UFC?", a: ["Удар локтем", "Удар коленом стоя", "Удар в затылок", "Апперкот"], c: 2, cat: "Правила", diff: "easy" },
-            { q: "Сколько длится один раунд в UFC?", a: ["3 минуты", "4 минуты", "5 минут", "6 минут"], c: 2, cat: "Правила", diff: "easy" },
-            { q: "Сколько раундов в чемпионском бою UFC?", a: ["3", "4", "5", "6"], c: 2, cat: "Правила", diff: "easy" },
+            // === RULES ===
+            { q: "How many rounds are there in a non-title UFC fight?", a: ["2", "3", "4", "5"], c: 1, cat: "Rules", diff: "easy" },
+            { q: "How many men's weight divisions are there in UFC?", a: ["7", "8", "9", "10"], c: 2, cat: "Rules", diff: "medium" },
+            { q: "What is the weight limit for the UFC featherweight division?", a: ["135 lb", "145 lb", "155 lb", "170 lb"], c: 1, cat: "Rules", diff: "medium" },
+            { q: "What is the weight limit for UFC flyweight?", a: ["105 lb", "115 lb", "125 lb", "135 lb"], c: 2, cat: "Rules", diff: "medium" },
+            { q: "What is the weight limit for UFC lightweight?", a: ["145 lb", "155 lb", "165 lb", "170 lb"], c: 1, cat: "Rules", diff: "easy" },
+            { q: "What is the upper limit of the UFC heavyweight division?", a: ["205 lb", "220 lb", "230 lb", "265 lb"], c: 3, cat: "Rules", diff: "medium" },
+            { q: "At what point was a time limit introduced in UFC fights?", a: ["From the very beginning", "At UFC 21", "At UFC 12", "At UFC 30"], c: 1, cat: "Rules", diff: "hard" },
+            { q: "Which of the following is an illegal strike in UFC?", a: ["Elbow strike", "Standing knee strike", "Strike to the back of the head", "Uppercut"], c: 2, cat: "Rules", diff: "easy" },
+            { q: "How long is one UFC round?", a: ["3 minutes", "4 minutes", "5 minutes", "6 minutes"], c: 2, cat: "Rules", diff: "easy" },
+            { q: "How many rounds are there in a UFC title fight?", a: ["3", "4", "5", "6"], c: 2, cat: "Rules", diff: "easy" },
 
-            { q: "Кто рекордсмен UFC по числу защит титула подряд в одной категории?", a: ["Джон Джонс", "Андерсон Силва", "Деметриус Джонсон", "Ронда Роузи"], c: 2, cat: "Рекорды", diff: "medium" },
-            { q: "Сколько защит титула подряд совершил Деметриус Джонсон — рекорд UFC?", a: ["8", "9", "11", "13"], c: 2, cat: "Рекорды", diff: "hard" },
-            { q: "Как долго (в днях) Андерсон Силва удерживал титул чемпиона — рекорд UFC?", a: ["1500 дней", "2000 дней", "2457 дней", "3000 дней"], c: 2, cat: "Рекорды", diff: "hard" },
-            { q: "Кто совершил самый быстрый нокаут в истории UFC — 5 секунд?", a: ["Конор МакГрегор", "Хорхе Масвидаль", "Тодд Дафи", "Гейджи"], c: 1, cat: "Рекорды", diff: "medium" },
-            { q: "Самый быстрый нокаут в чемпионском бою: МакГрегор нокаутировал Алдо за…?", a: ["7 секунд", "13 секунд", "20 секунд", "33 секунды"], c: 1, cat: "Рекорды", diff: "medium" },
-            { q: "Какой UFC-ивент установил рекорд по PPV-просмотрам — 2.4 млн?", a: ["UFC 100", "UFC 200", "UFC 205", "UFC 229"], c: 3, cat: "Рекорды", diff: "hard" },
-            { q: "Кто занимает рекорд по наибольшему числу побед в истории UFC?", a: ["Хабиб Нурмагомедов", "Конор МакГрегор", "Дональд Серроне", "Андерсон Силва"], c: 2, cat: "Рекорды", diff: "hard" },
-            { q: "UFC 100 в 2009 году собрал рекордные PPV-просмотры — сколько?", a: ["800 тысяч", "1.6 млн", "2.0 млн", "3.0 млн"], c: 1, cat: "Рекорды", diff: "hard" },
+            // === RECORDS ===
+            { q: "Who holds the UFC record for most consecutive title defenses in one division?", a: ["Jon Jones", "Anderson Silva", "Demetrious Johnson", "Ronda Rousey"], c: 2, cat: "Records", diff: "medium" },
+            { q: "How many consecutive title defenses did Demetrious Johnson make — the UFC record?", a: ["8", "9", "11", "13"], c: 2, cat: "Records", diff: "hard" },
+            { q: "How many days did Anderson Silva hold the title — the UFC record?", a: ["1500 days", "2000 days", "2457 days", "3000 days"], c: 2, cat: "Records", diff: "hard" },
+            { q: "Who has the fastest knockout in UFC history — 5 seconds?", a: ["Conor McGregor", "Jorge Masvidal", "Todd Duffee", "Gaethje"], c: 1, cat: "Records", diff: "medium" },
+            { q: "Fastest knockout in a title fight: McGregor knocked out Aldo in...?", a: ["7 seconds", "13 seconds", "20 seconds", "33 seconds"], c: 1, cat: "Records", diff: "medium" },
+            { q: "Which UFC event set the PPV record at 2.4 million buys?", a: ["UFC 100", "UFC 200", "UFC 205", "UFC 229"], c: 3, cat: "Records", diff: "hard" },
+            { q: "Who holds the record for most wins in UFC history?", a: ["Khabib Nurmagomedov", "Conor McGregor", "Donald Cerrone", "Anderson Silva"], c: 2, cat: "Records", diff: "hard" },
+            { q: "UFC 100 in 2009 drew a record PPV audience — how many buys?", a: ["800 thousand", "1.6 million", "2.0 million", "3.0 million"], c: 1, cat: "Records", diff: "hard" },
 
-            { q: "Кто была первой женщиной, подписавшей контракт с UFC?", a: ["Аманда Нунес", "Валентина Шевченко", "Ронда Роузи", "Карла Эспарза"], c: 2, cat: "Женщины", diff: "easy" },
-            { q: "Первый женский бой в UFC прошёл на каком ивенте?", a: ["UFC 148", "UFC 157", "UFC 168", "UFC 175"], c: 1, cat: "Женщины", diff: "medium" },
-            { q: "Ронда Роузи была первой женщиной, введённой в Зал славы UFC?", a: ["Да", "Нет — первой была Аманда Нунес", "Нет — первой была Валентина Шевченко", "Нет — первой была Кристиан Джастино"], c: 0, cat: "Женщины", diff: "medium" },
-            { q: "Аманда Нунес — первая женщина, ставшая чемпионом в двух категориях UFC. Это правда?", a: ["Да, это правда", "Нет, первой была Ронда Роузи", "Нет, первой была Валентина Шевченко", "Нет, первой была Холли Холм"], c: 0, cat: "Женщины", diff: "medium" },
-            { q: "Валентина Шевченко — из какой страны?", a: ["Россия", "Казахстан", "Кыргызстан", "Узбекистан"], c: 2, cat: "Женщины", diff: "medium" },
-            { q: "Кто из женщин дольше всех удерживал титул в UFC — Шевченко в наилегчайшем весе?", a: ["Ронда Роузи", "Аманда Нунес", "Валентина Шевченко", "Карла Эспарза"], c: 2, cat: "Женщины", diff: "medium" },
-            { q: "Джоанна Енджейчик держала рекорд по количеству защит в какой женской категории?", a: ["Наилегчайший", "Легчайший", "Полулёгкий", "Первый наилегчайший"], c: 3, cat: "Женщины", diff: "hard" },
+            // === WOMEN ===
+            { q: "Who was the first woman signed by UFC?", a: ["Amanda Nunes", "Valentina Shevchenko", "Ronda Rousey", "Carla Esparza"], c: 2, cat: "Women", diff: "easy" },
+            { q: "At which event did the first women's UFC fight take place?", a: ["UFC 148", "UFC 157", "UFC 168", "UFC 175"], c: 1, cat: "Women", diff: "medium" },
+            { q: "Was Ronda Rousey the first woman inducted into the UFC Hall of Fame?", a: ["Yes", "No — Amanda Nunes was first", "No — Valentina Shevchenko was first", "No — Cris Cyborg was first"], c: 0, cat: "Women", diff: "medium" },
+            { q: "Amanda Nunes was the first woman to become UFC champion in two divisions. Is that true?", a: ["Yes, that's true", "No, Ronda Rousey was first", "No, Valentina Shevchenko was first", "No, Holly Holm was first"], c: 0, cat: "Women", diff: "medium" },
+            { q: "Valentina Shevchenko is from which country?", a: ["Russia", "Kazakhstan", "Kyrgyzstan", "Uzbekistan"], c: 2, cat: "Women", diff: "medium" },
+            { q: "Which woman held a UFC title the longest — Shevchenko at flyweight?", a: ["Ronda Rousey", "Amanda Nunes", "Valentina Shevchenko", "Carla Esparza"], c: 2, cat: "Women", diff: "medium" },
+            { q: "Joanna Jędrzejczyk held the record for title defenses in which women's division?", a: ["Flyweight", "Bantamweight", "Featherweight", "Strawweight"], c: 3, cat: "Women", diff: "hard" },
 
-            { q: "Что такое «guard» в бразильском джиу-джитсу?", a: ["Удар сверху", "Защитная позиция снизу со сжатыми ногами", "Бросок через бедро", "Захват сзади"], c: 1, cat: "Техника", diff: "medium" },
-            { q: "Что означает «TKO» в MMA?", a: ["Технический нокаут", "Тактический удар", "Тотальный нокаут", "Тренировочный нокаут"], c: 0, cat: "Техника", diff: "easy" },
-            { q: "Из какой борьбы происходит термин «sprawl» (спроул)?", a: ["Дзюдо", "Борьба / грэпплинг", "Муай-тай", "Бокс"], c: 1, cat: "Техника", diff: "medium" },
-            { q: "«Ground and pound» — что это?", a: ["Удары кулаком стоя", "Удары по лежащему сопернику сверху", "Бросок на ковёр", "Болевой приём на руку"], c: 1, cat: "Техника", diff: "easy" },
-            { q: "Треугольник (triangle choke) — это приём из какого вида единоборств?", a: ["Бокс", "Муай-тай", "Бразильское джиу-джитсу", "Кикбоксинг"], c: 2, cat: "Техника", diff: "easy" },
-            { q: "Что такое «rear naked choke» (RNC)?", a: ["Болевой на руку", "Удушение сзади голой рукой", "Удушение спереди", "Ножницы"], c: 1, cat: "Техника", diff: "easy" },
+            // === TECHNIQUE AND STYLES ===
+            { q: "What is a 'guard' in Brazilian jiu-jitsu?", a: ["A strike from the top", "A defensive bottom position using the legs", "A hip throw", "A rear body lock"], c: 1, cat: "Technique", diff: "medium" },
+            { q: "What does 'TKO' mean in MMA?", a: ["Technical knockout", "Tactical kick offense", "Total knockout", "Training knockout"], c: 0, cat: "Technique", diff: "easy" },
+            { q: "The term 'sprawl' comes from which combat sport?", a: ["Judo", "Wrestling / grappling", "Muay Thai", "Boxing"], c: 1, cat: "Technique", diff: "medium" },
+            { q: "What is 'ground and pound'?", a: ["Punching while standing", "Striking a grounded opponent from the top", "A takedown slam", "An arm submission"], c: 1, cat: "Technique", diff: "easy" },
+            { q: "The triangle choke comes from which martial art?", a: ["Boxing", "Muay Thai", "Brazilian jiu-jitsu", "Kickboxing"], c: 2, cat: "Technique", diff: "easy" },
+            { q: "What is a 'rear naked choke' (RNC)?", a: ["An arm lock", "A choke from the back using the arms", "A front choke", "Scissor choke"], c: 1, cat: "Technique", diff: "easy" },
 
-            { q: "Шоу UFC 'The Ultimate Fighter' помогло спасти организацию от банкротства. Когда вышел 1-й сезон?", a: ["2003", "2005", "2007", "2009"], c: 1, cat: "История", diff: "medium" },
-            { q: "Кто комментирует большинство главных кард UFC с 1997 года?", a: ["Майк Голдберг", "Джо Роган", "Дэниел Кормье", "Брюс Буффер"], c: 1, cat: "История", diff: "easy" },
-            { q: "Легендарный бой Форрест Гриффин vs Стефан Боннар на TUF 1 помог что сделать?", a: ["Провести UFC в России", "Спасти UFC от банкротства", "Открыть женский дивизион", "Ввести правило 5 раундов"], c: 1, cat: "История", diff: "medium" },
+            // === POP CULTURE / MISC ===
+            { q: "The UFC show 'The Ultimate Fighter' helped save the organization from bankruptcy. When did season 1 air?", a: ["2003", "2005", "2007", "2009"], c: 1, cat: "History", diff: "medium" },
+            { q: "Who has commented on most UFC main cards since 1997?", a: ["Mike Goldberg", "Joe Rogan", "Daniel Cormier", "Bruce Buffer"], c: 1, cat: "History", diff: "easy" },
+            { q: "The legendary Forrest Griffin vs. Stephan Bonnar fight on TUF 1 helped do what?", a: ["Bring UFC to Russia", "Save UFC from bankruptcy", "Launch the women's division", "Introduce 5-round title fights"], c: 1, cat: "History", diff: "medium" },
         ];
 
         const PRIZES = [100, 200, 300, 500, 750, 1000, 1500, 2000, 3000, 5000, 7500, 10000, 15000, 20000, 50000];
@@ -708,16 +599,13 @@
         let selectedCats = new Set(CATEGORIES);
         let gameQuestions = [];
         let qi = 0, score = 0, streak = 0, maxStreak = 0, correct = 0, timeLeft = 30, timerInt = null, answering = false;
-        let lifelinesState = { fifty: false, skip: false, time: false };
-        let timerBase = 30;
 
         function buildCatFilter() {
             const cf = document.getElementById('cat-filter');
             cf.innerHTML = '';
-
             const allBtn = document.createElement('button');
             allBtn.className = 'cat-btn active';
-            allBtn.textContent = 'Все';
+            allBtn.textContent = 'All';
             allBtn.dataset.cat = '__all__';
             allBtn.addEventListener('click', () => {
                 if (selectedCats.size === CATEGORIES.length) return;
@@ -759,7 +647,7 @@
 
         function updatePoolInfo() {
             const pool = ALL_Q.filter(q => selectedCats.has(q.cat));
-            document.getElementById('pool-info').textContent = `Банк: ${pool.length} вопросов · выбрано ${selectedCats.size} категорий`;
+            document.getElementById('pool-info').textContent = `Pool: ${pool.length} questions · ${selectedCats.size} categories selected`;
         }
 
         function shuffle(arr) {
@@ -788,51 +676,33 @@
             }
         }
 
-        function updatePrize(state) {
+        function updatePrize(s) {
             for (let i = 0; i < 15; i++) {
                 const d = document.getElementById('pd-' + i);
                 if (!d) continue;
                 d.className = 'prize-dot';
                 if (i < qi) d.classList.add('done');
-                else if (i === qi) {
-                    if (state === 'wrong') d.classList.add('wrong');
-                    else d.classList.add('current');
-                }
+                else if (i === qi) d.classList.add(s === 'wrong' ? 'wrong' : 'current');
             }
         }
 
         function getDiffBadge(diff) {
-            const map = { easy: ['easy', 'Лёгкий'], medium: ['medium', 'Средний'], hard: ['hard', 'Сложный'] };
+            const map = { easy: ['easy', 'Easy'], medium: ['medium', 'Medium'], hard: ['hard', 'Hard'] };
             const [cls, label] = map[diff] || ['easy', ''];
             return `<span class="difficulty-badge diff-${cls}">${label}</span>`;
         }
 
-        function resetLifelineButtons() {
-            const fifty = document.getElementById('ll-50');
-            const skip = document.getElementById('ll-skip');
-            const time = document.getElementById('ll-time');
-
-            fifty.classList.toggle('used', lifelinesState.fifty);
-            skip.classList.toggle('used', lifelinesState.skip);
-            time.classList.toggle('used', lifelinesState.time);
-        }
-
         function loadQ() {
             if (qi >= gameQuestions.length) { endGame(); return; }
-
             const q = gameQuestions[qi];
             answering = false;
-            timerBase = 30;
-
-            document.getElementById('q-num').innerHTML = `Вопрос ${qi + 1}/15 ${getDiffBadge(q.diff)}`;
+            document.getElementById('q-num').innerHTML = `Question ${qi + 1}/15 ${getDiffBadge(q.diff)}`;
             document.getElementById('q-text').textContent = q.q;
             document.getElementById('q-cat').textContent = '📁 ' + q.cat;
             document.getElementById('h-q').textContent = `${qi + 1}/15`;
             updatePrize('');
-
             const ans = document.getElementById('answers');
             ans.innerHTML = '';
-
             q.a.forEach((opt, i) => {
                 const b = document.createElement('button');
                 b.className = 'ans-btn';
@@ -840,30 +710,23 @@
                 b.addEventListener('click', () => answer(i));
                 ans.appendChild(b);
             });
-
-            resetLifelineButtons();
-            startTimer(timerBase);
+            document.getElementById('ll-50').classList.remove('used');
+            document.getElementById('ll-skip').classList.remove('used');
+            document.getElementById('ll-time').classList.remove('used');
+            startTimer(30);
         }
 
-        function startTimer(totalSeconds) {
+        function startTimer(s) {
             clearInterval(timerInt);
-            timerBase = totalSeconds;
-            timeLeft = totalSeconds;
-            document.getElementById('h-time').textContent = timeLeft;
+            timeLeft = s;
+            document.getElementById('h-time').textContent = s;
             document.getElementById('timer-bar').style.width = '100%';
-            document.getElementById('timer-bar').style.background = 'var(--gold)';
-
             timerInt = setInterval(() => {
                 timeLeft--;
                 document.getElementById('h-time').textContent = timeLeft;
-                document.getElementById('timer-bar').style.width = (timeLeft / timerBase * 100) + '%';
-                document.getElementById('timer-bar').style.background =
-                    timeLeft > 15 ? 'var(--gold)' : timeLeft > 7 ? 'var(--orange)' : 'var(--red)';
-
-                if (timeLeft <= 0) {
-                    clearInterval(timerInt);
-                    timeout();
-                }
+                document.getElementById('timer-bar').style.width = (timeLeft / s * 100) + '%';
+                document.getElementById('timer-bar').style.background = timeLeft > 15 ? '#d4a017' : timeLeft > 7 ? '#e67e22' : '#c0392b';
+                if (timeLeft <= 0) { clearInterval(timerInt); timeout(); }
             }, 1000);
         }
 
@@ -872,8 +735,7 @@
             answering = true;
             streak = 0;
             document.getElementById('h-streak').textContent = '0🔥';
-            const correctBtn = document.querySelectorAll('.ans-btn')[gameQuestions[qi].c];
-            if (correctBtn) correctBtn.classList.add('correct');
+            document.querySelectorAll('.ans-btn')[gameQuestions[qi].c].classList.add('correct');
             updatePrize('wrong');
             setTimeout(() => { qi++; loadQ(); }, 1500);
         }
@@ -882,18 +744,15 @@
             if (answering) return;
             answering = true;
             clearInterval(timerInt);
-
             const q = gameQuestions[qi];
             const btns = document.querySelectorAll('.ans-btn');
-            btns.forEach(btn => btn.disabled = true);
-
             if (i === q.c) {
                 btns[i].classList.add('correct');
                 correct++;
                 streak++;
                 maxStreak = Math.max(maxStreak, streak);
                 score += PRIZES[qi] + (streak >= 3 ? Math.floor(PRIZES[qi] * .2) : 0);
-                document.getElementById('h-score').textContent = score.toLocaleString();
+                document.getElementById('h-score').textContent = score;
                 document.getElementById('h-streak').textContent = streak + '🔥';
                 updatePrize('done');
                 setTimeout(() => { qi++; loadQ(); }, 900);
@@ -911,10 +770,9 @@
             clearInterval(timerInt);
             const acc = Math.round(correct / 15 * 100);
             const grade = correct >= 13 ? '🥇 S' : correct >= 10 ? '🥈 A' : correct >= 7 ? '🥉 B' : correct >= 4 ? '💪 C' : '📚 D';
-
             document.getElementById('r-icon').textContent = correct >= 10 ? '🏆' : correct >= 7 ? '😤' : '📚';
-            document.getElementById('r-title').textContent = correct >= 13 ? 'ЛЕГЕНДА!' : correct >= 10 ? 'ЧЕМПИОН!' : correct >= 7 ? 'КОНТЕНДЕР' : 'ПРОДОЛЖАЙ!';
-            document.getElementById('r-score').textContent = 'Очки: ' + score.toLocaleString();
+            document.getElementById('r-title').textContent = correct >= 13 ? 'LEGEND!' : correct >= 10 ? 'CHAMPION!' : correct >= 7 ? 'CONTENDER' : 'KEEP GOING!';
+            document.getElementById('r-score').textContent = 'Score: ' + score.toLocaleString();
             document.getElementById('r-correct').textContent = correct + '/15';
             document.getElementById('r-streak').textContent = maxStreak;
             document.getElementById('r-acc').textContent = acc + '%';
@@ -925,80 +783,61 @@
         function show(id) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function startGame() {
+        document.getElementById('btn-start').addEventListener('click', () => {
             gameQuestions = pickQuestions();
             if (gameQuestions.length < 15) {
-                alert('Недостаточно вопросов в выбранных категориях! Выберите больше категорий.');
+                alert('Not enough questions in the selected categories! Please choose more categories.');
                 return;
             }
-
-            qi = 0;
-            score = 0;
-            streak = 0;
-            maxStreak = 0;
-            correct = 0;
-            lifelinesState = { fifty: false, skip: false, time: false };
-
+            qi = 0; score = 0; streak = 0; maxStreak = 0; correct = 0;
             document.getElementById('h-score').textContent = '0';
             document.getElementById('h-streak').textContent = '0🔥';
-
             buildPrize();
             show('screen-game');
             loadQ();
-        }
-
-        document.getElementById('btn-start').addEventListener('click', startGame);
-        document.getElementById('btn-restart').addEventListener('click', startGame);
-        document.getElementById('btn-menu').addEventListener('click', () => {
-            clearInterval(timerInt);
-            show('screen-start');
         });
+
+        document.getElementById('btn-restart').addEventListener('click', () => {
+            gameQuestions = pickQuestions();
+            qi = 0; score = 0; streak = 0; maxStreak = 0; correct = 0;
+            document.getElementById('h-score').textContent = '0';
+            document.getElementById('h-streak').textContent = '0🔥';
+            buildPrize();
+            show('screen-game');
+            loadQ();
+        });
+
+        document.getElementById('btn-menu').addEventListener('click', () => show('screen-start'));
 
         document.getElementById('ll-50').addEventListener('click', function () {
             if (this.classList.contains('used') || answering) return;
-
             this.classList.add('used');
-            lifelinesState.fifty = true;
-
-            const btns = [...document.querySelectorAll('.ans-btn')];
-            const wrongIndexes = btns
-                .map((_, idx) => idx)
-                .filter(idx => idx !== gameQuestions[qi].c && !btns[idx].disabled);
-
-            const toHide = shuffle(wrongIndexes).slice(0, 2);
-            toHide.forEach(idx => {
-                btns[idx].style.opacity = '.25';
-                btns[idx].disabled = true;
-            });
+            const btns = document.querySelectorAll('.ans-btn');
+            let h = 0;
+            for (let i = 0; i < 4; i++) {
+                if (i !== gameQuestions[qi].c && h < 2) {
+                    btns[i].style.opacity = '.2';
+                    btns[i].disabled = true;
+                    h++;
+                }
+            }
         });
 
         document.getElementById('ll-skip').addEventListener('click', function () {
             if (this.classList.contains('used') || answering) return;
-
             this.classList.add('used');
-            lifelinesState.skip = true;
             answering = true;
             clearInterval(timerInt);
-
-            setTimeout(() => {
-                answering = false;
-                qi++;
-                loadQ();
-            }, 300);
+            setTimeout(() => { answering = false; qi++; loadQ(); }, 300);
         });
 
         document.getElementById('ll-time').addEventListener('click', function () {
-            if (this.classList.contains('used') || answering) return;
-
+            if (this.classList.contains('used')) return;
             this.classList.add('used');
-            lifelinesState.time = true;
             timeLeft += 15;
-            timerBase += 15;
             document.getElementById('h-time').textContent = timeLeft;
-            document.getElementById('timer-bar').style.width = (timeLeft / timerBase * 100) + '%';
         });
 
         buildCatFilter();

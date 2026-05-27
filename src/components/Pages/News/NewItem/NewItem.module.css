@@ -1,4 +1,3 @@
-/* ─── Контейнер карточки ─────────────────────────────────── */
 .item {
     position: relative;
     list-style: none;
@@ -6,9 +5,9 @@
     border-radius: 16px;
     overflow: hidden;
     min-height: 360px;
+    height: 100%;
 }
 
-/* ─── FRONT ──────────────────────────────────────────────── */
 .front {
     position: absolute;
     inset: 0;
@@ -18,7 +17,6 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     overflow: hidden;
-
     transform: translateY(0);
     opacity: 1;
     transition:
@@ -42,7 +40,6 @@
     scale: 1.05;
 }
 
-/* ─── Картинка ───────────────────────────────────────────── */
 .imageWrapper {
     position: relative;
     overflow: hidden;
@@ -74,7 +71,6 @@
     opacity: 0;
 }
 
-/* ─── Спиннер ────────────────────────────────────────────── */
 .spinnerWrapper {
     position: absolute;
     inset: 0;
@@ -96,10 +92,11 @@
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-/* ─── Бейдж ──────────────────────────────────────────────── */
 .badge {
     position: absolute;
     top: 12px;
@@ -115,12 +112,13 @@
     z-index: 2;
 }
 
-/* ─── Тело карточки ──────────────────────────────────────── */
 .body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    flex: 1 1 auto;
+    min-height: 0;
+    gap: 8px;
 }
 
 .cardTitle {
@@ -129,21 +127,25 @@
     font-weight: 700;
     letter-spacing: 0.32px;
     line-height: 1.2;
-    margin-bottom: 8px;
-    height: 40px;
     color: #fff;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
 }
 
 .cardText {
     font-size: 13px;
-    height: 40px;
     color: #8a8a9a;
     line-height: 1.6;
-    margin-bottom: 16px;
-    margin-top: auto;
+    margin: 0;
+
     display: -webkit-box;
-    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     overflow: hidden;
 }
 
@@ -153,6 +155,8 @@
     gap: 12px;
     font-size: 14px;
     color: #4a4a5a;
+    margin-top: auto;
+    padding-top: 4px;
 }
 
 .inner {
@@ -161,26 +165,21 @@
     gap: 4px;
 }
 
-/* ─── BACK ───────────────────────────────────────────────── */
 .back {
     position: absolute;
     inset: 0;
     display: flex;
     flex-direction: column;
-    /* убрали justify-content: center — контент прибит к верху */
     align-items: flex-start;
     padding: 28px;
-    padding-right: 20px; /* чуть меньше, чтобы не перекрывал скроллбар */
+    padding-right: 20px;
     background-color: #13131a;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
-
-    /* Скролл если текст не влезает */
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: rgba(232, 55, 42, 0.4) transparent;
-
     transform: translateY(24px);
     opacity: 0;
     pointer-events: none;
@@ -189,22 +188,23 @@
         opacity 0.35s ease 0.1s;
 }
 
-/* Webkit scrollbar */
 .back::-webkit-scrollbar {
     width: 4px;
 }
+
 .back::-webkit-scrollbar-track {
     background: transparent;
 }
+
 .back::-webkit-scrollbar-thumb {
     background: rgba(232, 55, 42, 0.4);
     border-radius: 9999px;
 }
+
 .back::-webkit-scrollbar-thumb:hover {
     background: rgba(232, 55, 42, 0.7);
 }
 
-/* Декоративная красная полоса слева */
 .back::before {
     content: '';
     position: absolute;
@@ -229,24 +229,45 @@
     transform: scaleY(1);
 }
 
-/* Staggered reveal */
-.back > * {
+.back>* {
     opacity: 0;
     transform: translateY(10px);
     transition:
         opacity 0.3s ease,
         transform 0.3s ease;
-    /* чтобы flex-children не сжимались */
     flex-shrink: 0;
 }
 
-.item.opened .back > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
-.item.opened .back > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.32s; }
-.item.opened .back > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.39s; }
-.item.opened .back > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.46s; }
-.item.opened .back > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.53s; }
+.item.opened .back>*:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.25s;
+}
 
-/* ─── Back-контент ───────────────────────────────────────── */
+.item.opened .back>*:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.32s;
+}
+
+.item.opened .back>*:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.39s;
+}
+
+.item.opened .back>*:nth-child(4) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.46s;
+}
+
+.item.opened .back>*:nth-child(5) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.53s;
+}
+
 .backBadge {
     background: rgba(232, 55, 42, 0.15);
     color: #e8372a;
@@ -268,15 +289,16 @@
     letter-spacing: 0.32px;
     line-height: 1.2;
     color: #fff;
-    margin-bottom: 12px;
+    margin: 0 0 12px;
 }
 
 .backText {
     font-size: 14px;
     color: #8a8a9a;
     line-height: 1.7;
-    margin-bottom: 20px;
-    /* Без clamp — показываем весь текст, скролл справится */
+    margin: 0 0 20px;
+    white-space: pre-line;
+    word-break: break-word;
 }
 
 .backMeta {
@@ -296,7 +318,6 @@
     cursor: pointer;
     letter-spacing: 0.3px;
     transition: all 0.2s ease;
-    /* Кнопка всегда внизу контента, не прилипает к низу карточки */
     margin-top: auto;
     align-self: flex-start;
 }
@@ -307,31 +328,88 @@
     color: #fff;
 }
 
-/* ─── Адаптив ─────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-    .cardTitle { font-size: 16px; }
-    .cardText  { font-size: 12px; }
-    .body      { padding: 16px; }
-    .footer    { font-size: 12px; }
-    .backTitle { font-size: 18px; }
-    .backText  { font-size: 13px; }
-    .back      { padding: 22px; padding-right: 16px; }
+    .cardTitle {
+        font-size: 16px;
+    }
+
+    .cardText {
+        font-size: 12px;
+    }
+
+    .body {
+        padding: 16px;
+    }
+
+    .footer {
+        font-size: 12px;
+    }
+
+    .backTitle {
+        font-size: 18px;
+    }
+
+    .backText {
+        font-size: 13px;
+    }
+
+    .back {
+        padding: 16px;
+        padding-right: 16px;
+    }
 }
 
 @media (max-width: 768px) {
-    .body  { padding: 14px; }
-    .back  { padding: 20px; padding-right: 14px; }
+    .body {
+        padding: 14px;
+    }
+
+    .back {
+        padding: 20px;
+        padding-right: 14px;
+    }
 }
 
 @media (max-width: 576px) {
-    .item     { min-height: 300px; }
-    .cardTitle { font-size: 14px; }
-    .cardText  { font-size: 10px; }
-    .body      { padding: 12px; }
-    .footer    { font-size: 10px; }
-    .image     { height: 150px; }
-    .badge     { font-size: 6px; }
-    .backTitle { font-size: 16px; }
-    .backText  { font-size: 12px; }
-    .back      { padding: 16px; padding-right: 12px; }
+    .item {
+        min-height: 300px;
+    }
+
+    .cardTitle {
+        font-size: 14px;
+    }
+
+    .cardText {
+        font-size: 11px;
+    }
+
+    .body {
+        padding: 12px;
+        gap: 6px;
+    }
+
+    .footer {
+        font-size: 10px;
+    }
+
+    .image {
+        height: 150px;
+    }
+
+    .badge {
+        font-size: 6px;
+    }
+
+    .backTitle {
+        font-size: 16px;
+    }
+
+    .backText {
+        font-size: 12px;
+    }
+
+    .back {
+        padding: 16px;
+        padding-right: 12px;
+    }
 }

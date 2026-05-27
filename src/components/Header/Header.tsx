@@ -64,7 +64,7 @@ function Header({ title, onMenuToggle, isSidebarOpen }: HeaderProps): ReactEleme
       <h2 className={styles.title}>{title}</h2>
 
       <div className={styles.actions}>
-        <button className={styles.badgeLive}>
+        <button className={styles.badgeLive} disabled>
           <div className={styles.badgeLiveDot} />
           {t("header.live")}
         </button>

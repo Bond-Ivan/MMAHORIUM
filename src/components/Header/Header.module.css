@@ -32,15 +32,39 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  background-color: #e8372a26;
-  color: #e8372a;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #8a8a9a;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.08em;
   padding: 4px 12px;
   border-radius: 100px;
   text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+.badgeLive:disabled {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #8a8a9a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.badgeLiveDot {
+  width: 6px;
+  height: 6px;
+  background-color: #8a8a9a;
+  border-radius: 50%;
+  animation: none;
+}
+
+.badgeLive:disabled .badgeLiveDot {
+  background-color: #6f6f7d;
+  animation: none;
+}
+
 
 @keyframes pulse {
 
@@ -54,14 +78,6 @@
     opacity: 0.5;
     transform: scale(0.8);
   }
-}
-
-.badgeLiveDot {
-  width: 6px;
-  height: 6px;
-  background-color: #e8372a;
-  border-radius: 50%;
-  animation: pulse 1.5s ease-in-out infinite;
 }
 
 /* Language Dropdown */

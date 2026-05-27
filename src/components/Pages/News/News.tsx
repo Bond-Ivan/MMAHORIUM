@@ -15,7 +15,7 @@ function News(): ReactElement {
           {t("news.title")} <span className={styles.pretitle}>MMA</span>
         </h2>
         <ul className={styles.list}>
-          {news.map((item) => (
+          {[...news].sort((a, b) => b.id - a.id).map((item) => (
             <NewItem key={item.id} newItem={item} />
           ))}
         </ul>
