@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -418,20 +418,20 @@
     <header>
         <div class="logo">
             <svg viewBox="0 0 32 32" fill="none">
-                <polygon points="16,2 30,9 30,23 16,30 2,23 2,9" stroke="#d4a017" stroke-width="2.5" fill="none" /><text
-                    x="16" y="21" text-anchor="middle" font-family="Arial Black" font-size="11" fill="#d4a017"
+                <polygon points="16,2 30,9 30,23 16,30 2,23 2,9" stroke="#d4a017" stroke-width="2.5" fill="none" />
+                <text x="16" y="21" text-anchor="middle" font-family="Arial Black" font-size="11" fill="#d4a017"
                     font-weight="900">MZ</text>
             </svg>
             <span class="logo-text">MMA MAZE</span>
         </div>
         <div class="hud">
-            <div class="hud-item"><span class="hud-label">Ур.</span><span class="hud-value" id="hud-level">1</span>
+            <div class="hud-item"><span class="hud-label">Lvl</span><span class="hud-value" id="hud-level">1</span>
             </div>
-            <div class="hud-item"><span class="hud-label">Время</span><span class="hud-value" id="hud-time">0:00</span>
+            <div class="hud-item"><span class="hud-label">Time</span><span class="hud-value" id="hud-time">0:00</span>
             </div>
-            <div class="hud-item"><span class="hud-label">Ходы</span><span class="hud-value" id="hud-moves">0</span>
+            <div class="hud-item"><span class="hud-label">Moves</span><span class="hud-value" id="hud-moves">0</span>
             </div>
-            <div class="hud-item"><span class="hud-label">Рекорд</span><span class="hud-value" id="hud-best">—</span>
+            <div class="hud-item"><span class="hud-label">Best</span><span class="hud-value" id="hud-best">—</span>
             </div>
         </div>
     </header>
@@ -440,20 +440,20 @@
             <div id="timer-bar" style="width:100%"></div>
         </div>
         <div id="game-wrapper"><canvas id="maze-canvas"></canvas></div>
-        <div id="hint-panel">⬆️ Стрелки / WASD · Свайп на мобиле</div>
+        <div id="hint-panel">⬆️ Arrow keys / WASD · Swipe on mobile</div>
         <div class="controls-bar">
             <div class="diff-group">
-                <span class="diff-label">Сложность:</span>
-                <button class="diff-pill active" data-diff="easy">Новичок</button>
-                <button class="diff-pill" data-diff="medium">Контендер</button>
-                <button class="diff-pill" data-diff="hard">Чемпион</button>
-                <button class="diff-pill" data-diff="legend">Легенда</button>
+                <span class="diff-label">Difficulty:</span>
+                <button class="diff-pill active" data-diff="easy">Rookie</button>
+                <button class="diff-pill" data-diff="medium">Contender</button>
+                <button class="diff-pill" data-diff="hard">Champion</button>
+                <button class="diff-pill" data-diff="legend">Legend</button>
             </div>
         </div>
         <div class="controls-bar">
-            <button class="btn btn-primary" id="btn-new">Новый</button>
-            <button class="btn btn-secondary" id="btn-hint">💡 Подсказка</button>
-            <button class="btn btn-danger" id="btn-solve">Авто</button>
+            <button class="btn btn-primary" id="btn-new">New</button>
+            <button class="btn btn-secondary" id="btn-hint">💡 Hint</button>
+            <button class="btn btn-danger" id="btn-solve">Auto</button>
         </div>
         <div class="dpad">
             <div></div><button class="dpad-btn" data-dir="up">▲</button>
@@ -468,68 +468,419 @@
         <div class="overlay-card">
             <div class="overlay-icon" id="ov-icon">🥊</div>
             <div class="overlay-title" id="ov-title">MMA MAZE</div>
-            <div class="overlay-sub" id="ov-sub">Проведи бойца к чемпионскому поясу 🏆</div>
+            <div class="overlay-sub" id="ov-sub">Lead the fighter to the championship belt 🏆</div>
             <div class="overlay-stats" id="ov-stats" style="display:none">
                 <div class="overlay-stat">
-                    <div class="overlay-stat-label">Время</div>
+                    <div class="overlay-stat-label">Time</div>
                     <div class="overlay-stat-value" id="ov-stat-time">—</div>
                 </div>
                 <div class="overlay-stat">
-                    <div class="overlay-stat-label">Ходы</div>
+                    <div class="overlay-stat-label">Moves</div>
                     <div class="overlay-stat-value" id="ov-stat-moves">—</div>
                 </div>
                 <div class="overlay-stat">
-                    <div class="overlay-stat-label">Очки</div>
+                    <div class="overlay-stat-label">Score</div>
                     <div class="overlay-stat-value" id="ov-stat-score">—</div>
                 </div>
                 <div class="overlay-stat">
-                    <div class="overlay-stat-label">Оценка</div>
+                    <div class="overlay-stat-label">Grade</div>
                     <div class="overlay-stat-value" id="ov-stat-grade">—</div>
                 </div>
             </div>
             <div class="overlay-btns">
-                <button class="btn btn-primary" id="ov-btn-start" style="font-size:.95rem;padding:11px">Начать</button>
+                <button class="btn btn-primary" id="ov-btn-start" style="font-size:.95rem;padding:11px">Start</button>
                 <button class="btn btn-secondary" id="ov-btn-next"
-                    style="display:none;font-size:.95rem;padding:11px">Следующий →</button>
+                    style="display:none;font-size:.95rem;padding:11px">Next →</button>
             </div>
         </div>
     </div>
     <script>
-        const DIFF = { easy: { cols: 11, rows: 11, timeLimit: 90, timeBonus: 500 }, medium: { cols: 15, rows: 15, timeLimit: 75, timeBonus: 800 }, hard: { cols: 21, rows: 21, timeLimit: 60, timeBonus: 1200 }, legend: { cols: 27, rows: 27, timeLimit: 45, timeBonus: 2000 } };
-        const HINTS = ["Конор: 'Точность побеждает силу!'", "Хабиб: 'Давление. Не останавливайся!'", "Джонс: 'Ищи угол!'", "Адесанья: 'Двигайся. Найди ритм!'"];
-        let difficulty = 'easy', level = 1, bestTimes = { easy: null, medium: null, hard: null, legend: null };
-        let gameState = 'menu', maze = null, player = null, goal = null, moves = 0, startTime = 0, elapsed = 0, timerInterval = null, penaltyMoves = 0, solvePath = null, solveIndex = 0, solveInterval = null;
-        const canvas = document.getElementById('maze-canvas'), ctx = canvas.getContext('2d');
-        function getCellSize() { const conf = DIFF[difficulty], wrap = document.getElementById('game-wrapper'), maxW = Math.min(wrap.clientWidth - 4, 520), maxH = Math.min(wrap.clientHeight - 4, 520); return Math.max(Math.floor(Math.min(maxW / conf.cols, maxH / conf.rows)), 10); }
-        function resizeCanvas() { if (!maze) return; const cs = getCellSize(), conf = DIFF[difficulty]; canvas.width = conf.cols * cs; canvas.height = conf.rows * cs; drawMaze(); }
+        const DIFF = {
+            easy: { cols: 11, rows: 11, timeLimit: 90, timeBonus: 500 },
+            medium: { cols: 15, rows: 15, timeLimit: 75, timeBonus: 800 },
+            hard: { cols: 21, rows: 21, timeLimit: 60, timeBonus: 1200 },
+            legend: { cols: 27, rows: 27, timeLimit: 45, timeBonus: 2000 }
+        };
+
+        const HINTS = [
+            "Conor: 'Precision beats power!'",
+            "Khabib: 'Pressure. Don't stop!'",
+            "Jones: 'Find the angle!'",
+            "Adesanya: 'Move. Find the rhythm!'"
+        ];
+
+        let difficulty = 'easy',
+            level = 1,
+            bestTimes = { easy: null, medium: null, hard: null, legend: null };
+
+        let gameState = 'menu',
+            maze = null,
+            player = null,
+            goal = null,
+            moves = 0,
+            startTime = 0,
+            elapsed = 0,
+            timerInterval = null,
+            penaltyMoves = 0,
+            solvePath = null,
+            solveIndex = 0,
+            solveInterval = null;
+
+        const canvas = document.getElementById('maze-canvas'),
+            ctx = canvas.getContext('2d');
+
+        function getCellSize() {
+            const conf = DIFF[difficulty],
+                wrap = document.getElementById('game-wrapper'),
+                maxW = Math.min(wrap.clientWidth - 4, 520),
+                maxH = Math.min(wrap.clientHeight - 4, 520);
+            return Math.max(Math.floor(Math.min(maxW / conf.cols, maxH / conf.rows)), 10);
+        }
+
+        function resizeCanvas() {
+            if (!maze) return;
+            const cs = getCellSize(), conf = DIFF[difficulty];
+            canvas.width = conf.cols * cs;
+            canvas.height = conf.rows * cs;
+            drawMaze();
+        }
+
         window.addEventListener('resize', resizeCanvas);
-        function generateMaze(cols, rows) { const grid = new Uint8Array(cols * rows).fill(0b1111), visited = new Uint8Array(cols * rows), idx = (c, r) => r * cols + c; function carve(c, r) { visited[idx(c, r)] = 1; const dirs = shuffle([0, 1, 2, 3]); for (const d of dirs) { const nc = c + [0, 1, 0, -1][d], nr = r + [-1, 0, 1, 0][d]; if (nc < 0 || nc >= cols || nr < 0 || nr >= rows || visited[idx(nc, nr)]) continue; grid[idx(c, r)] &= ~(1 << d); grid[idx(nc, nr)] &= ~(1 << [2, 3, 0, 1][d]); carve(nc, nr); } } carve(0, 0); return { grid, cols, rows }; }
-        function shuffle(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
-        function bfsSolve(maze, start, end) { const { grid, cols, rows } = maze, idx = (c, r) => r * cols + c, queue = [[start.c, start.r]], parent = new Array(cols * rows).fill(null); parent[idx(start.c, start.r)] = [-1, -1]; while (queue.length) { const [c, r] = queue.shift(); if (c === end.c && r === end.r) break; const cell = grid[idx(c, r)];[[0, -1], [1, 0], [0, 1], [-1, 0]].forEach(([dc, dr], d) => { if (cell & (1 << d)) return; const nc = c + dc, nr = r + dr; if (nc < 0 || nc >= cols || nr < 0 || nr >= rows || parent[idx(nc, nr)] !== null) return; parent[idx(nc, nr)] = [c, r]; queue.push([nc, nr]); }); } const path = []; let cur = [end.c, end.r]; while (cur[0] !== -1) { path.unshift({ c: cur[0], r: cur[1] }); cur = parent[idx(cur[0], cur[1])]; if (!cur) break; } return path; }
-        function drawMaze() { if (!maze) return; const cs = getCellSize(), { grid, cols, rows } = maze, idx = (c, r) => r * cols + c; ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = '#0d0d0d'; ctx.fillRect(0, 0, canvas.width, canvas.height); if (solvePath) solvePath.forEach(cell => { ctx.fillStyle = 'rgba(212,160,23,.12)'; ctx.fillRect(cell.c * cs + 1, cell.r * cs + 1, cs - 2, cs - 2); }); for (let r = 0; r < rows; r++)for (let c = 0; c < cols; c++) { const x = c * cs, y = r * cs, walls = grid[idx(c, r)]; ctx.strokeStyle = '#d4a017'; ctx.lineWidth = Math.max(1, cs * .06); if (walls & 1) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + cs, y); ctx.stroke(); } if (walls & 2) { ctx.beginPath(); ctx.moveTo(x + cs, y); ctx.lineTo(x + cs, y + cs); ctx.stroke(); } if (walls & 4) { ctx.beginPath(); ctx.moveTo(x, y + cs); ctx.lineTo(x + cs, y + cs); ctx.stroke(); } if (walls & 8) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + cs); ctx.stroke(); } } const fs = Math.max(cs - 4, 8); ctx.save(); ctx.shadowColor = '#d4a017'; ctx.shadowBlur = 10; ctx.font = fs + 'px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('🏆', goal.c * cs + cs / 2, goal.r * cs + cs / 2); ctx.restore(); const px = player.c * cs + cs / 2, py = player.r * cs + cs / 2, rv = Math.max((cs - 6) / 2, 4); ctx.save(); ctx.shadowColor = '#e74c3c'; ctx.shadowBlur = 8; ctx.fillStyle = '#e74c3c'; ctx.beginPath(); ctx.arc(px, py, rv, 0, Math.PI * 2); ctx.fill(); ctx.font = 'bold ' + Math.max(rv, 7) + 'px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('🥊', px, py); ctx.restore(); }
-        function initGame() { stopTimer(); stopSolve(); const conf = DIFF[difficulty]; maze = generateMaze(conf.cols, conf.rows); player = { c: 0, r: 0 }; goal = { c: conf.cols - 1, r: conf.rows - 1 }; moves = 0; penaltyMoves = 0; elapsed = 0; solvePath = null; updateHUD(); resizeCanvas(); startTimer(); gameState = 'playing'; }
-        function move(dc, dr) { if (gameState !== 'playing') return; stopSolve(); solvePath = null; const { grid, cols, rows } = maze, idx = (c, r) => r * cols + c, c = player.c + dc, r = player.r + dr; if (c < 0 || c >= cols || r < 0 || r >= rows) return; const wallBit = dc === 1 ? 1 : dc === -1 ? 3 : dr === -1 ? 0 : 2; if (grid[idx(player.c, player.r)] & (1 << wallBit)) return; player = { c, r }; moves++; updateHUD(); drawMaze(); if (player.c === goal.c && player.r === goal.r) onWin(); }
-        function startTimer() { startTime = Date.now(); timerInterval = setInterval(() => { elapsed = Math.floor((Date.now() - startTime) / 1000); updateHUD(); const limit = DIFF[difficulty].timeLimit, pct = Math.max(0, 1 - elapsed / limit); const bar = document.getElementById('timer-bar'); bar.style.width = (pct * 100) + '%'; bar.style.background = pct > .5 ? '#d4a017' : pct > .25 ? '#e67e22' : '#c0392b'; if (elapsed >= limit) onTimeout(); }, 100); }
-        function stopTimer() { clearInterval(timerInterval); }
-        function updateHUD() { document.getElementById('hud-level').textContent = level; document.getElementById('hud-time').textContent = Math.floor(elapsed / 60) + ':' + (elapsed % 60).toString().padStart(2, '0'); document.getElementById('hud-moves').textContent = moves; const b = bestTimes[difficulty]; document.getElementById('hud-best').textContent = b ? Math.floor(b / 60) + ':' + (b % 60).toString().padStart(2, '0') : '—'; }
-        function onWin() { stopTimer(); stopSolve(); gameState = 'won'; const flash = document.createElement('div'); flash.className = 'flash'; document.body.appendChild(flash); setTimeout(() => flash.remove(), 500); if (!bestTimes[difficulty] || elapsed < bestTimes[difficulty]) bestTimes[difficulty] = elapsed; const conf = DIFF[difficulty], timeLeft = Math.max(0, conf.timeLimit - elapsed), score = Math.max(0, conf.timeBonus + timeLeft * 10 - moves * 2 - penaltyMoves * 5), grade = score > conf.timeBonus * .85 ? '🥇 S' : score > conf.timeBonus * .65 ? '🥈 A' : score > conf.timeBonus * .4 ? '🥉 B' : '💪 C'; level++; showOverlay({ icon: '🏆', title: 'ПОБЕДА!', sub: HINTS[Math.floor(Math.random() * HINTS.length)], stats: { time: Math.floor(elapsed / 60) + ':' + (elapsed % 60).toString().padStart(2, '0'), moves, score, grade }, nextBtn: true }); }
-        function onTimeout() { stopTimer(); stopSolve(); gameState = 'timeout'; showOverlay({ icon: '⏰', title: 'ВРЕМЯ!', sub: 'Следующий раунд за тобой!', stats: null, nextBtn: false }); }
-        function showOverlay({ icon, title, sub, stats, nextBtn }) { document.getElementById('ov-icon').textContent = icon; document.getElementById('ov-title').textContent = title; document.getElementById('ov-sub').textContent = sub; const se = document.getElementById('ov-stats'); if (stats) { se.style.display = 'grid'; document.getElementById('ov-stat-time').textContent = stats.time; document.getElementById('ov-stat-moves').textContent = stats.moves; document.getElementById('ov-stat-score').textContent = stats.score; document.getElementById('ov-stat-grade').textContent = stats.grade; } else se.style.display = 'none'; document.getElementById('ov-btn-start').style.display = nextBtn ? 'none' : 'block'; document.getElementById('ov-btn-next').style.display = nextBtn ? 'block' : 'none'; document.getElementById('overlay').classList.remove('hidden'); }
-        function showHint() { if (gameState !== 'playing') return; penaltyMoves += 5; solvePath = bfsSolve(maze, player, goal); drawMaze(); document.getElementById('hint-panel').textContent = '💡 Путь показан! -5 очков'; setTimeout(() => { solvePath = null; drawMaze(); }, 3000); }
-        function autoSolve() { if (gameState !== 'playing') return; stopSolve(); const path = bfsSolve(maze, player, goal); solvePath = path; solveIndex = 1; drawMaze(); solveInterval = setInterval(() => { if (solveIndex >= path.length) { stopSolve(); return; } player = { c: path[solveIndex].c, r: path[solveIndex].r }; moves++; solveIndex++; updateHUD(); drawMaze(); if (player.c === goal.c && player.r === goal.r) { stopSolve(); onWin(); } }, 80); }
-        function stopSolve() { clearInterval(solveInterval); solveInterval = null; }
-        document.addEventListener('keydown', e => { if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 'a', 's', 'd'].includes(e.key.toLowerCase())) e.preventDefault(); const map = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', w: 'up', s: 'down', a: 'left', d: 'right' }; const dir = map[e.key] || map[e.key.toLowerCase()]; if (dir) handleDir(dir); });
-        function handleDir(dir) { if (dir === 'up') move(0, -1); if (dir === 'down') move(0, 1); if (dir === 'left') move(-1, 0); if (dir === 'right') move(1, 0); }
+
+        function generateMaze(cols, rows) {
+            const grid = new Uint8Array(cols * rows).fill(0b1111),
+                visited = new Uint8Array(cols * rows),
+                idx = (c, r) => r * cols + c;
+
+            function carve(c, r) {
+                visited[idx(c, r)] = 1;
+                const dirs = shuffle([0, 1, 2, 3]);
+                for (const d of dirs) {
+                    const nc = c + [0, 1, 0, -1][d],
+                        nr = r + [-1, 0, 1, 0][d];
+                    if (nc < 0 || nc >= cols || nr < 0 || nr >= rows || visited[idx(nc, nr)]) continue;
+                    grid[idx(c, r)] &= ~(1 << d);
+                    grid[idx(nc, nr)] &= ~(1 << [2, 3, 0, 1][d]);
+                    carve(nc, nr);
+                }
+            }
+
+            carve(0, 0);
+            return { grid, cols, rows };
+        }
+
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));[arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function bfsSolve(maze, start, end) {
+            const { grid, cols, rows } = maze,
+                idx = (c, r) => r * cols + c,
+                queue = [[start.c, start.r]],
+                parent = new Array(cols * rows).fill(null);
+
+            parent[idx(start.c, start.r)] = [-1, -1];
+
+            while (queue.length) {
+                const [c, r] = queue.shift();
+                if (c === end.c && r === end.r) break;
+                const cell = grid[idx(c, r)];
+
+                [[0, -1], [1, 0], [0, 1], [-1, 0]].forEach(([dc, dr], d) => {
+                    if (cell & (1 << d)) return;
+                    const nc = c + dc, nr = r + dr;
+                    if (nc < 0 || nc >= cols || nr < 0 || nr >= rows || parent[idx(nc, nr)] !== null) return;
+                    parent[idx(nc, nr)] = [c, r];
+                    queue.push([nc, nr]);
+                });
+            }
+
+            const path = [];
+            let cur = [end.c, end.r];
+            while (cur[0] !== -1) {
+                path.unshift({ c: cur[0], r: cur[1] });
+                cur = parent[idx(cur[0], cur[1])];
+                if (!cur) break;
+            }
+            return path;
+        }
+
+        function drawMaze() {
+            if (!maze) return;
+            const cs = getCellSize(),
+                { grid, cols, rows } = maze,
+                idx = (c, r) => r * cols + c;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#0d0d0d';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            if (solvePath) solvePath.forEach(cell => {
+                ctx.fillStyle = 'rgba(212,160,23,.12)';
+                ctx.fillRect(cell.c * cs + 1, cell.r * cs + 1, cs - 2, cs - 2);
+            });
+
+            for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+                const x = c * cs, y = r * cs, walls = grid[idx(c, r)];
+                ctx.strokeStyle = '#d4a017';
+                ctx.lineWidth = Math.max(1, cs * .06);
+                if (walls & 1) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + cs, y); ctx.stroke(); }
+                if (walls & 2) { ctx.beginPath(); ctx.moveTo(x + cs, y); ctx.lineTo(x + cs, y + cs); ctx.stroke(); }
+                if (walls & 4) { ctx.beginPath(); ctx.moveTo(x, y + cs); ctx.lineTo(x + cs, y + cs); ctx.stroke(); }
+                if (walls & 8) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + cs); ctx.stroke(); }
+            }
+
+            const fs = Math.max(cs - 4, 8);
+            ctx.save();
+            ctx.shadowColor = '#d4a017';
+            ctx.shadowBlur = 10;
+            ctx.font = fs + 'px serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('🏆', goal.c * cs + cs / 2, goal.r * cs + cs / 2);
+            ctx.restore();
+
+            const px = player.c * cs + cs / 2, py = player.r * cs + cs / 2, rv = Math.max((cs - 6) / 2, 4);
+            ctx.save();
+            ctx.shadowColor = '#e74c3c';
+            ctx.shadowBlur = 8;
+            ctx.fillStyle = '#e74c3c';
+            ctx.beginPath();
+            ctx.arc(px, py, rv, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.font = 'bold ' + Math.max(rv, 7) + 'px serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('🥊', px, py);
+            ctx.restore();
+        }
+
+        function initGame() {
+            stopTimer();
+            stopSolve();
+            const conf = DIFF[difficulty];
+            maze = generateMaze(conf.cols, conf.rows);
+            player = { c: 0, r: 0 };
+            goal = { c: conf.cols - 1, r: conf.rows - 1 };
+            moves = 0;
+            penaltyMoves = 0;
+            elapsed = 0;
+            solvePath = null;
+            updateHUD();
+            resizeCanvas();
+            startTimer();
+            gameState = 'playing';
+        }
+
+        function move(dc, dr) {
+            if (gameState !== 'playing') return;
+            stopSolve();
+            solvePath = null;
+            const { grid, cols, rows } = maze,
+                idx = (c, r) => r * cols + c,
+                c = player.c + dc,
+                r = player.r + dr;
+            if (c < 0 || c >= cols || r < 0 || r >= rows) return;
+            const wallBit = dc === 1 ? 1 : dc === -1 ? 3 : dr === -1 ? 0 : 2;
+            if (grid[idx(player.c, player.r)] & (1 << wallBit)) return;
+            player = { c, r };
+            moves++;
+            updateHUD();
+            drawMaze();
+            if (player.c === goal.c && player.r === goal.r) onWin();
+        }
+
+        function startTimer() {
+            startTime = Date.now();
+            timerInterval = setInterval(() => {
+                elapsed = Math.floor((Date.now() - startTime) / 1000);
+                updateHUD();
+                const limit = DIFF[difficulty].timeLimit, pct = Math.max(0, 1 - elapsed / limit);
+                const bar = document.getElementById('timer-bar');
+                bar.style.width = (pct * 100) + '%';
+                bar.style.background = pct > .5 ? '#d4a017' : pct > .25 ? '#e67e22' : '#c0392b';
+                if (elapsed >= limit) onTimeout();
+            }, 100);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+        }
+
+        function updateHUD() {
+            document.getElementById('hud-level').textContent = level;
+            document.getElementById('hud-time').textContent = Math.floor(elapsed / 60) + ':' + (elapsed % 60).toString().padStart(2, '0');
+            document.getElementById('hud-moves').textContent = moves;
+            const b = bestTimes[difficulty];
+            document.getElementById('hud-best').textContent = b ? Math.floor(b / 60) + ':' + (b % 60).toString().padStart(2, '0') : '—';
+        }
+
+        function onWin() {
+            stopTimer();
+            stopSolve();
+            gameState = 'won';
+            const flash = document.createElement('div');
+            flash.className = 'flash';
+            document.body.appendChild(flash);
+            setTimeout(() => flash.remove(), 500);
+
+            if (!bestTimes[difficulty] || elapsed < bestTimes[difficulty]) bestTimes[difficulty] = elapsed;
+
+            const conf = DIFF[difficulty],
+                timeLeft = Math.max(0, conf.timeLimit - elapsed),
+                score = Math.max(0, conf.timeBonus + timeLeft * 10 - moves * 2 - penaltyMoves * 5),
+                grade = score > conf.timeBonus * .85 ? '🥇 S' : score > conf.timeBonus * .65 ? '🥈 A' : score > conf.timeBonus * .4 ? '🥉 B' : '💪 C';
+
+            level++;
+            showOverlay({
+                icon: '🏆',
+                title: 'VICTORY!',
+                sub: HINTS[Math.floor(Math.random() * HINTS.length)],
+                stats: {
+                    time: Math.floor(elapsed / 60) + ':' + (elapsed % 60).toString().padStart(2, '0'),
+                    moves,
+                    score,
+                    grade
+                },
+                nextBtn: true
+            });
+        }
+
+        function onTimeout() {
+            stopTimer();
+            stopSolve();
+            gameState = 'timeout';
+            showOverlay({
+                icon: '⏰',
+                title: 'TIME UP!',
+                sub: 'The next round is yours!',
+                stats: null,
+                nextBtn: false
+            });
+        }
+
+        function showOverlay({ icon, title, sub, stats, nextBtn }) {
+            document.getElementById('ov-icon').textContent = icon;
+            document.getElementById('ov-title').textContent = title;
+            document.getElementById('ov-sub').textContent = sub;
+            const se = document.getElementById('ov-stats');
+            if (stats) {
+                se.style.display = 'grid';
+                document.getElementById('ov-stat-time').textContent = stats.time;
+                document.getElementById('ov-stat-moves').textContent = stats.moves;
+                document.getElementById('ov-stat-score').textContent = stats.score;
+                document.getElementById('ov-stat-grade').textContent = stats.grade;
+            } else se.style.display = 'none';
+
+            document.getElementById('ov-btn-start').style.display = nextBtn ? 'none' : 'block';
+            document.getElementById('ov-btn-next').style.display = nextBtn ? 'block' : 'none';
+            document.getElementById('overlay').classList.remove('hidden');
+        }
+
+        function showHint() {
+            if (gameState !== 'playing') return;
+            penaltyMoves += 5;
+            solvePath = bfsSolve(maze, player, goal);
+            drawMaze();
+            document.getElementById('hint-panel').textContent = '💡 Path revealed! -5 points';
+            setTimeout(() => {
+                solvePath = null;
+                drawMaze();
+            }, 3000);
+        }
+
+        function autoSolve() {
+            if (gameState !== 'playing') return;
+            stopSolve();
+            const path = bfsSolve(maze, player, goal);
+            solvePath = path;
+            solveIndex = 1;
+            drawMaze();
+            solveInterval = setInterval(() => {
+                if (solveIndex >= path.length) {
+                    stopSolve();
+                    return;
+                }
+                player = { c: path[solveIndex].c, r: path[solveIndex].r };
+                moves++;
+                solveIndex++;
+                updateHUD();
+                drawMaze();
+                if (player.c === goal.c && player.r === goal.r) {
+                    stopSolve();
+                    onWin();
+                }
+            }, 80);
+        }
+
+        function stopSolve() {
+            clearInterval(solveInterval);
+            solveInterval = null;
+        }
+
+        document.addEventListener('keydown', e => {
+            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 'a', 's', 'd'].includes(e.key.toLowerCase())) e.preventDefault();
+            const map = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', w: 'up', s: 'down', a: 'left', d: 'right' };
+            const dir = map[e.key] || map[e.key.toLowerCase()];
+            if (dir) handleDir(dir);
+        });
+
+        function handleDir(dir) {
+            if (dir === 'up') move(0, -1);
+            if (dir === 'down') move(0, 1);
+            if (dir === 'left') move(-1, 0);
+            if (dir === 'right') move(1, 0);
+        }
+
         document.querySelectorAll('.dpad-btn[data-dir]').forEach(btn => btn.addEventListener('click', () => handleDir(btn.dataset.dir)));
+
         let touchStart = null;
         canvas.addEventListener('touchstart', e => { touchStart = e.touches[0]; }, { passive: true });
-        canvas.addEventListener('touchend', e => { if (!touchStart) return; const dx = e.changedTouches[0].clientX - touchStart.clientX, dy = e.changedTouches[0].clientY - touchStart.clientY; Math.abs(dx) > Math.abs(dy) ? handleDir(dx > 0 ? 'right' : 'left') : handleDir(dy > 0 ? 'down' : 'up'); touchStart = null; }, { passive: true });
-        document.getElementById('btn-new').addEventListener('click', () => { document.getElementById('overlay').classList.add('hidden'); initGame(); });
+        canvas.addEventListener('touchend', e => {
+            if (!touchStart) return;
+            const dx = e.changedTouches[0].clientX - touchStart.clientX,
+                dy = e.changedTouches[0].clientY - touchStart.clientY;
+            Math.abs(dx) > Math.abs(dy) ? handleDir(dx > 0 ? 'right' : 'left') : handleDir(dy > 0 ? 'down' : 'up');
+            touchStart = null;
+        }, { passive: true });
+
+        document.getElementById('btn-new').addEventListener('click', () => {
+            document.getElementById('overlay').classList.add('hidden');
+            initGame();
+        });
+
         document.getElementById('btn-hint').addEventListener('click', showHint);
         document.getElementById('btn-solve').addEventListener('click', autoSolve);
-        document.getElementById('ov-btn-start').addEventListener('click', () => { document.getElementById('overlay').classList.add('hidden'); initGame(); });
-        document.getElementById('ov-btn-next').addEventListener('click', () => { document.getElementById('overlay').classList.add('hidden'); initGame(); });
-        document.querySelectorAll('.diff-pill').forEach(pill => pill.addEventListener('click', () => { document.querySelectorAll('.diff-pill').forEach(p => p.classList.remove('active')); pill.classList.add('active'); difficulty = pill.dataset.diff; level = 1; document.getElementById('overlay').classList.remove('hidden'); document.getElementById('ov-icon').textContent = '🥊'; document.getElementById('ov-title').textContent = 'MMA MAZE'; document.getElementById('ov-sub').textContent = `Сложность: ${difficulty} · ${DIFF[difficulty].timeLimit}сек`; document.getElementById('ov-stats').style.display = 'none'; document.getElementById('ov-btn-start').style.display = 'block'; document.getElementById('ov-btn-next').style.display = 'none'; stopTimer(); stopSolve(); gameState = 'menu'; }));
+
+        document.getElementById('ov-btn-start').addEventListener('click', () => {
+            document.getElementById('overlay').classList.add('hidden');
+            initGame();
+        });
+
+        document.getElementById('ov-btn-next').addEventListener('click', () => {
+            document.getElementById('overlay').classList.add('hidden');
+            initGame();
+        });
+
+        document.querySelectorAll('.diff-pill').forEach(pill => pill.addEventListener('click', () => {
+            document.querySelectorAll('.diff-pill').forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            difficulty = pill.dataset.diff;
+            level = 1;
+            document.getElementById('overlay').classList.remove('hidden');
+            document.getElementById('ov-icon').textContent = '🥊';
+            document.getElementById('ov-title').textContent = 'MMA MAZE';
+            document.getElementById('ov-sub').textContent = `Difficulty: ${difficulty} · ${DIFF[difficulty].timeLimit}s`;
+            document.getElementById('ov-stats').style.display = 'none';
+            document.getElementById('ov-btn-start').style.display = 'block';
+            document.getElementById('ov-btn-next').style.display = 'none';
+            stopTimer();
+            stopSolve();
+            gameState = 'menu';
+        }));
     </script>
 </body>
 

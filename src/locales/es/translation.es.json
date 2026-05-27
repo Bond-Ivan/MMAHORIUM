@@ -12,6 +12,42 @@
     "theme": "Tema",
     "ai": "Predicciones de IA"
   },
+  "games": {
+    "title": "Juegos",
+    "subtitle": "Minijuegos del universo MMA: entrena tus reflejos, conocimientos y estrategia",
+    "play": "▶ Jugar",
+    "exit": "✕ Salir",
+    "items": {
+      "maze": {
+        "title": "MMA Maze Runner",
+        "description": "Guía a tu peleador por el laberinto hasta el cinturón de campeón. ¡Cuanto más rápido, más puntos!",
+        "tag1": "Laberinto",
+        "tag2": "Lógica",
+        "tag3": "Récords"
+      },
+      "career": {
+        "title": "MMA Career Manager",
+        "description": "Crea a tu peleador, entrena, vence a tus rivales y conviértete en campeón de MMA.",
+        "tag1": "Manager",
+        "tag2": "RPG",
+        "tag3": "Carrera"
+      },
+      "trivia": {
+        "title": "MMA Trivia Challenge",
+        "description": "15 preguntas sobre MMA con dificultad creciente. ¡Tres pistas, temporizador y escalera de premios!",
+        "tag1": "Trivia",
+        "tag2": "Conocimiento",
+        "tag3": "MMA"
+      },
+      "dash": {
+        "title": "MMA Dash",
+        "description": "Endless runner: salta rivales, recoge guantes y rompe récords.",
+        "tag1": "Runner",
+        "tag2": "Arcade",
+        "tag3": "Reflejos"
+      }
+    }
+  },
   "header": {
     "live": "En vivo",
     "openMenu": "Abrir menú",

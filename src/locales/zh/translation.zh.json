@@ -12,6 +12,42 @@
         "theme": "主题",
         "ai": "AI 预测"
     },
+    "games": {
+        "title": "游戏",
+        "subtitle": "MMA 世界迷你游戏——训练你的反应、知识和策略",
+        "play": "▶ 开始游戏",
+        "exit": "✕ 退出",
+        "items": {
+            "maze": {
+                "title": "MMA Maze Runner",
+                "description": "带领你的拳手穿过迷宫，冲向冠军金腰带。速度越快，得分越高！",
+                "tag1": "迷宫",
+                "tag2": "逻辑",
+                "tag3": "纪录"
+            },
+            "career": {
+                "title": "MMA Career Manager",
+                "description": "创建你的拳手，训练、击败对手，并成为 MMA 冠军！",
+                "tag1": "经理",
+                "tag2": "RPG",
+                "tag3": "生涯"
+            },
+            "trivia": {
+                "title": "MMA Trivia Challenge",
+                "description": "15 道 MMA 题目，难度逐步升级。三次提示、计时器和奖励阶梯！",
+                "tag1": "问答",
+                "tag2": "知识",
+                "tag3": "MMA"
+            },
+            "dash": {
+                "title": "MMA Dash",
+                "description": "无尽跑酷——跳过对手、收集拳套并刷新最高分！",
+                "tag1": "跑酷",
+                "tag2": "街机",
+                "tag3": "反应"
+            }
+        }
+    },
     "header": {
         "live": "直播",
         "openMenu": "打开菜单",

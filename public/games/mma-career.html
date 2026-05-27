@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="dark">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -51,22 +51,33 @@
 
         html,
         body {
-            height: 100%;
+            min-height: 100%;
             font-family: var(--font-b);
             background: var(--bg);
             color: var(--text);
             font-size: 15px;
             line-height: 1.5;
-            overflow: hidden
+            overflow-x: hidden;
+        }
+
+        body {
+            min-height: 100dvh;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
         }
 
         /* LAYOUT */
         #app {
             display: grid;
             grid-template-rows: auto 1fr;
-            height: 100vh;
+            min-height: 100dvh;
             max-width: 1100px;
-            margin: 0 auto
+            margin: 0 auto;
+            width: 100%;
         }
 
         header {
@@ -77,7 +88,8 @@
             border-bottom: 1px solid var(--border-2);
             background: var(--surface);
             gap: 16px;
-            flex-shrink: 0
+            flex-shrink: 0;
+            min-width: 0;
         }
 
         .logo {
@@ -85,7 +97,8 @@
             font-size: 1.25rem;
             font-weight: 700;
             letter-spacing: .08em;
-            color: var(--gold)
+            color: var(--gold);
+            white-space: nowrap;
         }
 
         .logo span {
@@ -97,34 +110,41 @@
         .header-info {
             display: flex;
             gap: 20px;
-            align-items: center
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            min-width: 0;
         }
 
         .hinfo {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 1px
+            gap: 1px;
+            min-width: 0;
         }
 
         .hinfo-label {
             font-size: .65rem;
             color: var(--muted);
             text-transform: uppercase;
-            letter-spacing: .1em
+            letter-spacing: .1em;
+            white-space: nowrap;
         }
 
         .hinfo-val {
             font-family: var(--font-d);
             font-size: .95rem;
             font-weight: 600;
-            color: var(--gold)
+            color: var(--gold);
+            white-space: nowrap;
         }
 
         main {
             display: grid;
-            grid-template-columns: 220px 1fr;
-            overflow: hidden
+            grid-template-columns: 220px minmax(0, 1fr);
+            height: 100vh;
+            min-height: 0;
         }
 
         nav {
@@ -134,7 +154,8 @@
             flex-direction: column;
             padding: 12px 0;
             overflow-y: auto;
-            flex-shrink: 0
+            min-height: 0;
+            min-width: 0;
         }
 
         .nav-section {
@@ -161,7 +182,7 @@
             text-align: left;
             border-radius: 0;
             transition: color var(--t), background var(--t);
-            min-height: 40px
+            min-height: 44px;
         }
 
         .nav-btn svg {
@@ -186,6 +207,8 @@
 
         .content {
             overflow-y: auto;
+            min-height: 0;
+            min-width: 0;
             padding: 24px;
             background: var(--bg)
         }
@@ -221,7 +244,8 @@
             border: 1px solid var(--border-2);
             border-radius: var(--r-lg);
             padding: 16px;
-            margin-bottom: 12px
+            margin-bottom: 12px;
+            min-width: 0;
         }
 
         .card-title {
@@ -239,7 +263,8 @@
             justify-content: space-between;
             gap: 8px;
             padding: 5px 0;
-            border-bottom: 1px solid var(--border-2)
+            border-bottom: 1px solid var(--border-2);
+            min-width: 0;
         }
 
         .card-row:last-child {
@@ -254,25 +279,30 @@
         .card-val {
             font-size: .85rem;
             font-weight: 600;
-            font-variant-numeric: tabular-nums
+            font-variant-numeric: tabular-nums;
+            text-align: right;
+        }
+
+        .gold {
+            color: var(--gold);
         }
 
         /* GRID LAYOUTS */
         .grid-2 {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 12px
         }
 
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 12px
         }
 
         .grid-4 {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 10px
         }
 
@@ -284,6 +314,7 @@
         .stat-bar-header {
             display: flex;
             justify-content: space-between;
+            gap: 10px;
             margin-bottom: 4px
         }
 
@@ -325,7 +356,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: all var(--t);
-            min-height: 36px;
+            min-height: 40px;
             white-space: nowrap
         }
 
@@ -371,7 +402,7 @@
         .btn-sm {
             padding: 6px 12px;
             font-size: .75rem;
-            min-height: 30px
+            min-height: 34px
         }
 
         .btn:disabled {
@@ -436,13 +467,13 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100%;
-            padding: 32px
+            min-height: 100dvh;
+            padding: 32px 16px
         }
 
         .create-title {
             font-family: var(--font-d);
-            font-size: 2rem;
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
             font-weight: 700;
             letter-spacing: .1em;
             text-align: center;
@@ -496,7 +527,7 @@
             background: var(--surface-2);
             border: 1px solid var(--border);
             border-radius: var(--r-md);
-            padding: 9px 12px;
+            padding: 11px 12px;
             color: var(--text);
             font-family: var(--font-b);
             font-size: .88rem;
@@ -515,7 +546,7 @@
 
         .style-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 8px
         }
 
@@ -566,7 +597,7 @@
 
         .attr-row {
             display: grid;
-            grid-template-columns: 100px 1fr auto auto;
+            grid-template-columns: minmax(80px, 100px) minmax(0, 1fr) auto auto;
             align-items: center;
             gap: 8px;
             margin-bottom: 8px
@@ -606,8 +637,8 @@
         }
 
         .attr-btn {
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             border: 1px solid var(--border);
             border-radius: var(--r-sm);
             background: var(--surface-3);
@@ -634,7 +665,7 @@
         /* FIGHTER PROFILE */
         .fighter-header {
             display: grid;
-            grid-template-columns: auto 1fr auto;
+            grid-template-columns: auto minmax(0, 1fr) auto;
             gap: 20px;
             align-items: start;
             margin-bottom: 20px
@@ -656,13 +687,18 @@
             flex-shrink: 0
         }
 
+        .fighter-meta {
+            min-width: 0;
+        }
+
         .fighter-meta h1 {
             font-family: var(--font-d);
             font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: .05em;
             line-height: 1;
-            margin-bottom: 4px
+            margin-bottom: 4px;
+            overflow-wrap: anywhere;
         }
 
         .fighter-meta .nick {
@@ -718,15 +754,17 @@
         .xp-label {
             display: flex;
             justify-content: space-between;
+            gap: 12px;
             font-size: .65rem;
             color: var(--muted);
-            margin-bottom: 3px
+            margin-bottom: 3px;
+            flex-wrap: wrap;
         }
 
         /* TRAINING */
         .train-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 12px
         }
 
@@ -738,7 +776,8 @@
             cursor: pointer;
             transition: all var(--t);
             position: relative;
-            overflow: hidden
+            overflow: hidden;
+            min-width: 0;
         }
 
         .train-card::before {
@@ -797,7 +836,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative
+            gap: 8px;
+            position: relative;
+            flex-wrap: wrap;
         }
 
         .train-cd {
@@ -889,7 +930,7 @@
             padding: 16px 20px;
             margin-bottom: 10px;
             display: grid;
-            grid-template-columns: 1fr auto 1fr auto;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
             gap: 12px;
             align-items: center
         }
@@ -899,7 +940,8 @@
             font-size: 1rem;
             font-weight: 600;
             letter-spacing: .04em;
-            margin-bottom: 2px
+            margin-bottom: 2px;
+            overflow-wrap: anywhere;
         }
 
         .fight-opponent-info .rec {
@@ -957,10 +999,13 @@
         .fight-screen {
             width: 100%;
             max-width: 700px;
+            max-height: min(92dvh, 900px);
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--r-lg);
-            overflow: hidden
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .fight-header {
@@ -976,7 +1021,8 @@
         .fight-fighter-hud {
             display: flex;
             flex-direction: column;
-            gap: 4px
+            gap: 4px;
+            min-width: 0;
         }
 
         .fight-fighter-hud.right {
@@ -1044,7 +1090,9 @@
             display: flex;
             flex-direction: column;
             gap: 4px;
-            font-size: .8rem
+            font-size: .8rem;
+            flex: 1;
+            min-height: 160px;
         }
 
         .fight-log-line {
@@ -1073,13 +1121,15 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .fight-action-desc {
             font-size: .8rem;
             color: var(--muted);
-            flex: 1
+            flex: 1;
+            min-width: 180px;
         }
 
         .corner-advice {
@@ -1098,7 +1148,7 @@
             padding: 14px 18px;
             margin-bottom: 8px;
             display: grid;
-            grid-template-columns: auto 1fr auto;
+            grid-template-columns: auto minmax(0, 1fr) auto;
             gap: 12px;
             align-items: center
         }
@@ -1127,7 +1177,8 @@
             font-size: .85rem;
             font-weight: 600;
             color: var(--text);
-            margin-bottom: 2px
+            margin-bottom: 2px;
+            overflow-wrap: anywhere;
         }
 
         .history-method {
@@ -1144,7 +1195,7 @@
         /* ACHIEVEMENTS */
         .achievement-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 10px
         }
 
@@ -1155,7 +1206,8 @@
             padding: 14px;
             display: flex;
             flex-direction: column;
-            gap: 6px
+            gap: 6px;
+            min-width: 0;
         }
 
         .ach-item.unlocked {
@@ -1191,7 +1243,8 @@
             align-items: center;
             gap: 12px;
             overflow: hidden;
-            flex-shrink: 0
+            flex-shrink: 0;
+            min-width: 0;
         }
 
         .news-label {
@@ -1217,7 +1270,8 @@
             z-index: 9999;
             display: flex;
             flex-direction: column;
-            gap: 8px
+            gap: 8px;
+            pointer-events: none;
         }
 
         .toast {
@@ -1226,7 +1280,7 @@
             border-radius: var(--r-lg);
             padding: 12px 16px;
             font-size: .82rem;
-            max-width: 320px;
+            max-width: min(320px, calc(100vw - 32px));
             animation: slideIn .25s ease;
             box-shadow: 0 8px 24px rgba(0, 0, 0, .4)
         }
@@ -1244,6 +1298,11 @@
         .toast.green {
             border-color: rgba(39, 174, 96, .35);
             background: var(--green-bg)
+        }
+
+        .toast.gray {
+            border-color: var(--border);
+            background: var(--surface-3);
         }
 
         @keyframes slideIn {
@@ -1265,32 +1324,118 @@
             }
         }
 
-        /* MOBILE */
-        @media(max-width:640px) {
-            main {
-                grid-template-columns: 1fr
+        /* TABLE SCROLL WRAP */
+        .table-wrap {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        /* TABLET */
+        @media (max-width: 920px) {
+            header {
+                flex-wrap: wrap;
+                align-items: flex-start;
             }
 
-            nav {
-                display: flex;
-                flex-direction: row;
-                overflow-x: auto;
-                border-right: none;
-                border-bottom: 1px solid var(--border-2);
-                padding: 0
+            .header-info {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            main {
+                grid-template-columns: 88px minmax(0, 1fr);
             }
 
             .nav-section {
-                display: none
+                display: none;
             }
 
             .nav-btn {
-                min-width: 80px;
+                justify-content: center;
+                padding-inline: 10px;
+                font-size: .76rem;
+            }
+
+            .nav-btn span {
+                display: none;
+            }
+
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .style-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .fight-card-item {
+                grid-template-columns: 1fr;
+                text-align: left;
+            }
+
+            .fight-vs {
+                display: none;
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 640px) {
+            #app {
+                grid-template-rows: auto 1fr;
+            }
+
+            #game-ui {
+                min-height: 100dvh !important;
+                height: auto !important;
+            }
+
+            header {
+                padding: 12px 14px;
+                gap: 12px;
+            }
+
+            .logo {
+                font-size: 1.05rem;
+            }
+
+            .news-ticker {
+                order: 3;
+                width: 100%;
+                margin: 0 !important;
+            }
+
+            .header-info {
+                gap: 10px 16px;
+            }
+
+            .hinfo {
+                align-items: flex-start;
+            }
+
+            main {
+                grid-template-columns: 1fr;
+                min-height: 0;
+            }
+
+            nav {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(72px, 1fr));
+                gap: 0;
+                overflow-x: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-2);
+                padding: 0;
+            }
+
+            .nav-btn {
+                min-width: 72px;
                 flex-direction: column;
-                gap: 3px;
-                padding: 8px 10px;
+                gap: 4px;
+                padding: 10px 8px;
                 font-size: .65rem;
-                text-align: center
+                text-align: center;
+                justify-content: center;
             }
 
             .nav-btn svg {
@@ -1303,135 +1448,259 @@
             }
 
             .fighter-header {
-                grid-template-columns: auto 1fr
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .fighter-avatar-lg {
+                width: 72px;
+                height: 72px;
             }
 
             .fighter-record {
-                grid-column: 1/-1
+                text-align: left;
             }
 
             .grid-2,
             .grid-3,
             .grid-4 {
-                grid-template-columns: 1fr 1fr
+                grid-template-columns: 1fr;
+            }
+
+            .create-form {
+                padding: 20px 16px;
+            }
+
+            .style-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .attr-row {
+                grid-template-columns: 1fr auto auto;
+                grid-template-areas:
+                    "label label label"
+                    "bar val btns";
+            }
+
+            .attr-label {
+                grid-area: label;
+            }
+
+            .attr-bar {
+                grid-area: bar;
+            }
+
+            .attr-val {
+                grid-area: val;
+            }
+
+            .attr-btns {
+                grid-area: btns;
+            }
+
+            .fight-screen {
+                max-height: 94dvh;
+            }
+
+            .fight-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .fight-fighter-hud,
+            .fight-fighter-hud.right {
+                align-items: center;
             }
 
             .fight-hp-bg {
-                width: 120px
+                width: 100%;
+                max-width: 220px;
+            }
+
+            .fight-action-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .fight-action-desc {
+                min-width: 0;
+            }
+
+            .history-item {
+                grid-template-columns: auto 1fr;
+            }
+
+            .history-date {
+                grid-column: 2;
+                text-align: left;
+            }
+
+            #toast-container {
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+            }
+
+            .toast {
+                max-width: 100%;
+            }
+        }
+
+        /* SMALL MOBILE */
+        @media (max-width: 480px) {
+
+            html,
+            body {
+                font-size: 14px;
+            }
+
+            .create-title {
+                letter-spacing: .06em;
+            }
+
+            .panel-title {
+                font-size: 1.05rem;
+            }
+
+            .fighter-meta h1 {
+                font-size: 1.25rem;
+            }
+
+            .record-big {
+                font-size: 1.6rem;
+            }
+
+            .fight-time {
+                font-size: 1.15rem;
+            }
+
+            .news-label {
+                display: none;
+            }
+
+            .card,
+            .fight-card-item,
+            .history-item,
+            .ach-item,
+            .train-card {
+                padding: 12px;
+            }
+
+            .btn-row .btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 
 <body>
-
     <div id="app">
         <!-- CREATE SCREEN -->
         <div id="create-screen">
             <div class="create-title">MMA <span>Career</span> Manager</div>
-            <div class="create-sub">Создай бойца и доберись до чемпионского пояса</div>
+            <div class="create-sub">Create a fighter and fight your way to the championship belt</div>
             <div class="create-form">
-                <h2>НОВЫЙ БОЕЦ</h2>
+                <h2>NEW FIGHTER</h2>
                 <div class="grid-2" style="gap:12px;margin-bottom:16px">
                     <div class="field">
-                        <label>Имя</label>
-                        <input type="text" id="inp-name" placeholder="Иван Петров" maxlength="24">
+                        <label>Name</label>
+                        <input type="text" id="inp-name" placeholder="John Carter" maxlength="24">
                     </div>
                     <div class="field">
-                        <label>Прозвище</label>
-                        <input type="text" id="inp-nick" placeholder="Гром" maxlength="20">
+                        <label>Nickname</label>
+                        <input type="text" id="inp-nick" placeholder="Thunder" maxlength="20">
                     </div>
                 </div>
                 <div class="field">
-                    <label>Боевой стиль</label>
+                    <label>Fighting Style</label>
                     <div class="style-grid" id="style-grid">
                         <div class="style-opt selected" data-style="striker">
-                            <div class="style-opt-name">СТРАЙКЕР</div>
-                            <div class="style-opt-desc">Удары, стойка, КО</div>
+                            <div class="style-opt-name">STRIKER</div>
+                            <div class="style-opt-desc">Stand-up, power, knockouts</div>
                         </div>
                         <div class="style-opt" data-style="wrestler">
-                            <div class="style-opt-name">ГРЭППЛЕР</div>
-                            <div class="style-opt-desc">Борьба, клинч, TKO</div>
+                            <div class="style-opt-name">GRAPPLER</div>
+                            <div class="style-opt-desc">Wrestling, clinch, pressure</div>
                         </div>
                         <div class="style-opt" data-style="bjj">
                             <div class="style-opt-name">BJJ</div>
-                            <div class="style-opt-desc">Болевые, удушения</div>
+                            <div class="style-opt-desc">Submissions and chokes</div>
                         </div>
                         <div class="style-opt" data-style="muay-thai">
-                            <div class="style-opt-name">МУЙ-ТАЙ</div>
-                            <div class="style-opt-desc">Удары локтями, ногами</div>
+                            <div class="style-opt-name">MUAY THAI</div>
+                            <div class="style-opt-desc">Elbows, knees, kicks</div>
                         </div>
                         <div class="style-opt" data-style="boxer">
-                            <div class="style-opt-name">БОКСЁР</div>
-                            <div class="style-opt-desc">Высокая скорость рук</div>
+                            <div class="style-opt-name">BOXER</div>
+                            <div class="style-opt-desc">Fast hands and sharp boxing</div>
                         </div>
                         <div class="style-opt" data-style="allround">
                             <div class="style-opt-name">ALL-ROUND</div>
-                            <div class="style-opt-desc">Сбалансированный</div>
+                            <div class="style-opt-desc">Balanced style</div>
                         </div>
                     </div>
                 </div>
                 <div class="field" style="margin-top:16px">
-                    <label>Характеристики <span style="font-size:.8em">(распредели 10 очков)</span></label>
-                    <div class="pts-left">Очков осталось: <span id="pts-display">10</span></div>
+                    <label>Attributes <span style="font-size:.8em">(distribute 10 points)</span></label>
+                    <div class="pts-left">Points left: <span id="pts-display">10</span></div>
                     <div id="attr-builder"></div>
                 </div>
                 <div class="btn-row">
-                    <button class="btn btn-gold" id="btn-create" style="width:100%">НАЧАТЬ КАРЬЕРУ →</button>
+                    <button class="btn btn-gold" id="btn-create" style="width:100%">START CAREER →</button>
                 </div>
             </div>
         </div>
 
         <!-- GAME UI (hidden until created) -->
-        <div id="game-ui" style="display:none;grid-template-rows:auto auto 1fr;height:100vh">
+        <div id="game-ui" style="display:none;grid-template-rows:auto auto 1fr;min-height:100dvh">
             <header>
                 <div class="logo">MMA <span>/</span> Manager</div>
                 <div class="news-ticker"
                     style="flex:1;margin:0 16px;border:none;padding:0;border-radius:var(--r-md);background:var(--surface-2);padding:5px 12px">
                     <span class="news-label">MMA NEWS</span>
-                    <span class="news-text" id="news-text">Добро пожаловать в MMA!</span>
+                    <span class="news-text" id="news-text">Welcome to MMA!</span>
                 </div>
                 <div class="header-info">
                     <div class="hinfo">
-                        <span class="hinfo-label">Рейтинг</span>
+                        <span class="hinfo-label">Rating</span>
                         <span class="hinfo-val" id="h-rating">—</span>
                     </div>
                     <div class="hinfo">
-                        <span class="hinfo-label">Энергия</span>
+                        <span class="hinfo-label">Energy</span>
                         <span class="hinfo-val" id="h-energy">100%</span>
                     </div>
                     <div class="hinfo">
-                        <span class="hinfo-label">Неделя</span>
+                        <span class="hinfo-label">Week</span>
                         <span class="hinfo-val" id="h-week">1</span>
                     </div>
                 </div>
             </header>
             <main>
                 <nav>
-                    <div class="nav-section">БОЕЦ</div>
+                    <div class="nav-section">FIGHTER</div>
                     <button class="nav-btn active" data-panel="profile" onclick="switchPanel('profile')">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <circle cx="12" cy="8" r="4" />
                             <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
                         </svg>
-                        Профиль
+                        <span>Profile</span>
                     </button>
                     <button class="nav-btn" data-panel="stats" onclick="switchPanel('stats')">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                         </svg>
-                        Атрибуты
+                        <span>Attributes</span>
                     </button>
-                    <div class="nav-section">КАРЬЕРА</div>
+                    <div class="nav-section">CAREER</div>
                     <button class="nav-btn" data-panel="training" onclick="switchPanel('training')">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M6.5 6.5l11 11M17.5 6.5l-11 11" />
                             <circle cx="12" cy="12" r="10" />
                         </svg>
-                        Тренировки
+                        <span>Training</span>
                     </button>
                     <button class="nav-btn" data-panel="matchmaking" onclick="switchPanel('matchmaking')">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1439,7 +1708,7 @@
                             <rect x="2" y="7" width="20" height="14" rx="2" />
                             <path d="M16 7V5a2 2 0 0 0-4 0v2M8 7V5a2 2 0 0 0-4 0v2" />
                         </svg>
-                        Бои
+                        <span>Fights</span>
                     </button>
                     <button class="nav-btn" data-panel="rankings" onclick="switchPanel('rankings')">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1447,16 +1716,16 @@
                             <polyline points="4 17 10 11 14 15 22 7" />
                             <polyline points="15 7 22 7 22 14" />
                         </svg>
-                        Рейтинг
+                        <span>Rankings</span>
                     </button>
-                    <div class="nav-section">ИСТОРИЯ</div>
+                    <div class="nav-section">HISTORY</div>
                     <button class="nav-btn" data-panel="history" onclick="switchPanel('history')">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <circle cx="12" cy="12" r="10" />
                             <polyline points="12 6 12 12 16 14" />
                         </svg>
-                        История боёв
+                        <span>Fight History</span>
                     </button>
                     <button class="nav-btn" data-panel="achievements" onclick="switchPanel('achievements')">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1464,7 +1733,7 @@
                             <circle cx="12" cy="8" r="6" />
                             <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
                         </svg>
-                        Достижения
+                        <span>Achievements</span>
                     </button>
                 </nav>
                 <div class="content">
@@ -1477,73 +1746,72 @@
                                 <div class="nick" id="p-nick">—</div>
                                 <div class="badges">
                                     <span class="badge badge-gold" id="p-style">—</span>
-                                    <span class="badge badge-gray" id="p-division">Дебютант</span>
+                                    <span class="badge badge-gray" id="p-division">Rookie</span>
                                 </div>
                             </div>
                             <div class="fighter-record">
                                 <div class="record-big" id="p-record">0-0-0</div>
-                                <div class="record-label">В-П-Н</div>
+                                <div class="record-label">W-L-D</div>
                             </div>
                         </div>
-                        <div class="xp-label"><span>Опыт</span><span id="p-xp-text">0 / 100 XP</span></div>
+                        <div class="xp-label"><span>Experience</span><span id="p-xp-text">0 / 100 XP</span></div>
                         <div class="xp-bar-outer">
                             <div class="xp-bar-fill" id="p-xp-bar" style="width:0%"></div>
                         </div>
 
                         <div class="grid-2" style="margin-top:20px">
                             <div class="card">
-                                <div class="card-title">Статистика</div>
-                                <div class="card-row"><span class="card-label">Побед нокаутом</span><span
+                                <div class="card-title">Statistics</div>
+                                <div class="card-row"><span class="card-label">Knockout wins</span><span
                                         class="card-val" id="s-ko">0</span></div>
-                                <div class="card-row"><span class="card-label">Побед решением</span><span
+                                <div class="card-row"><span class="card-label">Decision wins</span><span
                                         class="card-val" id="s-dec">0</span></div>
-                                <div class="card-row"><span class="card-label">Побед болевым</span><span
+                                <div class="card-row"><span class="card-label">Submission wins</span><span
                                         class="card-val" id="s-sub">0</span></div>
-                                <div class="card-row"><span class="card-label">Серия побед</span><span class="card-val"
+                                <div class="card-row"><span class="card-label">Win streak</span><span class="card-val"
                                         id="s-streak">0</span></div>
-                                <div class="card-row"><span class="card-label">Всего боёв</span><span class="card-val"
+                                <div class="card-row"><span class="card-label">Total fights</span><span class="card-val"
                                         id="s-total">0</span></div>
                             </div>
                             <div class="card">
-                                <div class="card-title">Состояние</div>
-                                <div class="card-row"><span class="card-label">Энергия</span><span class="card-val"
+                                <div class="card-title">Status</div>
+                                <div class="card-row"><span class="card-label">Energy</span><span class="card-val"
                                         id="p-energy-val">100%</span></div>
-                                <div class="card-row"><span class="card-label">Уровень</span><span class="card-val gold"
+                                <div class="card-row"><span class="card-label">Level</span><span class="card-val gold"
                                         id="p-level">1</span></div>
-                                <div class="card-row"><span class="card-label">Рейтинг</span><span class="card-val"
+                                <div class="card-row"><span class="card-label">Rating</span><span class="card-val"
                                         id="p-rating-val">—</span></div>
-                                <div class="card-row"><span class="card-label">Репутация</span><span class="card-val"
+                                <div class="card-row"><span class="card-label">Reputation</span><span class="card-val"
                                         id="p-rep">0</span></div>
-                                <div class="card-row"><span class="card-label">Деньги</span><span class="card-val"
+                                <div class="card-row"><span class="card-label">Money</span><span class="card-val"
                                         id="p-money">$5,000</span></div>
                             </div>
                         </div>
                         <div class="card" style="margin-top:0">
-                            <div class="card-title">Следующий шаг</div>
-                            <div id="next-advice" style="font-size:.82rem;color:var(--muted)">Выбери тренировку или
-                                запишись на бой в
-                                разделе «Бои».</div>
+                            <div class="card-title">Next Step</div>
+                            <div id="next-advice" style="font-size:.82rem;color:var(--muted)">Choose a training session
+                                or book a fight in the “Fights” section.</div>
                         </div>
                     </div>
 
                     <!-- STATS -->
                     <div class="panel" id="panel-stats">
-                        <div class="panel-title">АТРИБУТЫ БОЙЦА</div>
+                        <div class="panel-title">FIGHTER ATTRIBUTES</div>
                         <div class="grid-2">
                             <div class="card">
-                                <div class="card-title">Ударная техника</div>
+                                <div class="card-title">Striking</div>
                                 <div id="stats-striking"></div>
                             </div>
                             <div class="card">
-                                <div class="card-title">Борьба и грэпплинг</div>
+                                <div class="card-title">Wrestling & Grappling</div>
                                 <div id="stats-grappling"></div>
                             </div>
                             <div class="card">
-                                <div class="card-title">Физические качества</div>
+                                <div class="card-title">Physical Tools</div>
                                 <div id="stats-physical"></div>
                             </div>
                             <div class="card">
-                                <div class="card-title">Ментальные качества</div>
+                                <div class="card-title">Mental Tools</div>
                                 <div id="stats-mental"></div>
                             </div>
                         </div>
@@ -1551,47 +1819,48 @@
 
                     <!-- TRAINING -->
                     <div class="panel" id="panel-training">
-                        <div class="panel-title">ТРЕНИРОВОЧНЫЙ ЛАГЕРЬ</div>
-                        <div class="panel-subtitle">Тренировки расходуют энергию. Энергия восстанавливается каждую
-                            неделю.</div>
+                        <div class="panel-title">TRAINING CAMP</div>
+                        <div class="panel-subtitle">Training costs energy. Energy recovers every week.</div>
                         <div class="train-grid" id="training-grid"></div>
                     </div>
 
                     <!-- MATCHMAKING -->
                     <div class="panel" id="panel-matchmaking">
-                        <div class="panel-title">БРОНИРОВАНИЕ БОЯ</div>
-                        <div class="panel-subtitle">Выбери соперника. Более сильные оппоненты дают больше рейтинга и
-                            денег.</div>
+                        <div class="panel-title">FIGHT BOOKING</div>
+                        <div class="panel-subtitle">Choose an opponent. Stronger opponents give more rating points and
+                            money.</div>
                         <div id="matchmaking-list"></div>
                     </div>
 
                     <!-- RANKINGS -->
                     <div class="panel" id="panel-rankings">
-                        <div class="panel-title">МИРОВОЙ РЕЙТИНГ MMA</div>
+                        <div class="panel-title">WORLD MMA RANKINGS</div>
                         <div class="card">
-                            <table class="rank-table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Боец</th>
-                                        <th>Рекорд</th>
-                                        <th>Рейтинг</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="rankings-body"></tbody>
-                            </table>
+                            <div class="table-wrap">
+                                <table class="rank-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Fighter</th>
+                                            <th>Record</th>
+                                            <th>Rating</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="rankings-body"></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
                     <!-- HISTORY -->
                     <div class="panel" id="panel-history">
-                        <div class="panel-title">ИСТОРИЯ БОЁВ</div>
+                        <div class="panel-title">FIGHT HISTORY</div>
                         <div id="history-list"></div>
                     </div>
 
                     <!-- ACHIEVEMENTS -->
                     <div class="panel" id="panel-achievements">
-                        <div class="panel-title">ДОСТИЖЕНИЯ</div>
+                        <div class="panel-title">ACHIEVEMENTS</div>
                         <div class="achievement-grid" id="achievements-grid"></div>
                     </div>
                 </div>
@@ -1604,18 +1873,18 @@
         <div class="fight-screen">
             <div class="fight-header">
                 <div class="fight-fighter-hud">
-                    <div class="fight-fname gold" id="fo-p1-name">Боец 1</div>
+                    <div class="fight-fname gold" id="fo-p1-name">Fighter 1</div>
                     <div class="fight-hp-bg">
                         <div class="fight-hp-fill gold" id="fo-p1-hp" style="width:100%"></div>
                     </div>
                     <div style="font-size:.7rem;color:var(--muted)">HP: <span id="fo-p1-hp-val">100</span></div>
                 </div>
                 <div class="fight-center-info">
-                    <div class="fight-round" id="fo-round">РАУНД 1</div>
+                    <div class="fight-round" id="fo-round">ROUND 1</div>
                     <div class="fight-time" id="fo-time">5:00</div>
                 </div>
                 <div class="fight-fighter-hud right">
-                    <div class="fight-fname" id="fo-p2-name">Боец 2</div>
+                    <div class="fight-fname" id="fo-p2-name">Fighter 2</div>
                     <div class="fight-hp-bg" style="margin-left:auto">
                         <div class="fight-hp-fill red" id="fo-p2-hp" style="width:100%"></div>
                     </div>
@@ -1626,9 +1895,9 @@
             <div class="fight-log" id="fight-log"></div>
             <div class="corner-advice" id="corner-advice" style="display:none"></div>
             <div class="fight-action-bar">
-                <div class="fight-action-desc" id="fight-action-desc">Идёт бой...</div>
-                <button class="btn btn-ghost btn-sm" id="btn-fast-fight">⏩ Ускорить</button>
-                <button class="btn btn-gold btn-sm" id="btn-next-round" style="display:none">Продолжить</button>
+                <div class="fight-action-desc" id="fight-action-desc">Fight in progress...</div>
+                <button class="btn btn-ghost btn-sm" id="btn-fast-fight">⏩ Speed Up</button>
+                <button class="btn btn-gold btn-sm" id="btn-next-round" style="display:none">Continue</button>
             </div>
         </div>
     </div>
@@ -1637,9 +1906,6 @@
     <div id="toast-container"></div>
 
     <script>
-        // ============================================================
-        //  GAME STATE
-        // ============================================================
         const G = {
             fighter: null,
             week: 1,
@@ -1652,18 +1918,18 @@
         };
 
         const ATTRS = [
-            { id: 'striking', label: 'Удары руками', group: 'striking', color: '#d4a017' },
-            { id: 'kicks', label: 'Удары ногами', group: 'striking', color: '#d4a017' },
-            { id: 'clinch', label: 'Клинч', group: 'striking', color: '#d4a017' },
-            { id: 'takedown', label: 'Тейкдаун', group: 'grappling', color: '#2980b9' },
-            { id: 'grappling', label: 'Грэпплинг', group: 'grappling', color: '#2980b9' },
-            { id: 'submissions', label: 'Болевые', group: 'grappling', color: '#2980b9' },
-            { id: 'strength', label: 'Сила', group: 'physical', color: '#27ae60' },
-            { id: 'speed', label: 'Скорость', group: 'physical', color: '#27ae60' },
-            { id: 'cardio', label: 'Выносливость', group: 'physical', color: '#27ae60' },
-            { id: 'chin', label: 'Подбородок', group: 'mental', color: '#c0392b' },
-            { id: 'heart', label: 'Характер', group: 'mental', color: '#c0392b' },
-            { id: 'iq', label: 'Боевой IQ', group: 'mental', color: '#c0392b' },
+            { id: 'striking', label: 'Punching', group: 'striking', color: '#d4a017' },
+            { id: 'kicks', label: 'Kicking', group: 'striking', color: '#d4a017' },
+            { id: 'clinch', label: 'Clinch', group: 'striking', color: '#d4a017' },
+            { id: 'takedown', label: 'Takedown', group: 'grappling', color: '#2980b9' },
+            { id: 'grappling', label: 'Grappling', group: 'grappling', color: '#2980b9' },
+            { id: 'submissions', label: 'Submissions', group: 'grappling', color: '#2980b9' },
+            { id: 'strength', label: 'Strength', group: 'physical', color: '#27ae60' },
+            { id: 'speed', label: 'Speed', group: 'physical', color: '#27ae60' },
+            { id: 'cardio', label: 'Cardio', group: 'physical', color: '#27ae60' },
+            { id: 'chin', label: 'Chin', group: 'mental', color: '#c0392b' },
+            { id: 'heart', label: 'Heart', group: 'mental', color: '#c0392b' },
+            { id: 'iq', label: 'Fight IQ', group: 'mental', color: '#c0392b' },
         ];
 
         const STYLE_BONUS = {
@@ -1676,41 +1942,38 @@
         };
 
         const TRAINING_LIST = [
-            { id: 'mit', name: 'Работа на митах', desc: 'Повышает удары и скорость', effect: '+3 Удары, +2 Скорость', attrs: { striking: 3, speed: 2 }, cost: 15, cooldown: 1 },
-            { id: 'spgrd', name: 'Спарринг', desc: 'Полный контакт, развивает всё', effect: '+2 всё, рискованно', attrs: { striking: 2, kicks: 1, grappling: 1, cardio: 1 }, cost: 25, cooldown: 2, risky: true },
-            { id: 'drilling', name: 'Дриллинг борьбы', desc: 'Тейкдауны и позиции', effect: '+3 Тейкдаун, +2 Грэпплинг', attrs: { takedown: 3, grappling: 2 }, cost: 15, cooldown: 1 },
-            { id: 'bjjroll', name: 'БДЖ роллинг', desc: 'Болевые и удушения', effect: '+4 Болевые, +1 Грэпплинг', attrs: { submissions: 4, grappling: 1 }, cost: 20, cooldown: 2 },
-            { id: 'yoga', name: 'Растяжка и йога', desc: 'Восстановление энергии', effect: '+30 Энергия, +1 Выносливость', attrs: { cardio: 1 }, cost: 5, energy_restore: 30, cooldown: 0 },
-            { id: 'lifting', name: 'Силовые', desc: 'Сила и выносливость', effect: '+3 Сила, +2 Выносливость', attrs: { strength: 3, cardio: 2 }, cost: 15, cooldown: 1 },
-            { id: 'kicks_t', name: 'Тайский бокс', desc: 'Удары ногами и клинч', effect: '+4 Удары ногами, +2 Клинч', attrs: { kicks: 4, clinch: 2 }, cost: 20, cooldown: 2 },
-            { id: 'mental', name: 'Ментальная подготовка', desc: 'Психология боя', effect: '+2 Характер, +2 IQ, +1 Подбородок', attrs: { heart: 2, iq: 2, chin: 1 }, cost: 10, cooldown: 1 },
+            { id: 'mit', name: 'Pad Work', desc: 'Improves striking and speed', effect: '+3 Punching, +2 Speed', attrs: { striking: 3, speed: 2 }, cost: 15, cooldown: 1 },
+            { id: 'spgrd', name: 'Sparring', desc: 'Full contact, improves everything', effect: '+2 all around, risky', attrs: { striking: 2, kicks: 1, grappling: 1, cardio: 1 }, cost: 25, cooldown: 2, risky: true },
+            { id: 'drilling', name: 'Wrestling Drills', desc: 'Takedowns and positional work', effect: '+3 Takedown, +2 Grappling', attrs: { takedown: 3, grappling: 2 }, cost: 15, cooldown: 1 },
+            { id: 'bjjroll', name: 'BJJ Rolling', desc: 'Submissions and chokes', effect: '+4 Submissions, +1 Grappling', attrs: { submissions: 4, grappling: 1 }, cost: 20, cooldown: 2 },
+            { id: 'yoga', name: 'Stretching & Yoga', desc: 'Energy recovery', effect: '+30 Energy, +1 Cardio', attrs: { cardio: 1 }, cost: 5, energy_restore: 30, cooldown: 0 },
+            { id: 'lifting', name: 'Strength Training', desc: 'Strength and conditioning', effect: '+3 Strength, +2 Cardio', attrs: { strength: 3, cardio: 2 }, cost: 15, cooldown: 1 },
+            { id: 'kicks_t', name: 'Muay Thai Session', desc: 'Kicks and clinch work', effect: '+4 Kicking, +2 Clinch', attrs: { kicks: 4, clinch: 2 }, cost: 20, cooldown: 2 },
+            { id: 'mental', name: 'Mental Preparation', desc: 'Fight psychology', effect: '+2 Heart, +2 IQ, +1 Chin', attrs: { heart: 2, iq: 2, chin: 1 }, cost: 10, cooldown: 1 },
         ];
 
         const ACHIEVEMENTS_LIST = [
-            { id: 'first_win', name: 'Первая победа', desc: 'Выиграй первый бой', icon: '🥊', check: f => f.wins >= 1 },
-            { id: 'ko_artist', name: 'KO-художник', desc: '3 победы нокаутом', icon: '💥', check: f => f.koWins >= 3 },
-            { id: 'submission_king', name: 'Король болевых', desc: '3 победы болевым', icon: '🔒', check: f => f.subWins >= 3 },
-            { id: 'streak5', name: 'Пять подряд', desc: '5 побед подряд', icon: '🔥', check: f => f.streak >= 5 },
-            { id: 'top5', name: 'Топ-5', desc: 'Войди в топ-5 рейтинга', icon: '⭐', check: (f, g) => getRank(g) <= 5 },
-            { id: 'champion', name: 'ЧЕМПИОН!', desc: 'Завоюй пояс MMA', icon: '🏆', check: (f, g) => getRank(g) === 1 },
-            { id: 'fights20', name: 'Ветеран', desc: 'Проведи 20 боёв', icon: '🎖️', check: f => f.fights >= 20 },
-            { id: 'level10', name: 'Элита', desc: 'Достигни 10 уровня', icon: '💎', check: f => f.level >= 10 },
+            { id: 'first_win', name: 'First Victory', desc: 'Win your first fight', icon: '🥊', check: f => f.wins >= 1 },
+            { id: 'ko_artist', name: 'KO Artist', desc: 'Get 3 knockout wins', icon: '💥', check: f => f.koWins >= 3 },
+            { id: 'submission_king', name: 'Submission King', desc: 'Get 3 submission wins', icon: '🔒', check: f => f.subWins >= 3 },
+            { id: 'streak5', name: 'Five in a Row', desc: 'Win 5 fights in a row', icon: '🔥', check: f => f.streak >= 5 },
+            { id: 'top5', name: 'Top 5', desc: 'Reach the top 5 in the rankings', icon: '⭐', check: (f, g) => getRank(g) <= 5 },
+            { id: 'champion', name: 'CHAMPION!', desc: 'Win the MMA title belt', icon: '🏆', check: (f, g) => getRank(g) === 1 },
+            { id: 'fights20', name: 'Veteran', desc: 'Complete 20 fights', icon: '🎖️', check: f => f.fights >= 20 },
+            { id: 'level10', name: 'Elite', desc: 'Reach level 10', icon: '💎', check: f => f.level >= 10 },
         ];
 
         const NEWS_POOL = [
-            'MMA анонсировал новый турнир',
-            'Действующий чемпион готовится к защите титула',
-            'Новый боец подписал контракт с промоушеном',
-            'Следующий чемпионский бой состоится через месяц',
-            'Звёздный боец заявил о возможном завершении карьеры',
-            'Организация проведёт грандиозный турнир в России',
-            'Эксперты назвали лучшие бои сезона',
-            'Победителя ожидает контракт и продвижение в рейтинге',
+            'MMA has announced a new tournament',
+            'The reigning champion is preparing for a title defense',
+            'A new fighter has signed with the promotion',
+            'The next title fight will take place in a month',
+            'A star fighter hinted at a possible retirement',
+            'The promotion will hold a major event in Russia',
+            'Experts named the best fights of the season',
+            'The winner will earn a contract boost and move up the rankings',
         ];
 
-        // ============================================================
-        //  FIGHTER CREATION
-        // ============================================================
         let createAttrs = {};
         let createPts = 10;
         let selectedStyle = 'striker';
@@ -1770,8 +2033,8 @@
         }
 
         document.getElementById('btn-create').addEventListener('click', () => {
-            const name = document.getElementById('inp-name').value.trim() || 'Иван Петров';
-            const nick = document.getElementById('inp-nick').value.trim() || 'Боец';
+            const name = document.getElementById('inp-name').value.trim() || 'John Carter';
+            const nick = document.getElementById('inp-nick').value.trim() || 'Fighter';
             createFighter(name, nick, selectedStyle, { ...createAttrs });
         });
 
@@ -1804,18 +2067,15 @@
             document.getElementById('game-ui').style.display = 'grid';
             updateUI();
             switchPanel('profile');
-            toast('Добро пожаловать в MMA! Начни с тренировки или выбери первый бой.', 'gold');
+            toast('Welcome to MMA! Start with training or choose your first fight.', 'gold');
         }
 
-        // ============================================================
-        //  RANKINGS GENERATION
-        // ============================================================
         const FIGHTER_NAMES = [
-            'Алексей Громов', 'Дмитрий Волков', 'Сергей Харитонов', 'Андрей Арловский',
-            'Фёдор Емельяненко', 'Ислам Махачев', 'Хамзат Чимаев', 'Пётр Ян',
-            'Александр Волкановски', 'Никита Крылов', 'Магомед Анкалаев', 'Шамиль Абдурахимов',
-            'Роман Долидзе', 'Виктор Пешта', 'Тэвита Дуту', 'Брэнтон Смит',
-            'Кевин Холланд', 'Джо Пайфер', 'Джейми Мулларки', 'Чарли Кэмпбелл',
+            'Alexei Gromov', 'Dmitry Volkov', 'Sergey Kharitonov', 'Andrei Arlovski',
+            'Fedor Emelianenko', 'Islam Makhachev', 'Khamzat Chimaev', 'Petr Yan',
+            'Alexander Volkanovski', 'Nikita Krylov', 'Magomed Ankalaev', 'Shamil Abdurakhimov',
+            'Roman Dolidze', 'Viktor Pesta', 'Tevita Dutu', 'Branton Smith',
+            'Kevin Holland', 'Joe Pyfer', 'Jamie Mullarkey', 'Charlie Campbell',
         ];
         function rng(a, b) { return a + Math.floor(Math.random() * (b - a + 1)) }
         function genName() { return FIGHTER_NAMES[rng(0, FIGHTER_NAMES.length - 1)] + ' #' + rng(1, 9) }
@@ -1839,10 +2099,10 @@
             const baseRating = G.fighter ? G.fighter.rating : 200;
             G.opponents = [];
             const difficulties = [
-                { label: 'Новичок', ratingMod: -100, purse: 3000, ratingGain: 30 },
-                { label: 'Середняк', ratingMod: 0, purse: 7000, ratingGain: 60 },
-                { label: 'Контендер', ratingMod: 200, purse: 15000, ratingGain: 120 },
-                { label: 'Элита', ratingMod: 500, purse: 30000, ratingGain: 250 },
+                { label: 'Beginner', ratingMod: -100, purse: 3000, ratingGain: 30 },
+                { label: 'Mid-tier', ratingMod: 0, purse: 7000, ratingGain: 60 },
+                { label: 'Contender', ratingMod: 200, purse: 15000, ratingGain: 120 },
+                { label: 'Elite', ratingMod: 500, purse: 30000, ratingGain: 250 },
             ];
             difficulties.forEach(d => {
                 const oppRating = Math.max(100, baseRating + d.ratingMod + rng(-50, 50));
@@ -1873,9 +2133,6 @@
             setTimeout(showNextNews, 8000);
         }
 
-        // ============================================================
-        //  UI RENDERING
-        // ============================================================
         function switchPanel(name) {
             document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -1914,7 +2171,7 @@
             document.getElementById('p-nick').textContent = '"' + f.nick + '"';
             document.getElementById('p-style').textContent = f.style.replace('-', ' ').toUpperCase();
             const rank = getRank(G);
-            document.getElementById('p-division').textContent = rank <= 1 ? 'ЧЕМПИОН 🏆' : rank <= 5 ? 'Топ-5' : rank <= 15 ? 'Топ-15' : 'Претендент';
+            document.getElementById('p-division').textContent = rank <= 1 ? 'CHAMPION 🏆' : rank <= 5 ? 'Top 5' : rank <= 15 ? 'Top 15' : 'Contender';
             document.getElementById('p-record').textContent = `${f.wins}-${f.losses}-${f.draws}`;
             document.getElementById('s-ko').textContent = f.koWins;
             document.getElementById('s-dec').textContent = f.decWins;
@@ -1923,19 +2180,18 @@
             document.getElementById('s-total').textContent = f.fights;
             document.getElementById('p-energy-val').textContent = f.energy + '%';
             document.getElementById('p-level').textContent = f.level;
-            document.getElementById('p-rating-val').textContent = f.rating + ' (' + (rank === 1 ? 'ЧЕМПИОН' : '#' + rank) + ')';
+            document.getElementById('p-rating-val').textContent = f.rating + ' (' + (rank === 1 ? 'CHAMPION' : '#' + rank) + ')';
             document.getElementById('p-rep').textContent = f.rep;
             document.getElementById('p-money').textContent = '$' + f.money.toLocaleString();
             const xpPct = Math.min(100, (f.xp / f.xpToNext) * 100);
             document.getElementById('p-xp-bar').style.width = xpPct + '%';
             document.getElementById('p-xp-text').textContent = f.xp + ' / ' + f.xpToNext + ' XP';
-            // advice
             let adv = '';
-            if (f.energy < 30) adv = '⚠️ Энергия низкая! Сделай растяжку или восстанови силы.';
-            else if (f.fights === 0) adv = '💡 Проведи хотя бы одну тренировку, потом иди на первый бой.';
-            else if (rank <= 2) adv = '🏆 Ты в топ-2! Победи чемпиона и завоюй пояс!';
-            else if (rank <= 5) adv = '🔥 Ты в топ-5! Ещё несколько побед и чемпионский бой близко.';
-            else adv = `📈 Твой рейтинг: ${f.rating}. Побеждай более сильных соперников для карьерного роста.`;
+            if (f.energy < 30) adv = '⚠️ Energy is low! Do some recovery work or rest.';
+            else if (f.fights === 0) adv = '💡 Do at least one training session before your first fight.';
+            else if (rank <= 2) adv = '🏆 You are in the top 2! Beat the champion and claim the belt!';
+            else if (rank <= 5) adv = '🔥 You are in the top 5! A few more wins and a title fight is close.';
+            else adv = `📈 Your rating: ${f.rating}. Beat stronger opponents to climb your career ladder.`;
             document.getElementById('next-advice').textContent = adv;
         }
 
@@ -1975,11 +2231,11 @@
       <div class="train-desc">${t.desc}</div>
       <div class="train-effect">${t.effect}</div>
       <div class="train-cost">
-        <span style="font-size:.73rem;color:var(--${noEnergy ? 'red' : 'muted'})">⚡ ${t.cost} энергии</span>
-        ${cooling ? `<span class="train-cd">CD: ${cd} нед.</span>` : ''}
+        <span style="font-size:.73rem;color:var(--${noEnergy ? 'red' : 'muted'})">⚡ ${t.cost} energy</span>
+        ${cooling ? `<span class="train-cd">CD: ${cd} wk.</span>` : ''}
       </div>
-      ${cooling ? '<div style="font-size:.7rem;color:var(--blue);margin-top:6px">На перезарядке</div>' : ''}
-      ${noEnergy && !cooling ? '<div style="font-size:.7rem;color:var(--red);margin-top:6px">Мало энергии!</div>' : ''}
+      ${cooling ? '<div style="font-size:.7rem;color:var(--blue);margin-top:6px">On cooldown</div>' : ''}
+      ${noEnergy && !cooling ? '<div style="font-size:.7rem;color:var(--red);margin-top:6px">Not enough energy!</div>' : ''}
     `;
                 if (!cooling && !noEnergy) {
                     card.style.cursor = 'pointer';
@@ -2006,22 +2262,22 @@
       <div class="fight-opponent-info">
         <h3>${opp.name}</h3>
         <div class="rec">${opp.wins}-${opp.losses}-${opp.draws} • ${opp.style.replace('-', ' ').toUpperCase()}</div>
-        <div style="font-size:.73rem;color:var(--muted);margin-top:4px">Рейтинг: ${opp.rating}</div>
+        <div style="font-size:.73rem;color:var(--muted);margin-top:4px">Rating: ${opp.rating}</div>
       </div>
       <div class="fight-vs">VS</div>
       <div>
         <span class="badge badge-${i === 3 ? 'red' : i === 2 ? 'gold' : i === 1 ? 'blue' : 'gray'}">${opp.label}</span>
-        <div style="font-size:.75rem;color:var(--muted);margin-top:6px">Призовые: $${opp.purse.toLocaleString()}</div>
-        <div style="font-size:.75rem;color:var(--gold);margin-top:2px">+${opp.ratingGain} к рейтингу</div>
+        <div style="font-size:.75rem;color:var(--muted);margin-top:6px">Purse: $${opp.purse.toLocaleString()}</div>
+        <div style="font-size:.75rem;color:var(--gold);margin-top:2px">+${opp.ratingGain} rating</div>
         <div class="odds-bar" style="margin-top:8px">
           <div class="odds-p" style="flex:${Math.round(winChance)}"></div>
           <div class="odds-o" style="flex:${Math.round(100 - winChance)}"></div>
         </div>
-        <div style="font-size:.65rem;color:var(--muted);margin-top:3px">Шанс победы: ${Math.round(winChance)}%</div>
+        <div style="font-size:.65rem;color:var(--muted);margin-top:3px">Win chance: ${Math.round(winChance)}%</div>
       </div>
       <div>
-        <button class="btn btn-gold btn-sm" ${f.energy < 20 ? 'disabled' : ''} onclick="startFight(${i})">ДРАТЬСЯ</button>
-        ${f.energy < 20 ? '<div style="font-size:.68rem;color:var(--red);margin-top:4px">Нужно больше энергии</div>' : ''}
+        <button class="btn btn-gold btn-sm" ${f.energy < 20 ? 'disabled' : ''} onclick="startFight(${i})">FIGHT</button>
+        ${f.energy < 20 ? '<div style="font-size:.68rem;color:var(--red);margin-top:4px">You need more energy</div>' : ''}
       </div>
     `;
                 el.appendChild(div);
@@ -2038,9 +2294,9 @@
                 tr.innerHTML = `
       <td class="rank-num ${i < 3 ? 'top3' : ''}">${i + 1}</td>
       <td>
-        ${i === 0 ? '<span class="champ-badge">🏆 ЧЕМП</span> ' : ''}
+        ${i === 0 ? '<span class="champ-badge">🏆 CHAMP</span> ' : ''}
         <span class="rank-name">${r.name}</span>
-        ${r.isPlayer ? ' <span class="badge badge-gold" style="font-size:.6rem">ВЫ</span>' : ''}
+        ${r.isPlayer ? ' <span class="badge badge-gold" style="font-size:.6rem">YOU</span>' : ''}
       </td>
       <td class="rank-record">${r.wins}-${r.losses}-${r.draws || 0}</td>
       <td class="rank-rating">${r.rating}</td>
@@ -2052,7 +2308,7 @@
         function renderHistory() {
             const el = document.getElementById('history-list');
             if (!G.history.length) {
-                el.innerHTML = '<div style="color:var(--muted);font-size:.85rem;padding:20px 0">Боёв ещё не было. Запишись на бой!</div>';
+                el.innerHTML = '<div style="color:var(--muted);font-size:.85rem;padding:20px 0">No fights yet. Book a fight!</div>';
                 return;
             }
             el.innerHTML = '';
@@ -2063,9 +2319,9 @@
       <div class="history-result ${h.result}">${h.result}</div>
       <div>
         <div class="history-opponent">${h.opponent}</div>
-        <div class="history-method">${h.method} · Раунд ${h.round}</div>
+        <div class="history-method">${h.method} · Round ${h.round}</div>
       </div>
-      <div class="history-date">Нед. ${h.week}<br>${h.purse ? '+$' + h.purse.toLocaleString() : ''}</div>
+      <div class="history-date">Wk. ${h.week}<br>${h.purse ? '+$' + h.purse.toLocaleString() : ''}</div>
     `;
                 el.appendChild(div);
             });
@@ -2086,9 +2342,6 @@
             });
         }
 
-        // ============================================================
-        //  HELPERS
-        // ============================================================
         function getOverall(attrs) {
             const vals = Object.values(attrs);
             return Math.round(vals.reduce((s, v) => s + v, 0) / vals.length);
@@ -2103,15 +2356,12 @@
             return all.sort((a, b) => b.rating - a.rating).slice(0, 20);
         }
 
-        function getRank(g) {
+        function getRank() {
             const all = getFullRankings();
             const idx = all.findIndex(r => r.isPlayer);
             return idx + 1;
         }
 
-        // ============================================================
-        //  TRAINING
-        // ============================================================
         function doTrain(t) {
             const f = G.fighter;
             f.energy -= t.cost;
@@ -2123,25 +2373,21 @@
                 f.attrs[id] = Math.min(99, (f.attrs[id] || 50) + gain);
             });
 
-            // sparring risk
             if (t.risky && Math.random() < 0.2) {
                 const penalty = rng(1, 3);
                 f.attrs.chin = Math.max(30, f.attrs.chin - penalty);
-                toast('Жёсткий спарринг! -' + penalty + ' к подбородку.', 'red');
+                toast('Hard sparring! -' + penalty + ' Chin.', 'red');
             }
 
             if (t.cooldown > 0) f.trainCooldowns[t.id] = t.cooldown;
 
             addXP(20);
             advanceWeek(false);
-            toast(`${t.name} завершена! ${t.effect}`, 'green');
+            toast(`${t.name} completed! ${t.effect}`, 'green');
             renderTraining();
             updateUI();
         }
 
-        // ============================================================
-        //  FIGHT SIMULATION
-        // ============================================================
         let fightSpeed = 1200;
 
         function startFight(oppIdx) {
@@ -2149,7 +2395,6 @@
             G.pendingFight = opp;
             G.fighter.energy = Math.max(5, G.fighter.energy - 20);
 
-            // Build opp attrs
             const oppRating = opp.rating;
             const base = Math.max(40, Math.min(85, 40 + oppRating / 30));
             const bonus = STYLE_BONUS[opp.style] || {};
@@ -2170,6 +2415,13 @@
             document.getElementById('btn-next-round').style.display = 'none';
             document.getElementById('corner-advice').style.display = 'none';
             document.getElementById('btn-fast-fight').style.display = 'inline-flex';
+            document.getElementById('fight-action-desc').textContent = 'Fight in progress...';
+            document.getElementById('fo-round').textContent = 'ROUND 1';
+            document.getElementById('fo-time').textContent = '5:00';
+            document.getElementById('fo-p1-hp').style.width = '100%';
+            document.getElementById('fo-p2-hp').style.width = '100%';
+            document.getElementById('fo-p1-hp-val').textContent = '100';
+            document.getElementById('fo-p2-hp-val').textContent = '100';
             fightSpeed = 1200;
 
             document.getElementById('btn-fast-fight').onclick = () => { fightSpeed = 100; };
@@ -2181,13 +2433,12 @@
         function simulateFight(p, opp) {
             const rounds = 3;
             let pHP = 100, oHP = 100;
-            let round = 1;
             let winnerName = null;
-            let method = 'Решение';
+            let method = 'Decision';
             let endRound = rounds;
             const log = [];
+            let goto_result = false;
 
-            // per-round sim
             for (let r = 1; r <= rounds; r++) {
                 const roundLog = [];
                 let pRoundHP = pHP, oRoundHP = oHP;
@@ -2204,84 +2455,81 @@
                     oRoundHP -= pDmg;
                     pRoundHP -= oDmg;
 
-                    if (pDmg >= 12) roundLog.push({ text: `${p.name.split(' ')[0]} наносит мощный удар! (${pDmg})`, cls: 'big' });
-                    else if (pDmg >= 6) roundLog.push({ text: `${p.name.split(' ')[0]} попадает (${pDmg})`, cls: 'hit' });
+                    if (pDmg >= 12) roundLog.push({ text: `${p.name.split(' ')[0]} lands a heavy shot! (${pDmg})`, cls: 'big' });
+                    else if (pDmg >= 6) roundLog.push({ text: `${p.name.split(' ')[0]} lands (${pDmg})`, cls: 'hit' });
 
-                    if (oDmg >= 12) roundLog.push({ text: `${opp.name.split(' ')[0]} жёстко бьёт! (${oDmg})`, cls: 'danger' });
-                    else if (oDmg >= 6) roundLog.push({ text: `${opp.name.split(' ')[0]} попадает (${oDmg})`, cls: 'hit' });
+                    if (oDmg >= 12) roundLog.push({ text: `${opp.name.split(' ')[0]} cracks him with a hard shot! (${oDmg})`, cls: 'danger' });
+                    else if (oDmg >= 6) roundLog.push({ text: `${opp.name.split(' ')[0]} lands (${oDmg})`, cls: 'hit' });
 
-                    // submissions / takedowns
                     if (Math.random() < 0.03 && p.attrs.submissions > 60) {
-                        roundLog.push({ text: `${p.name.split(' ')[0]} пытается сделать болевой!`, cls: 'big' });
+                        roundLog.push({ text: `${p.name.split(' ')[0]} looks for a submission!`, cls: 'big' });
                         if (Math.random() < (p.attrs.submissions - opp.attrs.grappling) / 200 + 0.3) {
-                            winnerName = p.name; method = 'Болевой приём'; endRound = r;
-                            pHP = pRoundHP; oHP = 0;
+                            winnerName = p.name; method = 'Submission'; endRound = r;
+                            pHP = Math.max(0, pRoundHP); oHP = 0;
                             log.push(...roundLog);
                             goto_result = true; break;
                         }
                     }
 
                     if (oRoundHP <= 0) {
-                        winnerName = p.name; method = 'Нокаут'; endRound = r;
-                        pHP = pRoundHP; oHP = 0;
-                        roundLog.push({ text: `КО! ${opp.name.split(' ')[0]} не встаёт!`, cls: 'big' });
+                        winnerName = p.name; method = 'Knockout'; endRound = r;
+                        pHP = Math.max(0, pRoundHP); oHP = 0;
+                        roundLog.push({ text: `KO! ${opp.name.split(' ')[0]} does not get up!`, cls: 'big' });
                         log.push(...roundLog);
                         goto_result = true; break;
                     }
                     if (pRoundHP <= 0) {
-                        winnerName = opp.name; method = 'Нокаут'; endRound = r;
-                        pHP = 0; oHP = oRoundHP;
-                        roundLog.push({ text: `КО! ${p.name.split(' ')[0]} не встаёт!`, cls: 'danger' });
+                        winnerName = opp.name; method = 'Knockout'; endRound = r;
+                        pHP = 0; oHP = Math.max(0, oRoundHP);
+                        roundLog.push({ text: `KO! ${p.name.split(' ')[0]} does not get up!`, cls: 'danger' });
                         log.push(...roundLog);
                         goto_result = true; break;
                     }
                 }
+
                 if (goto_result) break;
                 pHP = Math.max(5, pRoundHP);
                 oHP = Math.max(5, oRoundHP);
                 log.push(...roundLog);
-                if (r < rounds) log.push({ text: `— Конец раунда ${r} —`, cls: '' });
-                goto_result = false;
+                if (r < rounds) log.push({ text: `— End of round ${r} —`, cls: '' });
             }
 
-            // decision
             if (!winnerName) {
-                method = 'Решение судей';
+                method = 'Judges’ Decision';
                 if (pHP > oHP) winnerName = p.name;
                 else if (oHP > pHP) winnerName = opp.name;
-                else { winnerName = null; method = 'Ничья'; }
+                else { winnerName = null; method = 'Draw'; }
                 endRound = rounds;
             }
 
-            // Animate log
             let i = 0;
             const logEl = document.getElementById('fight-log');
             let currentRoundDisplay = 1;
 
             function animateLine() {
                 if (i >= log.length) {
-                    // show result
                     setTimeout(() => {
                         showFightResult(winnerName, method, endRound, pHP, oHP, log);
                     }, fightSpeed);
                     return;
                 }
+
                 const entry = log[i];
-                if (entry.text.startsWith('— Конец раунда')) {
+                if (entry.text.startsWith('— End of round')) {
                     currentRoundDisplay++;
-                    document.getElementById('fo-round').textContent = `РАУНД ${currentRoundDisplay}`;
+                    document.getElementById('fo-round').textContent = `ROUND ${currentRoundDisplay}`;
                     const corner = document.getElementById('corner-advice');
                     corner.style.display = 'block';
-                    corner.textContent = pHP > oHP ? '💬 Ты ведёшь по очкам! Держи темп.' :
-                        pHP < oHP * 0.7 ? '💬 Ты проигрываешь! Нужна активность!' : '💬 Ровный бой, атакуй больше!';
+                    corner.textContent = pHP > oHP ? '💬 You are ahead on the scorecards! Keep the pace.' :
+                        pHP < oHP * 0.7 ? '💬 You are behind! You need more offense!' : '💬 Close fight, stay aggressive!';
                 }
+
                 const line = document.createElement('div');
                 line.className = 'fight-log-line' + (entry.cls ? ' ' + entry.cls : '');
                 line.textContent = entry.text;
                 logEl.appendChild(line);
                 logEl.scrollTop = logEl.scrollHeight;
 
-                // update hp bars
                 const pPct = Math.max(0, (pHP / 100) * 100);
                 const oPct = Math.max(0, (oHP / 100) * 100);
                 document.getElementById('fo-p1-hp').style.width = pPct + '%';
@@ -2292,7 +2540,7 @@
                 i++;
                 setTimeout(animateLine, fightSpeed * (entry.cls === 'big' || entry.cls === 'danger' ? 1.5 : 1));
             }
-            var goto_result = false;
+
             animateLine();
         }
 
@@ -2303,7 +2551,7 @@
             return (attrs.chin * 0.8 + attrs.heart * 0.6 + attrs.speed * 0.5) / 3;
         }
 
-        function showFightResult(winnerName, method, round, pHP, oHP, log) {
+        function showFightResult(winnerName, method, round, pHP, oHP) {
             const f = G.fighter;
             const opp = G.pendingFight;
             const playerWon = winnerName === f.name;
@@ -2313,16 +2561,15 @@
             const resultLine = document.createElement('div');
             resultLine.className = 'fight-log-line big';
             resultLine.style.cssText = 'font-size:1rem;padding:8px 0;text-align:center;border-top:1px solid var(--border)';
-            resultLine.textContent = isDraw ? '🤝 НИЧЬЯ!' : playerWon ? `🏆 ПОБЕДА — ${method.toUpperCase()}!` : `💔 ПОРАЖЕНИЕ — ${method.toUpperCase()}`;
+            resultLine.textContent = isDraw ? '🤝 DRAW!' : playerWon ? `🏆 VICTORY — ${method.toUpperCase()}!` : `💔 DEFEAT — ${method.toUpperCase()}`;
             logEl.appendChild(resultLine);
             logEl.scrollTop = logEl.scrollHeight;
 
             document.getElementById('btn-next-round').style.display = 'inline-flex';
             document.getElementById('btn-fast-fight').style.display = 'none';
             document.getElementById('corner-advice').style.display = 'none';
-            document.getElementById('fight-action-desc').textContent = playerWon ? `Победа! +$${opp.purse.toLocaleString()} · +${opp.ratingGain} рейтинга` : isDraw ? 'Ничья.' : 'Поражение...';
+            document.getElementById('fight-action-desc').textContent = playerWon ? `Victory! +$${opp.purse.toLocaleString()} · +${opp.ratingGain} rating` : isDraw ? 'Draw.' : 'Defeat...';
 
-            // Store result
             G._fightResult = { winnerName, method, round, playerWon, isDraw, pHP, oHP };
         }
 
@@ -2339,11 +2586,11 @@
                 f.money += opp.purse;
                 f.rating += opp.ratingGain;
                 f.rep += 10;
-                if (r.method === 'Нокаут') f.koWins++;
-                else if (r.method === 'Болевой приём') f.subWins++;
+                if (r.method === 'Knockout') f.koWins++;
+                else if (r.method === 'Submission') f.subWins++;
                 else f.decWins++;
                 addXP(50 + opp.ratingGain / 4);
-                toast(`Победа! +$${opp.purse.toLocaleString()} | +${opp.ratingGain} рейтинга`, 'gold');
+                toast(`Victory! +$${opp.purse.toLocaleString()} | +${opp.ratingGain} rating`, 'gold');
             } else if (r.isDraw) {
                 f.draws++;
                 f.streak = 0;
@@ -2351,14 +2598,14 @@
                 f.rating += 10;
                 f.rep += 3;
                 addXP(20);
-                toast('Ничья. +$' + Math.floor(opp.purse / 2).toLocaleString(), 'gray');
+                toast('Draw. +$' + Math.floor(opp.purse / 2).toLocaleString(), 'gray');
             } else {
                 f.losses++;
                 f.streak = 0;
                 f.rating = Math.max(50, f.rating - Math.floor(opp.ratingGain / 2));
                 f.rep = Math.max(0, f.rep - 5);
                 addXP(15);
-                toast('Поражение. Не сдавайся!', 'red');
+                toast('Defeat. Do not give up!', 'red');
             }
 
             f.fights++;
@@ -2371,7 +2618,6 @@
                 purse: r.playerWon ? opp.purse : 0,
             });
 
-            // Update NPC rankings
             G.rankings.forEach(npc => {
                 npc.rating += rng(-20, 30);
                 if (Math.random() < 0.1) {
@@ -2386,9 +2632,6 @@
             switchPanel('profile');
         }
 
-        // ============================================================
-        //  XP & LEVELING
-        // ============================================================
         function addXP(amount) {
             const f = G.fighter;
             f.xp += Math.round(amount);
@@ -2396,27 +2639,21 @@
                 f.xp -= f.xpToNext;
                 f.level++;
                 f.xpToNext = Math.round(f.xpToNext * 1.4);
-                // stat bonus on level up
                 const bonusAttr = ATTRS[rng(0, ATTRS.length - 1)];
                 f.attrs[bonusAttr.id] = Math.min(99, f.attrs[bonusAttr.id] + rng(1, 3));
-                toast(`🎉 Уровень ${f.level}! +${bonusAttr.label}`, 'gold');
+                toast(`🎉 Level ${f.level}! +${bonusAttr.label}`, 'gold');
             }
         }
 
-        // ============================================================
-        //  WEEK ADVANCE
-        // ============================================================
         function advanceWeek(isFight) {
             G.week++;
             const f = G.fighter;
 
-            // Cooldowns
             Object.keys(f.trainCooldowns).forEach(id => {
                 f.trainCooldowns[id]--;
                 if (f.trainCooldowns[id] <= 0) delete f.trainCooldowns[id];
             });
 
-            // Energy recovery
             if (!isFight) {
                 f.energy = Math.min(100, f.energy + 10);
             } else {
@@ -2426,22 +2663,16 @@
             updateUI();
         }
 
-        // ============================================================
-        //  ACHIEVEMENTS
-        // ============================================================
         function checkAchievements() {
             const f = G.fighter;
             G.achievements.forEach(a => {
                 if (!a.unlocked && a.check(f, G)) {
                     a.unlocked = true;
-                    toast(`🏅 Достижение разблокировано: ${a.name}!`, 'gold');
-                }
+                    toast(`🏅 Achievement unlocked: ${a.name}!`, 'gold');
+                } ы
             });
         }
 
-        // ============================================================
-        //  TOAST
-        // ============================================================
         function toast(msg, type = '') {
             const c = document.getElementById('toast-container');
             const t = document.createElement('div');
@@ -2454,9 +2685,6 @@
             }, 3500);
         }
 
-        // ============================================================
-        //  INIT
-        // ============================================================
         buildAttrUI();
     </script>
 </body>

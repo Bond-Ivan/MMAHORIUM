@@ -1,27 +1,52 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="dark">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>MMA Dash</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>UFC Dash</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --bg: #0a0a0c;
+            --surface: rgba(0, 0, 0, 0.68);
+            --surface-2: rgba(255, 255, 255, 0.04);
+            --gold: #d4a017;
+            --gold-2: #f0bf3a;
+            --text: #f0f0f0;
+            --muted: #8a8a8a;
+            --faint: #4d4d4d;
+            --danger: #e74c3c;
+            --radius: 10px;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        html,
         body {
-            background: #0a0a0c;
-            color: #f0f0f0;
-            font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+            width: 100%;
+            height: 100%;
             overflow: hidden;
-            height: 100dvh;
+            background: var(--bg);
+        }
+
+        body {
+            color: var(--text);
+            font-family: 'Barlow Condensed', sans-serif;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: stretch;
             touch-action: none;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
         #canvas-wrap {
@@ -31,10 +56,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            min-height: 0;
         }
 
         canvas {
             display: block;
+            width: 100%;
+            height: 100%;
         }
 
         #hud {
@@ -44,96 +72,112 @@
             right: 0;
             display: flex;
             justify-content: space-between;
-            padding: 10px 16px;
+            gap: 8px;
+            padding: max(10px, env(safe-area-inset-top)) 16px 0;
             pointer-events: none;
+            z-index: 6;
         }
 
         .hud-box {
-            background: rgba(0, 0, 0, 0.65);
+            min-width: 88px;
+            background: var(--surface);
             border: 1px solid rgba(212, 160, 23, 0.4);
-            border-radius: 6px;
-            padding: 5px 14px;
+            border-radius: var(--radius);
+            padding: 7px 14px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
         }
 
         .hud-label {
-            font-size: 0.5rem;
+            font-size: 0.7rem;
+            line-height: 1;
             letter-spacing: 2px;
-            color: #666;
+            color: #9a9a9a;
             text-transform: uppercase;
         }
 
         .hud-val {
-            font-size: 1.4rem;
-            color: #d4a017;
-            line-height: 1.1;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.55rem;
+            line-height: 1.05;
+            color: var(--gold);
+            font-variant-numeric: tabular-nums lining-nums;
+            letter-spacing: 1px;
         }
 
         #lives-wrap {
             display: flex;
             gap: 4px;
+            align-items: center;
+            min-height: 26px;
         }
 
         .heart {
-            font-size: 1rem;
+            font-size: 1.05rem;
+            transition: opacity 160ms ease, transform 160ms ease;
         }
 
         .heart.lost {
-            opacity: 0.2;
+            opacity: 0.18;
+            transform: scale(0.9);
         }
 
         #bottom-bar {
             width: 100%;
-            padding: 6px 0 10px;
+            padding: 8px 14px calc(10px + env(safe-area-inset-bottom));
             display: flex;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.7);
-            border-top: 1px solid rgba(212, 160, 23, 0.15);
+            background: rgba(0, 0, 0, 0.72);
+            border-top: 1px solid rgba(212, 160, 23, 0.16);
+            z-index: 6;
         }
 
         .tap-hint {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: #444;
+            font-size: 0.92rem;
+            letter-spacing: 1.5px;
+            color: #666;
+            text-align: center;
         }
 
-        .screen {
+        .screen,
+        .rotate-screen {
             position: absolute;
             inset: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.87);
-            backdrop-filter: blur(5px);
             padding: 20px;
-            z-index: 50;
+            text-align: center;
+            z-index: 20;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(6px);
         }
 
-        .screen.hidden {
+        .screen.hidden,
+        .rotate-screen.hidden {
             display: none;
         }
 
         .screen-title {
-            font-size: clamp(2rem, 7vw, 3.5rem);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.4rem, 7vw, 4rem);
             letter-spacing: 4px;
-            color: #d4a017;
-            text-shadow: 0 0 24px rgba(212, 160, 23, 0.5);
-            margin-bottom: 6px;
-            text-align: center;
+            color: var(--gold);
+            text-shadow: 0 0 24px rgba(212, 160, 23, 0.42);
+            margin-bottom: 8px;
+            line-height: 1;
         }
 
         .screen-sub {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 1rem;
-            color: #666;
+            font-size: 1.05rem;
+            color: #9a9a9a;
             margin-bottom: 24px;
-            text-align: center;
-            line-height: 1.9;
-            max-width: 300px;
+            line-height: 1.7;
+            max-width: 340px;
         }
 
         .screen-stats {
@@ -142,90 +186,155 @@
             gap: 10px;
             margin-bottom: 24px;
             width: 100%;
-            max-width: 280px;
+            max-width: 300px;
         }
 
         .stat-box {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(212, 160, 23, 0.2);
-            border-radius: 8px;
+            background: var(--surface-2);
+            border: 1px solid rgba(212, 160, 23, 0.22);
+            border-radius: 10px;
             padding: 10px;
             text-align: center;
         }
 
         .stat-label {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.6rem;
+            font-size: 0.7rem;
             letter-spacing: 2px;
-            color: #444;
+            color: #666;
             text-transform: uppercase;
         }
 
         .stat-val {
-            font-size: 1.7rem;
-            color: #f0f0f0;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
             line-height: 1.1;
+            color: var(--text);
+            font-variant-numeric: tabular-nums lining-nums;
+        }
+
+        .btn-main,
+        .btn-ghost {
+            min-height: 48px;
+            width: 100%;
+            max-width: 260px;
+            border-radius: 8px;
+            cursor: pointer;
         }
 
         .btn-main {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             letter-spacing: 3px;
-            padding: 13px 36px;
-            background: #d4a017;
+            padding: 12px 24px;
+            background: var(--gold);
             color: #000;
             border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            max-width: 250px;
-            transition: background 0.15s;
+            transition: background 0.15s ease, transform 0.15s ease;
         }
 
-        .btn-main:hover {
-            background: #e8b420;
+        .btn-main:hover,
+        .btn-main:active {
+            background: var(--gold-2);
+        }
+
+        .btn-main:active,
+        .btn-ghost:active {
+            transform: scale(0.98);
         }
 
         .btn-ghost {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            padding: 9px 24px;
-            background: transparent;
-            color: #555;
-            border: 1px solid #252525;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            max-width: 250px;
             margin-top: 8px;
-            transition: all 0.15s;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            padding: 10px 24px;
+            background: transparent;
+            color: #767676;
+            border: 1px solid #2a2a2a;
+            transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
         }
 
-        .btn-ghost:hover {
-            color: #d4a017;
-            border-color: rgba(212, 160, 23, 0.5);
+        .btn-ghost:hover,
+        .btn-ghost:active {
+            color: var(--gold);
+            border-color: rgba(212, 160, 23, 0.55);
         }
 
         .grade-badge {
-            font-size: 2.8rem;
-            margin-bottom: 6px;
+            font-size: 3rem;
+            margin-bottom: 8px;
+        }
+
+        .rotate-icon {
+            font-size: 3.5rem;
+            margin-bottom: 12px;
+        }
+
+        .rotate-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            color: var(--gold);
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+
+        .rotate-sub {
+            max-width: 320px;
+            color: #a0a0a0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 640px) {
+            #hud {
+                padding-left: 10px;
+                padding-right: 10px;
+                gap: 6px;
+            }
+
+            .hud-box {
+                min-width: 74px;
+                padding: 6px 10px;
+            }
+
+            .hud-label {
+                font-size: 0.62rem;
+            }
+
+            .hud-val {
+                font-size: 1.35rem;
+            }
+
+            .tap-hint {
+                font-size: 0.78rem;
+                letter-spacing: 1px;
+            }
+
+            .screen-sub {
+                font-size: 0.98rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600&display=swap"
-        rel="stylesheet">
 </head>
 
 <body>
     <div id="canvas-wrap">
         <canvas id="c"></canvas>
+
         <div id="hud">
             <div class="hud-box">
-                <span class="hud-label">Счёт</span>
+                <span class="hud-label">Score</span>
                 <span class="hud-val" id="hud-score">0</span>
             </div>
             <div class="hud-box">
-                <div class="hud-label">Жизни</div>
+                <div class="hud-label">Lives</div>
                 <div id="lives-wrap">
                     <span class="heart" id="h1">❤️</span>
                     <span class="heart" id="h2">❤️</span>
@@ -233,82 +342,112 @@
                 </div>
             </div>
             <div class="hud-box">
-                <span class="hud-label">Рекорд</span>
+                <span class="hud-label">Best</span>
                 <span class="hud-val" id="hud-best">0</span>
             </div>
         </div>
 
         <div class="screen" id="screen-start">
-            <div class="screen-title">MMA DASH</div>
+            <div class="screen-title">UFC DASH</div>
             <div class="screen-sub">
-                Перепрыгивай соперников.<br>
-                <strong style="color:#d4a017">Тап / Пробел / ↑</strong> — прыжок<br>
-                <strong style="color:#d4a017">Двойной тап</strong> — прыжок в воздухе!
+                Jump over opponents and collect gloves.<br>
+                <strong style="color:#d4a017">Tap / Space / ↑</strong> — jump<br>
+                <strong style="color:#d4a017">Second tap in the air</strong> — double jump
             </div>
-            <button class="btn-main" id="btn-start">ВОЙТИ В ОКТАГОН</button>
+            <button class="btn-main" id="btn-start">ENTER THE OCTAGON</button>
         </div>
 
         <div class="screen hidden" id="screen-gameover">
             <div class="grade-badge" id="go-grade">💀</div>
-            <div class="screen-title" id="go-title">НОКАУТ</div>
+            <div class="screen-title" id="go-title">KNOCKOUT</div>
             <div class="screen-sub" id="go-quote"></div>
             <div class="screen-stats">
                 <div class="stat-box">
-                    <div class="stat-label">Счёт</div>
+                    <div class="stat-label">Score</div>
                     <div class="stat-val" id="go-score">0</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-label">Рекорд</div>
+                    <div class="stat-label">Best</div>
                     <div class="stat-val" id="go-best">0</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-label">Дистанция</div>
+                    <div class="stat-label">Distance</div>
                     <div class="stat-val" id="go-dist">0m</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-label">Перчаток</div>
+                    <div class="stat-label">Gloves</div>
                     <div class="stat-val" id="go-gloves">0</div>
                 </div>
             </div>
-            <button class="btn-main" id="btn-restart">РЕВАНШ</button>
-            <button class="btn-ghost" id="btn-menu">В МЕНЮ</button>
+            <button class="btn-main" id="btn-restart">REMATCH</button>
+            <button class="btn-ghost" id="btn-menu">MAIN MENU</button>
+        </div>
+
+        <div class="rotate-screen hidden" id="rotate-screen">
+            <div class="rotate-icon">📱↻</div>
+            <div class="rotate-title">ROTATE YOUR PHONE</div>
+            <div class="rotate-sub">
+                UFC Dash is more comfortable in landscape mode. Rotate your device and continue the fight.
+            </div>
         </div>
     </div>
+
     <div id="bottom-bar">
-        <span class="tap-hint">ТАП / ПРОБЕЛ = ПРЫЖОК &nbsp;·&nbsp; ДВОЙНОЙ ТАП = ПРЫЖОК В ВОЗДУХЕ</span>
+        <span class="tap-hint">TAP / SPACE = JUMP · SECOND TAP = DOUBLE JUMP</span>
     </div>
 
     <script>
         const canvas = document.getElementById('c');
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { alpha: false });
+        const wrap = document.getElementById('canvas-wrap');
+        const rotateScreen = document.getElementById('rotate-screen');
 
-        let W, H, GY; // GY = ground Y
-        function resize() {
-            const wrap = document.getElementById('canvas-wrap');
-            W = wrap.clientWidth;
-            H = wrap.clientHeight;
-            canvas.width = W;
-            canvas.height = H;
-            GY = Math.floor(H * 0.80);
+        let W = 0, H = 0, GY = 0, DPR = 1;
+        let mobilePortraitBlocked = false;
+
+        function isMobileLike() {
+            return window.matchMedia('(max-width: 900px) and (pointer: coarse)').matches;
         }
-        resize();
-        window.addEventListener('resize', () => { resize(); if (state !== 'playing') drawIdle(); });
 
-        // ── Constants ──────────────────────────────────────────
-        const GRAVITY = 0.55;
-        const JUMP_V = -13.5;
-        const PW = 36, PH = 52;   // player draw size
+        function shouldShowRotate() {
+            return isMobileLike() && window.innerHeight > window.innerWidth;
+        }
 
-        // ── State ──────────────────────────────────────────────
+        function resize() {
+            const rect = wrap.getBoundingClientRect();
+            W = Math.max(320, Math.floor(rect.width));
+            H = Math.max(220, Math.floor(rect.height));
+            DPR = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.width = Math.floor(W * DPR);
+            canvas.height = Math.floor(H * DPR);
+            canvas.style.width = W + 'px';
+            canvas.style.height = H + 'px';
+            ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+            GY = Math.floor(H * 0.80);
+
+            mobilePortraitBlocked = shouldShowRotate();
+            rotateScreen.classList.toggle('hidden', !mobilePortraitBlocked);
+
+            if (state !== 'playing') drawIdle();
+        }
+
+        const GRAVITY = 0.72;
+        const FIRST_JUMP_V = -14.6;
+        const SECOND_JUMP_V = -12.2;
+        const PW = 36, PH = 52;
+
+        const BASE_SPEED = 6.2;
+        const MAX_SPEED = 14.5;
+
         let state = 'start';
         let score = 0, bestScore = 0, dist = 0, glovesCollected = 0;
         let lives = 3, invincible = 0;
-        let frame = 0, speed = 0;
+        let frame = 0, speed = BASE_SPEED;
         let obstacles = [], particles = [], collectibles = [], scorePopups = [], bgCrowd = [];
         let nextObsIn = 0, nextGloveIn = 0;
-        let raf;
+        let raf = 0;
+        let AC;
 
-        // ── Player ─────────────────────────────────────────────
         const P = {
             x: 0, y: 0, vy: 0,
             onGround: false, jumps: 0,
@@ -316,89 +455,179 @@
             reset() {
                 this.x = Math.floor(W * 0.16);
                 this.y = GY - PH;
-                this.vy = 0; this.onGround = true; this.jumps = 0;
-                this.hitFlash = 0; this.runPhase = 0; this.runTick = 0;
+                this.vy = 0;
+                this.onGround = true;
+                this.jumps = 0;
+                this.hitFlash = 0;
+                this.runPhase = 0;
+                this.runTick = 0;
             }
         };
 
-        // ── Audio ──────────────────────────────────────────────
-        let AC;
-        function getAC() { if (!AC) AC = new (window.AudioContext || window.webkitAudioContext)(); return AC; }
+        function getAC() {
+            if (!AC) AC = new (window.AudioContext || window.webkitAudioContext)();
+            return AC;
+        }
+
         function beep(f, d, t = 'square', v = 0.12) {
             try {
-                const ac = getAC(), o = ac.createOscillator(), g = ac.createGain();
-                o.connect(g); g.connect(ac.destination);
-                o.type = t; o.frequency.value = f;
+                const ac = getAC();
+                const o = ac.createOscillator();
+                const g = ac.createGain();
+                o.connect(g);
+                g.connect(ac.destination);
+                o.type = t;
+                o.frequency.value = f;
                 g.gain.setValueAtTime(v, ac.currentTime);
                 g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + d);
-                o.start(); o.stop(ac.currentTime + d);
+                o.start();
+                o.stop(ac.currentTime + d);
             } catch (e) { }
         }
-        const sndJump = () => beep(320, 0.1, 'sine', 0.1);
-        const sndHit = () => beep(80, 0.22, 'sawtooth', 0.15);
-        const sndCollect = () => { beep(800, 0.07, 'sine', 0.08); beep(1050, 0.07, 'sine', 0.07); };
 
-        // ── Jump ───────────────────────────────────────────────
+        const sndJump = () => beep(320, 0.08, 'sine', 0.1);
+        const sndHit = () => beep(80, 0.18, 'sawtooth', 0.14);
+        const sndCollect = () => {
+            beep(820, 0.06, 'sine', 0.08);
+            beep(1080, 0.06, 'sine', 0.07);
+        };
+
         function doJump() {
-            if (state !== 'playing') return;
+            if (state !== 'playing' || mobilePortraitBlocked) return;
             if (P.jumps < 2) {
-                P.vy = P.jumps === 0 ? JUMP_V : JUMP_V * 0.80;
+                P.vy = P.jumps === 0 ? FIRST_JUMP_V : SECOND_JUMP_V;
                 P.onGround = false;
                 P.jumps++;
                 sndJump();
             }
         }
 
-        // ── Input ───────────────────────────────────────────────
-        document.addEventListener('keydown', e => {
-            if (['Space', 'ArrowUp', 'KeyW'].includes(e.code)) {
-                e.preventDefault();
-                if (state === 'start') { getAC(); startGame(); }
-                else doJump();
-            }
-        });
-        document.addEventListener('touchstart', e => {
-            e.preventDefault();
-            if (state === 'start') { getAC(); startGame(); }
-            else doJump();
-        }, { passive: false });
+        function startGame() {
+            if (mobilePortraitBlocked) return;
+            document.getElementById('screen-start').classList.add('hidden');
+            document.getElementById('screen-gameover').classList.add('hidden');
 
-        document.getElementById('btn-start').addEventListener('click', () => { getAC(); startGame(); });
-        document.getElementById('btn-restart').addEventListener('click', () => { getAC(); startGame(); });
-        document.getElementById('btn-menu').addEventListener('click', () => {
-            state = 'start'; cancelAnimationFrame(raf);
+            score = 0;
+            dist = 0;
+            glovesCollected = 0;
+            lives = 3;
+            invincible = 0;
+            frame = 0;
+            speed = BASE_SPEED;
+            obstacles = [];
+            particles = [];
+            collectibles = [];
+            scorePopups = [];
+            nextObsIn = 52;
+            nextGloveIn = 96;
+
+            P.reset();
+            initBg();
+            updateLivesUI();
+            updateHUD();
+
+            state = 'playing';
+            cancelAnimationFrame(raf);
+            loop();
+        }
+
+        function toMenu() {
+            state = 'start';
+            cancelAnimationFrame(raf);
             document.getElementById('screen-gameover').classList.add('hidden');
             document.getElementById('screen-start').classList.remove('hidden');
             drawIdle();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (['Space', 'ArrowUp', 'KeyW'].includes(e.code)) {
+                e.preventDefault();
+                if (mobilePortraitBlocked) return;
+                if (state === 'start') {
+                    getAC();
+                    startGame();
+                } else {
+                    doJump();
+                }
+            }
         });
 
-        // ── Obstacle definitions ───────────────────────────────
-        // ALL obstacles are on the ground — player must JUMP over them.
-        // Height varies: short (easy jump), medium, tall (need double jump).
+        document.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            if (mobilePortraitBlocked) return;
+            if (state === 'start') {
+                getAC();
+                startGame();
+            } else {
+                doJump();
+            }
+        }, { passive: false });
+
+        document.getElementById('btn-start').addEventListener('click', () => {
+            getAC();
+            startGame();
+        });
+
+        document.getElementById('btn-restart').addEventListener('click', () => {
+            getAC();
+            startGame();
+        });
+
+        document.getElementById('btn-menu').addEventListener('click', toMenu);
+
         const OBS_DEFS = [
-            { type: 'short', label: 'Боец', w: 32, h: 44, color: '#2980b9' },
-            { type: 'medium', label: 'Боец', w: 36, h: 58, color: '#8e44ad' },
-            { type: 'tall', label: '2x', w: 40, h: 70, color: '#c0392b' },
-            { type: 'short', label: 'Боец', w: 28, h: 40, color: '#27ae60' },
-            { type: 'double', label: 'Комбо', w: 30, h: 44, color: '#e67e22' }, // two in a row
+            { type: 'short', w: 30, h: 40, color: '#2980b9', score: 1 },
+            { type: 'medium', w: 36, h: 56, color: '#8e44ad', score: 1 },
+            { type: 'tall', w: 40, h: 72, color: '#c0392b', label: '2x', score: 2 },
+            { type: 'short', w: 28, h: 38, color: '#27ae60', score: 1 },
+            { type: 'double', w: 30, h: 42, color: '#e67e22', score: 2 }
         ];
 
-        // ── Spawn ──────────────────────────────────────────────
         function spawnObs() {
             const def = OBS_DEFS[Math.floor(Math.random() * OBS_DEFS.length)];
-            const spd = speed + (Math.random() - 0.5) * 0.5;
+            const spd = speed + (Math.random() - 0.5) * 0.65;
+
             if (def.type === 'double') {
-                // two obstacles close together
-                obstacles.push({ x: W + 8, w: def.w, h: def.h, color: def.color, label: '', spd });
-                obstacles.push({ x: W + 8 + def.w + 40, w: def.w, h: def.h, color: def.color, label: '2x', spd });
+                obstacles.push({
+                    x: W + 10,
+                    w: def.w,
+                    h: def.h,
+                    color: def.color,
+                    label: '',
+                    spd,
+                    passed: false
+                });
+
+                obstacles.push({
+                    x: W + 10 + def.w + 34,
+                    w: def.w,
+                    h: def.h,
+                    color: def.color,
+                    label: '2x',
+                    spd: spd + 0.05,
+                    passed: false
+                });
             } else {
-                obstacles.push({ x: W + 8, w: def.w, h: def.h, color: def.color, label: def.type === 'tall' ? '2x' : '', spd });
+                obstacles.push({
+                    x: W + 10,
+                    w: def.w,
+                    h: def.h,
+                    color: def.color,
+                    label: def.label || '',
+                    spd,
+                    passed: false
+                });
             }
         }
 
         function spawnGlove() {
-            const arcH = 55 + Math.random() * 85;
-            collectibles.push({ x: W + 20, y: GY - PH - arcH, r: 12, frame: 0 });
+            const arcH = 54 + Math.random() * 86;
+            collectibles.push({
+                x: W + 24,
+                y: GY - PH - arcH,
+                r: 12,
+                frame: 0
+            });
         }
 
         function initBg() {
@@ -408,87 +637,101 @@
                 bgCrowd.push({
                     x: Math.random() * W,
                     y: GY + 8 + Math.random() * 38,
-                    spd: 0.2 + Math.random() * 0.45,
+                    spd: 0.25 + Math.random() * 0.55,
                     sz: 0.55 + Math.random() * 0.45,
                     color: colors[Math.floor(Math.random() * colors.length)],
-                    wave: Math.random() * Math.PI * 2,
+                    wave: Math.random() * Math.PI * 2
                 });
             }
         }
 
-        // ── Game start/loop ────────────────────────────────────
-        function startGame() {
-            document.getElementById('screen-start').classList.add('hidden');
-            document.getElementById('screen-gameover').classList.add('hidden');
-            score = 0; dist = 0; glovesCollected = 0;
-            lives = 3; invincible = 0; frame = 0; speed = 4.8;
-            obstacles = []; particles = []; collectibles = []; scorePopups = [];
-            nextObsIn = 90; nextGloveIn = 120;
-            P.reset();
-            initBg();
-            updateLivesUI(); updateHUD();
-            state = 'playing';
-            cancelAnimationFrame(raf);
-            loop();
+        function loop() {
+            raf = requestAnimationFrame(loop);
+            update();
+            draw();
         }
 
-        function loop() { raf = requestAnimationFrame(loop); update(); draw(); }
+        function getSpeedByFrame(f) {
+            const t = f / 60;
+            const ramp = BASE_SPEED + Math.min(5.6, t * 0.22) + Math.min(2.7, Math.sqrt(t) * 0.65);
+            return Math.min(MAX_SPEED, ramp);
+        }
+
+        function getObstacleGap() {
+            const ratio = (speed - BASE_SPEED) / (MAX_SPEED - BASE_SPEED);
+            return 76 - ratio * 26 + Math.random() * 32;
+        }
 
         function update() {
-            if (state !== 'playing') return;
-            frame++;
-            speed = 4.8 + frame * 0.0014;
-            dist += speed;
-            if (frame % 6 === 0) { score++; updateHUD(); }
+            if (state !== 'playing' || mobilePortraitBlocked) return;
 
-            // Physics
+            frame++;
+            speed = getSpeedByFrame(frame);
+            dist += speed;
+
+            if (frame % 5 === 0) {
+                score++;
+                updateHUD();
+            }
+
             P.vy += GRAVITY;
             P.y += P.vy;
+
             const groundY = GY - PH;
             if (P.y >= groundY) {
-                P.y = groundY; P.vy = 0; P.onGround = true; P.jumps = 0;
+                P.y = groundY;
+                P.vy = 0;
+                P.onGround = true;
+                P.jumps = 0;
             } else {
                 P.onGround = false;
             }
 
-            // Run anim
             if (P.onGround) {
                 P.runTick++;
-                if (P.runTick >= 7) { P.runTick = 0; P.runPhase = (P.runPhase + 1) % 4; }
+                if (P.runTick >= 5) {
+                    P.runTick = 0;
+                    P.runPhase = (P.runPhase + 1) % 4;
+                }
             }
+
             if (P.hitFlash > 0) P.hitFlash--;
             if (invincible > 0) invincible--;
 
-            // ── Hitbox: tight box around player torso ──────────
-            // Use a generous inset so it never feels unfair
             const HIT_INSET_X = 11;
             const HIT_INSET_TOP = 12;
             const HIT_INSET_BOT = 8;
+
             const phx = P.x + HIT_INSET_X;
             const phy = P.y + HIT_INSET_TOP;
             const phw = PW - HIT_INSET_X * 2;
             const phh = PH - HIT_INSET_TOP - HIT_INSET_BOT;
 
-            // Spawn obstacles
             nextObsIn--;
             if (nextObsIn <= 0) {
                 spawnObs();
-                const gap = Math.max(48, 110 - speed * 3.5);
-                nextObsIn = gap + Math.random() * 50;
+                nextObsIn = Math.max(40, getObstacleGap());
             }
+
             nextGloveIn--;
             if (nextGloveIn <= 0) {
                 spawnGlove();
-                nextGloveIn = 80 + Math.random() * 80;
+                nextGloveIn = 76 + Math.random() * 70;
             }
 
-            // Move obstacles + collision
             for (let i = obstacles.length - 1; i >= 0; i--) {
                 const o = obstacles[i];
                 o.x -= o.spd;
-                if (o.x + o.w < 0) { obstacles.splice(i, 1); continue; }
 
-                // Obstacle hitbox with inset
+                if (!o.passed && o.x + o.w < P.x) {
+                    o.passed = true;
+                }
+
+                if (o.x + o.w < 0) {
+                    obstacles.splice(i, 1);
+                    continue;
+                }
+
                 const OX_INS = 4, OY_INS = 3;
                 const ox = o.x + OX_INS;
                 const oy = (GY - o.h) + OY_INS;
@@ -497,55 +740,68 @@
 
                 const playerBottom = phy + phh;
                 const obstacleTop = oy;
-                // Safe if: moving upward (P.vy < 0), OR player feet clearly above obstacle top
-                const isClearingJump = P.vy < 0 || playerBottom <= obstacleTop + 2;
+                const isClearingJump = P.vy < -0.2 || playerBottom <= obstacleTop + 2;
+
                 if (invincible <= 0 && !isClearingJump && aabbOverlap(phx, phy, phw, phh, ox, oy, ow, oh)) {
                     onHit();
                     obstacles.splice(i, 1);
                 }
             }
 
-            // Collectibles
             for (let i = collectibles.length - 1; i >= 0; i--) {
                 const g = collectibles[i];
-                g.x -= speed * 0.92; g.frame++;
-                if (g.x + g.r < 0) { collectibles.splice(i, 1); continue; }
+                g.x -= speed * 0.92;
+                g.frame++;
+
+                if (g.x + g.r < 0) {
+                    collectibles.splice(i, 1);
+                    continue;
+                }
+
                 if (aabbOverlap(phx, phy, phw, phh, g.x - g.r, g.y - g.r, g.r * 2, g.r * 2)) {
-                    glovesCollected++; score += 5;
+                    glovesCollected++;
+                    score += 5;
                     spawnParticles(g.x, g.y, '#d4a017', 10);
                     spawnScorePopup(g.x, g.y - 20, '+5');
-                    sndCollect(); updateHUD();
+                    sndCollect();
+                    updateHUD();
                     collectibles.splice(i, 1);
                 }
             }
 
-            // Particles
             for (let i = particles.length - 1; i >= 0; i--) {
                 const p = particles[i];
-                p.x += p.vx; p.y += p.vy; p.vy += 0.18;
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.18;
                 p.life -= p.fade;
                 if (p.life <= 0) particles.splice(i, 1);
             }
+
             for (let i = scorePopups.length - 1; i >= 0; i--) {
                 const s = scorePopups[i];
-                s.y += s.vy; s.life -= 0.03;
+                s.y += s.vy;
+                s.life -= 0.03;
                 if (s.life <= 0) scorePopups.splice(i, 1);
             }
+
             for (const b of bgCrowd) {
                 b.x -= b.spd;
                 if (b.x < -20) b.x = W + 20;
             }
         }
 
-        // strict AABB — no padding, caller applies insets
         function aabbOverlap(ax, ay, aw, ah, bx, by, bw, bh) {
             return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
         }
 
         function onHit() {
-            lives--; P.hitFlash = 30; invincible = 80;
+            lives--;
+            P.hitFlash = 26;
+            invincible = 72;
             spawnParticles(P.x + PW / 2, P.y + PH / 2, '#e74c3c', 14);
-            sndHit(); updateLivesUI();
+            sndHit();
+            updateLivesUI();
             if (lives <= 0) gameOver();
         }
 
@@ -553,32 +809,39 @@
             for (let i = 0; i < n; i++) {
                 const a = (Math.PI * 2 / n) * i + (Math.random() - 0.5) * 0.4;
                 particles.push({
-                    x, y,
+                    x,
+                    y,
                     vx: Math.cos(a) * (2 + Math.random() * 4),
                     vy: Math.sin(a) * (2 + Math.random() * 4) - 1.5,
-                    life: 1, fade: 0.03 + Math.random() * 0.04,
-                    r: 3 + Math.random() * 5, color
+                    life: 1,
+                    fade: 0.03 + Math.random() * 0.04,
+                    r: 3 + Math.random() * 5,
+                    color
                 });
             }
         }
+
         function spawnScorePopup(x, y, txt) {
             scorePopups.push({ x, y, text: txt, life: 1, vy: -1.5 });
         }
 
         const QUOTES_KO = [
-            '"Ты просто не был готов." — Конор МакГрегор',
-            '"Иногда нокаут — лучший учитель." — Дана Уайт',
-            '"Встань. Каждый чемпион падал." — Хабиб',
-            '"Это не конец — это пауза." — Джон Джонс',
-            '"Нокаут не значит слабость." — Стипе',
+            '"You just were not ready." — Conor McGregor',
+            '"Sometimes a knockout is the best teacher." — Dana White',
+            '"Get up. Every champion has fallen." — Khabib',
+            '"It is not the end — it is a pause." — Jon Jones',
+            '"A knockout does not mean weakness." — Stipe'
         ];
+
         function gameOver() {
             state = 'dead';
             if (score > bestScore) bestScore = score;
-            const grade = score >= 200 ? '🏆' : score >= 100 ? '🥇' : score >= 50 ? '🥈' : '💀';
+
+            const grade = score >= 220 ? '🏆' : score >= 130 ? '🥇' : score >= 70 ? '🥈' : '💀';
             const q = QUOTES_KO[Math.floor(Math.random() * QUOTES_KO.length)];
+
             document.getElementById('go-grade').textContent = grade;
-            document.getElementById('go-title').textContent = score >= 80 ? 'НОКДАУН!' : 'НОКАУТ!';
+            document.getElementById('go-title').textContent = score >= 90 ? 'KNOCKDOWN!' : 'KNOCKOUT!';
             document.getElementById('go-quote').textContent = q;
             document.getElementById('go-score').textContent = score;
             document.getElementById('go-best').textContent = bestScore;
@@ -586,108 +849,111 @@
             document.getElementById('go-gloves').textContent = glovesCollected;
             document.getElementById('screen-gameover').classList.remove('hidden');
         }
+
         function updateHUD() {
             document.getElementById('hud-score').textContent = score;
             if (score > bestScore) bestScore = score;
             document.getElementById('hud-best').textContent = bestScore;
         }
+
         function updateLivesUI() {
-            ['h1', 'h2', 'h3'].forEach((id, i) => document.getElementById(id).classList.toggle('lost', i >= lives));
+            ['h1', 'h2', 'h3'].forEach((id, i) => {
+                document.getElementById(id).classList.toggle('lost', i >= lives);
+            });
         }
 
-        // ── DRAW ───────────────────────────────────────────────
         function draw() {
             ctx.clearRect(0, 0, W, H);
 
-            // Sky
             const sky = ctx.createLinearGradient(0, 0, 0, GY);
-            sky.addColorStop(0, '#080810'); sky.addColorStop(1, '#12101e');
-            ctx.fillStyle = sky; ctx.fillRect(0, 0, W, GY);
+            sky.addColorStop(0, '#080810');
+            sky.addColorStop(1, '#12101e');
+            ctx.fillStyle = sky;
+            ctx.fillRect(0, 0, W, GY);
 
             drawCage();
 
-            // Crowd silhouettes
             for (const b of bgCrowd) {
                 ctx.save();
                 ctx.globalAlpha = 0.18 * b.sz;
                 ctx.fillStyle = b.color;
-                const bob = Math.sin(frame * 0.04 + b.wave) * 4;
+                const bob = Math.sin(frame * 0.05 + b.wave) * 4;
                 const s = b.sz;
-                ctx.beginPath(); ctx.arc(b.x, b.y + bob - 16 * s, 6 * s, 0, Math.PI * 2); ctx.fill();
-                ctx.beginPath(); ctx.roundRect(b.x - 6 * s, b.y + bob - 9 * s, 12 * s, 16 * s, 2); ctx.fill();
+                ctx.beginPath();
+                ctx.arc(b.x, b.y + bob - 16 * s, 6 * s, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.roundRect(b.x - 6 * s, b.y + bob - 9 * s, 12 * s, 16 * s, 2);
+                ctx.fill();
                 ctx.restore();
             }
 
-            // Ground
             const grd = ctx.createLinearGradient(0, GY, 0, H);
-            grd.addColorStop(0, '#181005'); grd.addColorStop(1, '#0c0a04');
-            ctx.fillStyle = grd; ctx.fillRect(0, GY, W, H - GY);
-            ctx.fillStyle = '#d4a017'; ctx.fillRect(0, GY, W, 2);
-            // mat grid
-            ctx.strokeStyle = 'rgba(212,160,23,0.06)'; ctx.lineWidth = 1;
-            for (let x = (frame * speed * 0.15) % 60; x < W; x += 60) {
-                ctx.beginPath(); ctx.moveTo(x, GY); ctx.lineTo(x, H); ctx.stroke();
+            grd.addColorStop(0, '#181005');
+            grd.addColorStop(1, '#0c0a04');
+            ctx.fillStyle = grd;
+            ctx.fillRect(0, GY, W, H - GY);
+
+            ctx.fillStyle = '#d4a017';
+            ctx.fillRect(0, GY, W, 2);
+
+            ctx.strokeStyle = 'rgba(212,160,23,0.06)';
+            ctx.lineWidth = 1;
+            for (let x = (frame * speed * 0.34) % 54; x < W; x += 54) {
+                ctx.beginPath();
+                ctx.moveTo(x, GY);
+                ctx.lineTo(x, H);
+                ctx.stroke();
             }
 
-            // Collectibles
             for (const g of collectibles) {
                 const bob = Math.sin(g.frame * 0.09) * 5;
                 ctx.save();
-                ctx.shadowColor = '#d4a017'; ctx.shadowBlur = 12;
+                ctx.shadowColor = '#d4a017';
+                ctx.shadowBlur = 12;
                 drawGloveIcon(g.x, g.y + bob, g.r);
-                ctx.shadowBlur = 0;
                 ctx.restore();
             }
 
-            // Obstacles — draw BEFORE player so player appears on top
             for (const o of obstacles) {
                 drawObstacle(o);
-                // warning if coming from right
                 if (o.x > W * 0.8) {
                     ctx.save();
-                    ctx.globalAlpha = 0.7;
+                    ctx.globalAlpha = 0.72;
                     ctx.fillStyle = '#e74c3c';
-                    ctx.font = '12px sans-serif';
+                    ctx.font = 'bold 14px sans-serif';
                     ctx.textAlign = 'center';
-                    ctx.fillText('⚠', W - 22, GY - 36);
+                    ctx.fillText('⚠', W - 22, GY - 34);
                     ctx.restore();
                 }
             }
 
-            // Particles
             for (const p of particles) {
                 ctx.globalAlpha = p.life;
                 ctx.fillStyle = p.color;
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
             }
             ctx.globalAlpha = 1;
 
-            // Score popups
             for (const s of scorePopups) {
                 ctx.globalAlpha = s.life;
                 ctx.fillStyle = '#d4a017';
-                ctx.font = 'bold 16px "Bebas Neue", sans-serif';
+                ctx.font = '700 18px "Bebas Neue", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.fillText(s.text, s.x, s.y);
             }
             ctx.globalAlpha = 1;
 
-            // Player shadow
             ctx.fillStyle = 'rgba(0,0,0,0.25)';
             ctx.beginPath();
             ctx.ellipse(P.x + PW / 2, GY + 5, PW * 0.36, 5, 0, 0, Math.PI * 2);
             ctx.fill();
 
-            // Player
             drawPlayer();
-
-            // DEBUG: show hitbox (comment out in prod)
-            // const HX=8,HT=6,HB=4;
-            // ctx.strokeStyle='lime'; ctx.lineWidth=1;
-            // ctx.strokeRect(P.x+HX, P.y+HT, PW-HX*2, PH-HT-HB);
         }
 
-        // ── Draw player (canvas stickman) ──────────────────────
         function drawPlayer() {
             const px = P.x + PW / 2;
             const py = P.y;
@@ -696,10 +962,8 @@
 
             ctx.save();
 
-            // invincible flicker
             if (invincible > 0 && (invincible % 8 < 4)) ctx.globalAlpha = 0.45;
-            // hit flash — tint red
-            const hitColor = (P.hitFlash > 0 && P.hitFlash % 6 < 3);
+            const hitColor = P.hitFlash > 0 && P.hitFlash % 6 < 3;
 
             const skin = hitColor ? '#ff9999' : '#f5cba7';
             const shirt = hitColor ? '#ff3333' : '#c0392b';
@@ -710,7 +974,6 @@
 
             ctx.translate(px, py);
 
-            // leg params based on run phase / jump
             const legSwing = jumping ? 0 : [0.35, 0.15, -0.1, 0.15][phase];
             const leg2Swing = jumping ? 0 : [-0.1, 0.15, 0.35, 0.15][phase];
             const armSwing = jumping ? -0.7 : [-0.3, -0.05, 0.25, -0.05][phase];
@@ -718,141 +981,187 @@
 
             const legL = 22, legW = 8, armL = 17, armW = 6;
 
-            // ── back leg ──
             ctx.save();
             ctx.translate(0, PH * 0.55);
             ctx.rotate(leg2Swing);
             ctx.fillStyle = pants;
-            ctx.beginPath(); ctx.roundRect(-legW / 2, 0, legW, legL, 3); ctx.fill();
+            ctx.beginPath();
+            ctx.roundRect(-legW / 2, 0, legW, legL, 3);
+            ctx.fill();
             ctx.fillStyle = shoe;
-            ctx.beginPath(); ctx.ellipse(leg2Swing * 8, legL + 3, 8, 4, 0, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(leg2Swing * 8, legL + 3, 8, 4, 0, 0, Math.PI * 2);
+            ctx.fill();
             ctx.restore();
 
-            // ── torso ──
             ctx.fillStyle = shirt;
-            ctx.beginPath(); ctx.roundRect(-13, PH * 0.22, 26, PH * 0.36, 5); ctx.fill();
-            // belt line detail
-            ctx.fillStyle = 'rgba(0,0,0,0.2)';
-            ctx.beginPath(); ctx.roundRect(-13, PH * 0.55, 26, 4, 2); ctx.fill();
+            ctx.beginPath();
+            ctx.roundRect(-13, PH * 0.22, 26, PH * 0.36, 5);
+            ctx.fill();
 
-            // ── front leg ──
+            ctx.fillStyle = 'rgba(0,0,0,0.2)';
+            ctx.beginPath();
+            ctx.roundRect(-13, PH * 0.55, 26, 4, 2);
+            ctx.fill();
+
             ctx.save();
             ctx.translate(0, PH * 0.55);
             ctx.rotate(legSwing);
             ctx.fillStyle = pants;
-            ctx.beginPath(); ctx.roundRect(-legW / 2, 0, legW, legL, 3); ctx.fill();
+            ctx.beginPath();
+            ctx.roundRect(-legW / 2, 0, legW, legL, 3);
+            ctx.fill();
             ctx.fillStyle = shoe;
-            ctx.beginPath(); ctx.ellipse(legSwing * 8, legL + 3, 8, 4, 0, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(legSwing * 8, legL + 3, 8, 4, 0, 0, Math.PI * 2);
+            ctx.fill();
             ctx.restore();
 
-            // ── back arm ──
             ctx.save();
             ctx.translate(-12, PH * 0.28);
             ctx.rotate(-arm2Swing);
             ctx.fillStyle = skin;
-            ctx.beginPath(); ctx.roundRect(-armW / 2, 0, armW, armL, 3); ctx.fill();
+            ctx.beginPath();
+            ctx.roundRect(-armW / 2, 0, armW, armL, 3);
+            ctx.fill();
             ctx.fillStyle = glove;
-            ctx.beginPath(); ctx.arc(0, armL, 6, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath();
+            ctx.arc(0, armL, 6, 0, Math.PI * 2);
+            ctx.fill();
             ctx.restore();
 
-            // ── head ──
             ctx.fillStyle = skin;
-            ctx.beginPath(); ctx.arc(0, PH * 0.1, 11, 0, Math.PI * 2); ctx.fill();
-            ctx.fillStyle = hair;
-            ctx.beginPath(); ctx.arc(0, PH * 0.04, 8, Math.PI, 0); ctx.fill();
-            // eyes
-            ctx.fillStyle = '#222';
-            ctx.beginPath(); ctx.arc(-3.5, PH * 0.1, 1.8, 0, Math.PI * 2); ctx.fill();
-            ctx.beginPath(); ctx.arc(3.5, PH * 0.1, 1.8, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath();
+            ctx.arc(0, PH * 0.1, 11, 0, Math.PI * 2);
+            ctx.fill();
 
-            // ── front arm ──
+            ctx.fillStyle = hair;
+            ctx.beginPath();
+            ctx.arc(0, PH * 0.04, 8, Math.PI, 0);
+            ctx.fill();
+
+            ctx.fillStyle = '#222';
+            ctx.beginPath();
+            ctx.arc(-3.5, PH * 0.1, 1.8, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(3.5, PH * 0.1, 1.8, 0, Math.PI * 2);
+            ctx.fill();
+
             ctx.save();
             ctx.translate(12, PH * 0.28);
             ctx.rotate(-armSwing);
             ctx.fillStyle = skin;
-            ctx.beginPath(); ctx.roundRect(-armW / 2, 0, armW, armL, 3); ctx.fill();
+            ctx.beginPath();
+            ctx.roundRect(-armW / 2, 0, armW, armL, 3);
+            ctx.fill();
             ctx.fillStyle = glove;
-            ctx.beginPath(); ctx.arc(0, armL, 6, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath();
+            ctx.arc(0, armL, 6, 0, Math.PI * 2);
+            ctx.fill();
             ctx.restore();
 
             ctx.restore();
             ctx.globalAlpha = 1;
 
-            // double jump pip above head
             if (!P.onGround) {
                 ctx.fillStyle = P.jumps < 2 ? '#d4a017' : 'rgba(212,160,23,0.2)';
-                ctx.beginPath(); ctx.arc(px, P.y - 8, 4, 0, Math.PI * 2); ctx.fill();
+                ctx.beginPath();
+                ctx.arc(px, P.y - 8, 4, 0, Math.PI * 2);
+                ctx.fill();
             }
         }
 
-        // ── Draw obstacle (fighter silhouette, canvas only) ────
         function drawObstacle(o) {
             const cx = o.x + o.w / 2;
-            const by = GY; // obstacles always sit on ground
+            const by = GY;
 
             ctx.save();
             ctx.translate(cx, by);
 
             const h = o.h;
             const c = o.color;
-            const skin = '#f5cba7', hair = '#111', shoe = '#0d0d0d';
+            const skin = '#f5cba7';
+            const hair = '#111';
+            const shoe = '#0d0d0d';
 
-            // bob animation
-            const bob = Math.sin(frame * 0.07 + o.x * 0.02) * 1.5;
+            const bob = Math.sin(frame * 0.08 + o.x * 0.02) * 1.5;
             ctx.translate(0, bob);
 
-            // legs
             const lw = Math.max(o.w * 0.22, 7);
+
             ctx.fillStyle = '#1a1a2e';
-            ctx.beginPath(); ctx.roundRect(-o.w * 0.3, -h * 0.35, lw, h * 0.35, 3); ctx.fill();
-            ctx.beginPath(); ctx.roundRect(o.w * 0.08, -h * 0.35, lw, h * 0.35, 3); ctx.fill();
-            // shoes
+            ctx.beginPath();
+            ctx.roundRect(-o.w * 0.3, -h * 0.35, lw, h * 0.35, 3);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.roundRect(o.w * 0.08, -h * 0.35, lw, h * 0.35, 3);
+            ctx.fill();
+
             ctx.fillStyle = shoe;
-            ctx.beginPath(); ctx.ellipse(-o.w * 0.18, -2, o.w * 0.18, 4, 0, 0, Math.PI * 2); ctx.fill();
-            ctx.beginPath(); ctx.ellipse(o.w * 0.18, -2, o.w * 0.18, 4, 0, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(-o.w * 0.18, -2, o.w * 0.18, 4, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(o.w * 0.18, -2, o.w * 0.18, 4, 0, 0, Math.PI * 2);
+            ctx.fill();
 
-            // torso
             ctx.fillStyle = c;
-            ctx.beginPath(); ctx.roundRect(-o.w * 0.42, -h * 0.75, o.w * 0.84, h * 0.42, 5); ctx.fill();
+            ctx.beginPath();
+            ctx.roundRect(-o.w * 0.42, -h * 0.75, o.w * 0.84, h * 0.42, 5);
+            ctx.fill();
 
-            // arms (guard pose — both up)
             const armLen = h * 0.28;
-            // left arm
+
             ctx.save();
             ctx.translate(-o.w * 0.42, -h * 0.68);
             ctx.rotate(-0.45);
             ctx.fillStyle = skin;
-            ctx.beginPath(); ctx.roundRect(-4, 0, 8, armLen, 3); ctx.fill();
+            ctx.beginPath();
+            ctx.roundRect(-4, 0, 8, armLen, 3);
+            ctx.fill();
             ctx.fillStyle = c;
-            ctx.beginPath(); ctx.arc(0, armLen, 7, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath();
+            ctx.arc(0, armLen, 7, 0, Math.PI * 2);
+            ctx.fill();
             ctx.restore();
-            // right arm
+
             ctx.save();
             ctx.translate(o.w * 0.42, -h * 0.68);
             ctx.rotate(0.45);
             ctx.fillStyle = skin;
-            ctx.beginPath(); ctx.roundRect(-4, 0, 8, armLen, 3); ctx.fill();
+            ctx.beginPath();
+            ctx.roundRect(-4, 0, 8, armLen, 3);
+            ctx.fill();
             ctx.fillStyle = c;
-            ctx.beginPath(); ctx.arc(0, armLen, 7, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath();
+            ctx.arc(0, armLen, 7, 0, Math.PI * 2);
+            ctx.fill();
             ctx.restore();
 
-            // head
             const hr = h * 0.14;
             ctx.fillStyle = skin;
-            ctx.beginPath(); ctx.arc(0, -h * 0.88, hr, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath();
+            ctx.arc(0, -h * 0.88, hr, 0, Math.PI * 2);
+            ctx.fill();
             ctx.fillStyle = hair;
-            ctx.beginPath(); ctx.arc(0, -h * 0.93, hr * 0.8, Math.PI, 0); ctx.fill();
-            // eyes
-            ctx.fillStyle = '#e74c3c';
-            ctx.beginPath(); ctx.arc(-hr * 0.38, -h * 0.88, hr * 0.22, 0, Math.PI * 2); ctx.fill();
-            ctx.beginPath(); ctx.arc(hr * 0.38, -h * 0.88, hr * 0.22, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath();
+            ctx.arc(0, -h * 0.93, hr * 0.8, Math.PI, 0);
+            ctx.fill();
 
-            // label for tall obstacles: "2x jump"
+            ctx.fillStyle = '#e74c3c';
+            ctx.beginPath();
+            ctx.arc(-hr * 0.38, -h * 0.88, hr * 0.22, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(hr * 0.38, -h * 0.88, hr * 0.22, 0, Math.PI * 2);
+            ctx.fill();
+
             if (o.label === '2x') {
                 ctx.fillStyle = '#d4a017';
-                ctx.font = `bold ${Math.max(9, o.w * 0.28)}px "Barlow Condensed", sans-serif`;
+                ctx.font = `700 ${Math.max(10, o.w * 0.28)}px "Barlow Condensed", sans-serif`;
                 ctx.textAlign = 'center';
-                ctx.fillText('2x', 0, -h - 7);
+                ctx.fillText('2x', 0, -h - 8);
             }
 
             ctx.restore();
@@ -860,39 +1169,66 @@
 
         function drawGloveIcon(x, y, r) {
             ctx.fillStyle = '#c0392b';
-            ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI * 2);
+            ctx.fill();
+
             ctx.fillStyle = '#fff';
             ctx.font = `${r * 1.3}px serif`;
-            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
             ctx.fillText('🥊', x, y);
         }
 
         function drawCage() {
-            ctx.strokeStyle = 'rgba(212,160,23,0.07)'; ctx.lineWidth = 1;
-            const vx = W / 2, vy = GY * 0.22, fy = GY - 12;
+            ctx.strokeStyle = 'rgba(212,160,23,0.07)';
+            ctx.lineWidth = 1;
+
+            const vx = W / 2;
+            const vy = GY * 0.22;
+            const fy = GY - 12;
+
             for (let i = 0; i <= 12; i++) {
                 const x = (W / 12) * i;
-                ctx.beginPath(); ctx.moveTo(vx + (x - vx) * 0.02, vy); ctx.lineTo(x, fy); ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(vx + (x - vx) * 0.02, vy);
+                ctx.lineTo(x, fy);
+                ctx.stroke();
             }
+
             for (let j = 1; j <= 5; j++) {
-                const t = j / 6, yl = vy + (fy - vy) * t;
-                ctx.beginPath(); ctx.moveTo(vx - vx * t, yl); ctx.lineTo(vx + (W - vx) * t, yl); ctx.stroke();
+                const t = j / 6;
+                const yl = vy + (fy - vy) * t;
+                ctx.beginPath();
+                ctx.moveTo(vx - vx * t, yl);
+                ctx.lineTo(vx + (W - vx) * t, yl);
+                ctx.stroke();
             }
         }
 
         function drawIdle() {
             ctx.clearRect(0, 0, W, H);
+
             const sky = ctx.createLinearGradient(0, 0, 0, H);
-            sky.addColorStop(0, '#080810'); sky.addColorStop(1, '#12101e');
-            ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
-            resize();
+            sky.addColorStop(0, '#080810');
+            sky.addColorStop(1, '#12101e');
+            ctx.fillStyle = sky;
+            ctx.fillRect(0, 0, W, H);
+
             drawCage();
-            ctx.fillStyle = '#181005'; ctx.fillRect(0, GY, W, H - GY);
-            ctx.fillStyle = '#d4a017'; ctx.fillRect(0, GY, W, 2);
+            ctx.fillStyle = '#181005';
+            ctx.fillRect(0, GY, W, H - GY);
+            ctx.fillStyle = '#d4a017';
+            ctx.fillRect(0, GY, W, 2);
+
             P.reset();
             drawPlayer();
         }
 
+        window.addEventListener('resize', resize);
+        window.addEventListener('orientationchange', () => setTimeout(resize, 120));
+
+        resize();
         drawIdle();
     </script>
 </body>
