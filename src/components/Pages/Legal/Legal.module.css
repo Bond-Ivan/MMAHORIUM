@@ -1,0 +1,34 @@
+.legalPage {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.updated {
+    color: #8b8b8b;
+    font-size: 14px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.section h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.section p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #d0d0d0;
+}

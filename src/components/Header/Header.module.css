@@ -10,12 +10,13 @@
   top: 0;
   right: 0;
   left: 0;
+  padding-left: 230px;
   z-index: 50;
 }
 
 .title {
   font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.8px;
   flex: 1;
@@ -201,7 +202,7 @@
 
 @media (max-width: 1024px) {
   .title {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .badgeLive {
@@ -211,7 +212,7 @@
 
 @media (max-width: 768px) {
   .title {
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .badgeLive {
@@ -231,5 +232,9 @@
 @media (max-width: 576px) {
   .menuToggle {
     display: flex;
+  }
+
+  .header {
+    padding-left: 0;
   }
 }

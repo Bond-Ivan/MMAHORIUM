@@ -17,6 +17,11 @@ const Achievements = lazy(() => import("./components/Pages/Achievements/Achievem
 const Fighters = lazy(() => import("./components/Pages/Fighters/Fighters"));
 const Compare = lazy(() => import("./components/Pages/Compare/Compare"));
 
+const Privacy = lazy(() => import("./components/Pages/Legal/Privacy/Privacy"));
+const Terms = lazy(() => import("./components/Pages/Legal/Terms/Terms"));
+const Cookies = lazy(() => import("./components/Pages/Legal/Cookies/Cookies"));
+const Consent = lazy(() => import("./components/Pages/Legal/Consent/Consent"));
+
 type AnimatedPageProps = {
   pageKey: string;
   children: ReactNode;
@@ -53,6 +58,12 @@ function App() {
     "/achievements": t("sidebar.achievements"),
     "/news": t("sidebar.news"),
     "/compare": t("sidebar.compare"),
+    "/games": t("sidebar.game"),
+    "/ai": t("sidebar.ai"),
+    "/privacy": t("sidebar.privacy"),
+    "/terms": t("sidebar.terms"),
+    "/cookies": t("sidebar.cookies"),
+    "/consent": t("sidebar.consent"),
   };
 
   const title = titles[location.pathname] ?? t("sidebar.overview");
@@ -139,6 +150,38 @@ function App() {
                 element={
                   <AnimatedPage pageKey="games">
                     <Games />
+                  </AnimatedPage>
+                }
+              />
+              <Route
+                path="/privacy"
+                element={
+                  <AnimatedPage pageKey="privacy">
+                    <Privacy />
+                  </AnimatedPage>
+                }
+              />
+              <Route
+                path="/terms"
+                element={
+                  <AnimatedPage pageKey="terms">
+                    <Terms />
+                  </AnimatedPage>
+                }
+              />
+              <Route
+                path="/cookies"
+                element={
+                  <AnimatedPage pageKey="cookies">
+                    <Cookies />
+                  </AnimatedPage>
+                }
+              />
+              <Route
+                path="/consent"
+                element={
+                  <AnimatedPage pageKey="consent">
+                    <Consent />
                   </AnimatedPage>
                 }
               />

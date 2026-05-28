@@ -11,7 +11,12 @@
     "compare": "Compare",
     "theme": "Theme",
     "game": "Games",
-    "ai": "AI Predictions"
+    "ai": "AI Predictions",
+    "section_legal": "LEGAL",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "cookies": "Cookie Policy",
+    "consent": "Personal Data Consent"
   },
   "games": {
     "title": "Games",
@@ -105,7 +110,11 @@
     }
   },
   "footer": {
-    "copyright": "Copyright © 2026 OctaGrid Inc. All rights reserved."
+    "copyright": "Copyright © 2026 OctaGrid Inc. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "cookies": "Cookie Policy",
+    "consent": "Personal Data Consent"
   },
   "fighters": {
     "title": "MMA Fighters",
@@ -538,6 +547,111 @@
       "years": " yrs",
       "cm": " cm",
       "kg": " kg"
+    }
+  },
+  "legal": {
+    "common": {
+      "updated": "Last updated: May 22, 2026"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "sections": {
+        "general": {
+          "title": "General provisions",
+          "text": "This Privacy Policy explains what personal data may be collected when using OctaGrid, for what purposes such data is processed, and what rights the user has."
+        },
+        "data": {
+          "title": "What data we may collect",
+          "text": "Depending on how the website is used, we may process a name, email address, IP address, browser and device information, cookies, and any other data voluntarily submitted by the user through website forms."
+        },
+        "purposes": {
+          "title": "Purposes of processing",
+          "text": "Personal data may be used to provide access to website features, communicate with users, improve service quality, perform analytics, ensure security, and comply with applicable law."
+        },
+        "legalBasis": {
+          "title": "Legal basis",
+          "text": "Data processing is carried out on the basis of the user's consent, the necessity to perform the terms of service, and other legal grounds provided by applicable law."
+        },
+        "retention": {
+          "title": "Retention periods",
+          "text": "Data is stored no longer than necessary for the stated processing purposes, unless a different period is required by law or by a separate user consent."
+        },
+        "rights": {
+          "title": "User rights",
+          "text": "The user may request access to personal data, rectification, deletion, restriction of processing, and withdrawal of previously given consent in accordance with applicable law."
+        },
+        "contacts": {
+          "title": "Personal data contacts",
+          "text": "For questions related to personal data processing, the user may contact the operator using the contact details published on the website or in the relevant service section."
+        }
+      }
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "sections": {
+        "general": {
+          "title": "General terms",
+          "text": "These Terms of Use govern access to and use of the OctaGrid website, its materials, services, and available functionality."
+        },
+        "account": {
+          "title": "Use of the service",
+          "text": "The user agrees to use the website in good faith, not to disrupt the service, not to attempt unauthorized access, and to comply with applicable law."
+        },
+        "prohibited": {
+          "title": "Prohibited actions",
+          "text": "It is prohibited to use the website for spam, abusive conduct, unlawful content, unauthorized automated scraping, bypassing restrictions, or any action that may harm the service or third parties."
+        },
+        "content": {
+          "title": "Content and rights",
+          "text": "All website materials, including text, graphics, interfaces, and other elements, are protected by law. Use of such materials is allowed only to the extent expressly permitted by the website owner or applicable law."
+        },
+        "liability": {
+          "title": "Limitation of liability",
+          "text": "The website is provided on an “as is” basis. The administration seeks to maintain the relevance and availability of the service, but does not guarantee the absence of technical errors, interruptions, or absolute completeness of information."
+        },
+        "changes": {
+          "title": "Changes to the terms",
+          "text": "The administration may update these terms. A new version becomes effective once published on the website unless otherwise stated in the update itself."
+        }
+      }
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "sections": {
+        "general": {
+          "title": "What cookies are",
+          "text": "Cookies are small text files stored on a user's device that help the website function properly, remember preferences, and analyze the use of the service."
+        },
+        "types": {
+          "title": "What cookies may be used",
+          "text": "The website may use necessary cookies for core functionality, analytics cookies to assess how the website is used, and other categories of cookies only where the user has provided the relevant consent."
+        },
+        "consent": {
+          "title": "Cookie consent",
+          "text": "When visiting the website for the first time, the user may be asked to choose which categories of cookies they allow. Optional cookies should not be activated before the relevant consent is obtained."
+        },
+        "manage": {
+          "title": "How to manage cookies",
+          "text": "The user may change cookie preferences through the website settings, where available, or through browser settings, including deletion of previously stored cookies."
+        }
+      }
+    },
+    "consent": {
+      "title": "Personal Data Processing Consent",
+      "sections": {
+        "general": {
+          "title": "General information",
+          "text": "Before submitting any form on the website, the user provides separate, specific, informed, and explicit consent to the processing of personal data to the extent necessary for the relevant purpose."
+        },
+        "forms": {
+          "title": "How consent is given",
+          "text": "Consent is confirmed by a separate user action, such as ticking a checkbox that is empty by default next to the form. The consent text and a link to the privacy policy must be available before the form is submitted."
+        },
+        "withdrawal": {
+          "title": "Withdrawal of consent",
+          "text": "The user may withdraw consent to personal data processing at any time by sending a relevant request through the contact channels available on the website."
+        }
+      }
     }
   }
 }

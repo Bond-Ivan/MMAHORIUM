@@ -1,543 +1,657 @@
 {
-    "sidebar": {
-        "section_main": "主页",
-        "overview": "总览",
-        "section_data": "数据",
-        "fighters": "选手",
-        "tournaments": "赛事",
-        "achievements": "纪录",
-        "news": "新闻",
-        "section_features": "功能",
-        "compare": "对比",
-        "theme": "主题",
-        "game": "游戏",
-        "ai": "AI 预测"
+  "sidebar": {
+    "section_main": "主页",
+    "overview": "总览",
+    "section_data": "数据",
+    "fighters": "选手",
+    "tournaments": "赛事",
+    "achievements": "纪录",
+    "news": "新闻",
+    "section_features": "功能",
+    "compare": "对比",
+    "theme": "主题",
+    "game": "游戏",
+    "ai": "AI 预测",
+    "section_legal": "法律信息",
+    "privacy": "隐私政策",
+    "terms": "使用条款",
+    "cookies": "Cookie 政策",
+    "consent": "个人数据处理同意"
+  },
+  "games": {
+    "title": "游戏",
+    "subtitle": "MMA 世界迷你游戏——训练你的反应、知识和策略",
+    "play": "▶ 开始游戏",
+    "exit": "✕ 退出",
+    "items": {
+      "maze": {
+        "title": "MMA Maze Runner",
+        "description": "带领你的拳手穿过迷宫，冲向冠军金腰带。速度越快，得分越高！",
+        "tag1": "迷宫",
+        "tag2": "逻辑",
+        "tag3": "纪录"
+      },
+      "career": {
+        "title": "MMA Career Manager",
+        "description": "创建你的拳手，训练、击败对手，并成为 MMA 冠军！",
+        "tag1": "经理",
+        "tag2": "RPG",
+        "tag3": "生涯"
+      },
+      "trivia": {
+        "title": "MMA Trivia Challenge",
+        "description": "15 道 MMA 题目，难度逐步升级。三次提示、计时器和奖励阶梯！",
+        "tag1": "问答",
+        "tag2": "知识",
+        "tag3": "MMA"
+      },
+      "dash": {
+        "title": "MMA Dash",
+        "description": "无尽跑酷——跳过对手、收集拳套并刷新最高分！",
+        "tag1": "跑酷",
+        "tag2": "街机",
+        "tag3": "反应"
+      }
+    }
+  },
+  "header": {
+    "live": "直播",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单",
+    "selectLanguage": "选择语言"
+  },
+  "home": {
+    "p4p": {
+      "title": "排名",
+      "allFighters": "全部选手"
     },
-    "games": {
-        "title": "游戏",
-        "subtitle": "MMA 世界迷你游戏——训练你的反应、知识和策略",
-        "play": "▶ 开始游戏",
-        "exit": "✕ 退出",
-        "items": {
-            "maze": {
-                "title": "MMA Maze Runner",
-                "description": "带领你的拳手穿过迷宫，冲向冠军金腰带。速度越快，得分越高！",
-                "tag1": "迷宫",
-                "tag2": "逻辑",
-                "tag3": "纪录"
-            },
-            "career": {
-                "title": "MMA Career Manager",
-                "description": "创建你的拳手，训练、击败对手，并成为 MMA 冠军！",
-                "tag1": "经理",
-                "tag2": "RPG",
-                "tag3": "生涯"
-            },
-            "trivia": {
-                "title": "MMA Trivia Challenge",
-                "description": "15 道 MMA 题目，难度逐步升级。三次提示、计时器和奖励阶梯！",
-                "tag1": "问答",
-                "tag2": "知识",
-                "tag3": "MMA"
-            },
-            "dash": {
-                "title": "MMA Dash",
-                "description": "无尽跑酷——跳过对手、收集拳套并刷新最高分！",
-                "tag1": "跑酷",
-                "tag2": "街机",
-                "tag3": "反应"
-            }
-        }
+    "mainCards": {
+      "activeFighters": {
+        "title": "现役选手数量",
+        "text": "MMA 名册中"
+      },
+      "eventsPlanned": {
+        "title": "计划举行的赛事",
+        "text": "本年度"
+      },
+      "eventsCompleted": {
+        "title": "已经结束的赛事",
+        "text": "本年度"
+      },
+      "fightersDebuted": {
+        "title": "完成 MMA 首秀的选手",
+        "text": "本年度"
+      }
     },
-    "header": {
-        "live": "直播",
-        "openMenu": "打开菜单",
-        "closeMenu": "关闭菜单",
-        "selectLanguage": "选择语言"
+    "mainTournament": {
+      "nextEvent": "下一场赛事",
+      "mainEventTitle": "宋亚东 vs 菲格雷多",
+      "date": "2026 年 5 月 30 日",
+      "location": "中国，澳门",
+      "locationShort": "澳门",
+      "showFullCard": "查看完整对阵",
+      "fullCard": "完整对阵",
+      "fullCardLower": "完整对阵",
+      "countdownTitle": "开赛倒计时",
+      "localTime": "莫斯科时间",
+      "mainCardLabel": "主赛",
+      "prelimsLabel": "副赛",
+      "mainEventBadge": "头条主赛",
+      "time": {
+        "days": "天",
+        "hours": "小时",
+        "minutes": "分钟",
+        "seconds": "秒"
+      },
+      "shortNames": {
+        "song": "宋亚东",
+        "figueiredo": "菲格雷多"
+      }
+    }
+  },
+  "footer": {
+    "copyright": "版权 © 2026 OctaGrid Inc. 保留所有权利。",
+    "privacy": "隐私政策",
+    "terms": "使用条款",
+    "cookies": "Cookie 政策",
+    "consent": "个人数据处理同意"
+  },
+  "fighters": {
+    "title": "MMA 选手",
+    "categories": {
+      "all": "全部",
+      "flyweight": "蝇量级",
+      "bantamweight": "雏量级",
+      "featherweight": "羽量级",
+      "lightweight": "轻量级",
+      "welterweight": "次中量级",
+      "middleweight": "中量级",
+      "lightHeavyWeight": "轻重量级",
+      "lightHeavyweight": "轻重量级",
+      "heavyweight": "重量级",
+      "strawweightWomen": "女子草量级",
+      "flyweightWomen": "女子蝇量级",
+      "bantamweightWomen": "女子雏量级"
+    }
+  },
+  "fighter": {
+    "champion": "冠军",
+    "flipHint": "点击卡片查看更多信息",
+    "backHint": "↩ 点击返回正面",
+    "winRate": "胜率 %",
+    "records": {
+      "wins": "胜",
+      "losses": "负",
+      "draws": "平"
     },
-    "home": {
-        "p4p": {
-            "title": "排名",
-            "allFighters": "全部选手"
-        },
-        "mainCards": {
-            "activeFighters": {
-                "title": "现役选手数量",
-                "text": "MMA 名册中"
-            },
-            "eventsPlanned": {
-                "title": "计划举行的赛事",
-                "text": "本年度"
-            },
-            "eventsCompleted": {
-                "title": "已经结束的赛事",
-                "text": "本年度"
-            },
-            "fightersDebuted": {
-                "title": "完成 MMA 首秀的选手",
-                "text": "本年度"
-            }
-        },
-        "mainTournament": {
-            "nextEvent": "下一场赛事",
-            "mainEventTitle": "宋亚东 vs 菲格雷多",
-            "date": "2026 年 5 月 30 日",
-            "location": "中国，澳门",
-            "locationShort": "澳门",
-            "showFullCard": "查看完整对阵",
-            "fullCard": "完整对阵",
-            "fullCardLower": "完整对阵",
-            "countdownTitle": "开赛倒计时",
-            "localTime": "莫斯科时间",
-            "mainCardLabel": "主赛",
-            "prelimsLabel": "副赛",
-            "mainEventBadge": "头条主赛",
-            "time": {
-                "days": "天",
-                "hours": "小时",
-                "minutes": "分钟",
-                "seconds": "秒"
-            },
-            "shortNames": {
-                "song": "宋亚东",
-                "figueiredo": "菲格雷多"
-            }
-        }
+    "stats": {
+      "country": "国家",
+      "age": "年龄",
+      "height": "身高",
+      "weight": "体重",
+      "armSpan": "臂展",
+      "debut": "MMA 首秀"
     },
-    "footer": {
-        "copyright": "版权 © 2026 OctaGrid Inc. 保留所有权利。"
+    "units": {
+      "cm": "厘米",
+      "kg": "千克"
+    }
+  },
+  "weights": {
+    "flyweight": "蝇量级（至 57 公斤）",
+    "bantamweight": "雏量级（至 61 公斤）",
+    "featherweight": "羽量级（至 66 公斤）",
+    "lightweight": "轻量级（至 70 公斤）",
+    "welterweight": "次中量级（至 77 公斤）",
+    "middleweight": "中量级（至 84 公斤）",
+    "lightHeavyWeight": "轻重量级（至 93 公斤）",
+    "lightHeavyweight": "轻重量级（至 93 公斤）",
+    "heavyweight": "重量级（至 120 公斤）"
+  },
+  "countries": {
+    "RU": "俄罗斯",
+    "IE": "爱尔兰",
+    "BR": "巴西",
+    "EC": "厄瓜多尔",
+    "AU": "澳大利亚",
+    "US": "美国",
+    "JM": "牙买加",
+    "NG": "尼日利亚",
+    "CA": "加拿大",
+    "RS": "塞尔维亚",
+    "GB": "英国",
+    "UA": "乌克兰",
+    "AE": "阿联酋",
+    "ZA": "南非",
+    "NL": "荷兰",
+    "GE": "格鲁吉亚",
+    "ES": "西班牙",
+    "FR": "法国",
+    "PL": "波兰",
+    "NZ": "新西兰",
+    "KG": "吉尔吉斯斯坦",
+    "MX": "墨西哥",
+    "IR": "伊朗",
+    "CZ": "捷克",
+    "CH": "瑞士",
+    "UZ": "乌兹别克斯坦",
+    "AT": "奥地利",
+    "MD": "摩尔多瓦",
+    "HR": "克罗地亚",
+    "DO": "多米尼加共和国",
+    "MM": "缅甸",
+    "AO": "安哥拉",
+    "JP": "日本",
+    "IQ": "伊拉克",
+    "KZ": "哈萨克斯坦",
+    "MA": "摩洛哥",
+    "AR": "阿根廷",
+    "UG": "乌干达",
+    "CN": "中国",
+    "AF": "阿富汗"
+  },
+  "tournaments": {
+    "title": "赛事",
+    "year": "2026",
+    "future": "即将举行",
+    "past": "历史赛事"
+  },
+  "tournament": {
+    "vs": "vs",
+    "announced": "官宣",
+    "types": {
+      "numbered": "编号赛",
+      "freedom": "自由主题赛",
+      "fightNight": "格斗之夜",
+      "past": "已结束"
+    }
+  },
+  "news": {
+    "title": "新闻",
+    "imageAlt": "新闻图片",
+    "backButton": "← 返回",
+    "types": {
+      "rankings": "排名",
+      "top": "头条",
+      "announcements": "公告"
     },
-    "fighters": {
-        "title": "MMA 选手",
-        "categories": {
-            "all": "全部",
-            "flyweight": "蝇量级",
-            "bantamweight": "雏量级",
-            "featherweight": "羽量级",
-            "lightweight": "轻量级",
-            "welterweight": "次中量级",
-            "middleweight": "中量级",
-            "lightHeavyWeight": "轻重量级",
-            "lightHeavyweight": "轻重量级",
-            "heavyweight": "重量级",
-            "strawweightWomen": "女子草量级",
-            "flyweightWomen": "女子蝇量级",
-            "bantamweightWomen": "女子雏量级"
-        }
+    "items": {
+      "1": {
+        "title": "奥利维拉战胜霍洛威后进入 P4P 前十",
+        "text": "在第三回合通过 TKO 华丽获胜后，这位巴西选手再次有力地证明了自己是世界最佳轻量级之一。",
+        "date": "2026 年 3 月 29 日"
+      },
+      "2": {
+        "title": "托普里亚 vs 盖奇：MMA Freedom 250 主赛确定将于 6 月 14 日在白宫举行",
+        "text": "托普里亚经纪人阿里·阿卜杜拉齐兹确认：临时冠军贾斯汀·盖奇将向轻量级冠军伊利亚·托普里亚发起挑战，赛事将在华盛顿白宫草坪上举行。",
+        "date": "2026 年 3 月 30 日"
+      },
+      "3": {
+        "title": "伊斯兰·马哈切夫准备对阵莫拉莱斯或神秘挑战者完成卫冕",
+        "text": "次中量级冠军团队正在讨论多种下一战对手的方案。",
+        "date": "2026 年 3 月 28 日"
+      },
+      "4": {
+        "title": "MMA 327 迈阿密：普罗哈兹卡 vs 乌尔伯格——轻重量级金腰带之战",
+        "text": "伊日·普罗哈兹卡在与佩雷拉重赛后再次回到冠军战。卡洛斯·乌尔伯格则被视为该级别最危险的 KO 选手之一。",
+        "date": "2026 年 3 月 25 日"
+      }
+    }
+  },
+  "achievements": {
+    "hero": {
+      "title": "纪录 &",
+      "titleAccent": "成就",
+      "subtitle": "MMA 历史纪录 —— 数据、里程碑与改写 MMA 历史的传奇选手"
     },
-    "fighter": {
-        "champion": "冠军",
-        "flipHint": "点击卡片查看更多信息",
-        "backHint": "↩ 点击返回正面",
-        "winRate": "胜率 %",
-        "records": {
-            "wins": "胜",
-            "losses": "负",
-            "draws": "平"
-        },
-        "stats": {
-            "country": "国家",
-            "age": "年龄",
-            "height": "身高",
-            "weight": "体重",
-            "armSpan": "臂展",
-            "debut": "MMA 首秀"
-        },
-        "units": {
-            "cm": "厘米",
-            "kg": "千克"
-        }
+    "keyStats": {
+      "title": "数据",
+      "titleAccent": "核心",
+      "description": "MMA 史上最重要的纪录"
     },
-    "weights": {
-        "flyweight": "蝇量级（至 57 公斤）",
-        "bantamweight": "雏量级（至 61 公斤）",
-        "featherweight": "羽量级（至 66 公斤）",
-        "lightweight": "轻量级（至 70 公斤）",
-        "welterweight": "次中量级（至 77 公斤）",
-        "middleweight": "中量级（至 84 公斤）",
-        "lightHeavyWeight": "轻重量级（至 93 公斤）",
-        "lightHeavyweight": "轻重量级（至 93 公斤）",
-        "heavyweight": "重量级（至 120 公斤）"
+    "longestTitleReigns": {
+      "title": "卫冕期",
+      "titleAccent": "冠军统治",
+      "description": "MMA 历史上持续时间最长的冠军统治期（天）"
     },
-    "countries": {
-        "RU": "俄罗斯",
-        "IE": "爱尔兰",
-        "BR": "巴西",
-        "EC": "厄瓜多尔",
-        "AU": "澳大利亚",
-        "US": "美国",
-        "JM": "牙买加",
-        "NG": "尼日利亚",
-        "CA": "加拿大",
-        "RS": "塞尔维亚",
-        "GB": "英国",
-        "UA": "乌克兰",
-        "AE": "阿联酋",
-        "ZA": "南非",
-        "NL": "荷兰",
-        "GE": "格鲁吉亚",
-        "ES": "西班牙",
-        "FR": "法国",
-        "PL": "波兰",
-        "NZ": "新西兰",
-        "KG": "吉尔吉斯斯坦",
-        "MX": "墨西哥",
-        "IR": "伊朗",
-        "CZ": "捷克",
-        "CH": "瑞士",
-        "UZ": "乌兹别克斯坦",
-        "AT": "奥地利",
-        "MD": "摩尔多瓦",
-        "HR": "克罗地亚",
-        "DO": "多米尼加共和国",
-        "MM": "缅甸",
-        "AO": "安哥拉",
-        "JP": "日本",
-        "IQ": "伊拉克",
-        "KZ": "哈萨克斯坦",
-        "MA": "摩洛哥",
-        "AR": "阿根廷",
-        "UG": "乌干达",
-        "CN": "中国",
-        "AF": "阿富汗"
+    "mostWins": {
+      "title": "胜场",
+      "titleAccent": "最多",
+      "description": "MMA 职业生涯总胜场纪录（全部比赛）"
     },
-    "tournaments": {
-        "title": "赛事",
-        "year": "2026",
-        "future": "即将举行",
-        "past": "历史赛事"
+    "longestWinStreaks": {
+      "title": "连胜",
+      "titleAccent": "最长",
+      "description": "MMA 历史上最长连胜纪录"
     },
-    "tournament": {
-        "vs": "vs",
-        "announced": "官宣",
-        "types": {
-            "numbered": "编号赛",
-            "freedom": "自由主题赛",
-            "fightNight": "格斗之夜",
-            "past": "已结束"
-        }
+    "titleBoutWins": {
+      "title": "冠军战",
+      "titleAccent": "胜场纪录",
+      "description": "在 MMA 冠军战中获胜最多的选手"
     },
-    "news": {
-        "title": "新闻",
-        "imageAlt": "新闻图片",
-        "backButton": "← 返回",
-        "types": {
-            "rankings": "排名",
-            "top": "头条",
-            "announcements": "公告"
-        },
-        "items": {
-            "1": {
-                "title": "奥利维拉战胜霍洛威后进入 P4P 前十",
-                "text": "在第三回合通过 TKO 华丽获胜后，这位巴西选手再次有力地证明了自己是世界最佳轻量级之一。",
-                "date": "2026 年 3 月 29 日"
-            },
-            "2": {
-                "title": "托普里亚 vs 盖奇：MMA Freedom 250 主赛确定将于 6 月 14 日在白宫举行",
-                "text": "托普里亚经纪人阿里·阿卜杜拉齐兹确认：临时冠军贾斯汀·盖奇将向轻量级冠军伊利亚·托普里亚发起挑战，赛事将在华盛顿白宫草坪上举行。",
-                "date": "2026 年 3 月 30 日"
-            },
-            "3": {
-                "title": "伊斯兰·马哈切夫准备对阵莫拉莱斯或神秘挑战者完成卫冕",
-                "text": "次中量级冠军团队正在讨论多种下一战对手的方案。",
-                "date": "2026 年 3 月 28 日"
-            },
-            "4": {
-                "title": "MMA 327 迈阿密：普罗哈兹卡 vs 乌尔伯格——轻重量级金腰带之战",
-                "text": "伊日·普罗哈兹卡在与佩雷拉重赛后再次回到冠军战。卡洛斯·乌尔伯格则被视为该级别最危险的 KO 选手之一。",
-                "date": "2026 年 3 月 25 日"
-            }
-        }
+    "mostKnockouts": {
+      "title": "最多",
+      "titleAccent": "KO",
+      "description": "在 MMA 生涯中完成的 KO + TKO 总数"
     },
-    "achievements": {
-        "hero": {
-            "title": "纪录 &",
-            "titleAccent": "成就",
-            "subtitle": "MMA 历史纪录 —— 数据、里程碑与改写 MMA 历史的传奇选手"
-        },
-        "keyStats": {
-            "title": "数据",
-            "titleAccent": "核心",
-            "description": "MMA 史上最重要的纪录"
-        },
-        "longestTitleReigns": {
-            "title": "卫冕期",
-            "titleAccent": "冠军统治",
-            "description": "MMA 历史上持续时间最长的冠军统治期（天）"
-        },
-        "mostWins": {
-            "title": "胜场",
-            "titleAccent": "最多",
-            "description": "MMA 职业生涯总胜场纪录（全部比赛）"
-        },
-        "longestWinStreaks": {
-            "title": "连胜",
-            "titleAccent": "最长",
-            "description": "MMA 历史上最长连胜纪录"
-        },
-        "titleBoutWins": {
-            "title": "冠军战",
-            "titleAccent": "胜场纪录",
-            "description": "在 MMA 冠军战中获胜最多的选手"
-        },
-        "mostKnockouts": {
-            "title": "最多",
-            "titleAccent": "KO",
-            "description": "在 MMA 生涯中完成的 KO + TKO 总数"
-        },
-        "mostFinishes": {
-            "title": "最多",
-            "titleAccent": "终结",
-            "description": "在 MMA 生涯中通过 KO 或降服终结对手的总次数"
-        },
-        "fastestKnockouts": {
-            "title": "KO",
-            "titleAccent": "最快",
-            "description": "MMA 历史上用时最短的 KO"
-        },
-        "ppvRecords": {
-            "title": "付费直播",
-            "titleAccent": "销量纪录",
-            "description": "史上 PPV 销量最高的前 5 场 MMA 赛事"
-        },
-        "hallOfFame": {
-            "title": "MMA",
-            "titleAccent": "名人堂",
-            "description": "各个荣誉序列中的 60+ 位 MMA 传奇",
-            "shortLabel": "名人堂",
-            "tabs": {
-                "modern": "现代时代",
-                "pioneer": "开拓者",
-                "contributors": "幕后贡献者",
-                "fights": "传奇对决"
-            }
-        },
-        "labels": {
-            "fighter": "选手",
-            "wins": "胜场",
-            "streak": "连胜",
-            "ko": "KO",
-            "fin": "终结",
-            "ppv": "PPV"
-        },
-        "units": {
-            "days": "天",
-            "secondsShort": "秒"
-        }
+    "mostFinishes": {
+      "title": "最多",
+      "titleAccent": "终结",
+      "description": "在 MMA 生涯中通过 KO 或降服终结对手的总次数"
+    },
+    "fastestKnockouts": {
+      "title": "KO",
+      "titleAccent": "最快",
+      "description": "MMA 历史上用时最短的 KO"
+    },
+    "ppvRecords": {
+      "title": "付费直播",
+      "titleAccent": "销量纪录",
+      "description": "史上 PPV 销量最高的前 5 场 MMA 赛事"
     },
     "hallOfFame": {
-        "title": "MMA",
-        "titleAccent": "名人堂",
-        "description": "各个荣誉序列中的 60+ 位 MMA 传奇",
-        "shortLabel": "名人堂",
-        "tabs": {
-            "modern": "现代时代",
-            "pioneer": "开拓者",
-            "contributors": "幕后贡献者",
-            "fights": "传奇对决"
-        }
+      "title": "MMA",
+      "titleAccent": "名人堂",
+      "description": "各个荣誉序列中的 60+ 位 MMA 传奇",
+      "shortLabel": "名人堂",
+      "tabs": {
+        "modern": "现代时代",
+        "pioneer": "开拓者",
+        "contributors": "幕后贡献者",
+        "fights": "传奇对决"
+      }
     },
-    "achievementsData": {
-        "keyStats": {
-            "days": "天",
-            "wins": "胜场",
-            "ppvSales": "PPV 购买量",
-            "knockouts": "KO 次数",
-            "finishes": "终结次数",
-            "fastestKo": "秒 —— KO",
-            "reignRecord": "最长冠军统治 —— 安德森·席尔瓦",
-            "ufcWinsRecord": "MMA 胜场纪录 —— 吉姆·米勒",
-            "ppvRecord": "MMA 229：麦格雷戈 vs 努尔马戈梅多夫",
-            "koRecord": "KO 纪录 —— 德里克·刘易斯",
-            "finishRecord": "终结纪录 —— 查尔斯·奥利维拉",
-            "fastestKoRecord": "马斯维达尔 vs 阿斯克伦，MMA 239"
-        },
-        "divisions": {
-            "lightweight": "轻量级",
-            "welterweight": "次中量级",
-            "middleweight": "中量级",
-            "heavyweight": "重量级",
-            "lightHeavyWeight": "轻重量级",
-            "lightHeavyweight": "轻重量级",
-            "bantamweight": "雏量级",
-            "featherweight": "羽量级",
-            "lightweightWelterweight": "轻量级 / 次中量级",
-            "lightweightFeatherweight": "轻量级 / 羽量级",
-            "featherweightLightweight": "羽量级 / 轻量级",
-            "heavyweightLightHeavyweight": "重量级 / 轻重量级",
-            "heavyweightLightHeavyweightMiddleweight": "重量级 / 轻重量级 / 中量级"
-        },
-        "extras": {
-            "active": "现役",
-            "andersonStreak": "2006–2013",
-            "usmanStreak": "2015–2022",
-            "merabStreak": "2018–2025",
-            "hollowayStreak": "2014–2019",
-            "gspStreak": "2007–退役",
-            "jonesStreak": "2010–2017",
-            "khabibStreak": "2012–退役"
-        },
-        "hallOfFame": {
-            "pioneer": {
-                "royceGracie": "MMA 1、2、4 赛制冠军 —— 赛事冠军次数纪录（3 次）",
-                "kenShamrock": "首位 MMA 超级战冠军，2 次卫冕",
-                "danSevern": "MMA 超级战冠军，MMA 5 及 Ultimate Ultimate 1995 冠军",
-                "randyCouture": "6 段冠军统治 —— MMA 纪录；最年长冠军（45 岁）",
-                "markColeman": "首位 MMA 重量级冠军，MMA 10 和 11 冠军",
-                "chuckLiddell": "MMA 轻重量级冠军，7 连 KO 纪录",
-                "mattHughes": "两届 MMA 次中量级冠军，7 次卫冕",
-                "titoOrtiz": "MMA 轻重量级冠军，5 次卫冕",
-                "patMiletich": "首位 MMA 次中量级冠军，4 次卫冕",
-                "basRutten": "MMA 重量级冠军",
-                "antonioNogueira": "PRIDE 重量级冠军，MMA 临时冠军",
-                "donFrye": "MMA 8 和 Ultimate Ultimate 1996 冠军",
-                "mauriceSmith": "MMA 重量级冠军，1 次卫冕",
-                "kazushiSakuraba": "MMA 日本站重量级锦标赛冠军",
-                "mattSerra": "MMA 次中量级冠军，TUF 4 冠军",
-                "richFranklin": "MMA 中量级冠军，2 次卫冕",
-                "kevinRandleman": "MMA 重量级冠军（追授）",
-                "andersonSilva": "中量级冠军，2 457 天统治期 —— MMA 纪录；16 连胜",
-                "jensPulver": "首位 MMA 轻量级冠军，2 次卫冕",
-                "wanderleiSilva": "PRIDE 中量级冠军，22 胜 —— PRIDE 纪录",
-                "vitorBelfort": "MMA 轻重量级冠军，13 场首回合终结 —— 纪录",
-                "markKerr": "MMA 14、MMA 15 冠军，NCAA 一级冠军"
-            },
-            "modern": {
-                "forrestGriffin": "TUF 1 冠军，MMA 轻重量级冠军",
-                "bjPenn": "两级别冠军：次中量级 + 轻量级",
-                "urijahFaber": "WEC 羽量级冠军，5 次卫冕",
-                "rondaRousey": "首位 MMA 女子冠军，6 次卫冕",
-                "rashadEvans": "MMA 轻重量级冠军，TUF 2 冠军",
-                "michaelBisping": "MMA 中量级冠军，16 胜 —— 级别纪录",
-                "gsp": "两级别冠军，13 场冠军战胜利",
-                "dc": "两级别冠军：轻重量级 + 重量级",
-                "khabib": "29 战全胜，MMA 轻量级冠军",
-                "cerrone": "23 胜，48 场 Zuffa 比赛 —— 历史纪录",
-                "joseAldo": "MMA 羽量级冠军 —— 1 848 天统治期，7 次卫冕",
-                "mauricioRua": "MMA 轻重量级冠军，PRIDE GP 2005 冠军",
-                "joanna": "MMA 女子草量级冠军，5 次卫冕",
-                "frankieEdgar": "MMA 轻量级冠军，3 次卫冕",
-                "robbieLawler": "MMA 次中量级冠军，2014/2015 年度最佳比赛 2 次",
-                "amandaNunes": "两级别同时冠军，3 940 天统治 —— 史上纪录",
-                "dominickCruz": "两届 MMA 雏量级冠军，3 次卫冕",
-                "demetriousJohnson": "11 连续卫冕 —— MMA 纪录，MMA 蝇量级冠军",
-                "chrisWeidman": "MMA 中量级冠军，终结安德森·席尔瓦统治"
-            }
-        },
-        "contributors": {
-            "mask": "Tapout 品牌创始人 —— 首个大型 MMA 品牌",
-            "blatnick": "MMA 解说与官员，推动 MMA 合法化",
-            "meyrowitz": "MMA 联合创始人及前任老板（MMA 6 至 2001 年）",
-            "joeSilva": "1997–2016 年 MMA 配对总监",
-            "bruceConnal": "1997–2018 年 MMA 电视制作人",
-            "artDavie": "MMA 联合创始人，首任配对人（MMA 1–5）",
-            "marcRatner": "MMA 副总裁，推动 MMA 在美国 50 州全面合法化",
-            "craigPiligian": "《The Ultimate Fighter》节目创始人（2005）",
-            "thomasGerbasi": "MMA.com 主编，重要 MMA 史学作者"
-        },
-        "fights": {
-            "griffinBonnar": {
-                "result": "格里芬判定获胜（分歧判定）",
-                "award": "2005 年度最佳比赛"
-            },
-            "hughesTrigg": {
-                "result": "休斯降服获胜（第 1 回合）",
-                "award": "2005 年度最佳降服"
-            },
-            "colemanWilliams": {
-                "result": "威廉姆斯高扫 KO 获胜",
-                "award": "最大冷门之一"
-            },
-            "ruaHenderson": {
-                "result": "亨德森一致判定获胜",
-                "award": "2011 年度最佳比赛"
-            },
-            "sanchezGuida": {
-                "result": "桑切斯分歧判定获胜",
-                "award": "2009 年度最佳比赛"
-            },
-            "jonesGustafsson": {
-                "result": "琼斯一致判定获胜",
-                "award": "2013 年度最佳比赛"
-            },
-            "swansonChoi": {
-                "result": "斯旺森一致判定获胜",
-                "award": "2016 年度最佳比赛"
-            },
-            "lawlerMacdonald": {
-                "result": "劳勒第 5 回合 TKO 获胜",
-                "award": "2015 年度最佳比赛"
-            },
-            "silvaSonnen": {
-                "result": "席尔瓦第 5 回合三角降服获胜",
-                "award": "2010 年度最佳比赛"
-            },
-            "adesanyaGastelum": {
-                "result": "阿迪萨亚一致判定获胜",
-                "award": "2019 年度最佳比赛"
-            },
-            "zhangJoanna": {
-                "result": "张伟丽分歧判定获胜",
-                "award": "2020 年度最佳比赛"
-            }
-        }
+    "labels": {
+      "fighter": "选手",
+      "wins": "胜场",
+      "streak": "连胜",
+      "ko": "KO",
+      "fin": "终结",
+      "ppv": "PPV"
     },
-    "compare": {
-        "hero": {
-            "eyebrow": "分析",
-            "title": "选手对比",
-            "subtitle": "选择任意两名选手，对比他们的身体数据、战绩、KO 能力、降服技术和胜率等关键指标。"
-        },
-        "selectors": {
-            "fighter1": "选手 1",
-            "fighter2": "选手 2",
-            "fighter": "选手",
-            "weightClass": "量级",
-            "searchFighter": "搜索选手...",
-            "notFound": "未找到结果"
-        },
-        "sections": {
-            "metricsTitle": "数据对比",
-            "metricsText": "直观地看到每个参数上谁占优势。",
-            "profileTitle": "选手雷达图",
-            "profileText": "基于关键指标生成的综合能力轮廓。"
-        },
-        "metrics": {
-            "age": "年龄",
-            "height": "身高",
-            "weight": "体重",
-            "armSpan": "臂展",
-            "totalFights": "总场次",
-            "wins": "胜场",
-            "ko": "KO 次数",
-            "sub": "降服次数",
-            "draws": "平局",
-            "winRate": "胜率 %"
-        },
-        "radar": {
-            "age": "年龄",
-            "height": "身高",
-            "weight": "体重",
-            "reach": "臂展",
-            "ko": "KO",
-            "winRate": "胜率"
-        },
-        "summary": {
-            "bestStriking": "最佳打击能力",
-            "bestWinRate": "最高胜率",
-            "longerReach": "臂展更长",
-            "moreExperience": "经验更丰富",
-            "equal": "持平"
-        },
-        "common": {
-            "vs": "VS",
-            "noNickname": "无绰号",
-            "winRate": "胜率"
-        },
-        "units": {
-            "years": " 岁",
-            "cm": " 厘米",
-            "kg": " 千克"
-        }
+    "units": {
+      "days": "天",
+      "secondsShort": "秒"
     }
+  },
+  "hallOfFame": {
+    "title": "MMA",
+    "titleAccent": "名人堂",
+    "description": "各个荣誉序列中的 60+ 位 MMA 传奇",
+    "shortLabel": "名人堂",
+    "tabs": {
+      "modern": "现代时代",
+      "pioneer": "开拓者",
+      "contributors": "幕后贡献者",
+      "fights": "传奇对决"
+    }
+  },
+  "achievementsData": {
+    "keyStats": {
+      "days": "天",
+      "wins": "胜场",
+      "ppvSales": "PPV 购买量",
+      "knockouts": "KO 次数",
+      "finishes": "终结次数",
+      "fastestKo": "秒 —— KO",
+      "reignRecord": "最长冠军统治 —— 安德森·席尔瓦",
+      "ufcWinsRecord": "MMA 胜场纪录 —— 吉姆·米勒",
+      "ppvRecord": "MMA 229：麦格雷戈 vs 努尔马戈梅多夫",
+      "koRecord": "KO 纪录 —— 德里克·刘易斯",
+      "finishRecord": "终结纪录 —— 查尔斯·奥利维拉",
+      "fastestKoRecord": "马斯维达尔 vs 阿斯克伦，MMA 239"
+    },
+    "divisions": {
+      "lightweight": "轻量级",
+      "welterweight": "次中量级",
+      "middleweight": "中量级",
+      "heavyweight": "重量级",
+      "lightHeavyWeight": "轻重量级",
+      "lightHeavyweight": "轻重量级",
+      "bantamweight": "雏量级",
+      "featherweight": "羽量级",
+      "lightweightWelterweight": "轻量级 / 次中量级",
+      "lightweightFeatherweight": "轻量级 / 羽量级",
+      "featherweightLightweight": "羽量级 / 轻量级",
+      "heavyweightLightHeavyweight": "重量级 / 轻重量级",
+      "heavyweightLightHeavyweightMiddleweight": "重量级 / 轻重量级 / 中量级"
+    },
+    "extras": {
+      "active": "现役",
+      "andersonStreak": "2006–2013",
+      "usmanStreak": "2015–2022",
+      "merabStreak": "2018–2025",
+      "hollowayStreak": "2014–2019",
+      "gspStreak": "2007–退役",
+      "jonesStreak": "2010–2017",
+      "khabibStreak": "2012–退役"
+    },
+    "hallOfFame": {
+      "pioneer": {
+        "royceGracie": "MMA 1、2、4 赛制冠军 —— 赛事冠军次数纪录（3 次）",
+        "kenShamrock": "首位 MMA 超级战冠军，2 次卫冕",
+        "danSevern": "MMA 超级战冠军，MMA 5 及 Ultimate Ultimate 1995 冠军",
+        "randyCouture": "6 段冠军统治 —— MMA 纪录；最年长冠军（45 岁）",
+        "markColeman": "首位 MMA 重量级冠军，MMA 10 和 11 冠军",
+        "chuckLiddell": "MMA 轻重量级冠军，7 连 KO 纪录",
+        "mattHughes": "两届 MMA 次中量级冠军，7 次卫冕",
+        "titoOrtiz": "MMA 轻重量级冠军，5 次卫冕",
+        "patMiletich": "首位 MMA 次中量级冠军，4 次卫冕",
+        "basRutten": "MMA 重量级冠军",
+        "antonioNogueira": "PRIDE 重量级冠军，MMA 临时冠军",
+        "donFrye": "MMA 8 和 Ultimate Ultimate 1996 冠军",
+        "mauriceSmith": "MMA 重量级冠军，1 次卫冕",
+        "kazushiSakuraba": "MMA 日本站重量级锦标赛冠军",
+        "mattSerra": "MMA 次中量级冠军，TUF 4 冠军",
+        "richFranklin": "MMA 中量级冠军，2 次卫冕",
+        "kevinRandleman": "MMA 重量级冠军（追授）",
+        "andersonSilva": "中量级冠军，2 457 天统治期 —— MMA 纪录；16 连胜",
+        "jensPulver": "首位 MMA 轻量级冠军，2 次卫冕",
+        "wanderleiSilva": "PRIDE 中量级冠军，22 胜 —— PRIDE 纪录",
+        "vitorBelfort": "MMA 轻重量级冠军，13 场首回合终结 —— 纪录",
+        "markKerr": "MMA 14、MMA 15 冠军，NCAA 一级冠军"
+      },
+      "modern": {
+        "forrestGriffin": "TUF 1 冠军，MMA 轻重量级冠军",
+        "bjPenn": "两级别冠军：次中量级 + 轻量级",
+        "urijahFaber": "WEC 羽量级冠军，5 次卫冕",
+        "rondaRousey": "首位 MMA 女子冠军，6 次卫冕",
+        "rashadEvans": "MMA 轻重量级冠军，TUF 2 冠军",
+        "michaelBisping": "MMA 中量级冠军，16 胜 —— 级别纪录",
+        "gsp": "两级别冠军，13 场冠军战胜利",
+        "dc": "两级别冠军：轻重量级 + 重量级",
+        "khabib": "29 战全胜，MMA 轻量级冠军",
+        "cerrone": "23 胜，48 场 Zuffa 比赛 —— 历史纪录",
+        "joseAldo": "MMA 羽量级冠军 —— 1 848 天统治期，7 次卫冕",
+        "mauricioRua": "MMA 轻重量级冠军，PRIDE GP 2005 冠军",
+        "joanna": "MMA 女子草量级冠军，5 次卫冕",
+        "frankieEdgar": "MMA 轻量级冠军，3 次卫冕",
+        "robbieLawler": "MMA 次中量级冠军，2014/2015 年度最佳比赛 2 次",
+        "amandaNunes": "两级别同时冠军，3 940 天统治 —— 史上纪录",
+        "dominickCruz": "两届 MMA 雏量级冠军，3 次卫冕",
+        "demetriousJohnson": "11 连续卫冕 —— MMA 纪录，MMA 蝇量级冠军",
+        "chrisWeidman": "MMA 中量级冠军，终结安德森·席尔瓦统治"
+      }
+    },
+    "contributors": {
+      "mask": "Tapout 品牌创始人 —— 首个大型 MMA 品牌",
+      "blatnick": "MMA 解说与官员，推动 MMA 合法化",
+      "meyrowitz": "MMA 联合创始人及前任老板（MMA 6 至 2001 年）",
+      "joeSilva": "1997–2016 年 MMA 配对总监",
+      "bruceConnal": "1997–2018 年 MMA 电视制作人",
+      "artDavie": "MMA 联合创始人，首任配对人（MMA 1–5）",
+      "marcRatner": "MMA 副总裁，推动 MMA 在美国 50 州全面合法化",
+      "craigPiligian": "《The Ultimate Fighter》节目创始人（2005）",
+      "thomasGerbasi": "MMA.com 主编，重要 MMA 史学作者"
+    },
+    "fights": {
+      "griffinBonnar": {
+        "result": "格里芬判定获胜（分歧判定）",
+        "award": "2005 年度最佳比赛"
+      },
+      "hughesTrigg": {
+        "result": "休斯降服获胜（第 1 回合）",
+        "award": "2005 年度最佳降服"
+      },
+      "colemanWilliams": {
+        "result": "威廉姆斯高扫 KO 获胜",
+        "award": "最大冷门之一"
+      },
+      "ruaHenderson": {
+        "result": "亨德森一致判定获胜",
+        "award": "2011 年度最佳比赛"
+      },
+      "sanchezGuida": {
+        "result": "桑切斯分歧判定获胜",
+        "award": "2009 年度最佳比赛"
+      },
+      "jonesGustafsson": {
+        "result": "琼斯一致判定获胜",
+        "award": "2013 年度最佳比赛"
+      },
+      "swansonChoi": {
+        "result": "斯旺森一致判定获胜",
+        "award": "2016 年度最佳比赛"
+      },
+      "lawlerMacdonald": {
+        "result": "劳勒第 5 回合 TKO 获胜",
+        "award": "2015 年度最佳比赛"
+      },
+      "silvaSonnen": {
+        "result": "席尔瓦第 5 回合三角降服获胜",
+        "award": "2010 年度最佳比赛"
+      },
+      "adesanyaGastelum": {
+        "result": "阿迪萨亚一致判定获胜",
+        "award": "2019 年度最佳比赛"
+      },
+      "zhangJoanna": {
+        "result": "张伟丽分歧判定获胜",
+        "award": "2020 年度最佳比赛"
+      }
+    }
+  },
+  "compare": {
+    "hero": {
+      "eyebrow": "分析",
+      "title": "选手对比",
+      "subtitle": "选择任意两名选手，对比他们的身体数据、战绩、KO 能力、降服技术和胜率等关键指标。"
+    },
+    "selectors": {
+      "fighter1": "选手 1",
+      "fighter2": "选手 2",
+      "fighter": "选手",
+      "weightClass": "量级",
+      "searchFighter": "搜索选手...",
+      "notFound": "未找到结果"
+    },
+    "sections": {
+      "metricsTitle": "数据对比",
+      "metricsText": "直观地看到每个参数上谁占优势。",
+      "profileTitle": "选手雷达图",
+      "profileText": "基于关键指标生成的综合能力轮廓。"
+    },
+    "metrics": {
+      "age": "年龄",
+      "height": "身高",
+      "weight": "体重",
+      "armSpan": "臂展",
+      "totalFights": "总场次",
+      "wins": "胜场",
+      "ko": "KO 次数",
+      "sub": "降服次数",
+      "draws": "平局",
+      "winRate": "胜率 %"
+    },
+    "radar": {
+      "age": "年龄",
+      "height": "身高",
+      "weight": "体重",
+      "reach": "臂展",
+      "ko": "KO",
+      "winRate": "胜率"
+    },
+    "summary": {
+      "bestStriking": "最佳打击能力",
+      "bestWinRate": "最高胜率",
+      "longerReach": "臂展更长",
+      "moreExperience": "经验更丰富",
+      "equal": "持平"
+    },
+    "common": {
+      "vs": "VS",
+      "noNickname": "无绰号",
+      "winRate": "胜率"
+    },
+    "units": {
+      "years": " 岁",
+      "cm": " 厘米",
+      "kg": " 千克"
+    }
+  },
+  "legal": {
+    "common": {
+      "updated": "最后更新：2026 年 5 月 22 日"
+    },
+    "privacy": {
+      "title": "隐私政策",
+      "sections": {
+        "general": {
+          "title": "一般条款",
+          "text": "本隐私政策说明在使用 OctaGrid 时可能收集哪些个人数据、这些数据将用于哪些目的，以及用户享有哪些权利。"
+        },
+        "data": {
+          "title": "我们可能收集的数据",
+          "text": "根据网站的使用方式，我们可能处理姓名、电子邮箱地址、IP 地址、浏览器和设备信息、Cookie，以及用户通过网站表单自愿提交的其他数据。"
+        },
+        "purposes": {
+          "title": "处理目的",
+          "text": "个人数据可用于提供网站功能访问、与用户沟通、提升服务质量、进行分析、保障安全以及遵守适用法律。"
+        },
+        "legalBasis": {
+          "title": "法律依据",
+          "text": "数据处理基于用户同意、履行使用条款的必要性，以及适用法律规定的其他合法依据。"
+        },
+        "retention": {
+          "title": "保存期限",
+          "text": "除法律或用户单独同意另有规定外，数据保存时间不会超过实现所声明处理目的所必需的期限。"
+        },
+        "rights": {
+          "title": "用户权利",
+          "text": "用户有权请求访问其个人数据、要求更正、删除、限制处理，并可根据适用法律撤回此前给予的同意。"
+        },
+        "contacts": {
+          "title": "个人数据联系信息",
+          "text": "如对个人数据处理有任何问题，用户可通过网站公布的联系方式或服务相关栏目中提供的联系方式与数据控制方联系。"
+        }
+      }
+    },
+    "terms": {
+      "title": "使用条款",
+      "sections": {
+        "general": {
+          "title": "一般条件",
+          "text": "本使用条款规范用户对 OctaGrid 网站及其材料、服务和可用功能的访问与使用。"
+        },
+        "account": {
+          "title": "服务使用",
+          "text": "用户同意善意使用网站，不干扰服务运行，不尝试进行未经授权的访问，并遵守适用法律。"
+        },
+        "prohibited": {
+          "title": "禁止行为",
+          "text": "禁止将网站用于垃圾信息、侮辱性行为、非法内容、未经授权的自动抓取、绕过限制，或任何可能损害服务或第三方的行为。"
+        },
+        "content": {
+          "title": "内容与权利",
+          "text": "网站上的所有材料，包括文本、图形、界面及其他元素，均受法律保护。只有在网站所有者明确允许或适用法律允许的范围内，方可使用这些材料。"
+        },
+        "liability": {
+          "title": "责任限制",
+          "text": "本网站按“现状”提供。管理方会尽力保持服务的可用性和信息的时效性，但不保证不存在技术错误、中断或信息绝对完整。"
+        },
+        "changes": {
+          "title": "条款变更",
+          "text": "管理方可更新本条款。除更新文本另有说明外，新版本自发布于网站之时起生效。"
+        }
+      }
+    },
+    "cookies": {
+      "title": "Cookie 政策",
+      "sections": {
+        "general": {
+          "title": "什么是 Cookie",
+          "text": "Cookie 是存储在用户设备上的小型文本文件，可帮助网站正常运行、记住偏好设置并分析服务使用情况。"
+        },
+        "types": {
+          "title": "可能使用的 Cookie 类型",
+          "text": "网站可能使用维持核心功能所必需的 Cookie、用于评估网站使用情况的分析型 Cookie，以及仅在用户提供相应同意后才启用的其他类别 Cookie。"
+        },
+        "consent": {
+          "title": "Cookie 同意",
+          "text": "当用户首次访问网站时，系统可能会要求其选择允许使用哪些类别的 Cookie。在获得相关同意之前，不应启用可选 Cookie。"
+        },
+        "manage": {
+          "title": "如何管理 Cookie",
+          "text": "用户可在网站设置中（如提供该功能）修改 Cookie 选择，也可通过浏览器设置管理 Cookie，包括删除先前保存的 Cookie。"
+        }
+      }
+    },
+    "consent": {
+      "title": "个人数据处理同意",
+      "sections": {
+        "general": {
+          "title": "一般信息",
+          "text": "在提交网站上的任何表单之前，用户应就实现相应目的所必需的个人数据处理提供单独、明确、知情且具体的同意。"
+        },
+        "forms": {
+          "title": "同意的给出方式",
+          "text": "同意应通过用户的单独操作确认，例如勾选表单旁默认未选中的复选框。提交表单前，用户必须能够看到同意文本以及隐私政策链接。"
+        },
+        "withdrawal": {
+          "title": "撤回同意",
+          "text": "用户可随时通过网站提供的联系渠道发送请求，以撤回其对个人数据处理的同意。"
+        }
+      }
+    }
+  }
 }

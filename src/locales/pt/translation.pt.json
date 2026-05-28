@@ -11,7 +11,12 @@
     "compare": "Comparar",
     "theme": "Tema",
     "game": "Jogos",
-    "ai": "Previsões de IA"
+    "ai": "Previsões de IA",
+    "section_legal": "LEGAL",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Uso",
+    "cookies": "Política de Cookies",
+    "consent": "Consentimento de Dados Pessoais"
   },
   "games": {
     "title": "Jogos",
@@ -105,7 +110,11 @@
     }
   },
   "footer": {
-    "copyright": "Copyright © 2026 OctaGrid Inc. Todos os direitos reservados."
+    "copyright": "Copyright © 2026 OctaGrid Inc. Todos os direitos reservados.",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Uso",
+    "cookies": "Política de Cookies",
+    "consent": "Consentimento de Dados Pessoais"
   },
   "fighters": {
     "title": "Lutadores do MMA",
@@ -526,6 +535,111 @@
       "years": " anos",
       "cm": " cm",
       "kg": " kg"
+    }
+  },
+  "legal": {
+    "common": {
+      "updated": "Última atualização: 22 de maio de 2026"
+    },
+    "privacy": {
+      "title": "Política de Privacidade",
+      "sections": {
+        "general": {
+          "title": "Disposições gerais",
+          "text": "Esta Política de Privacidade descreve quais dados pessoais podem ser coletados ao usar o OctaGrid, para quais finalidades esses dados são processados e quais direitos o usuário possui."
+        },
+        "data": {
+          "title": "Quais dados podemos coletar",
+          "text": "Dependendo da forma de uso do site, podemos processar nome, endereço de e-mail, endereço IP, informações do navegador e do dispositivo, cookies e quaisquer outros dados fornecidos voluntariamente pelo usuário por meio de formulários do site."
+        },
+        "purposes": {
+          "title": "Finalidades do tratamento",
+          "text": "Os dados pessoais podem ser usados para fornecer acesso às funcionalidades do site, comunicar-se com os usuários, melhorar a qualidade do serviço, realizar análises, garantir a segurança e cumprir a legislação aplicável."
+        },
+        "legalBasis": {
+          "title": "Base legal",
+          "text": "O tratamento de dados é realizado com base no consentimento do usuário, na necessidade de executar os termos de uso e em outros fundamentos legais previstos pela legislação aplicável."
+        },
+        "retention": {
+          "title": "Prazos de retenção",
+          "text": "Os dados são armazenados apenas pelo tempo necessário para as finalidades declaradas do tratamento, salvo quando a lei ou um consentimento separado do usuário exigir prazo diferente."
+        },
+        "rights": {
+          "title": "Direitos do usuário",
+          "text": "O usuário pode solicitar acesso aos seus dados pessoais, retificação, exclusão, restrição do tratamento e retirada do consentimento previamente concedido de acordo com a legislação aplicável."
+        },
+        "contacts": {
+          "title": "Contato sobre dados pessoais",
+          "text": "Para questões relacionadas ao tratamento de dados pessoais, o usuário pode entrar em contato com o operador usando os dados de contato publicados no site ou na seção correspondente do serviço."
+        }
+      }
+    },
+    "terms": {
+      "title": "Termos de Uso",
+      "sections": {
+        "general": {
+          "title": "Condições gerais",
+          "text": "Estes Termos de Uso regulam o acesso e o uso do site OctaGrid, seus materiais, serviços e funcionalidades disponíveis."
+        },
+        "account": {
+          "title": "Uso do serviço",
+          "text": "O usuário concorda em usar o site de boa-fé, não interromper o serviço, não tentar obter acesso não autorizado e cumprir a legislação aplicável."
+        },
+        "prohibited": {
+          "title": "Ações proibidas",
+          "text": "É proibido usar o site para spam, conduta abusiva, conteúdo ilegal, raspagem automatizada não autorizada, contornar restrições ou qualquer ação que possa prejudicar o serviço ou terceiros."
+        },
+        "content": {
+          "title": "Conteúdo e direitos",
+          "text": "Todos os materiais do site, incluindo textos, gráficos, interfaces e outros elementos, são protegidos por lei. O uso desses materiais é permitido apenas na medida expressamente autorizada pelo proprietário do site ou pela legislação aplicável."
+        },
+        "liability": {
+          "title": "Limitação de responsabilidade",
+          "text": "O site é fornecido “como está”. A administração busca manter a atualidade e a disponibilidade do serviço, mas não garante ausência de erros técnicos, interrupções ou completude absoluta das informações."
+        },
+        "changes": {
+          "title": "Alterações nos termos",
+          "text": "A administração pode atualizar estes termos. Uma nova versão entra em vigor após sua publicação no site, salvo indicação em contrário no próprio texto da atualização."
+        }
+      }
+    },
+    "cookies": {
+      "title": "Política de Cookies",
+      "sections": {
+        "general": {
+          "title": "O que são cookies",
+          "text": "Cookies são pequenos arquivos de texto armazenados no dispositivo do usuário que ajudam o site a funcionar corretamente, lembrar preferências e analisar o uso do serviço."
+        },
+        "types": {
+          "title": "Quais cookies podem ser usados",
+          "text": "O site pode usar cookies necessários para funcionalidades básicas, cookies analíticos para avaliar o uso do site e outras categorias de cookies apenas quando o usuário tiver dado o consentimento correspondente."
+        },
+        "consent": {
+          "title": "Consentimento para cookies",
+          "text": "Ao visitar o site pela primeira vez, o usuário pode ser solicitado a escolher quais categorias de cookies permite. Cookies opcionais não devem ser ativados antes da obtenção do consentimento correspondente."
+        },
+        "manage": {
+          "title": "Como gerenciar cookies",
+          "text": "O usuário pode alterar suas preferências de cookies nas configurações do site, quando disponível, ou nas configurações do navegador, inclusive excluindo cookies armazenados anteriormente."
+        }
+      }
+    },
+    "consent": {
+      "title": "Consentimento para o tratamento de dados pessoais",
+      "sections": {
+        "general": {
+          "title": "Informações gerais",
+          "text": "Antes de enviar qualquer formulário no site, o usuário fornece consentimento separado, específico, informado e explícito para o tratamento de dados pessoais na medida necessária para a finalidade correspondente."
+        },
+        "forms": {
+          "title": "Como o consentimento é dado",
+          "text": "O consentimento é confirmado por uma ação separada do usuário, como marcar uma caixa de seleção vazia por padrão ao lado do formulário. O texto do consentimento e o link para a política de privacidade devem estar disponíveis antes do envio do formulário."
+        },
+        "withdrawal": {
+          "title": "Retirada do consentimento",
+          "text": "O usuário pode retirar o consentimento para o tratamento de dados pessoais a qualquer momento, enviando uma solicitação correspondente pelos canais de contato disponíveis no site."
+        }
+      }
     }
   }
 }
