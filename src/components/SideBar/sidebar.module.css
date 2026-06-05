@@ -5,6 +5,7 @@
   }
 }
 
+
 .sidebar {
     width: 240px;
     background: #13131a;
@@ -18,6 +19,7 @@
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+
 .sidebarInner {
     display: flex;
     flex-direction: column;
@@ -26,9 +28,11 @@
     scrollbar-width: none;
 }
 
+
 .sidebarInner::-webkit-scrollbar {
     display: none;
 }
+
 
 .logo {
   padding: 24px;
@@ -37,6 +41,7 @@
   align-items: center;
   gap: 12px;
 }
+
 
 .logoIcon {
   width: 36px;
@@ -49,6 +54,7 @@
   flex-shrink: 0;
 }
 
+
 .logoText {
   font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   font-size: 20px;
@@ -58,13 +64,16 @@
   color: white;
 }
 
+
 .logoTextSpan {
   color: #e8372a;
 }
 
+
 .navigation {
   padding: 16px 12px;
 }
+
 
 .navTitle {
   font-size: 14px;
@@ -75,6 +84,7 @@
   padding: 20px 8px 8px 8px;
 }
 
+
 .navItem {
   display: flex;
   align-items: center;
@@ -82,7 +92,7 @@
   padding: 8px 12px;
   border-radius: 8px;
   color: #8a8a9a;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -98,15 +108,18 @@
   }
 }
 
+
 .navItem:hover {
   background-color: #1f1f2d;
   color: #e8e8ed;
 }
 
+
 .navItemActive {
   background-color: #e8372a26;
   color: #e8372a;
 }
+
 
 .navItem.navItemActive,
 .navItem.navItemActive:hover {
@@ -114,11 +127,26 @@
   color: #e8372a;
 }
 
+
 .sidebarFooter {
   padding: 16px 12px;
   border-top: 1px solid #ffffff14;
   margin-top: auto;
 }
+
+
+.navItemSmall {
+  font-size: 10px;
+  padding: 6px 12px;
+}
+
+
+.navTitleSmall {
+  padding-top: 0;
+  padding-bottom: 15px;
+  font-size: 10px;
+}
+
 
 @media (max-width: 1024px) {
   .sidebar {
@@ -140,7 +168,11 @@
   }
 
   .navTitle {
-    font-size: 12px;
+    font-size: 10px;
+  }
+
+  .navTitleSmall {
+    font-size: 10px;
   }
 
   .navItem {
@@ -150,6 +182,7 @@
     }
   }
 }
+
 
 @media (max-width: 576px) {
   .sidebar {
@@ -175,6 +208,7 @@
     height: 25px;
   }
 }
+
 
 .navItemDisabled {
   opacity: 0.4;

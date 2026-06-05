@@ -13,10 +13,12 @@ import { lightHeavyWeight } from "./fighters/lightHeavyWeight";
 import { heavyWeight } from "./fighters/heavyWeight";
 import { useLang } from "../../../hooks/useLang";
 
+
 function Fighters(): ReactElement {
     const { t } = useLang();
     const [activeIndex, setActiveIndex] = useState(1);
     const [flippedCards, setFlippedCards] = useState<number[]>([]);
+
 
     const allWeightsData = [
         flyWeight.map((fighter) => ({ ...fighter, weightClassName: weightClasses[0] })),
@@ -29,18 +31,22 @@ function Fighters(): ReactElement {
         heavyWeight.map((fighter) => ({ ...fighter, weightClassName: weightClasses[7] })),
     ];
 
+
     const displayCategories = [
         t("fighters.categories.all"),
         ...weightClasses.slice(0, 8).map((item) => t(`fighters.categories.${item}`)),
     ];
 
+
     const currentFighters =
         activeIndex === 0 ? allWeightsData.flat() : allWeightsData[activeIndex - 1] || [];
+
 
     const handleCategoryChange = (index: number) => {
         setActiveIndex(index);
         setFlippedCards([]);
     };
+
 
     const handleFlip = (index: number) => {
         setFlippedCards((prev) => {
@@ -56,6 +62,7 @@ function Fighters(): ReactElement {
             return newFlipped;
         });
     };
+
 
     return (
         <>
@@ -93,5 +100,6 @@ function Fighters(): ReactElement {
         </>
     );
 }
+
 
 export default Fighters;

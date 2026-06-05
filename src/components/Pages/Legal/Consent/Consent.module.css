@@ -40,7 +40,7 @@
 
 .cardTitle {
     margin: 0;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 700;
     line-height: 1.2;
     color: #ffffff;
@@ -48,7 +48,7 @@
 
 .text {
     margin: 0;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.55;
     color: #bdbdca;
     max-width: 72ch;
@@ -71,7 +71,7 @@
     }
 
     .cardTitle {
-        font-size: 17px;
+        font-size: 13px;
     }
 }
 
@@ -99,11 +99,11 @@
     }
 
     .cardTitle {
-        font-size: 16px;
+        font-size: 13px;
     }
 
     .text {
-        font-size: 13px;
+        font-size: 12px;
         line-height: 1.5;
         max-width: 100%;
     }
@@ -133,7 +133,7 @@
     }
 
     .cardTitle {
-        font-size: 15px;
+        font-size: 12px;
     }
 
     .text {
@@ -157,7 +157,7 @@
     }
 
     .cardTitle {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .text {

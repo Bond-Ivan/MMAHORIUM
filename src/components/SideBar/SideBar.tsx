@@ -169,13 +169,15 @@ function SideBar({ isOpen, onClose }: SideBarProps): ReactElement {
 
       <div className={styles.sidebarFooter}>
         <div>
-          <h2 className={styles.navTitle}>{t("sidebar.section_legal")}</h2>
+          <h2 className={`${styles.navTitleSmall} ${styles.navTitle}`}>
+            {t("sidebar.section_legal")}
+          </h2>
 
           <NavLink
             to="/privacy"
             onClick={onClose}
             className={({ isActive }) =>
-              `${styles.navItem} ${isActive ? styles.navItemActive : ""}`
+              `${styles.navItem} ${styles.navItemSmall} ${isActive ? styles.navItemActive : ""}`
             }
           >
             {t("sidebar.privacy")}
@@ -185,7 +187,7 @@ function SideBar({ isOpen, onClose }: SideBarProps): ReactElement {
             to="/terms"
             onClick={onClose}
             className={({ isActive }) =>
-              `${styles.navItem} ${isActive ? styles.navItemActive : ""}`
+              `${styles.navItem} ${styles.navItemSmall} ${isActive ? styles.navItemActive : ""}`
             }
           >
             {t("sidebar.terms")}
@@ -195,7 +197,7 @@ function SideBar({ isOpen, onClose }: SideBarProps): ReactElement {
             to="/cookies"
             onClick={onClose}
             className={({ isActive }) =>
-              `${styles.navItem} ${isActive ? styles.navItemActive : ""}`
+              `${styles.navItem} ${styles.navItemSmall} ${isActive ? styles.navItemActive : ""}`
             }
           >
             {t("sidebar.cookies")}
@@ -205,7 +207,7 @@ function SideBar({ isOpen, onClose }: SideBarProps): ReactElement {
             to="/consent"
             onClick={onClose}
             className={({ isActive }) =>
-              `${styles.navItem} ${isActive ? styles.navItemActive : ""}`
+              `${styles.navItem} ${styles.navItemSmall} ${isActive ? styles.navItemActive : ""}`
             }
           >
             {t("sidebar.consent")}
